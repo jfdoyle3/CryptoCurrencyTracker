@@ -1,6 +1,6 @@
 package GetAPIData;
 
-
+// ********  REMOVE API KEY  before committing *****
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +24,11 @@ public class CryptoData {
 
 		
 		String oneJson="[{\"exchange\":\"coinbene\",\"market\":\"BETHER_ETH\",\"base\":\"BETHER\",\"quote\":\"ETH\"}";
-		final   HttpResponse<String> jsonResponse = Unirest.get("https://api.nomics.com/v1/markets").queryString("key", "").asString();
-		
+		final   HttpResponse<String> jsonResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
+				.queryString("key", "")
+				//.queryString("ids","BTC,ETH,XRP")
+				//.queryString("interval","1d,30d")
+				.asString();
 		//String[] arrJson=stringJson.split("\\n");
 		Gson gson = new Gson();
 		//String json = gson.toJson(arrJson[0]);

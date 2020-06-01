@@ -25,11 +25,11 @@ public class BTCData {
 		ArrayList<String> cryptOneDay = new ArrayList<>();
 		// ******** REMOVE API KEY before committing *****
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
-				.queryString("key", "").queryString("ids", "BTC")
-				.queryString("interval", "1d").asString();
+				.queryString("key", "").queryString("ids", "BTC").asString();
+				//.queryString("interval", "1d")
 
 		String json = jsonStringResponse.getBody();
-	
+	System.out.println(json);
 		JSONArray cryptoJson = new JSONArray(json);
 		for (int idx = 0; idx < cryptoJson.length(); idx++) {
 			JSONObject cryptoData = cryptoJson.getJSONObject(idx);
@@ -37,7 +37,7 @@ public class BTCData {
 			JSONObject oneDayObj = (JSONObject) cryptoData.get("1d");
 			cryptOneDay.add(oneDayObj.toString());
 		}
-		System.out.println(cryptoRoot.get(0));
+	//	System.out.println(cryptoRoot.get(0));
 		
 		Iterator<String>  btcItr=cryptoRoot.iterator();
 		
@@ -52,7 +52,7 @@ public class BTCData {
 //		}
 
 		for(AllCrypto item : allCryptoRoot) {
-			System.out.println(item);
+		//	System.out.println(item);
 		}
 		// AllCrypto btc = allCryptoRoot.get(0);
 		//System.out.println(btc.getHigh());

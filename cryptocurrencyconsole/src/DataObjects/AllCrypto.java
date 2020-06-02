@@ -1,6 +1,6 @@
 package DataObjects;
 
-public class CryptoInfo {
+public class AllCrypto {
 	
 	String id;
 	String currency;

@@ -5,8 +5,10 @@ import java.util.Iterator;
 
 import com.google.gson.Gson;
 
-import DataObjects.CryptoInfo;
-import DataObjects.CryptoIntervals;
+import DataObjects.AllCrypto;
+import DataObjects.All1day;
+import DataObjects.btc;
+
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
@@ -18,8 +20,8 @@ public class CryptoIntervalData {
 	public static void getCryptoIntervalData(String currency,String interval) {
 
 		ArrayList<String> cryptoRoot = new ArrayList<String>();
-		ArrayList<CryptoInfo> allCryptoRoot = new ArrayList<>();
-		ArrayList<CryptoIntervals> allOneDay = new ArrayList<>();
+		ArrayList<AllCrypto> allCryptoRoot = new ArrayList<>();
+		ArrayList<All1day> allOneDay = new ArrayList<>();
 		ArrayList<String> cryptOneDay = new ArrayList<>();
 		// ******** REMOVE API KEY before committing *****
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
@@ -39,7 +41,7 @@ public class CryptoIntervalData {
 		Iterator<String>  btcItr=cryptoRoot.iterator();
 		
 		for (int idx = 0; idx <= cryptoRoot.get(0).length(); idx++) {
-			CryptoInfo data = new Gson().fromJson(cryptoRoot.get(idx), CryptoInfo.class);
+			AllCrypto data = new Gson().fromJson(cryptoRoot.get(idx), AllCrypto.class);
 			allCryptoRoot.add(data);
 		}
 		
@@ -48,7 +50,7 @@ public class CryptoIntervalData {
 //			allOneDay.add(data);
 //		}
 
-		for(CryptoInfo item : allCryptoRoot) {
+		for(AllCrypto item : allCryptoRoot) {
 			System.out.println(item);
 		}
 		// AllCrypto btc = allCryptoRoot.get(0);

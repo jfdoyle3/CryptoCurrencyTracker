@@ -16,7 +16,7 @@ public class CryptoInfo {
 	String rank;
 	String high;
 	String high_timestamp;
-	String btc1dayid;
+	
 	
 	
 	public String getId() {
@@ -103,19 +103,14 @@ public class CryptoInfo {
 	public void setHigh_timestamp(String high_timestamp) {
 		this.high_timestamp = high_timestamp;
 	}
-	public String getBtc1dayid() {
-		return btc1dayid;
-	}
-	public void setBtc1dayid(String btc1dayid) {
-		this.btc1dayid = btc1dayid;
-	}
+
 	@Override
 	public String toString() {
 		return "AllCrypto [id=" + id + ", currency=" + currency + ", symbol=" + symbol + ", name=" + name
 				+ ", logo_url=" + logo_url + ", price=" + price + ", price_date=" + price_date + ", price_timestamp="
 				+ price_timestamp + ", circulating_supply=" + circulating_supply + ", max_supply=" + max_supply
 				+ ", market_cap=" + market_cap + ", rank=" + rank + ", high=" + high + ", high_timestamp="
-				+ high_timestamp + ", btc1dayid=" + btc1dayid + "]";
+				+ high_timestamp + "]";
 	}
 	
 	

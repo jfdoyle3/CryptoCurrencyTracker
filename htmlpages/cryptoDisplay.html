@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title of the document</title>
+    <title>CryptoCurrencies Display</title>
     <!-- Material Icon CDN -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -31,9 +31,23 @@
       #side {
         background-color: grey;
       }
-      #info {
-        background-color: teal;
-      }
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+#reset {
+  display: inline-block;
+  align-items: center;
+}
     </style>
   </head>
   <body>
@@ -89,17 +103,17 @@
       <!-- Page Layout here -->
       <div class="row">
         <div id="side" class="col s12 m4 l3">
-          <p>currency</p>
-          <p>side1</p>
-          <p>side2</p>
-          <p>side3</p>
-          <p>side4</p>
-          <p>side5</p>
-          <p>side6</p>
-          <p>side7</p>
-          <p>side8</p>
-          <p>side9</p>
-          <p>side10</p>
+          <p>Currency</p>
+          <p>BitCoin</p>
+          <p>Ethereum</p>
+          <p>Ripple</p>
+          <p>Tether</p>
+          <p>Bitcoin Cash</p>
+          <p>Bitcoin SV</p>
+          <p>Litecoin</p>
+          <p>Binance Coin</p>
+          <p>EOS</p>
+          <p>Cardano</p>
 
           <!-- Note that "m4 l3" was added -->
           <!-- Grey navigation panel
@@ -111,158 +125,108 @@
         </div>
 
         <div id="info" class="col s12 m8 l9">
-           <h2>Table</h2>
     <div class="container">
-      <a id="scraper" class="waves-effect waves-light btn">Scrape</a>
-      <a id="reset" class="waves-effect waves-light btn">Reset</a>
-
-      <br />
       <table class="highlight">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>TimeStamp</th>
-            <th>Symbol</th>
-            <th>LastPrice</th>
-            <th>Change</th>
-            <th>Change%</th>
-            <th>MarketTime</th>
-            <th>Volume</th>
-            <th>AvgVol</th>
-            <th>MarketCap</th>
+            <th> </th>
+            <th>1 hour</th>
+            <th>1 Day</th>
+            <th>7 Day</th>
+            <th>30 Day</th>
+            <th>365 Days</th>
+            <th>Year to Date</th>
           </tr>
         </thead>
         <tr>
-          <td>1</td>
-          <td>2020-05-02</td>
+          <td>price_change</td>
+          <td>269.75208019</td>
           <td>AMD</td>
           <td>49.88</td>
           <td>-2.51</td>
           <td>-4.79%</td>
           <td>"4:00PM EDT"</td>
-          <td>69.563M</td>
-          <td>81.965M</td>
-          <td>58.419B</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td>price_change_pct</td>
           <td>2020-05-02</td>
           <td>CVS</td>
           <td>59.70</td>
           <td>-1.85</td>
           <td>-3.01%</td>
-          <td>"4:02PM EDT"</td>
-          <td>7.309M</td>
-          <td>11.485M</td>
-          <td>77.944B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td>volume</td>
           <td>2020-05-02</td>
           <td>GOOG</td>
           <td>"1,320.61"</td>
           <td>-28.05</td>
           <td>-2.08%</td>
-          <td>"4:00PM EDT"</td>
-          <td>2.073M</td>
-          <td>2.497M</td>
-          <td>900.811B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>70</td>
+          <td>volume_change</td>
           <td>2020-05-02</td>
           <td>HAS</td>
           <td>68.73</td>
           <td>-3.48</td>
           <td>-4.82%</td>
-          <td>"4:00PM EDT"</td>
-          <td>1.742M</td>
-          <td>1.922M</td>
-          <td>9.416B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>71</td>
+          <td>volume_change_pct</td>
           <td>2020-05-02</td>
           <td>IBM</td>
           <td>121.87</td>
           <td>-3.69</td>
           <td>-2.94%</td>
-          <td>"4:02PM EDT</td>
-          <td>4.822M</td>
-          <td>7.079M</td>
-          <td>108.207B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>72</td>
+          <td>market_cap_change</td>
           <td>2020-05-02</td>
           <td>INTC</td>
           <td>57.47</td>
           <td>-2.51</td>
           <td>-4.18%</td>
           <td>"4:00PM EDT"</td>
-          <td>21.195M</td>
-          <td>32.404M</td>
-          <td>243.328B</td>
         </tr>
         <tr>
-          <td>100</td>
+          <td>market_cap_change_pct</td>
           <td>2020-05-02</td>
           <td>MSFT</td>
           <td>174.57</td>
           <td>-4.64</td>
           <td>-2.59%</td>
-          <td>"4:00PM EDT"</td>
-          <td>39.37M</td>
-          <td>55.944M</td>
-          <td>1.324T</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>174</td>
+          <td>transparent_market_cap_chang</td>
           <td>2020-05-02</td>
           <td>NVDA</td>
           <td>282.78</td>
           <td>-9.50</td>
           <td>-3.25%</td>
-          <td>"4:00PM EDT"</td>
-          <td>8.552M</td>
-          <td>15.687M</td>
-          <td>173.061B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>175</td>
+          <td>transparent_market_cap_change_pct</td>
           <td>2020-05-02</td>
           <td>SNE</td>
           <td>62.73</td>
           <td>-1.52</td>
           <td>-2.37%</td>
-          <td>"4:02PM EDT"</td>
-          <td>"623,784"</td>
-          <td>1.581M</td>
-          <td>77.453B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
         <tr>
-          <td>276</td>
+          <td>volume_transparency</td>
           <td>2020-05-02</td>
           <td>SQNXF</td>
           <td>41.74</td>
           <td>+0.29</td>
           <td>+0.70%</td>
-          <td>"12:28PM EDT"</td>
-          <td>899</td>
-          <td>793</td>
-          <td>4.96B</td>
-        </tr>
-        <tr>
-          <td>377</td>
-          <td>2020-05-02</td>
-          <td>TSLA</td>
-          <td>701.32</td>
-          <td>-80.56</td>
-          <td>-10.30%</td>
-          <td>"4:00PM EDT"</td>
-          <td>32.532M</td>
-          <td>20.763M</td>
-          <td>129.316B</td>
+            <td>"4:00PM EDT"</td>
         </tr>
       </table>
           <!-- Note that "m8 l9" was added -->

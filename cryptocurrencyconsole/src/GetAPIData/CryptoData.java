@@ -28,22 +28,22 @@ public class CryptoData {
 		        .queryString("interval", "1d").asString();
 
 		String json = jsonStringResponse.getBody();
-		// System.out.println(json);
-		JSONArray cryptoJson = new JSONArray(json);
-		for (int idx = 0; idx < cryptoJson.length(); idx++) {
-			JSONObject cryptoData = cryptoJson.getJSONObject(idx);
-			cryptoRoot.add(cryptoData.toString());
-		//	JSONObject oneDayObj = (JSONObject) cryptoData.get("1d");
-		//	cryptOneDay.add(oneDayObj.toString());
-		}
-		System.out.println(cryptoRoot.get(0));
-		
-		Iterator<String> btcItr=cryptoRoot.iterator();
-		
-		for (int idx = 0; idx <= cryptoRoot.get(0).length(); idx++) {
-			btc data = new Gson().fromJson(cryptoRoot.get(idx), btc.class);
-		//	cryptoRoot.add(data);
-		}
+		System.out.println(json);
+//		JSONArray cryptoJson = new JSONArray(json);
+//		for (int idx = 0; idx < cryptoJson.length(); idx++) {
+//			JSONObject cryptoData = cryptoJson.getJSONObject(idx);
+//			cryptoRoot.add(cryptoData.toString());
+//		//	JSONObject oneDayObj = (JSONObject) cryptoData.get("1d");
+//		//	cryptOneDay.add(oneDayObj.toString());
+//		}
+//		System.out.println(cryptoRoot.get(0));
+//		
+//		Iterator<String> btcItr=cryptoRoot.iterator();
+//		
+//		for (int idx = 0; idx <= cryptoRoot.get(0).length(); idx++) {
+//			btc data = new Gson().fromJson(cryptoRoot.get(idx), btc.class);
+//		//	cryptoRoot.add(data);
+//		}
 		
 ////		for (int idx = 0; idx < cryptOneDay.size(); idx++) {
 ////			All1day data = new Gson().fromJson(cryptOneDay.get(idx), All1day.class);

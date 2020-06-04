@@ -1,7 +1,8 @@
-package DataObjects;
+package objects;
 
-public class All1day {
-	String btcid;
+public class Intervals {
+	String currencyid;
+	String interval;
 	String volume;
 	String price_change;
 	String price_change_pct;
@@ -9,12 +10,18 @@ public class All1day {
 	String volume_change_pct;
 	String market_cap_change;
 	String market_cap_change_pct;
-	
-	public String getBtcid() {
-		return btcid;
+		
+	public String getCurrencyid() {
+		return currencyid;
 	}
-	public void setBtcid(String btcid) {
-		this.btcid = btcid;
+	public void setCurrencyid(String currencyid) {
+		this.currencyid = currencyid;
+	}
+	public String getInterval() {
+		return interval;
+	}
+	public void setInterval(String interval) {
+		this.interval = interval;
 	}
 	public String getVolume() {
 		return volume;
@@ -60,10 +67,12 @@ public class All1day {
 	}
 	@Override
 	public String toString() {
-		return "All1day [btcid=" + btcid + ", volume=" + volume + ", price_change=" + price_change
-				+ ", price_change_pct=" + price_change_pct + ", volume_change=" + volume_change + ", volume_change_pct="
-				+ volume_change_pct + ", market_cap_change=" + market_cap_change + ", market_cap_change_pct="
-				+ market_cap_change_pct + "]";
+		return "Intervals [currencyid=" + currencyid + ", interval=" + interval + ", volume=" + volume
+				+ ", price_change=" + price_change + ", price_change_pct=" + price_change_pct + ", volume_change="
+				+ volume_change + ", volume_change_pct=" + volume_change_pct + ", market_cap_change="
+				+ market_cap_change + ", market_cap_change_pct=" + market_cap_change_pct + "]";
 	}
+	
+	
 	
 }

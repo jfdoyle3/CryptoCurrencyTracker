@@ -1,12 +1,8 @@
-package DataObjects;
+package objects;
 
-public class AllCrypto {
+public class CurrencyInfo {
 	
-	String id;
-	String currency;
-	String symbol;
-	String name;
-	String logo_url;
+	String currencyId;
 	String price;
 	String price_date;
 	String price_timestamp;
@@ -16,38 +12,12 @@ public class AllCrypto {
 	String rank;
 	String high;
 	String high_timestamp;
-	String btc1dayid;
-	
-	
-	public String getId() {
-		return id;
+	String intervalid;
+	public String getCurrencyId() {
+		return currencyId;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getCurrency() {
-		return currency;
-	}
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-	public String getSymbol() {
-		return symbol;
-	}
-	public void setSymbol(String symbol) {
-		this.symbol = symbol;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getLogo_url() {
-		return logo_url;
-	}
-	public void setLogo_url(String logo_url) {
-		this.logo_url = logo_url;
+	public void setCurrencyId(String currencyId) {
+		this.currencyId = currencyId;
 	}
 	public String getPrice() {
 		return price;
@@ -103,21 +73,19 @@ public class AllCrypto {
 	public void setHigh_timestamp(String high_timestamp) {
 		this.high_timestamp = high_timestamp;
 	}
-	public String getBtc1dayid() {
-		return btc1dayid;
+	public String getIntervalid() {
+		return intervalid;
 	}
-	public void setBtc1dayid(String btc1dayid) {
-		this.btc1dayid = btc1dayid;
+	public void setIntervalid(String intervalid) {
+		this.intervalid = intervalid;
 	}
 	@Override
 	public String toString() {
-		return "AllCrypto [id=" + id + ", currency=" + currency + ", symbol=" + symbol + ", name=" + name
-				+ ", logo_url=" + logo_url + ", price=" + price + ", price_date=" + price_date + ", price_timestamp="
-				+ price_timestamp + ", circulating_supply=" + circulating_supply + ", max_supply=" + max_supply
-				+ ", market_cap=" + market_cap + ", rank=" + rank + ", high=" + high + ", high_timestamp="
-				+ high_timestamp + ", btc1dayid=" + btc1dayid + "]";
+		return "CurrencyInfo [currencyId=" + currencyId + ", price=" + price + ", price_date=" + price_date
+				+ ", price_timestamp=" + price_timestamp + ", circulating_supply=" + circulating_supply
+				+ ", max_supply=" + max_supply + ", market_cap=" + market_cap + ", rank=" + rank + ", high=" + high
+				+ ", high_timestamp=" + high_timestamp + ", intervalid=" + intervalid + "]";
 	}
 	
 	
-
 }

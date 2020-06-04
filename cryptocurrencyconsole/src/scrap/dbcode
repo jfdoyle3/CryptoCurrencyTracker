@@ -1,0 +1,16 @@
+				String sql = "INSERT INTO stocktable (datestamp, symbol, lastprice,pricechange,changepercentage,markettime,volume,avgvol,marketcap) values (?,?,?,?,?,?,?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(sql);
+
+				for (int idx = 0; idx < stockList.size(); idx++) {
+					Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+					statement.setTimestamp(1, timeStamp);
+					statement.setString(2, stockList.get(idx).symbol);
+					statement.setString(3, stockList.get(idx).lastprice);
+					statement.setString(4, stockList.get(idx).pricechange);
+					statement.setString(5, stockList.get(idx).changepercentage);
+					statement.setString(6, stockList.get(idx).markettime);
+					statement.setString(7, stockList.get(idx).volume);
+					statement.setString(8, stockList.get(idx).avgvol);
+					statement.setString(9, stockList.get(idx).marketcap);
+
+				statement.executeUpdate();

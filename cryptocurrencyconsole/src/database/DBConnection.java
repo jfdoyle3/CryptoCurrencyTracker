@@ -15,7 +15,7 @@ public class DBConnection {
 			Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.1.201/cryptocurrencytracker",
 					"jfdoyle3", "F1ipp3r6467");
 			// fields id and currency
-			String sql = "INSERT INTO cryptocurrencies (currency) values (?)";
+			String sql = "INSERT INTO cryptocurrencies (id) values (?)";
 			PreparedStatement statement = connection.prepareStatement(sql);
 
 			statement.setString(1, "BTC");

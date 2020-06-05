@@ -12,7 +12,8 @@ public class CurrencyInfo {
 	String rank;
 	String high;
 	String high_timestamp;
-	String intervalid;
+	String intervalId;
+	
 	public String getCurrencyId() {
 		return currencyId;
 	}
@@ -74,17 +75,17 @@ public class CurrencyInfo {
 		this.high_timestamp = high_timestamp;
 	}
 	public String getIntervalid() {
-		return intervalid;
+		return intervalId;
 	}
-	public void setIntervalid(String intervalid) {
-		this.intervalid = intervalid;
+	public void setIntervalid(String intervalId) {
+		this.intervalId = intervalId;
 	}
 	@Override
 	public String toString() {
 		return "CurrencyInfo [currencyId=" + currencyId + ", price=" + price + ", price_date=" + price_date
 				+ ", price_timestamp=" + price_timestamp + ", circulating_supply=" + circulating_supply
 				+ ", max_supply=" + max_supply + ", market_cap=" + market_cap + ", rank=" + rank + ", high=" + high
-				+ ", high_timestamp=" + high_timestamp + ", intervalid=" + intervalid + "]";
+				+ ", high_timestamp=" + high_timestamp + ", intervalId=" + intervalId + "]";
 	}
 	
 	

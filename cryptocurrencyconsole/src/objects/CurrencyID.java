@@ -8,7 +8,6 @@ public class CurrencyID {
 	String name;
 	String logo_url;
 	
-	
 	public String getId() {
 		return id;
 	}

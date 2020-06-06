@@ -17,11 +17,10 @@ public class GetCurrencyID {
 
 	public static void CurrencyID(String currency) {
 
-		ArrayList<CurrencyID> allCryptoRoot = new ArrayList<>();
-		ArrayList<CurrencyInfo> allOneDay = new ArrayList<>();
-		ArrayList<String> cryptOneDay = new ArrayList<>();
 		
-		// ******** REMOVE API KEY before committing *****
+
+		
+	
 
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
 				.queryString("key", "").queryString("ids", currency).queryString("interval", "1d").asString();

@@ -14,7 +14,7 @@ public class Main {
 		JSONArray json = GetCurrency.Currencies("BTC,ETH");
 		GetCurrency.CurrencyID(json);
 		GetCurrency.CurrencyInfo(json);
-	
+		GetCurrency.CurrencyInterval(json);
 	
 //BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA
 	}

@@ -12,7 +12,7 @@ public class GetCurrency {
 		// ******** REMOVE API KEY before committing *****
 
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
-				.queryString("key", "8381f81057e8766c11cd0109bae84864").queryString("ids", currency)
+				.queryString("key", "").queryString("ids", currency)
 				.queryString("interval", "1d").asString();
 
 		String json = jsonStringResponse.getBody();
@@ -49,10 +49,11 @@ public class GetCurrency {
 
 			String price = (String) objects.get("price");
 			String circulating_supply = (String) objects.get("circulating_supply");
-			if ((String) objects.get("max_supply") != null) {
+
+			if (objects.has("max_supply")) {
 				max_supply = (String) objects.get("max_supply");
 			} else {
-				max_supply = "No Max Supply";
+				max_supply = "N/A";
 			}
 
 			String market_cap = (String) objects.get("market_cap");
@@ -62,6 +63,21 @@ public class GetCurrency {
 
 			System.out.printf("price: %s\nsupply: %s\nmax: %s\ncap: %s\nrank: %s\nhigh: %s\nhigh time: %s\n", price,
 					circulating_supply, max_supply, market_cap, rank, high, high_timestamp);
+			System.out.println("---------------------");
+		}
+	}
+
+	public static void CurrencyInterval(JSONArray json) {
+
+		for (int idx = 0; idx < json.length(); idx++) {
+			JSONObject currencyData = json.getJSONObject(idx);
+
+			JSONObject objects = (JSONObject) currencyData;
+
+			String priceDate = (String) objects.get("price_date");
+			String priceTimestamp = (String) objects.get("price_timestamp");
+
+			System.out.printf("price Date: %s\nprice Timestamp: %s\n", priceDate, priceTimestamp);
 			System.out.println("---------------------");
 		}
 	}

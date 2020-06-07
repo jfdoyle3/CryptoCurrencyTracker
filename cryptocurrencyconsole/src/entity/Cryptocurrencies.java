@@ -35,7 +35,7 @@ public class Cryptocurrencies {
 	private String logoUrl;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="cryptoId")
+	@JoinColumn(name="crypto_id")
 	private CurrencyInfo currencyInfo;
 
 	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {

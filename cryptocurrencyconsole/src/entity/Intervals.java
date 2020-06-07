@@ -10,31 +10,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="intervals")
 public class Intervals {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="intervalId")
-	String intervalId;
+	@Column(name="id")
+	private int id;
 	
 	@Column(name="price_date")
-	String priceDate;
-	
+	private String priceDate;
+		
 	@Column(name="price_timestamp")
-	String priceTimestamp;
+	private String priceTimeStamp;
 
-	public Intervals(String priceDate, String priceTimestamp) {
+	public Intervals(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
-		this.priceTimestamp = priceTimestamp;
+		this.priceTimeStamp = priceTimeStamp;
 	}
 
-	public String getIntervalId() {
-		return intervalId;
+	public int getId() {
+		return id;
 	}
 
-	public void setIntervalId(String intervalId) {
-		this.intervalId = intervalId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPriceDate() {
@@ -45,18 +47,19 @@ public class Intervals {
 		this.priceDate = priceDate;
 	}
 
-	public String getPriceTimestamp() {
-		return priceTimestamp;
+	public String getPriceTimeStamp() {
+		return priceTimeStamp;
 	}
 
-	public void setPriceTimestamp(String priceTimestamp) {
-		this.priceTimestamp = priceTimestamp;
+	public void setPriceTimeStamp(String priceTimeStamp) {
+		this.priceTimeStamp = priceTimeStamp;
 	}
 
 	@Override
 	public String toString() {
-		return "Intervals [intervalId=" + intervalId + ", priceDate=" + priceDate + ", priceTimestamp=" + priceTimestamp
-				+ "]";
+		return "Intervals [id=" + id + ", priceDate=" + priceDate + ", priceTimeStamp=" + priceTimeStamp + "]";
 	}
-		
+	
+
+	
 }

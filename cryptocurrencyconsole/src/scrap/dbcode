@@ -13,4 +13,11 @@
 					statement.setString(8, stockList.get(idx).avgvol);
 					statement.setString(9, stockList.get(idx).marketcap);
 
+		
+		
 				statement.executeUpdate();
+				
+				
+				
+				
+	//CurrencyInfo tmpCurrencyInfo = new CurrencyInfo("564.85130437", "18391300", "21000000", "175910049794", "1", "19345.06577687", "2017-12-16T00:00:00Z");

@@ -10,14 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="currencyinfo")
+@Table(name="currency_info")
 public class CurrencyInfo {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="currencyId")
-	private String currencyId;
+	@Column(name="id")
+	private int id;
 	
 	@Column(name="price")
 	private String price;
@@ -31,36 +32,36 @@ public class CurrencyInfo {
 	@Column(name="market_cap")
 	private String marketCap;
 	
-	@Column(name="rank")
-	private String rank;
+	@Column(name="ranking")
+	private String ranking;
 	
 	@Column(name="high")
 	private String high;
 	
 	@Column(name="high_timestamp")
-	private String high_timestamp;
+	private String highTimeStamp;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="intervalId")
-	private Intervals intervals;
+	@JoinColumn(name="interval_id")
+	private Intervals interval;
 
-	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String rank,
-			String high, String high_timestamp) {
+	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String ranking,
+			String high, String highTimeStamp) {
 		this.price = price;
 		this.circulatingSupply = circulatingSupply;
 		this.maxSupply = maxSupply;
 		this.marketCap = marketCap;
-		this.rank = rank;
+		this.ranking = ranking;
 		this.high = high;
-		this.high_timestamp = high_timestamp;
+		this.highTimeStamp = highTimeStamp;
 	}
 
-	public String getCurrencyId() {
-		return currencyId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCurrencyId(String currencyId) {
-		this.currencyId = currencyId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPrice() {
@@ -95,12 +96,12 @@ public class CurrencyInfo {
 		this.marketCap = marketCap;
 	}
 
-	public String getRank() {
-		return rank;
+	public String getRanking() {
+		return ranking;
 	}
 
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
 	}
 
 	public String getHigh() {
@@ -111,27 +112,19 @@ public class CurrencyInfo {
 		this.high = high;
 	}
 
-	public String getHigh_timestamp() {
-		return high_timestamp;
+	public String gethighTimeStamp() {
+		return highTimeStamp;
 	}
 
-	public void setHigh_timestamp(String high_timestamp) {
-		this.high_timestamp = high_timestamp;
-	}
-
-	public Intervals getIntervals() {
-		return intervals;
-	}
-
-	public void setIntervals(Intervals intervals) {
-		this.intervals = intervals;
+	public void sethighTimeStamp(String highTimeStamp) {
+		this.highTimeStamp = highTimeStamp;
 	}
 
 	@Override
 	public String toString() {
-		return "CurrencyInfo [currencyId=" + currencyId + ", price=" + price + ", circulatingSupply="
-				+ circulatingSupply + ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", rank=" + rank
-				+ ", high=" + high + ", high_timestamp=" + high_timestamp + ", intervals=" + intervals + "]";
+		return "CurrencyInfo [id=" + id + ", price=" + price + ", circulatingSupply="
+				+ circulatingSupply + ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking
+				+ ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
 	}
 	
 }

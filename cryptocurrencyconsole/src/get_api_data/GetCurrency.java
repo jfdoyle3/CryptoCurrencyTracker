@@ -26,13 +26,13 @@ public class GetCurrency {
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
 
-			JSONObject objects = (JSONObject) currencyData;
+			JSONObject key = (JSONObject) currencyData;
 
-			String id = (String) objects.get("id");
-			String currency = (String) objects.get("currency");
-			String name = (String) objects.get("name");
-			String logo = (String) objects.get("logo_url");
-			String symbol = (String) objects.get("symbol");
+			String id = (String) key.get("id");
+			String currency = (String) key.get("currency");
+			String name = (String) key.get("name");
+			String logo = (String) key.get("logo_url");
+			String symbol = (String) key.get("symbol");
 
 			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
 					logo);
@@ -45,21 +45,21 @@ public class GetCurrency {
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
 
-			JSONObject objects = (JSONObject) currencyData;
+			JSONObject key = (JSONObject) currencyData;
 
-			String price = (String) objects.get("price");
-			String circulating_supply = (String) objects.get("circulating_supply");
+			String price = (String) key.get("price");
+			String circulating_supply = (String) key.get("circulating_supply");
 
-			if (objects.has("max_supply")) {
-				max_supply = (String) objects.get("max_supply");
+			if (key.has("max_supply")) {
+				max_supply = (String) key.get("max_supply");
 			} else {
 				max_supply = "N/A";
 			}
 
-			String market_cap = (String) objects.get("market_cap");
-			String rank = (String) objects.get("rank");
-			String high = (String) objects.get("high");
-			String high_timestamp = (String) objects.get("high_timestamp");
+			String market_cap = (String) key.get("market_cap");
+			String rank = (String) key.get("rank");
+			String high = (String) key.get("high");
+			String high_timestamp = (String) key.get("high_timestamp");
 
 			System.out.printf("price: %s\nsupply: %s\nmax: %s\ncap: %s\nrank: %s\nhigh: %s\nhigh time: %s\n", price,
 					circulating_supply, max_supply, market_cap, rank, high, high_timestamp);
@@ -72,10 +72,10 @@ public class GetCurrency {
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
 
-			JSONObject objects = (JSONObject) currencyData;
+			JSONObject key = (JSONObject) currencyData;
 
-			String priceDate = (String) objects.get("price_date");
-			String priceTimestamp = (String) objects.get("price_timestamp");
+			String priceDate = (String) key.get("price_date");
+			String priceTimestamp = (String) key.get("price_timestamp");
 
 			System.out.printf("price Date: %s\nprice Timestamp: %s\n", priceDate, priceTimestamp);
 			System.out.println("---------------------");

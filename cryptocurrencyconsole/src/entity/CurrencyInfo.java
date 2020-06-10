@@ -1,13 +1,12 @@
 package entity;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 
@@ -40,10 +39,6 @@ public class CurrencyInfo {
 	
 	@Column(name="high_timestamp")
 	private String highTimeStamp;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="interval_id")
-	private Intervals interval;
 
 	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String ranking,
 			String high, String highTimeStamp) {
@@ -111,12 +106,12 @@ public class CurrencyInfo {
 	public void setHigh(String high) {
 		this.high = high;
 	}
-
-	public String gethighTimeStamp() {
+	
+	public String getHighTimeStamp() {
 		return highTimeStamp;
 	}
 
-	public void sethighTimeStamp(String highTimeStamp) {
+	public void setHighTimeStamp(String highTimeStamp) {
 		this.highTimeStamp = highTimeStamp;
 	}
 

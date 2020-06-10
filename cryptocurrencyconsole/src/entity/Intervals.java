@@ -1,13 +1,10 @@
 package entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -25,6 +22,7 @@ public class Intervals {
 		
 	@Column(name="price_timestamp")
 	private String priceTimeStamp;
+
 
 	public Intervals(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
@@ -59,7 +57,5 @@ public class Intervals {
 	public String toString() {
 		return "Intervals [id=" + id + ", priceDate=" + priceDate + ", priceTimeStamp=" + priceTimeStamp + "]";
 	}
-	
 
-	
 }

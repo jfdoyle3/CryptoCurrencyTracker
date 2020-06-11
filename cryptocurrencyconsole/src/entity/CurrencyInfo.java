@@ -39,6 +39,10 @@ public class CurrencyInfo {
 	
 	@Column(name="high_timestamp")
 	private String highTimeStamp;
+	
+	public CurrencyInfo() {
+		
+	}
 
 	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String ranking,
 			String high, String highTimeStamp) {

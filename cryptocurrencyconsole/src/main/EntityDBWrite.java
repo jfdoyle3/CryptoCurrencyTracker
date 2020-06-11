@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import entity.Cryptocurrencies;
 import entity.CurrencyInfo;
+import entity.Intervals;
 
 public class EntityDBWrite {
 

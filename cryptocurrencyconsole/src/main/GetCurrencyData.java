@@ -41,7 +41,5 @@ public class GetCurrencyData {
 			session.close();
 			factory.close();
 		}
-
 	}
-
 }

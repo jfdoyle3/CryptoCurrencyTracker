@@ -1,5 +1,4 @@
 package main;
-//package main;
 //
 //import org.hibernate.Session;
 //import org.hibernate.SessionFactory;

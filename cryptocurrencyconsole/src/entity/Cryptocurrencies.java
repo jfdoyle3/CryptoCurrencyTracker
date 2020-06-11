@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,9 +34,17 @@ public class Cryptocurrencies {
 	@Column(name="logo_url")
 	private String logoUrl;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="crypto_id")
+	@ManyToOne(cascade = CascadeType.ALL)
+	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	
+	@JoinColumn(name="info_id")
 	private CurrencyInfo currencyInfo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	
+	@JoinColumn(name="interval_id")
+	private Intervals interval;
+
 
 	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.currencyId = currencyId;
@@ -102,12 +110,23 @@ public class Cryptocurrencies {
 		this.currencyInfo = currencyInfo;
 	}
 
+	
+	public Intervals getInterval() {
+		return interval;
+	}
+
+	public void setInterval(Intervals interval) {
+		this.interval = interval;
+	}
+
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + ", currencyInfo=" + currencyInfo + "]";
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + ", currencyInfo=" + currencyInfo + ", interval="
+				+ interval + "]";
 	}
 
+	
 
 	
 }

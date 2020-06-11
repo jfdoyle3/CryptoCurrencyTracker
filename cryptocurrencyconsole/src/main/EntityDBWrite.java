@@ -34,8 +34,8 @@ public class EntityDBWrite {
 			session.beginTransaction();
 
 			System.out.println("||Saving Currency: " + currency);
-			System.out.println("||Info: " + currencyInfo);
-			System.out.println("||Interval: " + interval);
+			System.out.println("||Saving Info: " + currencyInfo);
+			System.out.println("||Saving Interval: " + interval);
 
 			session.save(currency);
 

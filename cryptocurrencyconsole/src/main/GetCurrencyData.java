@@ -8,8 +8,7 @@ import entity.Cryptocurrencies;
 import entity.CurrencyInfo;
 import entity.Interval;
 
-
-public class GetCurrrencyFromInfo {
+public class GetCurrencyData {
 
 	public static void main(String[] args) {
 
@@ -23,16 +22,14 @@ public class GetCurrrencyFromInfo {
 
 		try {
 
-		
-
 			session.beginTransaction();
 
-			int theId = 1;
-			Cryptocurrencies cryptoCurrency = session.get(Cryptocurrencies.class, theId);
-			
-			System.out.println("||Currency: "+ cryptoCurrency);
-			// get course for the instructor
-			System.out.println("||Currency Info: "+cryptoCurrency.getCurrencyInfo());
+			int tableId = 1;
+			Cryptocurrencies cryptoCurrency = session.get(Cryptocurrencies.class, tableId);
+
+			System.out.println("||Currency: " + cryptoCurrency);
+			System.out.println("||Info: " + cryptoCurrency.getCurrencyInfo());
+			System.out.println("||Interval: "+ cryptoCurrency.getInterval());
 
 			session.getTransaction().commit();
 			System.out.println("Done!");
@@ -48,27 +45,3 @@ public class GetCurrrencyFromInfo {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

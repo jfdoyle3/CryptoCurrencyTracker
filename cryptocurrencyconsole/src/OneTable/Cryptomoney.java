@@ -1,18 +1,17 @@
-package entity;
+package OneTable;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cryptocurrencies")
-public class Cryptocurrencies {
+@Table(name="cryptomoney")
+public class Cryptomoney {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,20 +33,12 @@ public class Cryptocurrencies {
 	@Column(name="logo_url")
 	private String logoUrl;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name="info_id")
-	private CurrencyInfo currencyInfo;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="interval_id")
-	private Interval interval;
 
-	public Cryptocurrencies() {
+	public Cryptomoney() {
 		
 	}
 
-	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -103,28 +94,11 @@ public class Cryptocurrencies {
 		this.logoUrl = logoUrl;
 	}
 
-	public CurrencyInfo getCurrencyInfo() {
-		return currencyInfo;
-	}
-
-	public void setCurrencyInfo(CurrencyInfo currencyInfo) {
-		this.currencyInfo = currencyInfo;
-	}
-
-	
-	public Interval getInterval() {
-		return interval;
-	}
-
-	public void setInterval(Interval interval) {
-		this.interval = interval;
-	}
 
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + ", currencyInfo=" + currencyInfo + ", interval="
-				+ interval + "]";
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
 	}
 
 	

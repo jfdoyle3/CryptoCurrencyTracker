@@ -19,13 +19,13 @@ DROP TABLE IF EXISTS `currency_info`;
 
 CREATE TABLE `currency_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `price` varchar(1000) DEFAULT NULL,
-  `circulating_supply` varchar(1000) DEFAULT NULL,
-  `max_supply` varchar(1000) DEFAULT NULL,
-  `market_cap` varchar(1000) DEFAULT NULL,
-  `ranking` varchar(1000) DEFAULT NULL,
-  `high` varchar(1000) DEFAULT NULL,
-  `high_timestamp` varchar(1000) DEFAULT NULL,
+  `price` varchar(100) DEFAULT NULL,
+  `circulating_supply` varchar(100) DEFAULT NULL,
+  `max_supply` varchar(100) DEFAULT NULL,
+  `market_cap` varchar(100) DEFAULT NULL,
+  `ranking` varchar(100) DEFAULT NULL,
+  `high` varchar(100) DEFAULT NULL,
+  `high_timestamp` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -37,14 +37,14 @@ CREATE TABLE `cryptocurrencies` (
   `currency` varchar(45) DEFAULT NULL,
   `symbol` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
-  `logo_url` varchar(45) DEFAULT NULL,
+  `logo_url` varchar(100) DEFAULT NULL,
   `info_id` int(11) DEFAULT NULL,
   `interval_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_INFO_idx` (`info_id`),
   KEY `FK_INTERVALS_idx` (`interval_id`),
   CONSTRAINT `FK_INFO` FOREIGN KEY (`info_id`) REFERENCES `currency_info` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-   CONSTRAINT `FK_INTERVALS` FOREIGN KEY (`interval_id`) REFERENCES `intervals` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_INTERVALS` FOREIGN KEY (`interval_id`) REFERENCES `intervals` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../login.css";
 
 class LoginComponent extends Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class LoginComponent extends Component {
   render() {
     return (
       <div className="container">
+        <div className="header">
+          <h2>
+            <b>Cryptocurrency Tracker</b>
+          </h2>
+        </div>
         <div className="row">
           <div className="input-field col s10">
             <i className="material-icons prefix">email</i>

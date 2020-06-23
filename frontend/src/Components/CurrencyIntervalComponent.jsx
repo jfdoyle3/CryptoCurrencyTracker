@@ -15,7 +15,12 @@ class CurrencyIntervalComponent extends Component {
     };
   }
   render() {
-    return <div className="container"></div>;
+    return (<div className="container">
+
+      <p>Volume: {this.state.volume}</p>
+      <p>Price Change: {this.state.price_change</p>
+      
+    </div>);
   }
 }
 export default CurrencyIntervalComponent;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../css/currency.css";
 
-class CurrencyHeaderComponent extends Component {
+class CurrencyInfoComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,4 +17,4 @@ class CurrencyHeaderComponent extends Component {
     return <div className="container"></div>;
   }
 }
-export default CurrencyHeaderComponent;
+export default CurrencyInfoComponent;

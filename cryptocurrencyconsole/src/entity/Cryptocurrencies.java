@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +39,7 @@ public class Cryptocurrencies {
 	@ManyToOne(cascade = CascadeType.ALL)
 	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumn(name="info_id")
-	private CurrencyInfo currencyInfo;
+	private List<CurrencyInfo> currencyInfo;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="interval_id")
@@ -102,16 +104,15 @@ public class Cryptocurrencies {
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
-	public CurrencyInfo getCurrencyInfo() {
+	
+	public List<CurrencyInfo> getCurrencyInfo() {
 		return currencyInfo;
 	}
 
-	public void setCurrencyInfo(CurrencyInfo currencyInfo) {
+	public void setCurrencyInfo(List<CurrencyInfo> currencyInfo) {
 		this.currencyInfo = currencyInfo;
 	}
 
-	
 	public Interval getInterval() {
 		return interval;
 	}
@@ -119,13 +120,8 @@ public class Cryptocurrencies {
 	public void setInterval(Interval interval) {
 		this.interval = interval;
 	}
-
-	@Override
-	public String toString() {
-		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + ", currencyInfo=" + currencyInfo + ", interval="
-				+ interval + "]";
-	}
+	
+	
 
 	
 

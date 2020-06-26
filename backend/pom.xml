@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>backend</name>
-	<description>Crytocurrency backend</description>
+	<description>Cryptocurrency backend</description>
 
 	<properties>
 		<java.version>14</java.version>

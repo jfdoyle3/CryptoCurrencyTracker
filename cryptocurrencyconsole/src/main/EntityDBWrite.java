@@ -28,7 +28,7 @@ public class EntityDBWrite {
 					"19345.06577687", "2017-12-16T00:00:00Z");
 			Interval interval = new Interval("2020-06-01T00:00:00Z", "2020-06-01T14:39:00Z");
 
-			currency.setCurrencyInfo(currencyInfo);
+			
 			currency.setInterval(interval);
 
 			session.beginTransaction();

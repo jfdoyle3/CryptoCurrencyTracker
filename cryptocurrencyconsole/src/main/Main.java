@@ -1,5 +1,8 @@
 package main;
 
+import java.util.List;
+
+import Objects.Cryptocurrencies;
 import get_api_data.GetCurrency;
 import kong.unirest.json.JSONArray;
 
@@ -7,10 +10,14 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		JSONArray json = GetCurrency.Currencies("BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA");
-		GetCurrency.CurrencyID(json);
-		GetCurrency.CurrencyInfo(json);
-		GetCurrency.CurrencyInterval(json);
+		String userSearch="BTC";
+		JSONArray json = GetCurrency.Currencies(userSearch);
+		List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);
+		//GetCurrency.CurrencyInfo(json);
+		//GetCurrency.CurrencyInterval(json);
+		
+	 for(Cryptocurrencies crypto : cryptoMoney)
+			System.out.println(crypto);
 		
 	System.out.println("end of line");
 

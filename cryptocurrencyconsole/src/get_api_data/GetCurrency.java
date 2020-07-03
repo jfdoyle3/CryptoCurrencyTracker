@@ -1,18 +1,25 @@
 package get_api_data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Objects.Cryptocurrencies;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
-
+	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
+	private static long idCounter = 0;
+	
+	
 	public static JSONArray Currencies(String currency) {
 
 		// ******** REMOVE API KEY before committing *****
 
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
-				.queryString("key", "").queryString("ids", currency)
+				.queryString("key", "8381f81057e8766c11cd0109bae84864").queryString("ids", currency)
 				.queryString("interval", "1d").asString();
 
 		String json = jsonStringResponse.getBody();
@@ -21,7 +28,7 @@ public class GetCurrency {
 		return currencyJson;
 	}
 
-	public static void CurrencyID(JSONArray json) {
+	public static List<Cryptocurrencies> CurrencyID(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -33,11 +40,15 @@ public class GetCurrency {
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
-
+			
+			Cryptocurrencies cryptoMoney=new Cryptocurrencies(++idCounter, id,currency, symbol,name,logo);
+			cryptoList.add(cryptoMoney);
+			
 			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
 					logo);
 			System.out.println("---------------------");
 		}
+		return cryptoList;
 	}
 
 	public static void CurrencyInfo(JSONArray json) {

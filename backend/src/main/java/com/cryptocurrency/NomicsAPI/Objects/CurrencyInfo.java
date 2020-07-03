@@ -1,4 +1,4 @@
-package com.cryptocurrency.Objects;
+package com.cryptocurrency.NomicsAPI.Objects;
 
 public class CurrencyInfo {
 

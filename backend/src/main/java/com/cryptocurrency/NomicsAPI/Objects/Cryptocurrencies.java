@@ -1,44 +1,26 @@
-package com.cryptocurrency.OneTable;
+package com.cryptocurrency.NomicsAPI.Objects;
 
+public class Cryptocurrencies {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+	private long id;
 
-import javax.persistence.Table;
-
-@Entity
-@Table(name="cryptomoney")
-public class Cryptomoney {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
-	
-	@Column(name="currencyId")
 	private String currencyId;
-	
-	@Column(name="currency")
-	private String currency;
-	
-	@Column(name="symbol")
-	private String symbol;
-	
-	@Column(name="name")
-	private String name;
-	
-	@Column(name="logo_url")
-	private String logoUrl;
-	
 
-	public Cryptomoney() {
-		
+	private String currency;
+
+	private String symbol;
+
+	private String name;
+
+	private String logoUrl;
+
+
+	public Cryptocurrencies() {
+
 	}
 
-	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptocurrencies(long id, String currencyId, String currency, String symbol, String name, String logoUrl) {
+		this.id = id;
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -46,11 +28,12 @@ public class Cryptomoney {
 		this.logoUrl = logoUrl;
 	}
 
-	public int getId() {
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -94,14 +77,10 @@ public class Cryptomoney {
 		this.logoUrl = logoUrl;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
 	}
 
-	
-
-	
 }

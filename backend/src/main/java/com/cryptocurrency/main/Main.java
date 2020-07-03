@@ -1,9 +1,9 @@
-package main;
-
+package com.cryptocurrency.main;
 import java.util.List;
 
-import Objects.Cryptocurrencies;
-import get_api_data.GetCurrency;
+import com.cryptocurrency.Objects.Cryptocurrencies;
+import com.cryptocurrency.get_api_data.GetCurrency;
+
 import kong.unirest.json.JSONArray;
 
 public class Main {

@@ -1,4 +1,4 @@
-package com.cryptocurrency.NomicsAPI.entity;
+package com.cryptocurrency.nomics.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

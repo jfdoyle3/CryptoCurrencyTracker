@@ -1,4 +1,4 @@
-package com.cryptocurrency.NomicsAPI.main;
+package com.cryptocurrency.nomics.main;
 
 
 
@@ -6,9 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.cryptocurrency.NomicsAPI.entity.Cryptocurrencies;
-import com.cryptocurrency.NomicsAPI.entity.CurrencyInfo;
-import com.cryptocurrency.NomicsAPI.entity.Interval;
+import com.cryptocurrency.nomics.entity.Cryptocurrencies;
+import com.cryptocurrency.nomics.entity.CurrencyInfo;
+import com.cryptocurrency.nomics.entity.Interval;
 
 
 public class EntityDBWrite {

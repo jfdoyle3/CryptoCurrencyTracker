@@ -1,4 +1,4 @@
-package com.cryptocurrency.NomicsAPI.main;
+package com.cryptocurrency.nomics.main;
 
 public class Testing {
 

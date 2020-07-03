@@ -1,4 +1,4 @@
-package com.cryptocurrency.NomicsAPI.OneTable;
+package com.cryptocurrencynomics.onetable;
 
 import java.util.ArrayList;
 

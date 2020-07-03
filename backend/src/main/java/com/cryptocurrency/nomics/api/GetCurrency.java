@@ -1,9 +1,9 @@
-package com.cryptocurrency.NomicsAPI.get_api_data;
+package com.cryptocurrency.nomics.api;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.NomicsAPI.Objects.Cryptocurrencies;
+import com.cryptocurrency.nomics.objects.Cryptocurrency;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -11,7 +11,7 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
-	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
+	private static List<Cryptocurrency> cryptoList = new ArrayList<>();
 	private static long idCounter = 0;
 	
 	
@@ -29,7 +29,7 @@ public class GetCurrency {
 		return currencyJson;
 	}
 
-	public static List<Cryptocurrencies> CurrencyID(JSONArray json) {
+	public static List<Cryptocurrency> CurrencyID(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -42,7 +42,7 @@ public class GetCurrency {
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
 			
-			Cryptocurrencies cryptoMoney=new Cryptocurrencies(++idCounter, id,currency, symbol,name,logo);
+			Cryptocurrency cryptoMoney=new Cryptocurrency(++idCounter, id,currency, symbol,name,logo);
 			cryptoList.add(cryptoMoney);
 			
 		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,

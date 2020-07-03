@@ -1,25 +1,46 @@
-package com.cryptocurrency.Objects;
+package com.cryptocurrency.NomicsAPI.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="currency_info")
 public class CurrencyInfo {
-
-	private long id;
-
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
+	
+	@Column(name="price")
 	private String price;
-
+		
+	@Column(name="circulating_supply")
 	private String circulatingSupply;
-
+	
+	@Column(name="max_supply")
 	private String maxSupply;
-
+	
+	@Column(name="market_cap")
 	private String marketCap;
-
+	
+	@Column(name="ranking")
 	private String ranking;
-
+	
+	@Column(name="high")
 	private String high;
-
+	
+	@Column(name="high_timestamp")
 	private String highTimeStamp;
-
+	
 	public CurrencyInfo() {
-
+		
 	}
 
 	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String ranking,
@@ -33,11 +54,11 @@ public class CurrencyInfo {
 		this.highTimeStamp = highTimeStamp;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -88,7 +109,7 @@ public class CurrencyInfo {
 	public void setHigh(String high) {
 		this.high = high;
 	}
-
+	
 	public String getHighTimeStamp() {
 		return highTimeStamp;
 	}
@@ -99,9 +120,9 @@ public class CurrencyInfo {
 
 	@Override
 	public String toString() {
-		return "CurrencyInfo [id=" + id + ", price=" + price + ", circulatingSupply=" + circulatingSupply
-				+ ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking + ", high=" + high
-				+ ", highTimeStamp=" + highTimeStamp + "]";
+		return "CurrencyInfo [id=" + id + ", price=" + price + ", circulatingSupply="
+				+ circulatingSupply + ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking
+				+ ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
 	}
-
+	
 }

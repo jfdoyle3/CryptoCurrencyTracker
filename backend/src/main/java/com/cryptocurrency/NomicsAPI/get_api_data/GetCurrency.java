@@ -1,9 +1,9 @@
-package com.cryptocurrency.get_api_data;
+package com.cryptocurrency.NomicsAPI.get_api_data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.Objects.Cryptocurrencies;
+import com.cryptocurrency.NomicsAPI.Objects.Cryptocurrencies;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -20,7 +20,7 @@ public class GetCurrency {
 		// ******** REMOVE API KEY before committing *****
 
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
-				.queryString("key", "").queryString("ids", currency)
+				.queryString("key", "8381f81057e8766c11cd0109bae84864").queryString("ids", currency)
 				.queryString("interval", "1d").asString();
 
 		String json = jsonStringResponse.getBody();
@@ -45,9 +45,9 @@ public class GetCurrency {
 			Cryptocurrencies cryptoMoney=new Cryptocurrencies(++idCounter, id,currency, symbol,name,logo);
 			cryptoList.add(cryptoMoney);
 			
-			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
-					logo);
-			System.out.println("---------------------");
+		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
+		//			logo);
+		//	System.out.println("---------------------");
 		}
 		return cryptoList;
 	}

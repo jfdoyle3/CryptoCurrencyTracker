@@ -1,4 +1,4 @@
-package com.cryptocurrency.OneTable;
+package com.cryptocurrency.NomicsAPI.OneTable;
 import java.util.ArrayList;
 
 import org.hibernate.Session;

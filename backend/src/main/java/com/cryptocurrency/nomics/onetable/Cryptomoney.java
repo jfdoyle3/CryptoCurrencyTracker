@@ -1,20 +1,17 @@
-package com.cryptocurrency.NomicsAPI.entity;
+package com.cryptocurrency.nomics.onetable;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cryptocurrencies")
-public class Cryptocurrencies {
+@Table(name="cryptomoney")
+public class Cryptomoney {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,20 +33,12 @@ public class Cryptocurrencies {
 	@Column(name="logo_url")
 	private String logoUrl;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinColumn(name="info_id")
-	private List<CurrencyInfo> currencyInfo;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="interval_id")
-	private Interval interval;
 
-	public Cryptocurrencies() {
+	public Cryptomoney() {
 		
 	}
 
-	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -104,24 +93,13 @@ public class Cryptocurrencies {
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-	
-	public List<CurrencyInfo> getCurrencyInfo() {
-		return currencyInfo;
-	}
 
-	public void setCurrencyInfo(List<CurrencyInfo> currencyInfo) {
-		this.currencyInfo = currencyInfo;
-	}
 
-	public Interval getInterval() {
-		return interval;
+	@Override
+	public String toString() {
+		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
 	}
-
-	public void setInterval(Interval interval) {
-		this.interval = interval;
-	}
-	
-	
 
 	
 

@@ -1,6 +1,6 @@
-package com.cryptocurrency.NomicsAPI.Objects;
+package com.cryptocurrency.nomics.objects;
 
-public class Interval {
+public class CurrencyDateStamp {
 
 	private long id;
 
@@ -8,11 +8,11 @@ public class Interval {
 
 	private String priceTimeStamp;
 
-	public Interval() {
+	public CurrencyDateStamp() {
 
 	}
 
-	public Interval(String priceDate, String priceTimeStamp) {
+	public CurrencyDateStamp(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
 		this.priceTimeStamp = priceTimeStamp;
 	}

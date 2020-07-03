@@ -1,17 +1,20 @@
-package com.cryptocurrency.NomicsAPI.OneTable;
+package com.cryptocurrency.nomics.entity;
 
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cryptomoney")
-public class Cryptomoney {
+@Table(name="cryptocurrencies")
+public class Cryptocurrencies {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,12 +36,20 @@ public class Cryptomoney {
 	@Column(name="logo_url")
 	private String logoUrl;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	//(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name="info_id")
+	private List<CurrencyInfo> currencyInfo;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="interval_id")
+	private CurrrencyDateStamp interval;
 
-	public Cryptomoney() {
+	public Cryptocurrencies() {
 		
 	}
 
-	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -93,13 +104,24 @@ public class Cryptomoney {
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
+	
+	public List<CurrencyInfo> getCurrencyInfo() {
+		return currencyInfo;
 	}
+
+	public void setCurrencyInfo(List<CurrencyInfo> currencyInfo) {
+		this.currencyInfo = currencyInfo;
+	}
+
+	public CurrrencyDateStamp getInterval() {
+		return interval;
+	}
+
+	public void setInterval(CurrrencyDateStamp interval) {
+		this.interval = interval;
+	}
+	
+	
 
 	
 

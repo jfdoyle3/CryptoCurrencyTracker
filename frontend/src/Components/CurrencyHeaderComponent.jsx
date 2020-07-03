@@ -16,10 +16,18 @@ class CurrencyHeaderComponent extends Component {
       circulating_supply: "18391300",
       max_supply: "21000000",
     };
+
+    // bind next currency function
+
+    // bind back currency function 
   }
+
+
+
   render() {
     return (
       <div className="container">
+
         <div className="row">
           <div className="col s6">
             <span>
@@ -36,6 +44,17 @@ class CurrencyHeaderComponent extends Component {
               <img src={this.state.logo_url} alt="logo" />
             </span>
           </div>
+        </div>
+        <div id="controls" className="row">
+          <div className="col  s6">
+        <button className="btn  btn-success"><i class="material-icons">arrow_forward</i></button>
+        <div className="col  s6">
+        <span>
+          <button className="btn   btn-success"><i class="material-icons">arrow_back</i></button>
+          </span>
+        </div>
+        </div>
+       
         </div>
       </div>
     );

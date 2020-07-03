@@ -1,6 +1,6 @@
-package com.cryptocurrency.NomicsAPI.Objects;
+package com.cryptocurrency.nomics.objects;
 
-public class Cryptocurrencies {
+public class Cryptocurrency {
 
 	private long id;
 
@@ -14,12 +14,11 @@ public class Cryptocurrencies {
 
 	private String logoUrl;
 
-
-	public Cryptocurrencies() {
+	public Cryptocurrency() {
 
 	}
 
-	public Cryptocurrencies(long id, String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptocurrency(long id, String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.id = id;
 		this.currencyId = currencyId;
 		this.currency = currency;
@@ -27,7 +26,6 @@ public class Cryptocurrencies {
 		this.name = name;
 		this.logoUrl = logoUrl;
 	}
-
 
 	public long getId() {
 		return id;

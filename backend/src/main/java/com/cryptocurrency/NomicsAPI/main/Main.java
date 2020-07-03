@@ -1,8 +1,9 @@
-package com.cryptocurrency.main;
+package com.cryptocurrency.NomicsAPI.main;
+
 import java.util.List;
 
-import com.cryptocurrency.Objects.Cryptocurrencies;
-import com.cryptocurrency.get_api_data.GetCurrency;
+import com.cryptocurrency.NomicsAPI.Objects.Cryptocurrencies;
+import com.cryptocurrency.NomicsAPI.get_api_data.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 

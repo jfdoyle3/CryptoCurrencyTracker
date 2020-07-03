@@ -25,8 +25,14 @@ public class CurrencyController {
 	}
 
 	// GET: A Currency
+	@GetMapping("/users/{username}/cryptocurrencies/id/{currencyId}")
+	public Cryptocurrency getByCurrencyId(@PathVariable String username, @PathVariable String currencyId) {
+		return currencyServices.findById(currencyId);
+	}
+	
+	// GET: A Currency
 	@GetMapping("/users/{username}/cryptocurrencies/{currency}")
-	public List<Cryptocurrency> getAllTodos(@PathVariable String username, @PathVariable String currency) {
-		return currencyServices.findAll();
+	public Cryptocurrency getByCurrency(@PathVariable String username, @PathVariable String currency) {
+		return currencyServices.findByAnyCurrency(currency);
 	}
 }

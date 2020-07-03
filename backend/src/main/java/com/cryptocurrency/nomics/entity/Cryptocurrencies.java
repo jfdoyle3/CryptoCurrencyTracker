@@ -43,7 +43,7 @@ public class Cryptocurrencies {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="interval_id")
-	private Interval interval;
+	private CurrrencyDateStamp interval;
 
 	public Cryptocurrencies() {
 		
@@ -113,11 +113,11 @@ public class Cryptocurrencies {
 		this.currencyInfo = currencyInfo;
 	}
 
-	public Interval getInterval() {
+	public CurrrencyDateStamp getInterval() {
 		return interval;
 	}
 
-	public void setInterval(Interval interval) {
+	public void setInterval(CurrrencyDateStamp interval) {
 		this.interval = interval;
 	}
 	

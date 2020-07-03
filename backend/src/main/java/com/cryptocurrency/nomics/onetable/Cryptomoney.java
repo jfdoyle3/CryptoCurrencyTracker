@@ -1,4 +1,4 @@
-package com.cryptocurrencynomics.onetable;
+package com.cryptocurrency.nomics.onetable;
 
 
 import javax.persistence.Column;

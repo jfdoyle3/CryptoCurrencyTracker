@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="intervals")
-public class Interval {
+public class CurrrencyDateStamp {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,11 +23,11 @@ public class Interval {
 	@Column(name="price_timestamp")
 	private String priceTimeStamp;
 
-	public Interval() {
+	public CurrrencyDateStamp() {
 		
 	}
 
-	public Interval(String priceDate, String priceTimeStamp) {
+	public CurrrencyDateStamp(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
 		this.priceTimeStamp = priceTimeStamp;
 	}

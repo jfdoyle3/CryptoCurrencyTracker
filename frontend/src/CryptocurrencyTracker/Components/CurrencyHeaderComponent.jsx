@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import "../css/currency.css";
+import "../Styling/css/Currency.css";
+// import "../Styling/css/wikisheet.css";
+import HelloWorldService from "../API/HelloWorldService.js";
 
 class CurrencyHeaderComponent extends Component {
   constructor(props) {
@@ -16,13 +18,16 @@ class CurrencyHeaderComponent extends Component {
       circulating_supply: "18391300",
       max_supply: "21000000",
     };
-
+    // bind test button
+    this.testBackendConnection=this.testBackendConnection.bind(this);
     // bind next currency function
 
     // bind back currency function 
   }
 
-
+testBackendConnection(){
+HelloWorldService.executeHelloWorldService();
+}
 
   render() {
     return (
@@ -50,20 +55,22 @@ class CurrencyHeaderComponent extends Component {
         <button className="btn  btn-success"><i className="material-icons">arrow_forward</i></button>
         <div className="col  s6">
         <span>
-          <button className="btn   btn-success"><i className="material-icons">arrow_back</i></button>
+          <button className="btn btn-success"><i className="material-icons">arrow_back</i></button>
           </span>
         </div>
         </div>
         </div>
         <div id="controls" className="row">
- 
         <div className="col  s6">
-        <span>
-          <button className="btn btn-success" onClick>Show</button>
-          </span>
+          <button className="btn btn-success" >Show</button>
+          </div>
+          <div>
+           <div className="col  s6">
+          <button className="waves-effect waves-light btn" onClick={this.testBackendConnection}>Test</button>
+           {/* Test is: {this.props.params.name} */}
         </div>
         </div>
-
+        </div>
       </div>
     );
   }

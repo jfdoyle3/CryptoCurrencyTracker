@@ -1,19 +1,14 @@
+body{
+      font-family:  IBM Plex Sans ;
+    }
+
+    
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 40px;
   background-color: #222222;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
 }
 
 .App-header {
@@ -27,6 +22,18 @@
   color: white;
 }
 
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+
 .App-link {
   color: #61dafb;
 }
@@ -38,4 +45,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

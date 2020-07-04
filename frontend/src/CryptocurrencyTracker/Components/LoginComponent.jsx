@@ -1,23 +1,38 @@
 import React, { Component } from "react";
-import "../css/login.css";
+import AuthenticationService from "../Auth/AuthenticationService.js";
+import "../Styling/css/Login.css";
 
 class LoginComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      username: "user",
       password: "",
+      hasLoginFailed: false,
+      showSuccessMessage: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.loginClicked = this.loginClicked.bind(this);
   }
+  
   handleChange(event) {
+    //console.log(this.state);
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
-  loginClicked() {}
-
+  loginClicked() {
+    if (this.state.username === "user" && this.state.password === "password") {
+      AuthenticationService.registerSuccessfulLogin(
+        this.state.username,
+        this.state.password
+      );
+      this.props.history.push(`/welcome/${this.state.username}`);
+    } else {
+      this.setState({ showSuccessMessage: false });
+      this.setState({ hasLoginFailed: true });
+    }
+  }
   render() {
     return (
       <div className="container">
@@ -26,36 +41,37 @@ class LoginComponent extends Component {
             <b>Cryptocurrency Tracker</b>
           </h2>
         </div>
+        {this.state.hasLoginFailed && (
+            <div className="alert alert-warning">Invalid Credentials</div>
+          )}
+          {this.state.showSuccessMessage && <div>Login Sucessful</div>}
         <div className="row">
           <div className="input-field col s10">
             <i className="material-icons prefix">personl</i>
             <input
-              path="username"
-              id="lbl_username"
-              type="email"
-              cssclassName="error"
+             type="text"
+             name="username"
+             value={this.state.username}
+              onChange={this.handleChange}
             />
-            <label for="lbl_username">Username</label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s10">
             <i className="material-icons prefix">https</i>
             <input
-              path="password"
-              id="lbl_password"
+             name="password"
               type="password"
-              cssclassName="error"
+              value={this.state.password}
+              onChange={this.handleChange}
             />
-            <label for="lbl_password">Password</label>
           </div>
         </div>
         <div className="row">
           <div className="col s7">
             <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
+              className="btn btn-success"
+              onClick={this.loginClicked}
             >
               Login
             </button>

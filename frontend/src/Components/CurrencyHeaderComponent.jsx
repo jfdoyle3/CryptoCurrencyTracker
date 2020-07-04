@@ -47,15 +47,23 @@ class CurrencyHeaderComponent extends Component {
         </div>
         <div id="controls" className="row">
           <div className="col  s6">
-        <button className="btn  btn-success"><i class="material-icons">arrow_forward</i></button>
+        <button className="btn  btn-success"><i className="material-icons">arrow_forward</i></button>
         <div className="col  s6">
         <span>
-          <button className="btn   btn-success"><i class="material-icons">arrow_back</i></button>
+          <button className="btn   btn-success"><i className="material-icons">arrow_back</i></button>
           </span>
         </div>
         </div>
-       
         </div>
+        <div id="controls" className="row">
+ 
+        <div className="col  s6">
+        <span>
+          <button className="btn btn-success" onClick>Show</button>
+          </span>
+        </div>
+        </div>
+
       </div>
     );
   }

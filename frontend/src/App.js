@@ -3,7 +3,8 @@ import React, { Component } from "react";
 // import SideNavComponent from "./Components/SideNavComponent.jsx";
 import HeaderComponent from "./Components/HeaderComponent";
 import CurrencyHeaderComponent from "./Components/CurrencyHeaderComponent.jsx";
-// import "./App.css";
+import FooterComponent from "./Components/FooterComponent.jsx";
+import "./App.css";
 import "./materialize.css";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         {/* <LoginComponent /> */}
         <HeaderComponent/>
         <CurrencyHeaderComponent />
+        <FooterComponent />
       </div>
     );
   }

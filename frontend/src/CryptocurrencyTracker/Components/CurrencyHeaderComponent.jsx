@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../Styling/css/Currency.css";
-// import "../Styling/css/wikisheet.css";
+//import "../Styling/css/wikisheet.css";
 import HelloWorldService from "../API/HelloWorldService.js";
 
 class CurrencyHeaderComponent extends Component {

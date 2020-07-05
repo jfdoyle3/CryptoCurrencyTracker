@@ -9,12 +9,11 @@ import LogoutComponent from "./LogoutComponent";
 import ErrorComponent from "./ErrorComponent";
 import TestPageComponent from "./TestPageComponent";
 
-
 class CryptocurrencyTracker extends Component {
   render() {
     return (
-      <div className="container">
-              <Router>
+      <div>
+        <Router>
           <>
             <HeaderComponent />
             <Switch>
@@ -24,9 +23,13 @@ class CryptocurrencyTracker extends Component {
                 path="/welcome/:name"
                 component={TestPageComponent}
               />
-              <AuthenticatedRoute path="/cryptocurrenices/:id" component={CurrencyHeaderComponent} />
+
               <AuthenticatedRoute
                 path="/cryptocurrenices"
+                component={CurrencyHeaderComponent}
+              />
+              <AuthenticatedRoute
+                path="/cryptocurrenices/:id"
                 component={CurrencyHeaderComponent}
               />
               <AuthenticatedRoute path="/logout" component={LogoutComponent} />

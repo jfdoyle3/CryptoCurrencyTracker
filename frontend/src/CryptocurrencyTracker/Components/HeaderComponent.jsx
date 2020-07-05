@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 
-
-//import AuthenticationService from "./AuthenticationService.js";
-
 class HeaderComponent extends Component {
   render() {
     const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
@@ -12,16 +9,16 @@ class HeaderComponent extends Component {
 
     return (
       <header>
-        <nav>
-        <div class="nav-wrapper">
+        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+          <div>
             <a
               href="https://github.com/jfdoyle3/JavaReactNoteBook"
               className="navbar-brand"
             >
               Java/React App
             </a>
-          </div >
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          </div>
+          <ul className="navbar-nav">
             {isUserLoggedIn && (
               <li>
                 <Link className="nav-link" to="/welcome/user">
@@ -40,7 +37,7 @@ class HeaderComponent extends Component {
           <ul className="navbar-nav navbar-collapse justify-content-end">
             {!isUserLoggedIn && (
               <li>
-                <Link  to="/login">
+                <Link className="nav-link" to="/login">
                   Login
                 </Link>
               </li>
@@ -48,7 +45,7 @@ class HeaderComponent extends Component {
             {isUserLoggedIn && (
               <li>
                 <Link
-                 
+                  className="nav-link"
                   to="/logout"
                   onClick={AuthenticationService.logout}
                 >
@@ -64,5 +61,3 @@ class HeaderComponent extends Component {
 }
 
 export default HeaderComponent;
-
-

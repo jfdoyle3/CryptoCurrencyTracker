@@ -13,10 +13,14 @@ class HeaderComponent extends Component {
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
           <div>
             <a
-              href="https://github.com/jfdoyle3/JavaReactNoteBook"
+              href="https://github.com/jfdoyle3/CryptocurrencyTracker"
               className="navbar-brand"
             >
-              Java/React App
+              <img
+                id="logo"
+                src="../Styling/imgs/Cryptocurrency_Logo.svg"
+                alt="crypto_logo"
+              />
             </a>
           </div>
           <ul className="navbar-nav">

@@ -1,9 +1,11 @@
 import axios from "axios";
 
 class TodoDataService {
-  retrieveAllCurrencies(name) {
+  retrieveTopTen(name) {
     //console.log('executed service')
-    return axios.get(`http://localhost:8080/users/{username}/cryptocurrencies`);
+    return axios.get(
+      `http://localhost:8080/users/{username}/cryptocurrencies/topTen`
+    );
   }
 
   // retrieveTodo(name, id) {

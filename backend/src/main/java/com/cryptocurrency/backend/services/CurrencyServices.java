@@ -36,12 +36,13 @@ public class CurrencyServices {
 	
 	}
 	// Find A Currency in the List
-	public Cryptocurrency findById(String currencyId) {
-		String cryptoId=currencyId.toUpperCase();
+	public  Cryptocurrency findById(long id) {
+		
 		for (Cryptocurrency currency : currencyList) {
-			if (currency.getCurrencyId().equals(cryptoId)) {
+			if (currency.getId()==id) {
 				return currency;
 			}
+			System.out.println(currency);
 		}
 		return null;
 	}
@@ -59,26 +60,26 @@ public class CurrencyServices {
 	}
 	
 	// Delete by Id
-	public Cryptocurrency deleteById(String id) {
-		Cryptocurrency currency = findById(id);
-		if (currency==null) return null;
-		if(currencyList.remove(currency)) {
-		return currency;
-		}
-		return null;
-	}
+//	public Cryptocurrency deleteById(long id) {
+//		Cryptocurrency currency = findById(id);
+//		if (currency==null) return null;
+//		if(currencyList.remove(currency)) {
+//		return currency;
+//		}
+//		return null;
+//	}
 	
 	// Save / Update
-	public Cryptocurrency save(Cryptocurrency cryptoCurrency) {
-		if (cryptoCurrency.getId()==-1 || cryptoCurrency.getId()==0) {
-			cryptoCurrency.setId(++idCounter);
-			currencyList.add(cryptoCurrency);
-		}else {
-			deleteById(cryptoCurrency.getCurrencyId());
-			currencyList.add(cryptoCurrency);
-		}
-		return cryptoCurrency;
-	}
+//	public Cryptocurrency save(Cryptocurrency cryptoCurrency) {
+//		if (cryptoCurrency.getId()==-1 || cryptoCurrency.getId()==0) {
+//			cryptoCurrency.setId(++idCounter);
+//			currencyList.add(cryptoCurrency);
+//		}else {
+//			deleteById(cryptoCurrency.getCurrencyId());
+//			currencyList.add(cryptoCurrency);
+//		}
+//		return cryptoCurrency;
+//	}
 
 
 

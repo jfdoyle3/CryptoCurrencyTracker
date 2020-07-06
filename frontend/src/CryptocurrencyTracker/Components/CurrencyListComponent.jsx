@@ -27,7 +27,7 @@ class CurrencyHeaderComponent extends Component {
 
   refreshCurrencies() {
     let username = AuthenticationService.getLoggedInUserName();
-    CurrencyDataService.retrieveAllCurrencies(username).then((response) => {
+    CurrencyDataService.retrieveTopTen(username).then((response) => {
       console.log(response);
       this.setState({ cryptocurrencies: response.data });
     });
@@ -57,7 +57,7 @@ class CurrencyHeaderComponent extends Component {
                       alt={cryptocurrency.name}
                     />
                   </td>
-                  <td>{cryptocurrency.rank}</td>
+                  <td>{cryptocurrency.ranking}</td>
                   <td>{cryptocurrency.name}</td>
                   <td>{cryptocurrency.symbol}</td>
                   <td>
@@ -68,14 +68,6 @@ class CurrencyHeaderComponent extends Component {
                       }
                     >
                       View
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="waves-effect waves-light btn-small"
-                      // onClick={() => this.deleteTodoClicked(todo.id)}
-                    >
-                      Save
                     </button>
                   </td>
                   <td>

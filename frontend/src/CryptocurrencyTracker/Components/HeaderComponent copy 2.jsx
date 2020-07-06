@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthenticationService from "../Auth/AuthenticationService.js";
-import "../Styling/css/Header.css";
 
 class HeaderComponent extends Component {
   render() {

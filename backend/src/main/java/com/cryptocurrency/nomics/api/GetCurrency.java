@@ -25,7 +25,7 @@ public class GetCurrency {
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-
+		System.out.println("API Data: "+json.toString());
 		return currencyJson;
 	}
 
@@ -41,13 +41,14 @@ public class GetCurrency {
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
+			String rank= (String) key.get("rank");
 			
-			Cryptocurrency cryptoMoney=new Cryptocurrency(++idCounter, id,currency, symbol,name,logo);
+			Cryptocurrency cryptoMoney=new Cryptocurrency(++idCounter, id,currency, symbol,name,logo,rank);
 			cryptoList.add(cryptoMoney);
 			
-		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
-		//			logo);
-		//	System.out.println("---------------------");
+//			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s, rank: %s\n", id, currency, symbol, name,
+//					logo, rank);
+//			System.out.println("---------------------");
 		}
 		return cryptoList;
 	}

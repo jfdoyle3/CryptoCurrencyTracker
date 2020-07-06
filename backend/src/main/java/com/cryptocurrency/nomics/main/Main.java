@@ -1,5 +1,6 @@
 package com.cryptocurrency.nomics.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cryptocurrency.nomics.api.GetCurrency;
@@ -11,15 +12,22 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		String userSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
+		List<Cryptocurrency> topTen=new ArrayList<>();
+		// String userSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
+		String userSearch="";
 		JSONArray json = GetCurrency.Currencies(userSearch);
 		List<Cryptocurrency> cryptoMoney=GetCurrency.CurrencyID(json);
 		//GetCurrency.CurrencyInfo(json);
 		//GetCurrency.CurrencyInterval(json);
-		
-	 for(Cryptocurrency crypto : cryptoMoney)
-			System.out.println(crypto);
-		
+		// All
+//	 for(Cryptocurrency crypto : cryptoMoney) {
+//			System.out.println(crypto);
+//	 }
+//	
+		// Top 10
+		for (int idx=0; idx<10; idx ++) {
+			System.out.println(cryptoMoney.get(idx));
+		}
 	System.out.println("end of line");
 
 	//BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA

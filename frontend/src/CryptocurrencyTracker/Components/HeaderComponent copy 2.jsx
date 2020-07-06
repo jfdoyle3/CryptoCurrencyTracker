@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthenticationService from "../Auth/AuthenticationService.js";
-import "../Styling/css/Header.css";
 
 class HeaderComponent extends Component {
   render() {
@@ -13,14 +12,10 @@ class HeaderComponent extends Component {
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
           <div>
             <a
-              href="https://github.com/jfdoyle3/CryptocurrencyTracker"
+              href="https://github.com/jfdoyle3/JavaReactNoteBook"
               className="navbar-brand"
             >
-              <img
-                id="logo"
-                src="../Styling/imgs/Cryptocurrency_Logo.svg"
-                alt="crypto_logo"
-              />
+              Java/React App
             </a>
           </div>
           <ul className="navbar-nav">

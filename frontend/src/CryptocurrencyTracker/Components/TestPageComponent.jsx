@@ -32,18 +32,20 @@ class TestPageComponent extends Component {
   }
 
   retrieveWelcomeMessage() {
-    HelloWorldService.executeHelloWorldService()
-    .then( response => this.handleSuccessfulResponse(response) )
+    HelloWorldService.executeHelloWorldService().then((response) =>
+      this.handleSuccessfulResponse(response)
+    );
 
-    HelloWorldService.executeHelloWorldBeanService()
-    .then( response => this.handleSuccessfulResponse(response) )
+    HelloWorldService.executeHelloWorldBeanService().then((response) =>
+      this.handleSuccessfulResponse(response)
+    );
 
     HelloWorldService.executeHelloWorldPathVariableService(
       this.props.match.params.name
     )
       .then((response) => this.handleSuccessfulResponse(response))
       .catch((error) => this.handleError(error));
- }
+  }
 
   render() {
     return (
@@ -51,7 +53,7 @@ class TestPageComponent extends Component {
         <h1>Welcome!</h1>
         <div className="container">
           Welcome {this.props.match.params.name}. <br />
-          <Link to="/cryptocurrenices">Currency</Link>
+          <Link to="/listcurrencies">Currency</Link>
         </div>
         <br />
         <div className="container">

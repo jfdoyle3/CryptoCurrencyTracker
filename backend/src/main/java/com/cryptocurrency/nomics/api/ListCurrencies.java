@@ -1,5 +1,6 @@
 package com.cryptocurrency.nomics.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cryptocurrency.nomics.objects.Cryptocurrency;
@@ -16,4 +17,13 @@ public class ListCurrencies {
 	return cryptoMoney;
 	
 	}
+	
+	public static void topTenCurrencies(){
+		List<Cryptocurrency> topTen=new ArrayList<>();
+		JSONArray json = GetCurrency.Currencies(userSearch);
+		List<Cryptocurrency> cryptoMoney=GetCurrency.CurrencyID(json);
+		
+	//	return cryptoMoney;
+		
+		}
 }

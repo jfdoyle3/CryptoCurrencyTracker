@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthenticatedRoute from "../Auth/AuthenticatedRoute.jsx";
 import LoginComponent from "./LoginComponent.jsx";
-import HeaderComponent from "./HeaderComponent";
+import HeaderComponent from "./HeaderComponent.jsx";
 import CurrencyHeaderComponent from "./CurrencyHeaderComponent.jsx";
 import FooterComponent from "./FooterComponent.jsx";
-import LogoutComponent from "./LogoutComponent";
-import ErrorComponent from "./ErrorComponent";
-import TestPageComponent from "./TestPageComponent";
+import LogoutComponent from "./LogoutComponent.jsx";
+import ErrorComponent from "./ErrorComponent.jsx";
+import TestPageComponent from "./TestPageComponent.jsx";
+import CurrencyListComponent from "./CurrencyListComponent.jsx";
 
 class CryptocurrencyTracker extends Component {
   render() {
@@ -23,10 +24,9 @@ class CryptocurrencyTracker extends Component {
                 path="/welcome/:name"
                 component={TestPageComponent}
               />
-
               <AuthenticatedRoute
-                path="/cryptocurrenices"
-                component={CurrencyHeaderComponent}
+                path="/listcurrenices"
+                component={CurrencyListComponent}
               />
               <AuthenticatedRoute
                 path="/cryptocurrenices/:id"

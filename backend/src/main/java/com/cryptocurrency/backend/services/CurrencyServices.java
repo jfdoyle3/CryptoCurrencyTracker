@@ -1,5 +1,6 @@
 package com.cryptocurrency.backend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,8 @@ import com.cryptocurrency.nomics.objects.Cryptocurrency;
 public class CurrencyServices {
 	 
 	
-	private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
+	//private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
+	private String defaultSearch="";
 	private List<Cryptocurrency> currencyList=ListCurrencies.CreateCurrencyList(defaultSearch);
 	private long idCounter=0;
 	
@@ -22,7 +24,17 @@ public class CurrencyServices {
 		return currencyList;
 	
 	}
+	// Top 10 Currencies
+	public List<Cryptocurrency> listTopTen() {
+		List<Cryptocurrency> topTenList=new ArrayList<>();
+		// Top 10
+		for (int idx=0; idx<10; idx ++) {
+			topTenList.add(currencyList.get(idx));
+		}
+
+		return topTenList;
 	
+	}
 	// Find A Currency in the List
 	public Cryptocurrency findById(String currencyId) {
 		String cryptoId=currencyId.toUpperCase();

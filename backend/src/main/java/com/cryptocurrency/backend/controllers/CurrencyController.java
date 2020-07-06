@@ -24,7 +24,6 @@ public class CurrencyController {
 		return currencyServices.findAll();
 	}
 
-
 	// GET: Top Ten Currencies
 	@GetMapping("/users/{username}/cryptocurrencies/topTen")
 	public List<Cryptocurrency> getTopTen(@PathVariable String username) {

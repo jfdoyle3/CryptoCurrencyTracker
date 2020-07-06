@@ -25,7 +25,7 @@ class CryptocurrencyTracker extends Component {
                 component={TestPageComponent}
               />
               <AuthenticatedRoute
-                path="/listcurrenices"
+                path="/list"
                 component={CurrencyListComponent}
               />
               <AuthenticatedRoute

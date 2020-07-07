@@ -53,7 +53,7 @@ class TestPageComponent extends Component {
         <h1>Welcome!</h1>
         <div className="container">
           Welcome {this.props.match.params.name}. <br />
-          <Link to="/listcurrencies">Currency</Link>
+          <Link to="/list">Currency</Link>
         </div>
         <br />
         <div className="container">

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class TodoDataService {
+class cryptocurrenciesDataService {
   retrieveTopTen(name) {
     //console.log('executed service')
     return axios.get(
@@ -8,25 +8,27 @@ class TodoDataService {
     );
   }
 
-  // retrieveTodo(name, id) {
+  retrievecryptocurrency(name, id) {
+    //console.log('executed service')
+    return axios.get(
+      `http://localhost:8080/users/${name}/cryptocurrencies/${id}`
+    );
+  }
+
+  // deletecryptocurrencies(name, id) {
   //   //console.log('executed service')
-  //   return axios.get(`http://localhost:8080/users/${name}/todos/${id}`);
+  //   return axios.delete(`http://localhost:8080/users/${name}/cryptocurrencies/${id}`);
   // }
 
-  // deleteTodo(name, id) {
+  // updatecryptocurrencies(name, id, cryptocurrencies) {
   //   //console.log('executed service')
-  //   return axios.delete(`http://localhost:8080/users/${name}/todos/${id}`);
+  //   return axios.put(`http://localhost:8080/users/${name}/cryptocurrencies/${id}`, cryptocurrencies);
   // }
 
-  // updateTodo(name, id, todo) {
+  // createcryptocurrencies(name, cryptocurrencies) {
   //   //console.log('executed service')
-  //   return axios.put(`http://localhost:8080/users/${name}/todos/${id}`, todo);
-  // }
-
-  // createTodo(name, todo) {
-  //   //console.log('executed service')
-  //   return axios.post(`http://localhost:8080/users/${name}/todos/`, todo);
+  //   return axios.post(`http://localhost:8080/users/${name}/cryptocurrencies/`, cryptocurrencies);
   // }
 }
 
-export default new TodoDataService();
+export default new cryptocurrenciesDataService();

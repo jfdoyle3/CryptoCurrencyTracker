@@ -46,9 +46,6 @@ public class GetCurrency {
 			Cryptocurrency cryptoMoney=new Cryptocurrency(++idCounter, id,currency, symbol,name,logo,rank);
 			cryptoList.add(cryptoMoney);
 			
-//			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s, rank: %s\n", id, currency, symbol, name,
-//					logo, rank);
-//			System.out.println("---------------------");
 		}
 		return cryptoList;
 	}

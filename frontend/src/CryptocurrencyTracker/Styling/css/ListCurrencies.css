@@ -3,7 +3,9 @@ img {
   height: 25px;
 }
 
-table {
+table,
+td,
+th {
   text-align: center;
   font-size: 12pt;
 }

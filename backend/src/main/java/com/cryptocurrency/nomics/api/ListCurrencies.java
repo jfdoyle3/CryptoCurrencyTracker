@@ -13,7 +13,6 @@ public class ListCurrencies {
 
 		JSONArray json = GetCurrency.Currencies(userSearch);
 		List<Cryptocurrency> cryptoMoney = GetCurrency.CurrencyID(json);
-
 		return cryptoMoney;
 
 	}

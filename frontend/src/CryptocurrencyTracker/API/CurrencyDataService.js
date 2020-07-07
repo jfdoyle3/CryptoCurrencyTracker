@@ -8,10 +8,10 @@ class cryptocurrenciesDataService {
     );
   }
 
-  retrievecryptocurrency(name, id) {
-    //console.log('executed service')
+  retrieveCryptocurrency(name, id) {
+    console.log(`trying to get id: ${id}`);
     return axios.get(
-      `http://localhost:8080/users/${name}/cryptocurrencies/${id}`
+      `http://localhost:8080/users/${name}/cryptocurrencies/id/${id}`
     );
   }
 

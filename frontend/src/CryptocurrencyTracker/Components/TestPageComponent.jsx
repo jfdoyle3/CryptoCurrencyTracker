@@ -49,7 +49,7 @@ class TestPageComponent extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <h1>Welcome!</h1>
         <div className="container">
           Welcome {this.props.match.params.name}. <br />
@@ -67,7 +67,7 @@ class TestPageComponent extends Component {
           </button>
         </div>
         <div className="container">{this.state.welcomeMessage}</div>
-      </>
+      </div>
     );
   }
 }

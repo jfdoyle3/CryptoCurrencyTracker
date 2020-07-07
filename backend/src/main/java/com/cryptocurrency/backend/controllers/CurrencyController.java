@@ -30,7 +30,7 @@ public class CurrencyController {
 		return currencyServices.listTopTen();
 	}
 	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrencies/id/{currencyId}")
+	@GetMapping("/users/{username}/cryptocurrencies/id/{id}")
 	public Cryptocurrency getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
 		return currencyServices.findById(id);
 	}

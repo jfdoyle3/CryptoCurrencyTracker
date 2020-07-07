@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthenticatedRoute from "../Auth/AuthenticatedRoute.jsx";
 import LoginComponent from "./LoginComponent.jsx";
-import HeaderComponent from "./HeaderComponent.jsx";
+//import HeaderComponent from "./HeaderComponent.jsx";
 import CurrencyHeaderComponent from "./CurrencyHeaderComponent.jsx";
-import FooterComponent from "./FooterComponent.jsx";
+//import FooterComponent from "./FooterComponent.jsx";
 import LogoutComponent from "./LogoutComponent.jsx";
 import ErrorComponent from "./ErrorComponent.jsx";
 import TestPageComponent from "./TestPageComponent.jsx";
@@ -16,7 +16,7 @@ class CryptocurrencyTracker extends Component {
       <div>
         <Router>
           <>
-            <HeaderComponent />
+            {/* <HeaderComponent /> */}
             <Switch>
               <Route path="/" exact component={LoginComponent} />
               <Route path="/login" component={LoginComponent} />
@@ -36,7 +36,7 @@ class CryptocurrencyTracker extends Component {
 
               <Route component={ErrorComponent} />
             </Switch>
-            <FooterComponent />
+            {/* <FooterComponent /> */}
           </>
         </Router>
       </div>

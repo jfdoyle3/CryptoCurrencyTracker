@@ -18,17 +18,16 @@ class CurrencyHeaderComponent extends Component {
   componentDidMount() {
     console.log("componentDidMount");
     this.refreshCurrencies();
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   viewCurrencyClicked(id) {
-    this.props.history.push(`/cryptocurrenices/:id`);
+    this.props.history.push(`/cryptocurrenices/id/${id}`);
   }
 
   refreshCurrencies() {
     let username = AuthenticationService.getLoggedInUserName();
     CurrencyDataService.retrieveTopTen(username).then((response) => {
-      console.log(response);
       this.setState({ cryptocurrencies: response.data });
     });
   }
@@ -48,7 +47,11 @@ class CurrencyHeaderComponent extends Component {
             {this.state.cryptocurrencies.map((cryptocurrency) => (
               <tr key={cryptocurrency.id}>
                 <td>
-                  <img src={cryptocurrency.logoUrl} alt={cryptocurrency.name} />
+                  <img
+                    id="imgList"
+                    src={cryptocurrency.logoUrl}
+                    alt={cryptocurrency.name}
+                  />
                 </td>
                 <td>{cryptocurrency.ranking}</td>
                 <td>{cryptocurrency.name}</td>
@@ -56,9 +59,7 @@ class CurrencyHeaderComponent extends Component {
                 <td>
                   <button
                     className="waves-effect waves-light btn-small"
-                    onClick={() =>
-                      this.viewCurrencyClicked(cryptocurrency.currency)
-                    }
+                    onClick={() => this.viewCurrencyClicked(cryptocurrency.id)}
                   >
                     View
                   </button>

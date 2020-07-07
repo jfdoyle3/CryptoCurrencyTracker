@@ -1,31 +1,41 @@
 import React, { Component } from "react";
 import "../Styling/css/Currency.css";
 //import "../Styling/css/wikisheet.css";
-import HelloWorldService from "../API/HelloWorldService.js";
+import CurrencyDataService from "../API/CurrencyDataService.js";
+import AuthenticationService from "../Auth/AuthenticationService.js";
 
 class CurrencyHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: this.props.match.params.id,
-      symbol: "BTC",
-      name: "Bitcoin",
-      logo_url:
-        "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg",
-      rank: "1",
-      price: "234.23",
-      circulating_supply: "21000",
-      max_supply: "2222",
+      symbol: "",
+      name: "",
+      logo_url: "",
+      rank: "",
     };
     // bind test button
-    this.testBackendConnection = this.testBackendConnection.bind(this);
+
     // bind next currency function
 
     // bind back currency function
   }
+  componentDidMount() {
+    if (this.state.id === -1) {
+      return;
+    }
 
-  testBackendConnection() {
-    HelloWorldService.executeHelloWorldService();
+    let username = AuthenticationService.getLoggedInUserName();
+    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+      (response) =>
+        //console.log(response)
+        this.setState({
+          name: response.data.name,
+          symbol: response.data.symbol,
+          logo_url: response.data.logoUrl,
+          ranking: response.data.ranking,
+        })
+    );
   }
 
   render() {
@@ -34,16 +44,14 @@ class CurrencyHeaderComponent extends Component {
         <div className="row">
           <div className="col s6">
             <span>
+              <h6>{this.state.name}</h6>
               <h6>Symbol: {this.state.symbol}</h6>
-              <h6>Rank: {this.state.rank}</h6>
-              <h6>Price: {this.state.price}</h6>
-              <h6>Circulating Supply: {this.state.circulating_supply}</h6>
-              <h6>Max Supply: {this.state.max_supply}</h6>
+              <h6>Rank: {this.state.ranking}</h6>
             </span>
           </div>
           <div className="col s6">
             <span>
-              <img src={this.state.logo_url} alt="logo" />
+              <img id="imgHeader" src={this.state.logo_url} alt="logo" />
             </span>
           </div>
         </div>
@@ -58,22 +66,6 @@ class CurrencyHeaderComponent extends Component {
                   <i className="material-icons">arrow_back</i>
                 </button>
               </span>
-            </div>
-          </div>
-        </div>
-        <div id="controls" className="row">
-          <div className="col  s6">
-            <button className="btn btn-success">Show</button>
-          </div>
-          <div>
-            <div className="col  s6">
-              <button
-                className="waves-effect waves-light btn"
-                onClick={this.testBackendConnection}
-              >
-                Test
-              </button>
-              {/* Test is: {this.props.params.name} */}
             </div>
           </div>
         </div>

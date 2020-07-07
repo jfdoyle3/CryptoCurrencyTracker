@@ -35,7 +35,7 @@ public class CurrencyServices {
 	public Cryptocurrency findById(long id) {
 		for (Cryptocurrency currency : currencyList) {
 			if (currency.getId() == id) {
-				System.out.println(currency);
+			//	System.out.println(currency);
 				return currency;
 			}
 

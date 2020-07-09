@@ -28,55 +28,60 @@ class CurrencyHeaderComponent extends Component {
   refreshCurrencies() {
     let username = AuthenticationService.getLoggedInUserName();
     CurrencyDataService.retrieveTopTen(username).then((response) => {
+      console.log(response);
       this.setState({ cryptocurrencies: response.data });
     });
   }
   render() {
     return (
-      <div className="container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Symbol</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.cryptocurrencies.map((cryptocurrency) => (
-              <tr key={cryptocurrency.id}>
-                <td>
-                  <img
-                    id="imgList"
-                    src={cryptocurrency.logoUrl}
-                    alt={cryptocurrency.name}
-                  />
-                </td>
-                <td>{cryptocurrency.ranking}</td>
-                <td>{cryptocurrency.name}</td>
-                <td>{cryptocurrency.symbol}</td>
-                <td>
-                  <button
-                    className="waves-effect waves-light btn-small"
-                    onClick={() => this.viewCurrencyClicked(cryptocurrency.id)}
-                  >
-                    View
-                  </button>
-                </td>
-                <td>
-                  {/* <button
+      <main>
+        <div className="container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Symbol</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.cryptocurrencies.map((cryptocurrency) => (
+                <tr key={cryptocurrency.id}>
+                  <td>
+                    <img
+                      id="imgList"
+                      src={cryptocurrency.logoUrl}
+                      alt={cryptocurrency.name}
+                    />
+                  </td>
+                  <td>{cryptocurrency.ranking}</td>
+                  <td>{cryptocurrency.name}</td>
+                  <td>{cryptocurrency.symbol}</td>
+                  <td>
+                    <button
+                      className="waves-effect waves-light btn-small"
+                      onClick={() =>
+                        this.viewCurrencyClicked(cryptocurrency.id)
+                      }
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td>
+                    {/* <button
                       className="waves-effect waves-light btn-small"
                       // onClick={() => this.deleteTodoClicked(todo.id)}
                     >
                       Delete
                     </button> */}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </main>
     );
   }
 }

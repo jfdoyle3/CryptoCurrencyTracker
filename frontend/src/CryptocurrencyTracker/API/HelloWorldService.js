@@ -8,7 +8,17 @@ class HelloWorldService {
 
   executeHelloWorldBeanService() {
     //console.log('executed service')
-    return axios.get("http://localhost:8080/hello-world-bean");
+    let userName = "user";
+    let password = "password";
+    let basicAuthHeader = "Basic " + window.btoa(userName + ":" + password);
+    return (
+      axios.get("http://localhost:8080/hello-world-bean"),
+      {
+        headers: {
+          authorization: basicAuthHeader,
+        },
+      }
+    );
   }
 }
 

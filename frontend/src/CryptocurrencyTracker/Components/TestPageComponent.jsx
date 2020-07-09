@@ -51,20 +51,21 @@ class TestPageComponent extends Component {
     return (
       <main>
         <div>
-          <h1>Welcome!</h1>
+          <h1>Admin Page</h1>
           <div className="container">
-            Welcome {this.props.match.params.name}. <br />
+            Admin {this.props.match.params.name} has logged in. <br />
+            Pages:
             <Link to="/list">Currency</Link>
           </div>
           <br />
           <div className="container">
-            Click here to get a customized welcome message.
+            Click button to confirm back end is working
             <br />
             <button
               onClick={this.retrieveWelcomeMessage}
               className="btn btn-success"
             >
-              Get Welcome Message
+              Test Back end
             </button>
           </div>
           <div className="container">{this.state.welcomeMessage}</div>

@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.basic.auth;
+package com.cryptocurrency.basic.auth;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

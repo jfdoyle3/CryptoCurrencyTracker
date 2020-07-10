@@ -1,10 +1,13 @@
 import axios from "axios";
 
 class AuthenticationService {
-	
   // Standard Basic authenication header in JS.
   createBasicAuthToken(username, password) {
     return "Basic " + window.btoa(username + ":" + password);
+  }
+
+  createJWTToken(token) {
+    return "Bearer " + token;
   }
 
   basicAuthenticationService(username, password) {
@@ -13,6 +16,18 @@ class AuthenticationService {
         authorization: this.createBasicAuthToken(username, password),
       },
     });
+  }
+
+  executeJwtAuthenticationService(username, password) {
+    return axios.post("http://localhost:8080/authenticate", {
+      username,
+      password,
+    });
+  }
+
+  registerSuccessfulLoginForJwt(username, token) {
+    sessionStorage.setItem("authenticatedUser", username);
+    this.setupAxiosInterceptors(this.createJWTToken(token));
   }
 
   registerSuccessfulLogin(username, password) {

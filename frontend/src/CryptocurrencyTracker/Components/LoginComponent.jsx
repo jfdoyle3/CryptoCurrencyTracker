@@ -14,7 +14,7 @@ class LoginComponent extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.loginClicked = this.loginClicked.bind(this);
   }
-  
+
   handleChange(event) {
     //console.log(this.state);
     this.setState({
@@ -22,14 +22,30 @@ class LoginComponent extends Component {
     });
   }
   loginClicked() {
-	    AuthenticationService.basicAuthenticationService(
-      this.state.username, this.state.password
-    ).then (()=>{ AuthenticationService.registerSuccessfulLogin(
-        this.state.username,
-        this.state.password
-      );
-	this.props.history.push(`/welcome/${this.state.username}`);}).catch(()=>{      this.setState({ showSuccessMessage: false });
-      this.setState({ hasLoginFailed: true });})
+    //     AuthenticationService.basicAuthenticationService(
+    //     this.state.username, this.state.password
+    //   ).then (()=>{ AuthenticationService.registerSuccessfulLogin(
+    //       this.state.username,
+    //       this.state.password
+    //     );
+    // this.props.history.push(`/welcome/${this.state.username}`);}).catch(()=>{      this.setState({ showSuccessMessage: false });
+    //     this.setState({ hasLoginFailed: true });})
+
+    AuthenticationService.executeJwtAuthenticationService(
+      this.state.username,
+      this.state.password
+    )
+      .then((response) => {
+        AuthenticationService.registerSuccessfulLoginForJwt(
+          this.state.username,
+          response.data.token
+        );
+        this.props.history.push(`/welcome/${this.state.username}`);
+      })
+      .catch(() => {
+        this.setState({ showSuccessMessage: false });
+        this.setState({ hasLoginFailed: true });
+      });
   }
   render() {
     return (
@@ -40,16 +56,16 @@ class LoginComponent extends Component {
           </h2>
         </div>
         {this.state.hasLoginFailed && (
-            <div className="alert alert-warning">Invalid Credentials</div>
-          )}
-          {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+          <div className="alert alert-warning">Invalid Credentials</div>
+        )}
+        {this.state.showSuccessMessage && <div>Login Sucessful</div>}
         <div className="row">
           <div className="input-field col s10">
             <i className="material-icons prefix">personl</i>
             <input
-             type="text"
-             name="username"
-             value={this.state.username}
+              type="text"
+              name="username"
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </div>
@@ -58,7 +74,7 @@ class LoginComponent extends Component {
           <div className="input-field col s10">
             <i className="material-icons prefix">https</i>
             <input
-             name="password"
+              name="password"
               type="password"
               value={this.state.password}
               onChange={this.handleChange}
@@ -67,10 +83,7 @@ class LoginComponent extends Component {
         </div>
         <div className="row">
           <div className="col s7">
-            <button
-              className="btn btn-success"
-              onClick={this.loginClicked}
-            >
+            <button className="btn btn-success" onClick={this.loginClicked}>
               Login
             </button>
           </div>

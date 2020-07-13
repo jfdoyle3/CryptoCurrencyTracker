@@ -13,12 +13,12 @@ public class CurrencyInfoServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CurrencyInfo> currencyList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
+	private List<CurrencyInfo> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
 	private long idCounter = 0;
 
 	// Show All currencies in List
 	public List<CurrencyInfo> findAll() {
-		return currencyList;
+		return currencyInfoList;
 	}
 
 //	public List<CurrencyInfo> listTopTen() {
@@ -33,10 +33,10 @@ public class CurrencyInfoServices {
 
 	// Find A Currency in the List
 	public CurrencyInfo findById(long id) {
-		for (CurrencyInfo currency : currencyList) {
-			if (currency.getId() == id) {
+		for (CurrencyInfo currencyInfo : currencyInfoList) {
+			if (currencyInfo.getId() == id) {
 			//	System.out.println(currency);
-				return currency;
+				return currencyInfo;
 			}
 
 		}

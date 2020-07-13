@@ -20,7 +20,7 @@ public class CurrencyInfoController {
 
 	// GET: All Currencies
 	@GetMapping("/users/{username}/cryptocurrenciesInfo")
-	public List<CurrencyInfo> getAllTodos(@PathVariable String username) {
+	public List<CurrencyInfo> getAllInfo(@PathVariable String username) {
 		return currencyInfoServices.findAll();
 	}
 
@@ -30,10 +30,10 @@ public class CurrencyInfoController {
 //		return currencyServices.listTopTen();
 //	}
 //	// GET: A Currency
-//	@GetMapping("/users/{username}/cryptocurrencies/id/{id}")
-//	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
-//		return currencyServices.findById(id);
-//	}
+	@GetMapping("/users/{username}/cryptocurrenciesInfo/id/{id}")
+	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
+		return currencyInfoServices.findById(id);
+	}
 //	
 //	// GET: A Currency
 //	@GetMapping("/users/{username}/cryptocurrencies/{currency}")

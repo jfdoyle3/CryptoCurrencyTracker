@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.services.CurrencyServices;
-import com.cryptocurrency.nomics.objects.Cryptocurrency;
+import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -20,24 +20,24 @@ public class CurrencyController {
 
 	// GET: All Currencies
 	@GetMapping("/users/{username}/cryptocurrencies")
-	public List<Cryptocurrency> getAllTodos(@PathVariable String username) {
+	public List<CryptocurrencyHeader> getAllCurrencies(@PathVariable String username) {
 		return currencyServices.findAll();
 	}
 
 	// GET: Top Ten Currencies
-	@GetMapping("/users/{username}/cryptocurrencies/topTen")
-	public List<Cryptocurrency> getTopTen(@PathVariable String username) {
-		return currencyServices.listTopTen();
+	@GetMapping("/users/{username}/cryptocurrencies/topfive")
+	public List<CryptocurrencyHeader> getTopTen(@PathVariable String username) {
+		return currencyServices.listTopFive();
 	}
 	// GET: A Currency
 	@GetMapping("/users/{username}/cryptocurrencies/id/{id}")
-	public Cryptocurrency getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
+	public CryptocurrencyHeader getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
 		return currencyServices.findById(id);
 	}
 	
 	// GET: A Currency
 	@GetMapping("/users/{username}/cryptocurrencies/{currency}")
-	public Cryptocurrency getByCurrency(@PathVariable String username, @PathVariable String currency) {
+	public CryptocurrencyHeader getByCurrency(@PathVariable String username, @PathVariable String currency) {
 		return currencyServices.findByAnyCurrency(currency);
 	}
 }

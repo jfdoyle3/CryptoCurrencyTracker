@@ -1,6 +1,6 @@
 package com.cryptocurrency.nomics.objects;
 
-public class Cryptocurrency {
+public class CryptocurrencyHeader {
 
 	private long id;
 
@@ -16,13 +16,13 @@ public class Cryptocurrency {
 	
 	private String ranking;
 
-	public Cryptocurrency() {
+	public CryptocurrencyHeader() {
 
 	}
 
 
 
-	public Cryptocurrency(long id, String currencyId, String currency, String symbol, String name, String logoUrl,
+	public CryptocurrencyHeader(long id, String currencyId, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
 		super();
 		this.id = id;

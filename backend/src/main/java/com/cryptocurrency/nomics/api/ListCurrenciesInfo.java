@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
+import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 import kong.unirest.json.JSONArray;
 
-public class ListCurrencies {
+public class ListCurrenciesInfo {
 
-	public static List<CryptocurrencyHeader> CreateCurrencyList(String userSearch) {
+	public static List<CurrencyInfo> CreateCurrencyListInfo(String userSearch) {
 
 		JSONArray json = GetCurrency.Currencies(userSearch);
-		List<CryptocurrencyHeader> cryptoMoney = GetCurrency.CurrencyID(json);
-		return cryptoMoney;
+		List<CurrencyInfo> cryptoInfo = GetCurrency.CurrencyInfo(json);
+		return cryptoInfo;
 
 	}
 

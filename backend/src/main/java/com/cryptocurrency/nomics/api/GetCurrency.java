@@ -3,7 +3,8 @@ package com.cryptocurrency.nomics.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.nomics.objects.Cryptocurrency;
+import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
+import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -11,7 +12,9 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
-	private static List<Cryptocurrency> cryptoList = new ArrayList<>();
+	private static List<CryptocurrencyHeader> cryptoList = new ArrayList<>();
+	private static List<CurrencyInfo> currencyInfoList=new ArrayList<>();
+	private static String maxSupply, circulating_supply, market_cap;
 	private static long idCounter = 0;
 	
 	
@@ -29,7 +32,7 @@ public class GetCurrency {
 		return currencyJson;
 	}
 
-	public static List<Cryptocurrency> CurrencyID(JSONArray json) {
+	public static List<CryptocurrencyHeader> CurrencyID(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -43,38 +46,50 @@ public class GetCurrency {
 			String symbol = (String) key.get("symbol");
 			String rank= (String) key.get("rank");
 			
-			Cryptocurrency cryptoMoney=new Cryptocurrency(++idCounter, id,currency, symbol,name,logo,rank);
+			CryptocurrencyHeader cryptoMoney=new CryptocurrencyHeader(++idCounter, id,currency, symbol,name,logo,rank);
 			cryptoList.add(cryptoMoney);
 			
 		}
 		return cryptoList;
 	}
 
-	public static void CurrencyInfo(JSONArray json) {
-		String max_supply;
+	public static List<CurrencyInfo> CurrencyInfo(JSONArray json) {
+
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
 
 			JSONObject key = (JSONObject) currencyData;
-
+			String symbol = (String) key.get("symbol");
 			String price = (String) key.get("price");
-			String circulating_supply = (String) key.get("circulating_supply");
 
-			if (key.has("max_supply")) {
-				max_supply = (String) key.get("max_supply");
+			if (key.has("circulating_supply")) {
+				circulating_supply = (String) key.get("circulating_supply");
 			} else {
-				max_supply = "N/A";
+				circulating_supply = "N/A";
+			}
+			if (key.has("max_supply")) {
+				maxSupply = (String) key.get("max_supply");
+			} else {
+				maxSupply = "N/A";
+			}
+			if (key.has("market_cap")) {
+				market_cap = (String) key.get("market_cap");
+			} else {
+				market_cap = "N/A";
 			}
 
-			String market_cap = (String) key.get("market_cap");
 			String rank = (String) key.get("rank");
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			System.out.printf("price: %s\nsupply: %s\nmax: %s\ncap: %s\nrank: %s\nhigh: %s\nhigh time: %s\n", price,
-					circulating_supply, max_supply, market_cap, rank, high, high_timestamp);
-			System.out.println("---------------------");
+			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, circulating_supply, maxSupply,
+					market_cap, rank, high, high_timestamp);
+			currencyInfoList.add(currencyInfo);
+//			System.out.printf("price: %s\nsupply: %s\nmax: %s\ncap: %s\nrank: %s\nhigh: %s\nhigh time: %s\n", price,circulating_supply, maxSupply, marketCap, rank, high, high_timestamp);
+//			System.out.println("---------------------");
+
 		}
+		return currencyInfoList;
 	}
 
 	public static void CurrencyInterval(JSONArray json) {

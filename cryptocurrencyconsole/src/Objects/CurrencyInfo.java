@@ -4,6 +4,8 @@ public class CurrencyInfo {
 
 	private long id;
 
+	private String symbol;
+
 	private String price;
 
 	private String circulatingSupply;
@@ -22,8 +24,10 @@ public class CurrencyInfo {
 
 	}
 
-	public CurrencyInfo(String price, String circulatingSupply, String maxSupply, String marketCap, String ranking,
-			String high, String highTimeStamp) {
+	public CurrencyInfo(long id, String symbol, String price, String circulatingSupply, String maxSupply,
+			String marketCap, String ranking, String high, String highTimeStamp) {
+		this.id = id;
+		this.symbol = symbol;
 		this.price = price;
 		this.circulatingSupply = circulatingSupply;
 		this.maxSupply = maxSupply;
@@ -39,6 +43,14 @@ public class CurrencyInfo {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
 	}
 
 	public String getPrice() {
@@ -99,9 +111,11 @@ public class CurrencyInfo {
 
 	@Override
 	public String toString() {
-		return "CurrencyInfo [id=" + id + ", price=" + price + ", circulatingSupply=" + circulatingSupply
-				+ ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking + ", high=" + high
-				+ ", highTimeStamp=" + highTimeStamp + "]";
+		return "CurrencyInfo [id=" + id + ", symbol=" + symbol + ", price=" + price + ", circulatingSupply="
+				+ circulatingSupply + ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking
+				+ ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
 	}
+
+
 
 }

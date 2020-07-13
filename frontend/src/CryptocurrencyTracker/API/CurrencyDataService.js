@@ -4,7 +4,7 @@ import { API_URL } from "../../Constants.js";
 class cryptocurrenciesDataService {
   retrieveTopTen(name) {
     //console.log('executed service')
-    return axios.get(`${API_URL}/users/{username}/cryptocurrencies/topTen`);
+    return axios.get(`${API_URL}/users/{username}/cryptocurrencies/topfive`);
   }
 
   retrieveCryptocurrency(name, id) {

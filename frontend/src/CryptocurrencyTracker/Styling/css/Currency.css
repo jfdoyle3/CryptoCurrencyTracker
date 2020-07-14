@@ -1,13 +1,9 @@
 #imgHeader {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   float: right;
 }
 
-p {
+/* p {
   text-align: left;
-}
-
-#controls {
-  align-content: center;
-}
+} */

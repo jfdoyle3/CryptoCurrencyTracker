@@ -36,7 +36,7 @@ class CurrencyHeaderComponent extends Component {
     return (
       <main>
         <div className="container">
-          <table className="table">
+          <table id="topfive" className="table">
             <thead>
               <tr>
                 <th></th>

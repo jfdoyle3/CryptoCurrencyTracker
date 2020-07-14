@@ -5,7 +5,9 @@ class FooterComponent extends Component {
   render() {
     return (
       <footer className="footer">
-        <span className="text-muted">Typed by the fingers Jim Doyle</span>
+        <p id="FooterText" className="text-muted">
+          Typed by the fingers Jim Doyle
+        </p>
       </footer>
     );
   }

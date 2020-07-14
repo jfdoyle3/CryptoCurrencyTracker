@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/currency.css";
 
 class CurrencyIntervalComponent extends Component {
   constructor(props) {
@@ -17,11 +16,52 @@ class CurrencyIntervalComponent extends Component {
   render() {
     return (
       <div className="container">
-        <p>Volume: {this.state.volume}</p>
-        <p>Price Change: {this.state.price_change}</p>
-        <p>Volume change: {this.state.volume_change}</p>
-        <p>Price Change: {this.state.price_change}</p>
-        <p>Market Cap Change: {this.state.market_cap_change}</p>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Time Interval</th>
+              <th>Volume</th>
+              <th>Price Change</th>
+              <th>Price Change %</th>
+              <th>Volume Change</th>
+              <th>Volume Change %</th>
+              <th>Market Cap Change</th>
+              <th>Market Cap Change %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 Day</td>
+              <td>{this.state.volume}</td>
+              <td>{this.state.price_change}</td>
+              <td>{this.state.price_change_pct}</td>
+              <td>{this.state.volume_change}</td>
+              <td>{this.state.volume_change_pct}</td>
+              <td>{this.state.market_cap_change}</td>
+              <td>{this.state.market_cap_change_pct}</td>
+            </tr>
+            <tr>
+              <td>7 Days</td>
+              <td>{this.state.volume}</td>
+              <td>{this.state.price_change}</td>
+              <td>{this.state.price_change_pct}</td>
+              <td>{this.state.volume_change}</td>
+              <td>{this.state.volume_change_pct}</td>
+              <td>{this.state.market_cap_change}</td>
+              <td>{this.state.market_cap_change_pct}</td>
+            </tr>
+            <tr>
+              <td>365 Days</td>
+              <td>{this.state.volume}</td>
+              <td>{this.state.price_change}</td>
+              <td>{this.state.price_change_pct}</td>
+              <td>{this.state.volume_change}</td>
+              <td>{this.state.volume_change_pct}</td>
+              <td>{this.state.market_cap_change}</td>
+              <td>{this.state.market_cap_change_pct}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

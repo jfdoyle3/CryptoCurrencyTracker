@@ -3,9 +3,7 @@
   height: 25px;
 }
 
-table,
-td,
-th {
+#topfive {
   text-align: center;
   font-size: 12pt;
 }

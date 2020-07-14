@@ -17,7 +17,7 @@ class HeaderComponent extends Component {
           <div className="nav-wrapper">
             <a href="#!">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              {isUserLoggedIn && (
+              {/* {isUserLoggedIn && (
                 <li>
                   <Link to="/welcome/user">Home</Link>
                 </li>
@@ -26,15 +26,15 @@ class HeaderComponent extends Component {
                 <li>
                   <Link to="/cryptocurrenices">Currencies</Link>
                 </li>
-              )}
+              )} */}
             </ul>
             {/* className="navbar-nav navbar-collapse justify-content-end" */}
             <ul>
-              {!isUserLoggedIn && (
+              {/* {!isUserLoggedIn && (
                 <li>
                   <Link to="/login">Login</Link>
                 </li>
-              )}
+              )} */}
               {isUserLoggedIn && (
                 <li>
                   <Link to="/logout" onClick={AuthenticationService.logout}>

@@ -3,6 +3,8 @@ import "../Styling/css/Currency.css";
 //import "../Styling/css/wikisheet.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
+import CurrencyInfoComponent from "./CurrencyInfoComponent.jsx";
+import CurrencyIntervalComponent from "./CurrencyIntervalComponent.jsx";
 
 class CurrencyHeaderComponent extends Component {
   constructor(props) {
@@ -40,35 +42,21 @@ class CurrencyHeaderComponent extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="row">
-          <div className="col s6">
-            <span>
-              <h6>{this.state.name}</h6>
-              <h6>Symbol: {this.state.symbol}</h6>
-              <h6>Rank: {this.state.ranking}</h6>
-            </span>
+          <div className="col s4">
+            <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
-          <div className="col s6">
-            <span>
-              <img id="imgHeader" src={this.state.logo_url} alt="logo" />
-            </span>
+          <div className="col s4">
+            <h6>{this.state.name}</h6>
+            <p>Symbol: {this.state.symbol}</p>
+            <p>Rank: {this.state.ranking}</p>
           </div>
-        </div>
-        <div id="controls" className="row">
-          <div className="col  s6">
-            <button className="btn  btn-success">
-              <i className="material-icons">arrow_forward</i>
-            </button>
-            <div className="col  s6">
-              <span>
-                <button className="btn btn-success">
-                  <i className="material-icons">arrow_back</i>
-                </button>
-              </span>
-            </div>
+          <div>
+            <CurrencyInfoComponent />
           </div>
         </div>
+        <CurrencyIntervalComponent />
       </div>
     );
   }

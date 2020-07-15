@@ -14,10 +14,10 @@ import objects.CurrencyInterval;
 public class GetCurrency {
 	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
-	private static List<CurrencyInterval> currencyIntervalList=new ArrayList<>();
+	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static long idCounter = 0;
-	private static String maxSupply, circulating_supply, market_cap,volChgPct,marketCapChg,marketCapChgPct ;
-	
+	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
+			volChange;
 
 	public static JSONArray Currencies(String currency, String interval) {
 
@@ -46,7 +46,7 @@ public class GetCurrency {
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
 
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies(++idCounter, id,currency, symbol, name, logo);
+			Cryptocurrencies cryptoMoney = new Cryptocurrencies(++idCounter, id, currency, symbol, name, logo);
 			cryptoList.add(cryptoMoney);
 
 			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
@@ -59,7 +59,7 @@ public class GetCurrency {
 	public static List<CurrencyInfo> CurrencyInfo(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
-			
+
 			JSONObject currencyData = json.getJSONObject(idx);
 
 			JSONObject key = (JSONObject) currencyData;
@@ -89,59 +89,65 @@ public class GetCurrency {
 			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, circulating_supply, maxSupply,
 					market_cap, rank, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
-	//		System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
-	//	System.out.printf("id: %d\n,symbol %s\n, price: %s\nsupply: %s\nmax: %s\ncap: %s\nrank: %s\nhigh: %s\nhigh time: %s\n",idCounter,symbol, price,circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
-	//		System.out.println("---------------------");
+			// System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
+			// System.out.printf("id: %d\n,symbol %s\n, price: %s\nsupply: %s\nmax: %s\ncap:
+			// %s\nrank: %s\nhigh: %s\nhigh time: %s\n",idCounter,symbol,
+			// price,circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
+			// System.out.println("---------------------");
 
 		}
 		return currencyInfoList;
 	}
 
-	public static void CurrencyTimeInterval(JSONArray json, String interval) {
+	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json, String interval) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
-
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
-			// Object intervalTime =key.get("1d");
-			if(key.has(interval)) {
+			if (key.has(interval)) {
 				JSONObject intervalTime = (JSONObject) key.get(interval);
-				String volume = (String)  intervalTime.get("volume");
-				String priceChange= (String)  intervalTime.get("price_change");
-				String priceChgPct =(String) intervalTime.get("price_change_pct");
-				if (intervalTime.has("volume_change_pct")) {
-				 volChgPct = (String)  intervalTime.get("volume_change_pct");
+				String volume = (String) intervalTime.get("volume");
+				String priceChange = (String) intervalTime.get("price_change");
+				String priceChgPct = (String) intervalTime.get("price_change_pct");
+				if (intervalTime.has("volume_change")) {
+					volChange = (String) intervalTime.get("volume_change");
 				} else {
-					volChgPct="N/A";
+					volChange = "N/A";
+				}
+				if (intervalTime.has("volume_change_pct")) {
+					volChgPct = (String) intervalTime.get("volume_change_pct");
+				} else {
+					volChgPct = "N/A";
 				}
 				if (intervalTime.has("market_cap_change")) {
-					marketCapChg = (String)  intervalTime.get("market_cap_change");
-					} else {
-						marketCapChg="N/A";
-					}
+					marketCapChg = (String) intervalTime.get("market_cap_change");
+				} else {
+					marketCapChg = "N/A";
+				}
 				if (intervalTime.has("market_cap_change_pct")) {
-					marketCapChgPct = (String)  intervalTime.get("market_cap_change_pct");
-					} else {
-						marketCapChgPct="N/A";
-					}				
-				System.out.println("Symbol: "+symbol+" | Volume:"+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" | Market %: "+marketCapChgPct);
+					marketCapChgPct = (String) intervalTime.get("market_cap_change_pct");
+				} else {
+					marketCapChgPct = "N/A";
+				}
+				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
+						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
+				currencyIntervalList.add(currencyInterval);
+				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
+				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
+				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
+				// Market %: "+marketCapChgPct);
 			} else {
-				System.out.println("Symbol: "+symbol+" | No Data");
+				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
+						"N/A", "N/A", "N/A", "N/A", "N/A");
+				currencyIntervalList.add(currencyInterval);
+				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
+				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
+				// Market: N/A | Market %: N/A");
 			}
-	
-			System.out.println("---------------------");
+
+			// System.out.println("---------------------");
 		}
+		return currencyIntervalList;
 	}
 }
-
-
-//"1d": {
-//    "volume": "27727114306.68",
-//    "price_change": "103.17034381",
-//    "": "0.0109",
-//    "": "-3798607023.65",
-//    "volume_change_pct": "-0.1205",
-//    ": "1904769546.84",
-//    "": "0.0109"
-//  },

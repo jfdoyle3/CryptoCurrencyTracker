@@ -1,6 +1,6 @@
-package Objects;
+package objects;
 
-public class Interval {
+public class IntervalDateStamp {
 
 	private long id;
 
@@ -8,11 +8,11 @@ public class Interval {
 
 	private String priceTimeStamp;
 
-	public Interval() {
+	public IntervalDateStamp() {
 
 	}
 
-	public Interval(String priceDate, String priceTimeStamp) {
+	public IntervalDateStamp(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
 		this.priceTimeStamp = priceTimeStamp;
 	}

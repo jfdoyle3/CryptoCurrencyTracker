@@ -4,6 +4,7 @@ import java.util.List;
 
 import get_api_data.GetCurrency;
 import kong.unirest.json.JSONArray;
+import objects.CurrencyInterval;
 
 
 public class ListInterval {
@@ -11,14 +12,14 @@ public class ListInterval {
 	public static void main(String[] args) {
 
 		String userSearch="";
-		String interval="ytd";
+		String interval="1d";
 		JSONArray json = GetCurrency.Currencies(userSearch,interval);
-		GetCurrency.CurrencyTimeInterval(json, interval);
-	//	List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
+	//	GetCurrency.CurrencyTimeInterval(json, interval);
+		List<CurrencyInterval> cryptoMoneyInterval=GetCurrency.CurrencyTimeInterval(json, interval);
 
 		
-//	 for(CurrencyInfo crypto : cryptoMoneyInfo)
-//			System.out.println(crypto);
+	 for(CurrencyInterval crypto : cryptoMoneyInterval)
+			System.out.println(crypto);
 		
 	System.out.println("end of line");
 

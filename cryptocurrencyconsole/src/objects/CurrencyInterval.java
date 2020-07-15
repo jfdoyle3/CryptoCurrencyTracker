@@ -137,7 +137,7 @@ public class CurrencyInterval {
 
 	@Override
 	public String toString() {
-		return "OneDayInterval [id=" + id + ", timeInterval=" + timeInterval + ", Symbol=" + Symbol + ", volume="
+		return "CurrencyInterval [id=" + id + ", timeInterval=" + timeInterval + ", Symbol=" + Symbol + ", volume="
 				+ volume + ", priceChange=" + priceChange + ", priceChangePct=" + priceChangePct + ", volumeChange="
 				+ volumeChange + ", volumeChangePct=" + volumeChangePct + ", marketCapChange=" + marketCapChange
 				+ ", marketCapChangePct=" + marketCapChangePct + "]";

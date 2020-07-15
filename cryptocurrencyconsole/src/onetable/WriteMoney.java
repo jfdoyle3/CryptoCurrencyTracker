@@ -1,4 +1,4 @@
-package OneTable;
+package onetable;
 
 import java.util.ArrayList;
 

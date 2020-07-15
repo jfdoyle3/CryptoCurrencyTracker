@@ -2,20 +2,19 @@ package main;
 
 import java.util.List;
 
-import Objects.Cryptocurrencies;
-import Objects.CurrencyInfo;
 import get_api_data.GetCurrency;
 import kong.unirest.json.JSONArray;
+import objects.CurrencyInfo;
 
-public class Main {
+public class ListInfo {
 
 	public static void main(String[] args) {
 
 		String userSearch="";
-		JSONArray json = GetCurrency.Currencies(userSearch);
-		//List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);
+		String interval="";
+		JSONArray json = GetCurrency.Currencies(userSearch,interval);
 		List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
-		//GetCurrency.CurrencyInterval(json);
+
 		
 	 for(CurrencyInfo crypto : cryptoMoneyInfo)
 			System.out.println(crypto);

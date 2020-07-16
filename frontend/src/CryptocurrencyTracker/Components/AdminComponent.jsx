@@ -54,8 +54,10 @@ class TestPageComponent extends Component {
           <h1>Admin Page</h1>
           <div className="container">
             Admin {this.props.match.params.name} has logged in. <br />
-            Pages:
+            Pages: <br />
             <Link to="/list">Currency</Link>
+            <br />
+            <Link to="/details">Currency Details</Link>
           </div>
           <br />
           <div className="container">

@@ -7,8 +7,9 @@ import CurrencyHeaderComponent from "./CurrencyHeaderComponent.jsx";
 import FooterComponent from "./FooterComponent.jsx";
 import LogoutComponent from "./LogoutComponent.jsx";
 import ErrorComponent from "./ErrorComponent.jsx";
-import TestPageComponent from "./TestPageComponent.jsx";
+import AdminComponent from "./AdminComponent.jsx";
 import CurrencyListComponent from "./CurrencyListComponent.jsx";
+import CurrencyDetailsComponent from "./CurrencyDetailsComponents.jsx";
 
 class CryptocurrencyTracker extends Component {
   render() {
@@ -22,11 +23,15 @@ class CryptocurrencyTracker extends Component {
               <Route path="/login" component={LoginComponent} />
               <AuthenticatedRoute
                 path="/welcome/:name"
-                component={TestPageComponent}
+                component={AdminComponent}
               />
               <AuthenticatedRoute
                 path="/list"
                 component={CurrencyListComponent}
+              />
+              <AuthenticatedRoute
+                path="/details"
+                component={CurrencyDetailsComponent}
               />
               <AuthenticatedRoute
                 path="/cryptocurrenices/id/:id"

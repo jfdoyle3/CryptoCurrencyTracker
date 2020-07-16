@@ -3,21 +3,19 @@ import "../Styling/css/Currency.css";
 //import "../Styling/css/wikisheet.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
-import CurrencyInfoComponent from "./CurrencyInfoComponent.jsx";
-import CurrencyIntervalComponent from "./CurrencyIntervalComponent.jsx";
 
 class CurrencyHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.id,
-      symbol: "",
-      name: "",
-      logo_url: "",
-      rank: "",
+      id: "1",
+      symbol: "BTC",
+      name: "BTC",
+      logo_url: "IMAGE",
+      rank: "1",
     };
     // bind test button
-
+    // this.props.match.params.id,
     // bind next currency function
 
     // bind back currency function
@@ -27,17 +25,17 @@ class CurrencyHeaderComponent extends Component {
       return;
     }
 
-    let username = AuthenticationService.getLoggedInUserName();
-    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
-      (response) =>
-        //console.log(response)
-        this.setState({
-          name: response.data.name,
-          symbol: response.data.symbol,
-          logo_url: response.data.logoUrl,
-          ranking: response.data.ranking,
-        })
-    );
+    //   let username = AuthenticationService.getLoggedInUserName();
+    //   CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+    //     (response) =>
+    //       //console.log(response)
+    //       this.setState({
+    //         name: response.data.name,
+    //         symbol: response.data.symbol,
+    //         logo_url: response.data.logoUrl,
+    //         ranking: response.data.ranking,
+    //       })
+    //   );
   }
 
   render() {
@@ -52,11 +50,7 @@ class CurrencyHeaderComponent extends Component {
             <p>Symbol: {this.state.symbol}</p>
             <p>Rank: {this.state.ranking}</p>
           </div>
-          <div>
-            <CurrencyInfoComponent />
-          </div>
         </div>
-        <CurrencyIntervalComponent />
       </div>
     );
   }

@@ -14,9 +14,9 @@ public class ListCurrenciesInterval {
 		return cryptoMoneyInterval;
 	}
 	
-	public static CurrencyInterval getCurrencyInterval(String currency, String interval) {
-		JSONArray json = GetCurrency.Currencies(currency, interval);
-		
-		return
-	}
+//	public static CurrencyInterval getCurrencyInterval(String currency, String interval) {
+//		JSONArray json = GetCurrency.Currencies(currency, interval);
+//		
+//		return 
+//	}
 }

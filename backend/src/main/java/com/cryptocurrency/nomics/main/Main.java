@@ -16,15 +16,15 @@ public class Main {
 	//	List<Cryptocurrency> topTen=new ArrayList<>();
 		List<CurrencyInfo> moneyInfo=new ArrayList<>();
 		String userSearch="";
-		JSONArray json = GetCurrency.Currencies(userSearch);
+	//	JSONArray json = GetCurrency.Currencies(userSearch,interval);
 		// List<Cryptocurrency> cryptoMoney=GetCurrency.CurrencyID(json);
-		List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
-		GetCurrency.CurrencyInterval(json);
+	//	List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
+	//	GetCurrency.CurrencyInterval(json);
 		
-	 for(CurrencyInfo crypto : cryptoMoneyInfo) {
-			System.out.println(crypto);
+//	 for(CurrencyInfo crypto : cryptoMoneyInfo) {
+//			System.out.println(crypto);
 			
-	 }
+//	 }
 	//
 	System.out.println("end of line");
 

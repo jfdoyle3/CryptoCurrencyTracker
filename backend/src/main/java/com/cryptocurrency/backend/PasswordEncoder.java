@@ -20,7 +20,7 @@ public class PasswordEncoder {
 			encodedList.add(encodedString);
 		}
 		String encryptedPassword = encodedList.get(rand.nextInt(11));
-		//System.out.format("returning: %s", encryptedPassword);
+		System.out.format("returning: %s", encryptedPassword.length());
 		encodedList.clear();
 		return encryptedPassword;
 

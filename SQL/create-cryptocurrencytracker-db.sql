@@ -6,9 +6,18 @@ use `cryptocurrencytracker`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `intervals`;
+DROP TABLE IF EXISTS `users`;
 
-CREATE TABLE `intervals` (
+CREATE TABLE `users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(60) NULL,
+  PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+  
+DROP TABLE IF EXISTS `datestamp`;
+
+CREATE TABLE `datestamp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price_date` varchar(45) DEFAULT NULL,
   `price_timestamp` varchar(45) DEFAULT NULL,
@@ -48,3 +57,20 @@ CREATE TABLE `cryptocurrencies` (
   )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS = 1;
+  
+DROP TABLE IF EXISTS `intervals`;
+  
+CREATE TABLE `intervals` (
+  `id` INT(11) NOT NULL UTO_INCREMENT,
+  `symbol` VARCHAR(45) NULL,
+  `time` VARCHAR(45) NULL,
+  `price_change` VARCHAR(45) NULL,
+  `price_change_pct` VARCHAR(45) NULL,
+  `volume` VARCHAR(45) NULL,
+  `volume_change` VARCHAR(45) NULL,
+  `volume_change_pct` VARCHAR(45) NULL,
+  `market_cap_change` VARCHAR(45) NULL,
+  `market_cap_change_pct` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`)
+  )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+  

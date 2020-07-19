@@ -124,7 +124,7 @@ public class GetCurrency {
 				} else {
 					marketCapChgPct = "N/A";
 				}
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
+				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, symbol, interval, volume,
 						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
 				currencyIntervalList.add(currencyInterval);
 

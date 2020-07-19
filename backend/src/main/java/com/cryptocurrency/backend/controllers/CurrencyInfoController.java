@@ -34,10 +34,9 @@ public class CurrencyInfoController {
 	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
 		return currencyInfoServices.findById(id);
 	}
-//	
-//	// GET: A Currency
-//	@GetMapping("/users/{username}/cryptocurrencies/{currency}")
-//	public CurrencyInfo getByCurrency(@PathVariable String username, @PathVariable String currency) {
-//		return currencyServices.findByAnyCurrency(currency);
-//	}
+	// GET: A Currency
+	@GetMapping("/users/{username}/cryptocurrenciesInfo/{currency}")
+	public CurrencyInfo getByCurrency(@PathVariable String username, @PathVariable String currency) {
+		return currencyInfoServices.findByAnyCurrency(currency);
+	}
 }

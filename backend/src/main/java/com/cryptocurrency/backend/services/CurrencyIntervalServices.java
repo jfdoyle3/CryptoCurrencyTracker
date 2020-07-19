@@ -11,7 +11,7 @@ import com.cryptocurrency.nomics.objects.CurrencyInterval;
 public class CurrencyIntervalServices {
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private String defaultInterval="1d";
+	private String defaultInterval="";
 	private long idCounter = 0;
 
 	// Show All currencies in List
@@ -21,8 +21,11 @@ public class CurrencyIntervalServices {
 	}
 
 	public List<CurrencyInterval> currencyDayInterval(String symbol, String interval) {
-		List<CurrencyInterval> currencyInterval = ListCurrenciesInterval.createCurrencyIntervalList(symbol, interval);
-		
+		String currencySymbol = symbol.toUpperCase();
+		if(interval.equals("all")) {
+			interval="7d,ytd";
+		}
+		List<CurrencyInterval> currencyInterval = ListCurrenciesInterval.createCurrencyIntervalList(currencySymbol, interval);
 		return currencyInterval;
 	}
 

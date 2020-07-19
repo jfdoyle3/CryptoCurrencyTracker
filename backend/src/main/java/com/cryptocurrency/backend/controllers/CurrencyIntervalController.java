@@ -30,7 +30,7 @@ public class CurrencyIntervalController {
 //		return currencyServices.listTopTen();
 //	}
 //	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrenciesInfo/id/{symbol}/{interval}")
+	@GetMapping("/users/{username}/cryptocurrenciesInterval/id/{symbol}/{interval}")
 	public List<CurrencyInterval> getByCurrencyId(@PathVariable String username, @PathVariable String symbol, @PathVariable String interval) {
 		return currencyIntervalServices.currencyDayInterval(symbol,interval);
 	}

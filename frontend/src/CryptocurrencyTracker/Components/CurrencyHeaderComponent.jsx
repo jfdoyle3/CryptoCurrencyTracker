@@ -8,11 +8,10 @@ class CurrencyHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "1",
       symbol: "BTC",
-      name: "BTC",
-      logo_url: "IMAGE",
-      rank: "1",
+      name: "BitCoin",
+      logo_url: "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg",
+      ranking: "1",
     };
     // bind test button
     // this.props.match.params.id,
@@ -20,38 +19,36 @@ class CurrencyHeaderComponent extends Component {
 
     // bind back currency function
   }
-  componentDidMount() {
-    if (this.state.id === -1) {
-      return;
-    }
+  // componentDidMount() {
+  //   if (this.state.id === -1) {
+  //     return;
+  //   }
 
-    //   let username = AuthenticationService.getLoggedInUserName();
-    //   CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
-    //     (response) =>
-    //       //console.log(response)
-    //       this.setState({
-    //         name: response.data.name,
-    //         symbol: response.data.symbol,
-    //         logo_url: response.data.logoUrl,
-    //         ranking: response.data.ranking,
-    //       })
-    //   );
-  }
+  //     let username = AuthenticationService.getLoggedInUserName();
+  //     CurrencyDataService.retrieveCryptocurrency(username, this.state.symbol).then(
+  //       (response) =>
+  //         //console.log(response)
+  //         this.setState({
+  //           name: response.data.name,
+  //           symbol: response.data.symbol,
+  //           logo_url: response.data.logoUrl,
+  //           ranking: response.data.ranking,
+  //         })
+  //     );
+  // }
 
   render() {
     return (
       <div>
-        <div className="row">
           <div className="col s4">
             <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
-          <div className="col s4">
-            <h6>{this.state.name}</h6>
+          <div id="header" className="col s4">
+            <h5>{this.state.name}</h5>
             <p>Symbol: {this.state.symbol}</p>
             <p>Rank: {this.state.ranking}</p>
-          </div>
+       </div>
         </div>
-      </div>
     );
   }
 }

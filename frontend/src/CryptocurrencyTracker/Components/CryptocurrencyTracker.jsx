@@ -30,7 +30,7 @@ class CryptocurrencyTracker extends Component {
                 component={CurrencyListComponent}
               />
               <AuthenticatedRoute
-                path="/details"
+                path="/details/:symbol/:interval"
                 component={CurrencyDetailsComponent}
               />
               <AuthenticatedRoute

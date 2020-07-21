@@ -14,17 +14,17 @@ class CurrencyInfoComponent extends Component {
   }
   render() {
     return (
-      <div className="col s4">
+
+      <div>
         <p>Price: {this.state.price}</p>
         <p>Price Date: {this.state.price_date}</p>
-        <div className="col s4">
-          <span>
+         
             <p>Price Time Stamp: {this.state.price_timestamp}</p>
             <p>Circulating Supply: {this.state.circulating_supply}</p>
             <p>Max Supply: {this.state.max_supply}</p>
-          </span>
-        </div>
-      </div>
+
+     </div>
+    
     );
   }
 }

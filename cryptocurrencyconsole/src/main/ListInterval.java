@@ -16,7 +16,7 @@ public class ListInterval {
 		JSONArray json = GetCurrency.Currencies(userSearch,interval);
 	//	GetCurrency.CurrencyTimeInterval(json, interval);
 		List<CurrencyInterval> cryptoMoneyInterval=GetCurrency.CurrencyTimeInterval(json, interval);
-
+		
 		
 	 for(CurrencyInterval crypto : cryptoMoneyInterval)
 			System.out.println(crypto);

@@ -1,9 +1,6 @@
 #imgHeader {
   height: 100px;
   width: 100px;
-  float: right;
+  float: left;
+  padding-right: 25px;
 }
-
-/* p {
-  text-align: left;
-} */

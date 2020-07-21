@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../Styling/css/Currency.css";
-//import "../Styling/css/wikisheet.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 import CurrencyInfoComponent from "./CurrencyInfoComponent.jsx";
@@ -42,22 +41,26 @@ class CurrencyHeaderComponent extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="row">
-          <div className="col s4">
+          <div> 
             <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
-          <div className="col s4">
+         <div>
             <h6>{this.state.name}</h6>
             <p>Symbol: {this.state.symbol}</p>
             <p>Rank: {this.state.ranking}</p>
           </div>
-          <div>
-            <CurrencyInfoComponent />
+          <div className="col s12">
+          
+            <CurrencyInfoComponent symbol={this.props.symbol}/>
+        
           </div>
         </div>
         <CurrencyIntervalComponent />
       </div>
+    
+     
     );
   }
 }

@@ -16,6 +16,9 @@ class HeaderComponent extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="#!">Logo</a>
+            <Link to="/logout" onClick={AuthenticationService.logout}>
+                    Logout
+                  </Link>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               {/* {isUserLoggedIn && (
                 <li>
@@ -35,13 +38,13 @@ class HeaderComponent extends Component {
                   <Link to="/login">Login</Link>
                 </li>
               )} */}
-              {isUserLoggedIn && (
+              {/* {isUserLoggedIn && (
                 <li>
                   <Link to="/logout" onClick={AuthenticationService.logout}>
                     Logout
                   </Link>
                 </li>
-              )}
+              )} */}
             </ul>
           </div>
         </nav>

@@ -24,15 +24,10 @@ public class CurrencyInfoController {
 		return currencyInfoServices.findAll();
 	}
 
-//	// GET: Top Ten Currencies
-//	@GetMapping("/users/{username}/cryptocurrencies/topTen")
-//	public List<CurrencyInfo> getTopTen(@PathVariable String username) {
-//		return currencyServices.listTopTen();
-//	}
 //	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrenciesInfo/id/{id}")
-	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
-		return currencyInfoServices.findById(id);
+	@GetMapping("/users/{username}/cryptocurrenciesInfo/{symbol}")
+	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable String symbol) {
+		return currencyInfoServices.findBySymbol(symbol);
 	}
 //	
 //	// GET: A Currency

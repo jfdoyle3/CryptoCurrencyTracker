@@ -44,16 +44,15 @@ public class CurrencyInfoServices {
 	}
 
 	// Get any known Currency in the API
-//	public CurrencyInfo findByAnyCurrency(String currencySearch) {
-//		String currencySymbol = currencySearch.toUpperCase();
-//		String currencyName = currencySearch.substring(0, 1).toUpperCase() + currencySearch.substring(1);
-//		for (CurrencyInfo currency : currencyList) {
-//			if (currency.getCurrencyId().equals(currencySymbol) || currency.getName().equals(currencyName)) {
-//				return currency;
-//			}
-//		}
-//		return null;
-//	}
+	public CurrencyInfo findBySymbol(String currencySearch) {
+		String currencySymbol = currencySearch.toUpperCase();
+		for (CurrencyInfo currencyInfo : currencyInfoList) {
+			if (currencyInfo.getSymbol().equals(currencySymbol) ) {
+				return currencyInfo;
+			}
+		}
+		return null;
+	}
 
 	// Delete by Id
 //	public Cryptocurrency deleteById(long id) {

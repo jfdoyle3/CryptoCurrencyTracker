@@ -25,8 +25,8 @@ public class CurrencyInfoController {
 	}
 
 //	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrenciesInfo/{symbol}")
-	public CurrencyInfo getByCurrencyId(@PathVariable String username, @PathVariable String symbol) {
+	@GetMapping("/users/{username}/cryptocurrencyInfo/{symbol}")
+	public CurrencyInfo getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
 		return currencyInfoServices.findBySymbol(symbol);
 	}
 //	

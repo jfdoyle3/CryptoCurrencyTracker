@@ -37,9 +37,10 @@ class CurrencyHeaderComponent extends Component {
           ranking: response.data.ranking,
         })
     );
-  }
-
+      }
+ 
   render() {
+    
     return (
       <div className="container">
         <div className="row">
@@ -52,8 +53,8 @@ class CurrencyHeaderComponent extends Component {
             <p>Rank: {this.state.ranking}</p>
           </div>
           <div className="col s12">
-          
-            <CurrencyInfoComponent symbol={this.props.symbol}/>
+
+            <CurrencyInfoComponent symbol={this.state.symbol}/>
         
           </div>
         </div>

@@ -19,10 +19,10 @@ public class CurrencyIntervalController {
 	private CurrencyIntervalServices currencyIntervalServices;
 
 	// GET: All Currencies
-	@GetMapping("/users/{username}/cryptocurrenciesInterval")
-	public List<CurrencyInterval> getAllInfo(@PathVariable String username) {
-		return currencyIntervalServices.findAll();
-	}
+//	@GetMapping("/users/{username}/cryptocurrenciesInterval")
+//	public List<CurrencyInterval> getAllInfo(@PathVariable String username) {
+//		return currencyIntervalServices.findAll();
+//	}
 
 //	// GET: Top Ten Currencies
 //	@GetMapping("/users/{username}/cryptocurrencies/topTen")
@@ -30,10 +30,10 @@ public class CurrencyIntervalController {
 //		return currencyServices.listTopTen();
 //	}
 //	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrenciesInterval/id/{symbol}/{interval}")
-	public List<CurrencyInterval> getByCurrencyId(@PathVariable String username, @PathVariable String symbol, @PathVariable String interval) {
-		return currencyIntervalServices.currencyDayInterval(symbol,interval);
-	}
+//	@GetMapping("/users/{username}/cryptocurrenciesInterval/id/{symbol}/{interval}")
+//	public List<CurrencyInterval> getByCurrencyId(@PathVariable String username, @PathVariable String symbol, @PathVariable String interval) {
+//		return currencyIntervalServices.currencyDayInterval(symbol,interval);
+//	}
 //	
 //	// GET: A Currency
 //	@GetMapping("/users/{username}/cryptocurrencies/{currency}")

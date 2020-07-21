@@ -13,7 +13,7 @@ public class CurrencyInfoServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CurrencyInfo> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
+	private List<CurrencyInfo> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearc);
 	private long idCounter = 0;
 
 	// Show All currencies in List

@@ -1,5 +1,13 @@
 #imgHeader {
   height: 100px;
   width: 100px;
+<<<<<<< HEAD
   padding-right: 25px;
+=======
+  padding-right: 10px;
+}
+
+#currencyInfo{
+  float: right;
+>>>>>>> Working
 }

@@ -43,8 +43,13 @@ class HeaderComponent extends Component {
                   <Link to="/logout" onClick={AuthenticationService.logout}>
                     Logout
                   </Link>
+<<<<<<< HEAD
                 </li> */}
               )
+=======
+                </li>
+              )} */}
+>>>>>>> Working
             </ul>
           </div>
         </nav>

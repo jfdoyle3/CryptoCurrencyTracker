@@ -8,7 +8,7 @@ class CurrencyInfoComponent extends Component {
         super(props);
         console.log("info-constructor---> props: "+props.symbol);
     this.state = {
-      symbol:"",
+      symbol:"BTC",
       price: "",
       price_date: "",
       high_timestamp: "",
@@ -24,16 +24,15 @@ class CurrencyInfoComponent extends Component {
     let username = AuthenticationService.getLoggedInUserName(); 
     CurrencyInfoDataService.retrieveInfo(username, this.state.symbol).then(
       (response) =>
-      //  this.setState({
-      //     price: response.data.price,
-      //     high: response.data.high,
-      //     high_timeStamp: response.data.highTimeStamp,
-      //     circulating_supply: response.data.circulatingSupply,
-      //     max_supply:  response.data.maxSupply,
-      //     market_cap: response.data.marketCap
+       this.setState({
+          price: response.data.price,
+          high: response.data.high,
+          high_timeStamp: response.data.highTimeStamp,
+          circulating_supply: response.data.circulatingSupply,
+          max_supply:  response.data.maxSupply,
+          market_cap: response.data.marketCap
             
-      //   })
-      console.log(response)
+        })
     );
   }
 

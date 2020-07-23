@@ -23,6 +23,7 @@ class CurrencyHeaderComponent extends Component {
   //     return;
   //   }
 
+<<<<<<< HEAD
   //     let username = AuthenticationService.getLoggedInUserName();
   //     CurrencyDataService.retrieveCryptocurrency(username, this.state.symbol).then(
   //       (response) =>
@@ -36,7 +37,23 @@ class CurrencyHeaderComponent extends Component {
   //     );
   // }
 
+=======
+    let username = AuthenticationService.getLoggedInUserName();
+    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+      (response) =>
+        //console.log(response)
+        this.setState({
+          name: response.data.name,
+          symbol: response.data.symbol,
+          logo_url: response.data.logoUrl,
+          ranking: response.data.ranking,
+        })
+    );
+      }
+ 
+>>>>>>> Working
   render() {
+    
     return (
 <<<<<<< HEAD
       <div>
@@ -61,8 +78,8 @@ class CurrencyHeaderComponent extends Component {
             <p>Rank: {this.state.ranking}</p>
           </div>
           <div className="col s12">
-          
-            <CurrencyInfoComponent symbol={this.props.symbol}/>
+
+            <CurrencyInfoComponent symbol={this.state.symbol}/>
         
           </div>
         </div>

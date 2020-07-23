@@ -1,9 +1,9 @@
 #imgHeader {
   height: 100px;
   width: 100px;
-  float: right;
+  padding-right: 10px;
 }
 
-/* p {
-  text-align: left;
-} */
+#currencyInfo{
+  float: right;
+}

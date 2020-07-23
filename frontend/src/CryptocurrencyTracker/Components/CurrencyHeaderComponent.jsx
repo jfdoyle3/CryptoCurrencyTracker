@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../Styling/css/Currency.css";
-//import "../Styling/css/wikisheet.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 
@@ -25,6 +24,7 @@ class CurrencyHeaderComponent extends Component {
       return;
     }
 
+<<<<<<< HEAD
     //   let username = AuthenticationService.getLoggedInUserName();
     //   CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
     //     (response) =>
@@ -38,20 +38,46 @@ class CurrencyHeaderComponent extends Component {
     //   );
   }
 
+=======
+    let username = AuthenticationService.getLoggedInUserName();
+    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+      (response) =>
+        //console.log(response)
+        this.setState({
+          name: response.data.name,
+          symbol: response.data.symbol,
+          logo_url: response.data.logoUrl,
+          ranking: response.data.ranking,
+        })
+    );
+      }
+ 
+>>>>>>> Working
   render() {
+    
     return (
-      <div>
+      <div className="container">
         <div className="row">
-          <div className="col s4">
+          <div> 
             <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
-          <div className="col s4">
+         <div>
             <h6>{this.state.name}</h6>
             <p>Symbol: {this.state.symbol}</p>
             <p>Rank: {this.state.ranking}</p>
           </div>
+<<<<<<< HEAD
+=======
+          <div className="col s12">
+
+            <CurrencyInfoComponent symbol={this.state.symbol}/>
+        
+          </div>
+>>>>>>> Working
         </div>
       </div>
+    
+     
     );
   }
 }

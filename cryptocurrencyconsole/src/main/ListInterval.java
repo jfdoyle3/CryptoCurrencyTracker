@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 <<<<<<< HEAD
 =======
@@ -14,6 +15,7 @@ import objects.CurrencyInterval;
 public class ListInterval {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 		String userSearch="";
@@ -30,6 +32,12 @@ public class ListInterval {
 		String[] interval= {"1d", "ytd"};
 		String userSearch="";
 		List<>
+=======
+		String[] interval= {"1d","7d", "ytd"};
+		
+		String userSearch="BTC ";
+		List<List<CurrencyInterval>> intervalsList=new ArrayList<>();
+>>>>>>> Working
 		for(int idx=0; idx<interval.length; idx++) {
 		JSONArray json = GetCurrency.Currencies(userSearch,interval[idx]);
 	//	GetCurrency.CurrencyTimeInterval(json, interval);
@@ -37,14 +45,15 @@ public class ListInterval {
 		
 		
 	 for(CurrencyInterval crypto : cryptoMoneyInterval)
+		 
 			System.out.println(crypto);
 	 
-	 Scanner myObj = new Scanner(System.in); 
-	    System.out.println("Pause....");
-
-	    String userName = myObj.nextLine();
-	    System.out.println(userName);
-	    myObj.close();
+//	 Scanner myObj = new Scanner(System.in); 
+//	    System.out.println("Pause....");
+//
+//	    String userName = myObj.nextLine();
+//	    System.out.println(userName);
+//	    myObj.close();
 		}
 >>>>>>> Working
 	System.out.println("end of line");

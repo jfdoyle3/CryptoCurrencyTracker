@@ -44,19 +44,19 @@ public class CurrencyInfoServices {
 	}
 
 	// Get any known Currency in the API
-<<<<<<< HEAD
-	public CurrencyInfo findByAnyCurrency(String currencySearch) {
-		String currencySymbol = currencySearch.toUpperCase();
-		for (CurrencyInfo currency : currencyInfoList) {
-			if (currency.getSymbol().equals(currencySymbol)) {
-				return currency;
-=======
+
+//	public CurrencyInfo findByAnyCurrency(String currencySearch) {
+//		String currencySymbol = currencySearch.toUpperCase();
+//		for (CurrencyInfo currency : currencyInfoList) {
+//			if (currency.getSymbol().equals(currencySymbol)) {
+//				return currency;
+
 	public CurrencyInfo findBySymbol(String currencySearch) {
 		String currencySymbol = currencySearch.toUpperCase();
 		for (CurrencyInfo currencyInfo : currencyInfoList) {
 			if (currencyInfo.getSymbol().equals(currencySymbol) ) {
 				return currencyInfo;
->>>>>>> Working
+
 			}
 		}
 		return null;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Styling/css/Currency.css";
+import "../Styling/css/CurrencyDetail.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 
@@ -62,9 +62,9 @@ class CurrencyHeaderComponent extends Component {
             <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
          <div>
-            <h6>{this.state.name}</h6>
-            <p>Symbol: {this.state.symbol}</p>
-            <p>Rank: {this.state.ranking}</p>
+            <h5><b>{this.state.name}</b></h5>
+            <p><i>Symbol:</i> {this.state.symbol}</p>
+            <p><i>Rank:</i> {this.state.ranking}</p>
           </div>
 <<<<<<< HEAD
 =======
@@ -75,6 +75,12 @@ class CurrencyHeaderComponent extends Component {
           </div>
 >>>>>>> Working
         </div>
+<<<<<<< HEAD
+=======
+        <div id="intervalTable">
+        <CurrencyIntervalComponent />
+        </div>
+>>>>>>> Working
       </div>
     
      

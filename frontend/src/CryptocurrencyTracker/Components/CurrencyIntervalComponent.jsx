@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import "../Styling/css/CurrencyDetail.css";
 
 class CurrencyIntervalComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      interval:"1d",
       volume: "27727114306.68",
       price_change: "103.17034381",
       price_change_pct: "0.0109",
@@ -15,7 +17,7 @@ class CurrencyIntervalComponent extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div>
         <table className="table">
           <thead>
             <tr>
@@ -31,7 +33,7 @@ class CurrencyIntervalComponent extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>1 Day</td>
+              <td>{this.state.interval}</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>
@@ -41,7 +43,7 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>7 Days</td>
+              <td>30 Days</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>

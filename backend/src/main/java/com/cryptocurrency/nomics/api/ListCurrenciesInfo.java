@@ -10,8 +10,13 @@ import kong.unirest.json.JSONArray;
 
 public class ListCurrenciesInfo {
 
+<<<<<<< HEAD
 	private static String interval = "1d";
 
+=======
+	private static String interval="1d";
+	
+>>>>>>> Working
 	public static List<CurrencyInfo> CreateCurrencyListInfo(String userSearch) {
 
 		JSONArray json = GetCurrency.Currencies(userSearch, interval);

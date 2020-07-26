@@ -11,13 +11,12 @@ public class ListInfo {
 
 	public static void main(String[] args) {
 
-		String userSearch="";
+		String userSearch="BTC";
 		String interval="1d";
-		
 		JSONArray json = GetCurrency.Currencies(userSearch, interval);
 		//List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);
 		List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
-
+		//GetCurrency.CurrencyInterval(json);
 		
 	 for(CurrencyInfo crypto : cryptoMoneyInfo)
 			System.out.println(crypto);

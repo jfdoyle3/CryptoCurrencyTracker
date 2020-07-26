@@ -12,9 +12,15 @@ import objects.CurrencyInterval;
 public class ListInterval {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 
 		String[] interval= {"1d","7d", "ytd"};
 		String userSearch="BTC ";
+=======
+		String[] interval= {"1d"};
+		
+		String userSearch="";
+>>>>>>> Working
 		List<List<CurrencyInterval>> intervalsList=new ArrayList<>();
 
 		for(int idx=0; idx<interval.length; idx++) {

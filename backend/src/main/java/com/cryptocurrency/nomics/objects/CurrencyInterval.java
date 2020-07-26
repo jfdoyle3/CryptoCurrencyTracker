@@ -1,123 +1,147 @@
 package com.cryptocurrency.nomics.objects;
 
 public class CurrencyInterval {
-
+	
 	private long id;
-	private String currencySymbol;
-	private String intervalTime;
+	private String timeInterval;
+	private String Symbol;
 	private String volume;
-	private String price_change;
-	private String price_change_pct;
-	private String volume_change;
-	private String volume_change_pct;
-	private String market_cap_change;
-	private String market_cap_change_pct;
+	private String priceChange;
+	private String priceChangePct;
+	private String volumeChange;
+	private String volumeChangePct;
+	private String marketCapChange;
+	private String marketCapChangePct;
+
 
 	public CurrencyInterval() {
-
+		
 	}
 
-	public CurrencyInterval(long id, String currencySymbol, String intervalTime, String volume, String price_change,
-			String price_change_pct, String volume_change, String volume_change_pct, String market_cap_change,
-			String market_cap_change_pct) {
+
+	public CurrencyInterval(long id, String timeInterval, String symbol, String volume, String priceChange,
+			String priceChangePct, String volumeChange, String volumeChangePct, String marketCapChange,
+			String marketCapChangePct) {
 		this.id = id;
-		this.currencySymbol = currencySymbol;
-		this.intervalTime = intervalTime;
+		this.timeInterval = timeInterval;
+		this.Symbol = symbol;
 		this.volume = volume;
-		this.price_change = price_change;
-		this.price_change_pct = price_change_pct;
-		this.volume_change = volume_change;
-		this.volume_change_pct = volume_change_pct;
-		this.market_cap_change = market_cap_change;
-		this.market_cap_change_pct = market_cap_change_pct;
+		this.priceChange = priceChange;
+		this.priceChangePct = priceChangePct;
+		this.volumeChange = volumeChange;
+		this.volumeChangePct = volumeChangePct;
+		this.marketCapChange = marketCapChange;
+		this.marketCapChangePct = marketCapChangePct;
 	}
+
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getCurrencySymbol() {
-		return currencySymbol;
+
+	public String getTimeInterval() {
+		return timeInterval;
 	}
 
-	public void setCurrencySymbol(String currencySymbol) {
-		this.currencySymbol = currencySymbol;
+
+	public void setTimeInterval(String timeInterval) {
+		this.timeInterval = timeInterval;
 	}
 
-	public String getIntervalTime() {
-		return intervalTime;
+
+	public String getSymbol() {
+		return Symbol;
 	}
 
-	public void setIntervalTime(String intervalTime) {
-		this.intervalTime = intervalTime;
+
+	public void setSymbol(String symbol) {
+		Symbol = symbol;
 	}
+
 
 	public String getVolume() {
 		return volume;
 	}
 
+
 	public void setVolume(String volume) {
 		this.volume = volume;
 	}
 
-	public String getPrice_change() {
-		return price_change;
+
+	public String getPriceChange() {
+		return priceChange;
 	}
 
-	public void setPrice_change(String price_change) {
-		this.price_change = price_change;
+
+	public void setPriceChange(String priceChange) {
+		this.priceChange = priceChange;
 	}
 
-	public String getPrice_change_pct() {
-		return price_change_pct;
+
+	public String getPriceChangePct() {
+		return priceChangePct;
 	}
 
-	public void setPrice_change_pct(String price_change_pct) {
-		this.price_change_pct = price_change_pct;
+
+	public void setPriceChangePct(String priceChangePct) {
+		this.priceChangePct = priceChangePct;
 	}
 
-	public String getVolume_change() {
-		return volume_change;
+
+	public String getVolumeChange() {
+		return volumeChange;
 	}
 
-	public void setVolume_change(String volume_change) {
-		this.volume_change = volume_change;
+
+	public void setVolumeChange(String volumeChange) {
+		this.volumeChange = volumeChange;
 	}
 
-	public String getVolume_change_pct() {
-		return volume_change_pct;
+
+	public String getVolumeChangePct() {
+		return volumeChangePct;
 	}
 
-	public void setVolume_change_pct(String volume_change_pct) {
-		this.volume_change_pct = volume_change_pct;
+
+	public void setVolumeChangePct(String volumeChangePct) {
+		this.volumeChangePct = volumeChangePct;
 	}
 
-	public String getMarket_cap_change() {
-		return market_cap_change;
+
+	public String getMarketCapChange() {
+		return marketCapChange;
 	}
 
-	public void setMarket_cap_change(String market_cap_change) {
-		this.market_cap_change = market_cap_change;
+
+	public void setMarketCapChange(String marketCapChange) {
+		this.marketCapChange = marketCapChange;
 	}
 
-	public String getMarket_cap_change_pct() {
-		return market_cap_change_pct;
+
+	public String getMarketCapChangePct() {
+		return marketCapChangePct;
 	}
 
-	public void setMarket_cap_change_pct(String market_cap_change_pct) {
-		this.market_cap_change_pct = market_cap_change_pct;
+
+	public void setMarketCapChangePct(String marketCapChangePct) {
+		this.marketCapChangePct = marketCapChangePct;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Interval [id=" + id + ", currencySymbol=" + currencySymbol + ", intervalTime=" + intervalTime
-				+ ", volume=" + volume + ", price_change=" + price_change + ", price_change_pct=" + price_change_pct
-				+ ", volume_change=" + volume_change + ", volume_change_pct=" + volume_change_pct
-				+ ", market_cap_change=" + market_cap_change + ", market_cap_change_pct=" + market_cap_change_pct + "]";
+		return "CurrencyInterval [id=" + id + ", timeInterval=" + timeInterval + ", Symbol=" + Symbol + ", volume="
+				+ volume + ", priceChange=" + priceChange + ", priceChangePct=" + priceChangePct + ", volumeChange="
+				+ volumeChange + ", volumeChangePct=" + volumeChangePct + ", marketCapChange=" + marketCapChange
+				+ ", marketCapChangePct=" + marketCapChangePct + "]";
 	}
+
 
 }

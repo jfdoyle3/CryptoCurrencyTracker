@@ -65,6 +65,8 @@ public class GetCurrency {
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
 			String price = (String) key.get("price");
+			String priceDate=(String) key.get("price_date");
+			String priceTimeStamp=(String) key.get("price_timestamp");
 
 			if (key.has("circulating_supply")) {
 				circulating_supply = (String) key.get("circulating_supply");
@@ -86,7 +88,7 @@ public class GetCurrency {
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, circulating_supply, maxSupply,
+			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price,priceDate,priceTimeStamp, circulating_supply, maxSupply,
 					market_cap, rank, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
 			// System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
@@ -137,10 +139,11 @@ public class GetCurrency {
 				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
 				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
 				// Market %: "+marketCapChgPct);
-			} else {
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
-						"N/A", "N/A", "N/A", "N/A", "N/A");
-				currencyIntervalList.add(currencyInterval);
+				
+//			} else {
+//				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
+//						"N/A", "N/A", "N/A", "N/A", "N/A");
+//				currencyIntervalList.add(currencyInterval);
 				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
 				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
 				// Market: N/A | Market %: N/A");

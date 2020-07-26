@@ -13,6 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
+<<<<<<< HEAD
 	//	List<Cryptocurrency> topTen=new ArrayList<>();
 		List<CurrencyInfo> moneyInfo=new ArrayList<>();
 		String userSearch="";
@@ -27,7 +28,24 @@ public class Main {
 //	 }
 	//
 	System.out.println("end of line");
+=======
+		// List<Cryptocurrency> topTen=new ArrayList<>();
+		List<CurrencyInfo> moneyInfo = new ArrayList<>();
+		String userSearch = "BTC";
+		String interval = "1d";
+		JSONArray json = GetCurrency.Currencies(userSearch, interval);
+		// List<Cryptocurrency> cryptoMoney=GetCurrency.CurrencyID(json);
+		List<CurrencyInfo> cryptoMoneyInfo = GetCurrency.CurrencyInfo(json);
+		// GetCurrency.CurrencyInterval(json);
 
-	//BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA
+		for (CurrencyInfo crypto : cryptoMoneyInfo) {
+			System.out.println(crypto);
+>>>>>>> Working
+
+		}
+
+		System.out.println("end of line");
+
+		// BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA
 	}
 }

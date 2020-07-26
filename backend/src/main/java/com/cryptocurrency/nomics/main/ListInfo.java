@@ -13,7 +13,7 @@ public class ListInfo {
 
 		String userSearch="BTC";
 		String interval="1d";
-	//	JSONArray json = GetCurrency.Currencies(userSearch, interval);
+	JSONArray json = GetCurrency.Currencies(userSearch, interval);
 		//List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);
 		List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
 		//GetCurrency.CurrencyInterval(json);

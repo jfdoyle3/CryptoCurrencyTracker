@@ -21,10 +21,9 @@ public class GetCurrency {
 	private static long idCounter = 0;
 	
 	
-	public static JSONArray Currencies(String currency) {
+	public static JSONArray Currencies(String currency, String interval) {
 
 		// ******** REMOVE API KEY before committing *****
-		String interval="";
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
 				.queryString("key", "8381f81057e8766c11cd0109bae84864").queryString("ids", currency)
 				.queryString("interval", interval).asString();

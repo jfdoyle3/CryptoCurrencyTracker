@@ -1,0 +1,16 @@
+#imgHeader {
+  height: 100px;
+  width: 100px;
+ padding-top: 25px;
+}
+
+#currencyInfo{
+  padding-top: 25px;
+  padding-left: 25px;
+  float: right;
+}
+
+#price{
+  padding-top: 25px;
+  text-indent: 25px ;
+}

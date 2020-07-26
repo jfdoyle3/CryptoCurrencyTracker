@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import "../Styling/css/Currency.css";
+import "../Styling/css/CurrencyDetail.css";
 import CurrencyInfoDataService from "../API/CurrencyInfoDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 
 class CurrencyInfoComponent extends Component {
   constructor(props) {
         super(props);
-        console.log("info-constructor---> props: "+props.symbol);
     this.state = {
-      symbol:"BTC",
+      symbol: "BTC",
       price: "",
       priceDate: "",
       priceTimeStamp: "",
@@ -27,8 +26,8 @@ class CurrencyInfoComponent extends Component {
       (response) =>
        this.setState({
           price: response.data.price,
-          priceDate: response.data.price_date,
-          priceTimeStamp: response.data.price_timestamp,
+          priceDate: response.data.priceDate,
+          priceTimeStamp: response.data.priceTimeStamp,
           high: response.data.high,
           high_timeStamp: response.data.highTimeStamp,
           circulating_supply: response.data.circulatingSupply,
@@ -44,15 +43,14 @@ class CurrencyInfoComponent extends Component {
     return (
       <>
       <div id="currencyInfo" classname="container">
-        <p>Price: <b>{this.state.price}</b></p>
-        <p>Price Date: {this.state.priceDate}</p>
-        <p>Price TimeStamp: {this.state.priceTimeStamp}</p>
+        <p><i>High:</i> {this.state.high}</p>
+        <p><i>High TimeStamp:</i> {this.state.high_timeStamp}</p>
+        <p><i>Circulating Supply:</i> {this.state.circulating_supply}</p>
+        <p><i>Max Supply:</i> {this.state.max_supply}</p>
         </div>
-        <div>
-        <p>High: {this.state.high}</p>
-        <p>High TimeStamp: {this.state.high_timeStamp}</p>
-        <p>Circulating Supply: {this.state.circulating_supply}</p>
-        <p>Max Supply: {this.state.max_supply}</p>
+        <div id="price">
+        <p><i>Price:</i> <b>{this.state.price}</b></p>
+        <p><i>Price TimeStamp:</i> {this.state.priceTimeStamp}</p>
       </div>
       </>
     );

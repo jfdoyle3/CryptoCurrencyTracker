@@ -19,7 +19,7 @@ public class Main {
 		JSONArray json = GetCurrency.Currencies(userSearch);
 		// List<Cryptocurrency> cryptoMoney=GetCurrency.CurrencyID(json);
 		List<CurrencyInfo> cryptoMoneyInfo=GetCurrency.CurrencyInfo(json);
-		GetCurrency.CurrencyInterval(json);
+	//	GetCurrency.CurrencyInterval(json);
 		
 	 for(CurrencyInfo crypto : cryptoMoneyInfo) {
 			System.out.println(crypto);

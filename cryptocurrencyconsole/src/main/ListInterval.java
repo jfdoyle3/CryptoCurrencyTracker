@@ -12,9 +12,9 @@ import objects.CurrencyInterval;
 public class ListInterval {
 
 	public static void main(String[] args) {
-		String[] interval= {"1d","7d", "ytd"};
+		String[] interval= {"1d"};
 		
-		String userSearch="BTC ";
+		String userSearch="";
 		List<List<CurrencyInterval>> intervalsList=new ArrayList<>();
 		for(int idx=0; idx<interval.length; idx++) {
 		JSONArray json = GetCurrency.Currencies(userSearch,interval[idx]);

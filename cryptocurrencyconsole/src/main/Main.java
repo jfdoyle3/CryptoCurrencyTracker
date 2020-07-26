@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		String userSearch="";
+		String userSearch="BTC";
 		String interval="1d";
 		JSONArray json = GetCurrency.Currencies(userSearch, interval);
 		//List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);

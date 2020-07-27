@@ -5,7 +5,8 @@ class CurrencyIntervalComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interval:"1d",
+      symbol: props.symbol,
+      interval:"1",
       volume: "27727114306.68",
       price_change: "103.17034381",
       price_change_pct: "0.0109",
@@ -21,14 +22,14 @@ class CurrencyIntervalComponent extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>Time Interval</th>
-              <th>Volume</th>
-              <th>Price Change</th>
-              <th>Price Change %</th>
-              <th>Volume Change</th>
-              <th>Volume Change %</th>
-              <th>Market Cap Change</th>
-              <th>Market Cap Change %</th>
+              <th><font size="2">Interval</font></th>
+              <th><font size="2">Volume</font></th>
+              <th><font size="2">Price Change</font></th>
+              <th><font size="2">Price Change %</font></th>
+              <th><font size="2">Volume Change</font></th>
+              <th><font size="2">Volume Change %</font></th>
+              <th><font size="2">Market Cap Change</font></th>
+              <th><font size="2">Market Cap Change %</font></th>
             </tr>
           </thead>
           <tbody>
@@ -43,7 +44,7 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>30 Days</td>
+              <td>30</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>
@@ -53,7 +54,17 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>365 Days</td>
+              <td>365</td>
+              <td>{this.state.volume}</td>
+              <td>{this.state.price_change}</td>
+              <td>{this.state.price_change_pct}</td>
+              <td>{this.state.volume_change}</td>
+              <td>{this.state.volume_change_pct}</td>
+              <td>{this.state.market_cap_change}</td>
+              <td>{this.state.market_cap_change_pct}</td>
+            </tr>
+            <tr>
+              <td>ytd</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>

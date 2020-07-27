@@ -3,7 +3,7 @@ import { API_URL } from "../../Constants.js";
 
 class cryptocurrenciesDataService {
   retrieveInfo(username,symbol) {
-    //console.log('executed service')
+    console.log('executed info service')
     return axios.get(`${API_URL}/users/${username}/cryptocurrencyInfo/${symbol}`);
   }
 

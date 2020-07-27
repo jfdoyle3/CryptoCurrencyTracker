@@ -29,15 +29,15 @@ public class CurrencyController {
 	public List<CryptocurrencyHeader> getTopTen(@PathVariable String username) {
 		return currencyServices.listTopFive();
 	}
-	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrencies/id/{id}")
+	// GET: A Currency by Id
+	@GetMapping("/users/{username}/cryptocurrency/id/{id}")
 	public CryptocurrencyHeader getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
 		return currencyServices.findById(id);
 	}
 	
-	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrencies/{currency}")
-	public CryptocurrencyHeader getByCurrency(@PathVariable String username, @PathVariable String currency) {
-		return currencyServices.findByAnyCurrency(currency);
+	// GET: A Currency by Symbol
+	@GetMapping("/users/{username}/cryptocurrency/{symbol}")
+	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
+		return currencyServices. findByCurrencyBySymbol(symbol);
 	}
 }

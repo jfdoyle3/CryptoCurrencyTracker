@@ -43,12 +43,11 @@ public class CurrencyServices {
 		return null;
 	}
 
-	// Get any known Currency in the API
-	public CryptocurrencyHeader findByAnyCurrency(String currencySearch) {
+	// Get Currency Symbol in the API
+	public CryptocurrencyHeader findByCurrencyBySymbol(String currencySearch) {
 		String currencySymbol = currencySearch.toUpperCase();
-		String currencyName = currencySearch.substring(0, 1).toUpperCase() + currencySearch.substring(1);
 		for (CryptocurrencyHeader currency : currencyList) {
-			if (currency.getCurrencyId().equals(currencySymbol) || currency.getName().equals(currencyName)) {
+			if (currency.getSymbol().equals(currencySymbol)) {
 				return currency;
 			}
 		}

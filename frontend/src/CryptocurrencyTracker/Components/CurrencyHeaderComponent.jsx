@@ -7,11 +7,18 @@ class CurrencyHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       id: "1",
       symbol: "BTC",
       name: "BTC",
       logo_url: "IMAGE",
       rank: "1",
+=======
+      symbol: this.props.match.params.symbol,
+      name: "",
+      logo_url: "",
+      rank: "",
+>>>>>>> Working
     };
     // bind test button
     // this.props.match.params.id,
@@ -20,9 +27,6 @@ class CurrencyHeaderComponent extends Component {
     // bind back currency function
   }
   componentDidMount() {
-    if (this.state.id === -1) {
-      return;
-    }
 
 <<<<<<< HEAD
     //   let username = AuthenticationService.getLoggedInUserName();
@@ -40,15 +44,15 @@ class CurrencyHeaderComponent extends Component {
 
 =======
     let username = AuthenticationService.getLoggedInUserName();
-    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+    CurrencyDataService.retrieveCryptocurrencyBySymbol(username, this.state.symbol).then(
       (response) =>
-        //console.log(response)
+       // console.log(response)
         this.setState({
           name: response.data.name,
           symbol: response.data.symbol,
           logo_url: response.data.logoUrl,
           ranking: response.data.ranking,
-        })
+       })
     );
       }
  
@@ -78,7 +82,7 @@ class CurrencyHeaderComponent extends Component {
 <<<<<<< HEAD
 =======
         <div id="intervalTable">
-        <CurrencyIntervalComponent />
+        <CurrencyIntervalComponent symbol={this.state.symbol}/>
         </div>
 >>>>>>> Working
       </div>

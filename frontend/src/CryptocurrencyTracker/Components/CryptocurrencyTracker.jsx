@@ -30,11 +30,15 @@ class CryptocurrencyTracker extends Component {
                 component={CurrencyListComponent}
               />
               <AuthenticatedRoute
+<<<<<<< HEAD
                 path="/details"
                 component={CurrencyDetailsComponent}
               />
               <AuthenticatedRoute
                 path="/cryptocurrenices/id/:id"
+=======
+                path="/cryptocurrency/:symbol"
+>>>>>>> Working
                 component={CurrencyHeaderComponent}
               />
               <AuthenticatedRoute path="/logout" component={LogoutComponent} />

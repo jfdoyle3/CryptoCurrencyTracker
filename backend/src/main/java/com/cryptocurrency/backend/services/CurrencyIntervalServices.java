@@ -1,5 +1,6 @@
 package com.cryptocurrency.backend.services;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -51,3 +52,16 @@ public class CurrencyIntervalServices {
 //		return null;
 //}
 }
+=======
+
+
+import org.springframework.stereotype.Service;
+
+
+
+@Service
+public class CurrencyIntervalServices {
+	
+	
+}
+>>>>>>> Working

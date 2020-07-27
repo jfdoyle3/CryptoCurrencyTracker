@@ -7,7 +7,7 @@ class cryptocurrenciesDataService {
     return axios.get(`${API_URL}/users/{username}/cryptocurrencies/topfive`);
   }
 
-  retrieveCryptocurrency(name, id) {
+  retrieveCryptocurrencyById(name, id) {
     console.log(`trying to get id: ${id}`);
     return axios.get(`${API_URL}/users/${name}/cryptocurrencies/id/${id}`);
   }
@@ -22,10 +22,10 @@ class cryptocurrenciesDataService {
   //   return axios.put(`${API_URL}/users/${name}/cryptocurrencies/${id}`, cryptocurrencies);
   // }
 
-  // createcryptocurrencies(name, cryptocurrencies) {
-  //   //console.log('executed service')
-  //   return axios.post(`${API_URL}/users/${name}/cryptocurrencies/`, cryptocurrencies);
-  // }
+  retrieveCryptocurrencyBySymbol(name, symbol) {
+   // console.log('executed symbol service')
+    return axios.get(`${API_URL}/users/${name}/cryptocurrency/${symbol}`);
+  }
 }
 
 export default new cryptocurrenciesDataService();

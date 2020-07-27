@@ -7,7 +7,7 @@ class CurrencyInfoComponent extends Component {
   constructor(props) {
         super(props);
     this.state = {
-      symbol: "BTC",
+      symbol: props.symbol,
       price: "",
       priceDate: "",
       priceTimeStamp: "",

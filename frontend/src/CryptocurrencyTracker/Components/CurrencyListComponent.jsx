@@ -21,8 +21,8 @@ class CurrencyHeaderComponent extends Component {
     // console.log(this.state);
   }
 
-  viewCurrencyClicked(id) {
-    this.props.history.push(`/cryptocurrenices/id/${id}`);
+  viewCurrencyClicked(symbol) {
+    this.props.history.push(`/cryptocurrency/${symbol}`);
   }
 
   refreshCurrencies() {
@@ -62,7 +62,7 @@ class CurrencyHeaderComponent extends Component {
                     <button
                       className="waves-effect waves-light btn-small"
                       onClick={() =>
-                        this.viewCurrencyClicked(cryptocurrency.id)
+                        this.viewCurrencyClicked(cryptocurrency.symbol)
                       }
                     >
                       View

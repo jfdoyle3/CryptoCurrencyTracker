@@ -20,10 +20,10 @@ public class ListIntervals {
 			// GetCurrency.CurrencyTimeInterval(json, interval);
 			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
 
-			for (CurrencyInterval crypto : cryptoMoneyInterval)
-
+			for (CurrencyInterval crypto : cryptoMoneyInterval) {
+				intervalsList.add(crypto);
 				System.out.println(crypto);
-
+			}
 //	 Scanner myObj = new Scanner(System.in); 
 
 			System.out.println("end of line");

@@ -21,20 +21,20 @@ class CurrencyIntervalComponent extends Component {
       <div>
         <table className="table">
           <thead>
-            <tr>
-              <th><font size="2">Interval</font></th>
-              <th><font size="2">Volume</font></th>
-              <th><font size="2">Price Change</font></th>
-              <th><font size="2">Price Change %</font></th>
-              <th><font size="2">Volume Change</font></th>
-              <th><font size="2">Volume Change %</font></th>
-              <th><font size="2">Market Cap Change</font></th>
-              <th><font size="2">Market Cap Change %</font></th>
+            <tr id="detailsHeader">
+              <th>Interval</th>
+              <th>Volume</th>
+              <th>Price Change</th>
+              <th>Price Change %</th>
+              <th>Volume Change</th>
+              <th>Volume Change %</th>
+              <th>Market Cap Change</th>
+              <th>Market Cap Change %</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{this.state.interval}</td>
+              <td>1 day</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>
@@ -44,7 +44,7 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>30</td>
+              <td>30 days</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>
@@ -54,7 +54,7 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>365</td>
+              <td>365 days</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>
@@ -64,7 +64,7 @@ class CurrencyIntervalComponent extends Component {
               <td>{this.state.market_cap_change_pct}</td>
             </tr>
             <tr>
-              <td>ytd</td>
+              <td >Year to Date</td>
               <td>{this.state.volume}</td>
               <td>{this.state.price_change}</td>
               <td>{this.state.price_change_pct}</td>

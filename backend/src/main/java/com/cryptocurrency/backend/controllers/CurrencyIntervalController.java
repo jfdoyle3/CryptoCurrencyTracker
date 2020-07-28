@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.services.CurrencyIntervalServices;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 =======
+=======
+import com.cryptocurrency.nomics.objects.CurrencyInterval;
+>>>>>>> Working
 
 >>>>>>> Working
 
@@ -23,6 +27,7 @@ public class CurrencyIntervalController {
 	private CurrencyIntervalServices currencyIntervalServices;
 
 	// GET: All Currencies
+<<<<<<< HEAD
 <<<<<<< HEAD
 	@GetMapping("/users/{username}/cryptocurrenciesInterval")
 	public List<CurrencyInterval> getAllInfo(@PathVariable String username) {
@@ -50,6 +55,12 @@ public class CurrencyIntervalController {
 //	public List<CurrencyInfo> getAllInfo(@PathVariable String username) {
 //		return currencyIntervalServices.findAll();
 	//}
+=======
+	@GetMapping("/users/{username}/cryptocurrenciesInterval/{symbol}")
+	public List<CurrencyInterval> getAllInfo(@PathVariable String username,@PathVariable String symbol ) {
+		return currencyIntervalServices.getIntervals(symbol);
+	}
+>>>>>>> Working
 
 >>>>>>> Working
 }

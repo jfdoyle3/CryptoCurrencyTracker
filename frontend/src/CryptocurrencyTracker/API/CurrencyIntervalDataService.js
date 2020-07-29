@@ -2,9 +2,9 @@ import axios from "axios";
 import { API_URL } from "../../Constants.js";
 
 class cryptocurrenciesDataService {
-  retrieveInfo(username,symbol) {
-   // console.log('executed info service')
-    return axios.get(`${API_URL}/users/${username}/cryptocurrencyInfo/${symbol}`);
+  retrieveIntervals(username,symbol) {
+  //  console.log('executed interval service')
+    return axios.get(`${API_URL}/users/${username}/cryptocurrencyIntervals/${symbol}`);
   }
 
   // deletecryptocurrencies(name, id) {

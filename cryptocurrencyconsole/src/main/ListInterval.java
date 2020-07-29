@@ -12,19 +12,18 @@ import objects.CurrencyInterval;
 public class ListInterval {
 
 	public static void main(String[] args) {
-		String[] interval= {"1d"};
+		String[] interval= {"7d","30d","ytd"};
 		
-		String userSearch="";
-		List<List<CurrencyInterval>> intervalsList=new ArrayList<>();
-		for(int idx=0; idx<interval.length; idx++) {
-		JSONArray json = GetCurrency.Currencies(userSearch,interval[idx]);
+		String symbol="ETH";
+	
+	for(int idx=0; idx<interval.length; idx++) {
+		JSONArray json = GetCurrency.Currencies(symbol,interval[idx]);
 	//	GetCurrency.CurrencyTimeInterval(json, interval);
 		List<CurrencyInterval> cryptoMoneyInterval=GetCurrency.CurrencyTimeInterval(json, interval[idx]);
+		System.out.println(cryptoMoneyInterval.get(idx));
 		
-		
-	 for(CurrencyInterval crypto : cryptoMoneyInterval)
-		 
-			System.out.println(crypto);
+//	 for(CurrencyInterval crypto : cryptoMoneyInterval)
+//			System.out.println(crypto);
 	 
 //	 Scanner myObj = new Scanner(System.in); 
 //	    System.out.println("Pause....");
@@ -35,7 +34,7 @@ public class ListInterval {
 		}
 	System.out.println("end of line");
 
-
+		}
 	//BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA
-	}
+//	}
 }

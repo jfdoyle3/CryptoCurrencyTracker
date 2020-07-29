@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import AuthenticationService from "../Auth/AuthenticationService.js";
+import CurrencyIntervalDataService from '../API/CurrencyIntervalDataService';
 import "../Styling/css/CurrencyDetail.css";
 
 class CurrencyIntervalComponent extends Component {
@@ -6,26 +8,38 @@ class CurrencyIntervalComponent extends Component {
     super(props);
     this.state = {
       symbol: props.symbol,
-      interval:"1",
-      volume: "27727114306.68",
-      price_change: "103.17034381",
-      price_change_pct: "0.0109",
-      volume_change: "-3798607023.65",
-      volume_change_pct: "-0.1205",
-      market_cap_change: "1904769546.84",
-      market_cap_change_pct: "0.0109",
+      currencyIntervals: []
     };
+  }
+  componentDidMount() {
+   // console.log("interval-mounted");
+    let username = AuthenticationService.getLoggedInUserName(); 
+    CurrencyIntervalDataService.retrieveIntervals(username, this.state.symbol).then(
+      (response) =>
+      this.setState({ currencyIntervals: response.data }
+    //  console.log(response)
+      //  this.setState({
+      //   volume: response.data,
+      //   price_change: ,
+      //   price_change_pct: "",
+      //   volume_change: "",
+      //   volume_change_pct: "",
+      //   market_cap_change: "",
+      //   market_cap_change_pct: "",
+            
+      //   })
+    ));
   }
   render() {
     return (
       <div>
-        <table className="table">
+        <table id="intervalTable" className="table">
           <thead>
-            <tr id="detailsHeader">
+            <tr id="detailsHeaderRow">
               <th>Interval</th>
-              <th>Volume</th>
               <th>Price Change</th>
               <th>Price Change %</th>
+              <th>Volume</th>
               <th>Volume Change</th>
               <th>Volume Change %</th>
               <th>Market Cap Change</th>
@@ -33,46 +47,18 @@ class CurrencyIntervalComponent extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1 day</td>
-              <td>{this.state.volume}</td>
-              <td>{this.state.price_change}</td>
-              <td>{this.state.price_change_pct}</td>
-              <td>{this.state.volume_change}</td>
-              <td>{this.state.volume_change_pct}</td>
-              <td>{this.state.market_cap_change}</td>
-              <td>{this.state.market_cap_change_pct}</td>
-            </tr>
-            <tr>
-              <td>30 days</td>
-              <td>{this.state.volume}</td>
-              <td>{this.state.price_change}</td>
-              <td>{this.state.price_change_pct}</td>
-              <td>{this.state.volume_change}</td>
-              <td>{this.state.volume_change_pct}</td>
-              <td>{this.state.market_cap_change}</td>
-              <td>{this.state.market_cap_change_pct}</td>
-            </tr>
-            <tr>
-              <td>365 days</td>
-              <td>{this.state.volume}</td>
-              <td>{this.state.price_change}</td>
-              <td>{this.state.price_change_pct}</td>
-              <td>{this.state.volume_change}</td>
-              <td>{this.state.volume_change_pct}</td>
-              <td>{this.state.market_cap_change}</td>
-              <td>{this.state.market_cap_change_pct}</td>
-            </tr>
-            <tr>
-              <td >Year to Date</td>
-              <td>{this.state.volume}</td>
-              <td>{this.state.price_change}</td>
-              <td>{this.state.price_change_pct}</td>
-              <td>{this.state.volume_change}</td>
-              <td>{this.state.volume_change_pct}</td>
-              <td>{this.state.market_cap_change}</td>
-              <td>{this.state.market_cap_change_pct}</td>
-            </tr>
+          {this.state.currencyIntervals.map((currencyIntervals) => (
+                <tr key={currencyIntervals.id}>
+                <td>{currencyIntervals.timeInterval}</td>
+                <td>{currencyIntervals.priceChange}</td>
+                <td>{currencyIntervals.priceChangePct}</td>
+                <td>{currencyIntervals.volume}</td>
+                <td>{currencyIntervals.volumeChange}</td>
+                <td>{currencyIntervals.volumeChangePct}</td>
+                <td>{currencyIntervals.marketCapChange}</td>
+                <td>{currencyIntervals.marketCapChangePct}</td>
+               </tr>
+             ))}
           </tbody>
         </table>
       </div>

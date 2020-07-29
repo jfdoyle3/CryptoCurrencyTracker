@@ -30,7 +30,7 @@ public class GetCurrency {
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-		System.out.println("API Data: "+json.toString());
+		//System.out.println("API Data: "+json.toString());
 		return currencyJson;
 	}
 
@@ -134,14 +134,14 @@ public class GetCurrency {
 				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
 				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
 				// Market %: "+marketCapChgPct);
-			} else {
+			} //else {
 				//CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
 				//		"N/A", "N/A", "N/A", "N/A", "N/A");
 				//currencyIntervalList.add(currencyInterval);
 				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
 				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
 				// Market: N/A | Market %: N/A");
-			}
+			//}
 
 			// System.out.println("---------------------");
 		}

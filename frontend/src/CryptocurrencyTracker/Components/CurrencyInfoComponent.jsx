@@ -19,8 +19,8 @@ class CurrencyInfoComponent extends Component {
   }
 
   componentDidMount() {
-    console.log("info-mounted");
-    console.log("symbol: "+this.state.symbol);
+  // console.log("info-mounted");
+  //  console.log("symbol: "+this.state.symbol);
     let username = AuthenticationService.getLoggedInUserName(); 
     CurrencyInfoDataService.retrieveInfo(username, this.state.symbol).then(
       (response) =>

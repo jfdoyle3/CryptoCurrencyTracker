@@ -145,6 +145,7 @@ public class GetCurrency {
 
 			// System.out.println("---------------------");
 		}
+		System.out.printf("Get Currency - interval method:   %i",currencyIntervalList.size());
 		return currencyIntervalList;
 	}
 	

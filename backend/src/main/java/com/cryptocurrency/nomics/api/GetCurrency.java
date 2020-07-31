@@ -175,6 +175,7 @@ public class GetCurrency {
 
 			// System.out.println("---------------------");
 		}
+		System.out.printf("Get Currency - interval method:   "+currencyIntervalList.size());
 		return currencyIntervalList;
 	}
 	

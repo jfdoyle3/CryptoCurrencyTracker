@@ -38,6 +38,6 @@ public class CurrencyController {
 	// GET: A Currency by Symbol
 	@GetMapping("/users/{username}/cryptocurrency/{symbol}")
 	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
-		return currencyServices. findByCurrencyBySymbol(symbol);
+		return currencyServices.findByCurrencyBySymbol(symbol);
 	}
 }

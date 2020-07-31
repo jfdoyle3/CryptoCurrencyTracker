@@ -24,7 +24,7 @@ public class CurrencyIntervalServices {
 			JSONArray json = GetCurrency.Currencies(currencySymbol, interval[idx]);
 			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
 			intervalsList.add(cryptoMoneyInterval.get(idx));
-			System.out.printf("Interval Service - method:   %i",intervalsList.size());
+			System.out.println("Interval Service - method: "+intervalsList.size());
 		}
 		return intervalsList;
 	}

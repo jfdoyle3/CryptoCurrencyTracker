@@ -12,23 +12,10 @@ class CurrencyIntervalComponent extends Component {
     };
   }
   componentDidMount() {
-   // console.log("interval-mounted");
     let username = AuthenticationService.getLoggedInUserName(); 
     CurrencyIntervalDataService.retrieveIntervals(username, this.state.symbol).then(
       (response) =>
-      this.setState({ currencyIntervals: response.data }
-    //  console.log(response)
-      //  this.setState({
-      //   volume: response.data,
-      //   price_change: ,
-      //   price_change_pct: "",
-      //   volume_change: "",
-      //   volume_change_pct: "",
-      //   market_cap_change: "",
-      //   market_cap_change_pct: "",
-            
-      //   })
-    ));
+      this.setState({ currencyIntervals: response.data }));
   }
   render() {
     return (

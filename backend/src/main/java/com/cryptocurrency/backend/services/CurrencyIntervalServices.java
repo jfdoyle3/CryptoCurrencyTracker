@@ -18,13 +18,15 @@ public class CurrencyIntervalServices {
 	
 	public List<CurrencyInterval> getIntervals(String symbol) {
 		String currencySymbol = symbol.toUpperCase();
+		System.out.println("--> Interval Service - method: "+intervalsList.size());
+		intervalsList.clear();
 		System.out.printf("||||Interval Symbol %s||||\n",currencySymbol);
 	//	List<CurrencyInterval> intervalsList = new ArrayList<>();
 		for (int idx = 0; idx < interval.length; idx++) {
 			JSONArray json = GetCurrency.Currencies(currencySymbol, interval[idx]);
 			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
 			intervalsList.add(cryptoMoneyInterval.get(idx));
-			System.out.println("Interval Service - method: "+intervalsList.size());
+			
 		}
 		return intervalsList;
 	}

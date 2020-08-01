@@ -134,18 +134,18 @@ public class GetCurrency {
 				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
 				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
 				// Market %: "+marketCapChgPct);
-			} //else {
-				//CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
-				//		"N/A", "N/A", "N/A", "N/A", "N/A");
-				//currencyIntervalList.add(currencyInterval);
-				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
-				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
-				// Market: N/A | Market %: N/A");
-			//}
+			} else {
+				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, "N/A", symbol, "N/A", "N/A",
+						"N/A", "N/A", "N/A", "N/A", "N/A");
+				currencyIntervalList.add(currencyInterval);
+//				 System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
+//				 Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
+//				 Market: N/A | Market %: N/A");
+			}
 
 			// System.out.println("---------------------");
 		}
-		System.out.printf("Get Currency - interval method:   "+currencyIntervalList.size());
+		System.out.printf("\nGet Currency - interval method:   %d\n",currencyIntervalList.size());
 		return currencyIntervalList;
 	}
 	

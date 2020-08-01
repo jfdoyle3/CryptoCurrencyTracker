@@ -11,7 +11,7 @@ import kong.unirest.json.JSONArray;
 public class ListIntervals {
 
 	public static void main(String[] args) {
-		String[] interval = { "1d","30d","365d","ytd" };
+		String[] interval = { "7d","30d","ytd" };
 
 		String userSearch = "BTC";
 		List<CurrencyInterval> intervalsList = new ArrayList<>();

@@ -13,20 +13,21 @@ import kong.unirest.json.JSONArray;
 @Service
 public class CurrencyIntervalServices {
 
- private static List<CurrencyInterval> intervalsList = new ArrayList<>();
+ //private static List<CurrencyInterval> intervalsList = new ArrayList<>();
 	private static String[] interval = { "7d", "30d", "ytd" };
 	
 	public List<CurrencyInterval> getIntervals(String symbol) {
 		String currencySymbol = symbol.toUpperCase();
-		System.out.println("--> Interval Service - method: "+intervalsList.size());
-		intervalsList.clear();
+	
+	//	intervalsList.clear();
 		System.out.printf("||||Interval Symbol %s||||\n",currencySymbol);
-	//	List<CurrencyInterval> intervalsList = new ArrayList<>();
+		List<CurrencyInterval> intervalsList = new ArrayList<>();
+		//System.out.println("-->Making new list: Interval Service - method: "+intervalsList.size());
 		for (int idx = 0; idx < interval.length; idx++) {
 			JSONArray json = GetCurrency.Currencies(currencySymbol, interval[idx]);
 			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
 			intervalsList.add(cryptoMoneyInterval.get(idx));
-			
+			//System.out.println("-->Returning newly made List: Interval Service - method: "+intervalsList.size());
 		}
 		return intervalsList;
 	}

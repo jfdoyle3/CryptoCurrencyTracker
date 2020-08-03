@@ -30,7 +30,7 @@ public class GetCurrency {
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-		System.out.println("API Data: "+json.toString());
+	//	System.out.println("Currencies: --> API Data: "+json.toString());
 		return currencyJson;
 	}
 
@@ -96,34 +96,36 @@ public class GetCurrency {
 		return currencyInfoList;
 	}
 
-	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json) {
-
+	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json, String interval) {
+	
 		for (int idx = 0; idx < json.length(); idx++) {
+			//System.out.printf("\nGet Currency - interval method:   %d\n",currencyIntervalList.size());
 			JSONObject currencyData = json.getJSONObject(idx);
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
-			if (key.has("7d")|| key.has("30d") || key.has("ytd")) {
-				// JSONObject key = (JSONObject) key.get(interval);
-				String volume = (String) key.get("volume");
-				String priceChange = (String) key.get("price_change");
-				String priceChgPct = (String) key.get("price_change_pct");
-				if (key.has("volume_change")) {
-					volChange = (String) key.get("volume_change");
+		//	System.out.println("\nGet Currency - interval method: Symbol:  "+symbol);
+			if (key.has(interval)) {
+			    JSONObject intervalKey = (JSONObject) key.get(interval);
+				String volume = (String) intervalKey.get("volume");
+				String priceChange = (String) intervalKey.get("price_change");
+				String priceChgPct = (String) intervalKey.get("price_change_pct");
+				if (intervalKey.has("volume_change")) {
+					volChange = (String) intervalKey.get("volume_change");
 				} else {
 					volChange = "N/A";
 				}
-				if (key.has("volume_change_pct")) {
-					volChgPct = (String) key.get("volume_change_pct");
+				if (intervalKey.has("volume_change_pct")) {
+					volChgPct = (String) intervalKey.get("volume_change_pct");
 				} else {
 					volChgPct = "N/A";
 				}
-				if (key.has("market_cap_change")) {
-					marketCapChg = (String) key.get("market_cap_change");
+				if (intervalKey.has("market_cap_change")) {
+					marketCapChg = (String) intervalKey.get("market_cap_change");
 				} else {
 					marketCapChg = "N/A";
 				}
-				if (key.has("market_cap_change_pct")) {
-					marketCapChgPct = (String) key.get("market_cap_change_pct");
+				if (intervalKey.has("market_cap_change_pct")) {
+					marketCapChgPct = (String) intervalKey.get("market_cap_change_pct");
 				} else {
 					marketCapChgPct = "N/A";
 				}
@@ -146,7 +148,7 @@ public class GetCurrency {
 
 			// System.out.println("---------------------");
 		}
-		// System.out.printf("\nGet Currency - interval method:   %d\n",currencyIntervalList.size());
+
 		return currencyIntervalList;
 	}
 	

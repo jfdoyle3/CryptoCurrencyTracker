@@ -19,7 +19,7 @@ public class CurrencyIntervalServices {
 	public List<CurrencyInterval> getIntervals(String symbol) {
 		String currencySymbol = symbol.toUpperCase();
 	
-	//	intervalsList.clear();
+
 		System.out.printf("||||Interval Symbol %s||||\n",currencySymbol);
 		List<CurrencyInterval> intervalsList = new ArrayList<>();
 		//System.out.println("-->Making new list: Interval Service - method: "+intervalsList.size());
@@ -27,8 +27,14 @@ public class CurrencyIntervalServices {
 			JSONArray json = GetCurrency.Currencies(currencySymbol, interval[idx]);
 			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
 			intervalsList.add(cryptoMoneyInterval.get(idx));
-			//System.out.println("-->Returning newly made List: Interval Service - method: "+intervalsList.size());
+
+
 		}
+		System.out.println("---> Interval Service List: before returning <---");
+ for(CurrencyInterval crypto : intervalsList) {
+		System.out.println("||| "+crypto);
+ }
+ System.out.println("---> Interval Service List: returning <---");
 		return intervalsList;
 	}
 }

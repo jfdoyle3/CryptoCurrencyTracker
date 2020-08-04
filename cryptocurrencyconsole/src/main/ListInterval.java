@@ -29,7 +29,7 @@ public class ListInterval {
 =======
 		String[] interval= {"7d","30d","ytd"};
 		
-		String symbol="BTC";
+		String symbol="ETH";
 	
 	for(int idx=0; idx<interval.length; idx++) {
 		JSONArray json = GetCurrency.Currencies(symbol,interval[idx]);

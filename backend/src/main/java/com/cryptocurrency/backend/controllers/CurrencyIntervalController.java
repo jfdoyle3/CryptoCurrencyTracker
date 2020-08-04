@@ -60,8 +60,12 @@ public class CurrencyIntervalController {
 	@GetMapping("/users/{username}/cryptocurrenciesInterval/{symbol}")
 =======
 	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
+<<<<<<< HEAD
 >>>>>>> Working
 	public List<CurrencyInterval> getAllInfo(@PathVariable String username,@PathVariable String symbol ) {
+=======
+	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
+>>>>>>> Working
 		return currencyIntervalServices.getIntervals(symbol);
 	}
 >>>>>>> Working

@@ -42,6 +42,7 @@ public class GetCurrency {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		System.out.println("API Data: " + json.toString());
 =======
 		//System.out.println("API Data: "+json.toString());
@@ -51,6 +52,9 @@ public class GetCurrency {
 >>>>>>> Working
 =======
 	//	System.out.println("Currencies: --> API Data: "+json.toString());
+>>>>>>> Working
+=======
+//	System.out.println("Currencies: --> API Data: "+json.toString());
 >>>>>>> Working
 		return currencyJson;
 	}

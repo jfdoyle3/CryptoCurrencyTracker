@@ -13,28 +13,34 @@ import kong.unirest.json.JSONArray;
 @Service
 public class CurrencyIntervalServices {
 
- //private static List<CurrencyInterval> intervalsList = new ArrayList<>();
-	private static String[] interval = { "7d", "30d", "ytd" };
-	
-	public List<CurrencyInterval> getIntervals(String symbol) {
-		String currencySymbol = symbol.toUpperCase();
-	
+	// private static String[] interval = { "7d", "30d", "ytd" };
+	private static String interval = "7d";
 
-		System.out.printf("||||Interval Symbol %s||||\n",currencySymbol);
-		List<CurrencyInterval> intervalsList = new ArrayList<>();
-		//System.out.println("-->Making new list: Interval Service - method: "+intervalsList.size());
-		for (int idx = 0; idx < interval.length; idx++) {
-			JSONArray json = GetCurrency.Currencies(currencySymbol, interval[idx]);
-			List<CurrencyInterval> cryptoMoneyInterval = GetCurrency.CurrencyTimeInterval(json, interval[idx]);
-			intervalsList.add(cryptoMoneyInterval.get(idx));
+	public List<CurrencyInterval> getIntervals(String currencySymbol) {
+		String symbol = currencySymbol.toUpperCase();
 
+		// List<CurrencyInterval> intervalsList = new ArrayList<>();
+		// for (int idx = 0; idx < interval.length; idx++) {
+		
+		System.out.printf("||||inFor Loop: Interval Symbol %s||||\n", symbol);
+		
+		JSONArray json = GetCurrency.Currencies(symbol, interval);
+		System.out.println("|| JSON: "+json);
+		List<CurrencyInterval> currencyInterval = GetCurrency.CurrencyTimeInterval(json, interval);
 
-		}
-		System.out.println("---> Interval Service List: before returning <---");
- for(CurrencyInterval crypto : intervalsList) {
-		System.out.println("||| "+crypto);
- }
- System.out.println("---> Interval Service List: returning <---");
-		return intervalsList;
+		System.out.println(currencyInterval);
+		// System.out.println("---> Interval Service List: before returning <---");
+		 for (CurrencyInterval intervals : currencyInterval) {
+		
+		 System.out.println("||| " + intervals);
+
+		// intervalsList.add(currencyInterval);
+		 }
+		// System.out.println("---> Interval Service List: returning <---");
+		// }
+//		
+//		System.out.println("--->end of loop <---");
+
+		return currencyInterval;
 	}
 }

@@ -21,7 +21,7 @@ public class CurrencyIntervalController {
 
 	// GET: All Currencies
 	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
-	public List<CurrencyInterval> getAllInfo(@PathVariable String username,@PathVariable String symbol ) {
+	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
 		return currencyIntervalServices.getIntervals(symbol);
 	}
 

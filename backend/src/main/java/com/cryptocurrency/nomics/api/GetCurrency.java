@@ -30,7 +30,7 @@ public class GetCurrency {
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-	//	System.out.println("Currencies: --> API Data: "+json.toString());
+//	System.out.println("Currencies: --> API Data: "+json.toString());
 		return currencyJson;
 	}
 

@@ -2,14 +2,9 @@ import axios from "axios";
 import { API_URL } from "../../Constants.js";
 
 class cryptocurrenciesDataService {
-  retrieveTopTen(name) {
-    //console.log('executed service')
-    return axios.get(`${API_URL}/users/{username}/cryptocurrencies/topfive`);
-  }
-
-  retrieveCryptocurrencyById(name, id) {
-    console.log(`trying to get id: ${id}`);
-    return axios.get(`${API_URL}/users/${name}/cryptocurrencies/id/${id}`);
+  retrieveIntervals(username,symbol) {
+  //  console.log('executed interval service')
+    return axios.get(`${API_URL}/users/${username}/cryptocurrencyIntervals/${symbol}`);
   }
 
   // deletecryptocurrencies(name, id) {
@@ -22,10 +17,10 @@ class cryptocurrenciesDataService {
   //   return axios.put(`${API_URL}/users/${name}/cryptocurrencies/${id}`, cryptocurrencies);
   // }
 
-  retrieveCryptocurrencyBySymbol(name, symbol) {
-   // console.log('executed symbol service')
-    return axios.get(`${API_URL}/users/${name}/cryptocurrency/${symbol}`);
-  }
+  // createcryptocurrencies(name, cryptocurrencies) {
+  //   //console.log('executed service')
+  //   return axios.post(`${API_URL}/users/${name}/cryptocurrencies/`, cryptocurrencies);
+  // }
 }
 
 export default new cryptocurrenciesDataService();

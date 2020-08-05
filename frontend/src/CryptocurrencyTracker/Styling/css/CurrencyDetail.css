@@ -1,0 +1,32 @@
+#imgHeader {
+  height: 100px;
+  width: 100px;
+<<<<<<< HEAD:frontend/src/CryptocurrencyTracker/Styling/css/Currency.css
+<<<<<<< HEAD
+  padding-right: 25px;
+=======
+  padding-right: 10px;
+=======
+ padding-top: 25px;
+>>>>>>> Working:frontend/src/CryptocurrencyTracker/Styling/css/CurrencyDetail.css
+}
+
+#currencyInfo{
+  padding-top: 25px;
+  padding-left: 25px;
+  float: right;
+<<<<<<< HEAD:frontend/src/CryptocurrencyTracker/Styling/css/Currency.css
+>>>>>>> Working
+}
+=======
+}
+
+#price{
+  padding-top: 25px;
+  text-indent: 25px ;
+}
+
+#detailsHeaderRow{
+  font-size: 9pt;
+}
+>>>>>>> Working:frontend/src/CryptocurrencyTracker/Styling/css/CurrencyDetail.css

@@ -51,7 +51,7 @@ class LoginComponent extends Component {
     return (
       <div className="container">
         <div className="header">
-          <h2>
+          <h2 id="appTitle">
             <b>Cryptocurrency Tracker</b>
           </h2>
         </div>
@@ -83,7 +83,7 @@ class LoginComponent extends Component {
         </div>
         <div className="row">
           <div className="col s7">
-            <button className="btn btn-success" onClick={this.loginClicked}>
+            <button id="loginButton" className="btn btn-success" onClick={this.loginClicked}>
               Login
             </button>
           </div>

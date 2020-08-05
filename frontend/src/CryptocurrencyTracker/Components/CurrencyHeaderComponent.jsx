@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Styling/css/Currency.css";
+import "../Styling/css/CurrencyDetail.css";
 import CurrencyDataService from "../API/CurrencyDataService.js";
 import AuthenticationService from "../Auth/AuthenticationService.js";
 
@@ -7,10 +7,17 @@ class CurrencyHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       symbol: "BTC",
       name: "BitCoin",
       logo_url: "https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg",
       ranking: "1",
+=======
+      symbol: this.props.match.params.symbol,
+      name: "",
+      logo_url: "",
+      rank: "",
+>>>>>>> Working
     };
     // bind test button
     // this.props.match.params.id,
@@ -18,6 +25,7 @@ class CurrencyHeaderComponent extends Component {
 
     // bind back currency function
   }
+<<<<<<< HEAD
   // componentDidMount() {
   //   if (this.state.id === -1) {
   //     return;
@@ -36,18 +44,21 @@ class CurrencyHeaderComponent extends Component {
   //         })
   //     );
   // }
+=======
+  componentDidMount() {
+>>>>>>> Working
 
 =======
     let username = AuthenticationService.getLoggedInUserName();
-    CurrencyDataService.retrieveCryptocurrency(username, this.state.id).then(
+    CurrencyDataService.retrieveCryptocurrencyBySymbol(username, this.state.symbol).then(
       (response) =>
-        //console.log(response)
+       // console.log(response)
         this.setState({
           name: response.data.name,
           symbol: response.data.symbol,
           logo_url: response.data.logoUrl,
           ranking: response.data.ranking,
-        })
+       })
     );
       }
  
@@ -73,9 +84,9 @@ class CurrencyHeaderComponent extends Component {
             <img id="imgHeader" src={this.state.logo_url} alt="logo" />
           </div>
          <div>
-            <h6>{this.state.name}</h6>
-            <p>Symbol: {this.state.symbol}</p>
-            <p>Rank: {this.state.ranking}</p>
+            <h5><b>{this.state.name}</b></h5>
+            <p><i>Symbol:</i> {this.state.symbol}</p>
+            <p><i>Rank:</i> {this.state.ranking}</p>
           </div>
           <div className="col s12">
 
@@ -83,7 +94,9 @@ class CurrencyHeaderComponent extends Component {
         
           </div>
         </div>
-        <CurrencyIntervalComponent />
+        <div id="intervalTable">
+        <CurrencyIntervalComponent symbol={this.state.symbol}/>
+        </div>
       </div>
     
      

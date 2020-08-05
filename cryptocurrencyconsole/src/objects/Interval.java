@@ -1,42 +1,27 @@
-package com.cryptocurrency.nomics.entity;
+package objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class Interval {
 
+	private long id;
 
-@Entity
-@Table(name="intervals")
-public class CurrrencyDateStamp {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
-	
-	@Column(name="price_date")
 	private String priceDate;
-		
-	@Column(name="price_timestamp")
+
 	private String priceTimeStamp;
 
-	public CurrrencyDateStamp() {
-		
+	public Interval() {
+
 	}
 
-	public CurrrencyDateStamp(String priceDate, String priceTimeStamp) {
+	public Interval(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;
 		this.priceTimeStamp = priceTimeStamp;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

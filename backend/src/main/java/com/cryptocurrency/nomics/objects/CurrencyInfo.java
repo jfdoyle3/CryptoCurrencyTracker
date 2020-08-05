@@ -7,6 +7,10 @@ public class CurrencyInfo {
 	private String symbol;
 
 	private String price;
+	
+	private String priceDate;
+	
+	private String priceTimeStamp;
 
 	private String circulatingSupply;
 
@@ -24,11 +28,14 @@ public class CurrencyInfo {
 
 	}
 
-	public CurrencyInfo(long id, String symbol, String price, String circulatingSupply, String maxSupply,
-			String marketCap, String ranking, String high, String highTimeStamp) {
+	public CurrencyInfo(long id, String symbol, String price, String priceDate, String priceTimeStamp,
+			String circulatingSupply, String maxSupply, String marketCap, String ranking, String high,
+			String highTimeStamp) {
 		this.id = id;
 		this.symbol = symbol;
 		this.price = price;
+		this.priceDate = priceDate;
+		this.priceTimeStamp = priceTimeStamp;
 		this.circulatingSupply = circulatingSupply;
 		this.maxSupply = maxSupply;
 		this.marketCap = marketCap;
@@ -59,6 +66,22 @@ public class CurrencyInfo {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getPriceDate() {
+		return priceDate;
+	}
+
+	public void setPriceDate(String priceDate) {
+		this.priceDate = priceDate;
+	}
+
+	public String getPriceTimeStamp() {
+		return priceTimeStamp;
+	}
+
+	public void setPriceTimeStamp(String priceTimeStamp) {
+		this.priceTimeStamp = priceTimeStamp;
 	}
 
 	public String getCirculatingSupply() {
@@ -111,11 +134,11 @@ public class CurrencyInfo {
 
 	@Override
 	public String toString() {
-		return "CurrencyInfo [id=" + id + ", symbol=" + symbol + ", price=" + price + ", circulatingSupply="
-				+ circulatingSupply + ", maxSupply=" + maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking
-				+ ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
+		return "CurrencyInfo [id=" + id + ", symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate
+				+ ", priceTimeStamp=" + priceTimeStamp + ", circulatingSupply=" + circulatingSupply + ", maxSupply="
+				+ maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking + ", high=" + high
+				+ ", highTimeStamp=" + highTimeStamp + "]";
 	}
-
 
 
 }

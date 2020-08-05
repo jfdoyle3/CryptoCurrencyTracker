@@ -15,6 +15,7 @@ import kong.unirest.json.JSONObject;
 public class GetCurrency {
 	private static List<CryptocurrencyHeader> cryptoList = new ArrayList<>();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static long idCounter = 0;
@@ -23,12 +24,19 @@ public class GetCurrency {
 
 =======
 	private static List<CurrencyInfo> currencyInfoList=new ArrayList<>();
+=======
+	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
+>>>>>>> Working
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
-	volChange;
+			volChange;
 	private static long idCounter = 0;
+<<<<<<< HEAD
 	
 	
+>>>>>>> Working
+=======
+
 >>>>>>> Working
 	public static JSONArray Currencies(String currency, String interval) {
 
@@ -84,13 +92,14 @@ public class GetCurrency {
 	public static List<CurrencyInfo> CurrencyInfo(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
+
 			JSONObject currencyData = json.getJSONObject(idx);
 
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
 			String price = (String) key.get("price");
-			String priceDate=(String) key.get("price_date");
-			String priceTimeStamp=(String) key.get("price_timestamp");
+			String priceDate = (String) key.get("price_date");
+			String priceTimeStamp = (String) key.get("price_timestamp");
 
 			if (key.has("circulating_supply")) {
 				circulating_supply = (String) key.get("circulating_supply");
@@ -112,24 +121,27 @@ public class GetCurrency {
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price,priceDate,priceTimeStamp, circulating_supply, maxSupply,
-					market_cap, rank, high, high_timestamp);
+			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, priceDate, priceTimeStamp,
+					circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
+<<<<<<< HEAD
 
+=======
+>>>>>>> Working
 		}
 		return currencyInfoList;
 	}
 
 	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json, String interval) {
-	
+		currencyIntervalList.clear();
 		for (int idx = 0; idx < json.length(); idx++) {
-			//System.out.printf("\nGet Currency - interval method:   %d\n",currencyIntervalList.size());
+
 			JSONObject currencyData = json.getJSONObject(idx);
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
-		//	System.out.println("\nGet Currency - interval method: Symbol:  "+symbol);
+			// System.out.println("\nGet Currency - interval method: Symbol: "+symbol);
 			if (key.has(interval)) {
-			    JSONObject intervalKey = (JSONObject) key.get(interval);
+				JSONObject intervalKey = (JSONObject) key.get(interval);
 				String volume = (String) intervalKey.get("volume");
 				String priceChange = (String) intervalKey.get("price_change");
 				String priceChgPct = (String) intervalKey.get("price_change_pct");
@@ -178,25 +190,17 @@ public class GetCurrency {
 				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
 						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
 				currencyIntervalList.add(currencyInterval);
-				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
-				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
-				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
-				// Market %: "+marketCapChgPct);
+
 			} else {
 				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, "N/A", symbol, "N/A", "N/A",
 						"N/A", "N/A", "N/A", "N/A", "N/A");
 				currencyIntervalList.add(currencyInterval);
-//				 System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
-//				 Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
-//				 Market: N/A | Market %: N/A");
 			}
-
-			// System.out.println("---------------------");
 		}
 
 		return currencyIntervalList;
 	}
-	
+
 	public static void CurrencyTimeStamp(JSONArray json) {
 >>>>>>> Working
 

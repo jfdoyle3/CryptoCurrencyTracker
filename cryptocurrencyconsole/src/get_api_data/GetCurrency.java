@@ -104,6 +104,7 @@ public class GetCurrency {
 	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json, String interval) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
+			currencyIntervalList.clear();
 			JSONObject currencyData = json.getJSONObject(idx);
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");

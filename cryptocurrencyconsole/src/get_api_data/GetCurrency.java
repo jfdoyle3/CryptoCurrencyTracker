@@ -139,18 +139,18 @@ public class GetCurrency {
 				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
 				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
 				// Market %: "+marketCapChgPct);
-<<<<<<< HEAD
+
 			} else {
 				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
 						"N/A", "N/A", "N/A", "N/A", "N/A");
 				currencyIntervalList.add(currencyInterval);
-=======
+
 				
 //			} else {
 //				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
 //						"N/A", "N/A", "N/A", "N/A", "N/A");
 //				currencyIntervalList.add(currencyInterval);
->>>>>>> Working
+
 				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
 				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
 				// Market: N/A | Market %: N/A");

@@ -1,14 +1,12 @@
 package com.cryptocurrency.backend.services;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
->>>>>>> Working
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
 import com.cryptocurrency.nomics.api.ListCurrenciesInterval;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
@@ -55,8 +53,8 @@ public class CurrencyIntervalServices {
 //		}
 //		return null;
 //}
-}
-=======
+//}
+
 import com.cryptocurrency.nomics.api.GetCurrency;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
@@ -82,4 +80,4 @@ public class CurrencyIntervalServices {
 		return intervalsList;
 	}
 }
->>>>>>> Working
+

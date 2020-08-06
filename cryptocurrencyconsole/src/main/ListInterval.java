@@ -42,7 +42,7 @@ public class ListInterval {
 		JSONArray json = GetCurrency.Currencies(symbol,interval[idx]);
 	//	GetCurrency.CurrencyTimeInterval(json, interval);
 		List<CurrencyInterval> cryptoMoneyInterval=GetCurrency.CurrencyTimeInterval(json, interval[idx]);
-		System.out.println(cryptoMoneyInterval.get(idx));
+		System.out.println(cryptoMoneyInterval.get(0));
 		
 //	 for(CurrencyInterval crypto : cryptoMoneyInterval)
 //			System.out.println(crypto);

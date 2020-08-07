@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.services.CurrencyServices;
 import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
+import com.cryptocurrency.testhibernate.EntityDBWriteOneRecordTest;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -38,6 +40,14 @@ public class CurrencyController {
 	// GET: A Currency by Symbol
 	@GetMapping("/users/{username}/cryptocurrency/{symbol}")
 	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
+	
 		return currencyServices.findByCurrencyBySymbol(symbol);
+	}
+	@PostMapping("/users/{username}/cryptocurrency/create")
+	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username) {
+		EntityDBWriteOneRecordTest.RunASession();
+		return null;
+				
+		
 	}
 }

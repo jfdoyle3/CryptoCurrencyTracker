@@ -1,4 +1,4 @@
-package onetable;
+package com.cryptocurrency.onetable;
 
 
 import javax.persistence.Column;

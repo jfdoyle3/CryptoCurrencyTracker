@@ -1,14 +1,13 @@
-package database;
+package main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
+import database.DBConnection;
 
-public class DBConnection {
+public class DBConnectionTest {
 
-	public static void connectDB() {
+	public static void main(String[] args) {
 
 		try {
 
@@ -27,6 +26,4 @@ public class DBConnection {
 				exc.printStackTrace();
 			}
 		}
-	
-	}
-
+}

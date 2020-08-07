@@ -1,17 +1,20 @@
-package onetable;
+package  com.cryptocurrency.entity.objects;
 
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cryptocurrencies")
-public class Cryptomoney {
+public class Cryptocurrencies {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,11 +37,12 @@ public class Cryptomoney {
 	private String logoUrl;
 	
 
-	public Cryptomoney() {
+
+	public Cryptocurrencies() {
 		
 	}
 
-	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -94,12 +98,15 @@ public class Cryptomoney {
 		this.logoUrl = logoUrl;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
 	}
+	
+
+	
+	
 
 	
 

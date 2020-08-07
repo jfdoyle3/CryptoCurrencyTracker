@@ -1,15 +1,11 @@
-package database;
+package com.cryptocurrency.nomics.main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
+public class DBConnectivityTest {
 
-public class DBConnection {
-
-	public static void connectDB() {
-
+	public static void main(String[] args) {
 		try {
 
 			String jdbcUrl="jdbc:mysql://192.168.1.201:3306/cryptocurrencytracker?useSSL=false";
@@ -27,6 +23,5 @@ public class DBConnection {
 				exc.printStackTrace();
 			}
 		}
-	
-	}
 
+	}

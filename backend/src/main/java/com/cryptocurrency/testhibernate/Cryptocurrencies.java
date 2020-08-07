@@ -1,25 +1,28 @@
-package OneTable;
+package  com.cryptocurrency.testhibernate;
 
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cryptomoney")
-public class Cryptomoney {
+@Table(name="cryptocurrencies")
+public class Cryptocurrencies {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="currencyId")
-	private String currencyId;
+	@Column(name="currency_id")
+	private String currency_id;
 	
 	@Column(name="currency")
 	private String currency;
@@ -34,32 +37,26 @@ public class Cryptomoney {
 	private String logoUrl;
 	
 
-	public Cryptomoney() {
+
+	public Cryptocurrencies() {
 		
 	}
 
-	public Cryptomoney(String currencyId, String currency, String symbol, String name, String logoUrl) {
-		this.currencyId = currencyId;
+	public Cryptocurrencies(String currency_id, String currency, String symbol, String name, String logoUrl) {
+		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
 		this.name = name;
 		this.logoUrl = logoUrl;
 	}
 
-	public int getId() {
-		return id;
+
+	public String getcurrency_id() {
+		return currency_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(String currencyId) {
-		this.currencyId = currencyId;
+	public void setcurrency_id(String currency_id) {
+		this.currency_id = currency_id;
 	}
 
 	public String getCurrency() {
@@ -94,12 +91,15 @@ public class Cryptomoney {
 		this.logoUrl = logoUrl;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl+ "]";
+		return "Cryptocurrencies [id=" + id + ", currency_id=" + currency_id + ", currency=" + currency + ", symbol="
+				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
 	}
+	
+
+	
+	
 
 	
 

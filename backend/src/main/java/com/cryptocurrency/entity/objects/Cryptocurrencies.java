@@ -1,6 +1,6 @@
-package entity;
+package  com.cryptocurrency.entity.objects;
 
-
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,41 +13,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cryptocurrencies")
+@Table(name="cryptocurrencies")
 public class Cryptocurrencies {
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
-
-	@Column(name = "currencyId")
+	
+	@Column(name="currencyId")
 	private String currencyId;
-
-	@Column(name = "currency")
+	
+	@Column(name="currency")
 	private String currency;
-
-	@Column(name = "symbol")
+	
+	@Column(name="symbol")
 	private String symbol;
-
-	@Column(name = "name")
+	
+	@Column(name="name")
 	private String name;
-
-	@Column(name = "logo_url")
+	
+	@Column(name="logo_url")
 	private String logoUrl;
+	
 
-//	@OneToMany(cascade = CascadeType.ALL)
-//	// (cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-//	// CascadeType.REFRESH })
-//	@JoinColumn(name = "info_id")
-//	private CurrencyInfo currencyInfo;
-//
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "interval_id")
-//	private Interval interval;
 
 	public Cryptocurrencies() {
-
+		
 	}
 
 	public Cryptocurrencies(String currencyId, String currency, String symbol, String name, String logoUrl) {
@@ -106,26 +98,17 @@ public class Cryptocurrencies {
 		this.logoUrl = logoUrl;
 	}
 
-//	public CurrencyInfo getCurrencyInfo() {
-//		return currencyInfo;
-//	}
-//
-//	public void setCurrencyInfo(CurrencyInfo currencyInfo) {
-//		this.currencyInfo = currencyInfo;
-//	}
-//
-//	public Interval getInterval() {
-//		return interval;
-//	}
-//
-//	public void setInterval(Interval interval) {
-//		this.interval = interval;
-//	}
-
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
 				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
 	}
+	
 
+	
+	
+
+	
+
+	
 }

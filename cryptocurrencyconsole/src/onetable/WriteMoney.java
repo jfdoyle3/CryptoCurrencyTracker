@@ -1,4 +1,4 @@
-package OneTable;
+package onetable;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class WriteMoney {
 			GetMoney m=new GetMoney();
 			ArrayList<Cryptomoney> monies=m.money(json);
 			 
-			// System.out.println("||"+monies.get(1));
+			System.out.println("||"+monies.get(1));
 
 			session.beginTransaction();
 			for (int idx=0; idx<monies.size(); idx++) {

@@ -24,7 +24,7 @@ public class CryptocurrencyHeader {
 
 	public CryptocurrencyHeader(long id, String currencyId, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
-		super();
+		
 		this.id = id;
 		this.currencyId = currencyId;
 		this.currency = currency;

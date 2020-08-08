@@ -8,15 +8,13 @@ public class TestHibernate {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		// Add new Employee object
-		// EmployeeEntity emp = new EmployeeEntity();
-		Cryptocurrencies currencyEntity = new Cryptocurrencies();
-		currencyEntity.setSymbol("BTC");
+
+		Cryptocurrencies currencyEntity = new Cryptocurrencies("TEST", "BTC", "BTC",
+		 "Bitcoin","https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
+		
 		session.save(currencyEntity);
 
-		// "XRP", "BTC", "BTC",
-		// "Bitcoin","https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"
-
+		// 
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
 	}

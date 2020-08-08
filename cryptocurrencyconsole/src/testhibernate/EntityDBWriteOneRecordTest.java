@@ -1,10 +1,10 @@
-package  com.cryptocurrency.entity.main;
+package  testhibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.cryptocurrency.entity.objects.Cryptocurrencies;
+
 
 public class EntityDBWriteOneRecordTest {
 
@@ -18,9 +18,13 @@ public class EntityDBWriteOneRecordTest {
 
 		try {
 
-			Cryptocurrencies currency = new Cryptocurrencies("XRP", "BTC", "BTC", "Bitcoin",
-					"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
+			Cryptocurrencies currency = new Cryptocurrencies("WHO", "BTC", "BTC", "Bitcoin",
+				"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
 
+		//	Cryptocurrencies currency = new Cryptocurrencies();
+			
+		//	currency.setSymbol("BTC");
+			
 			session.beginTransaction();
 
 			System.out.println("||Saving Currency: " + currency);

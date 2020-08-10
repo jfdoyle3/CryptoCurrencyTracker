@@ -18,7 +18,7 @@ public class GetCurrency {
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
-	private static long idCounter = 0;
+	private static int idCounter = 0;
 
 	public static JSONArray Currencies(String currency, String interval) {
 
@@ -40,14 +40,14 @@ public class GetCurrency {
 
 			JSONObject key = (JSONObject) currencyData;
 
-			String id = (String) key.get("id");
+			String currency_id = (String) key.get("id");
 			String currency = (String) key.get("currency");
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
 			String rank = (String) key.get("rank");
 
-			CryptocurrencyHeader cryptoMoney = new CryptocurrencyHeader(++idCounter, id, currency, symbol, name, logo,
+			CryptocurrencyHeader cryptoMoney = new CryptocurrencyHeader(currency_id, currency, symbol, name, logo,
 					rank);
 			cryptoList.add(cryptoMoney);
 

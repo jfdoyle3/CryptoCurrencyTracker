@@ -10,12 +10,13 @@ public class ObjandEnt {
 
 	public static void main(String[] args) {
 		String defaultSearch = "";
-		List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
+		List<CryptocurrencyHeader> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
 			
-			for (CryptocurrencyEntity currency : currencyList) {
+			for (CryptocurrencyHeader currency : currencyList) {
 			System.out.println(currency);
 			}
 
 	}
 
 }
+        

@@ -14,7 +14,7 @@ public class CurrencyServices {
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
 	private List<CryptocurrencyHeader> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
-	private long idCounter = 0;
+	private int idCounter = 0;
 
 	// Show All currencies in List
 	public List<CryptocurrencyHeader> findAll() {
@@ -32,16 +32,16 @@ public class CurrencyServices {
 	}
 
 	// Find A Currency in the List
-	public CryptocurrencyHeader findById(long id) {
-		for (CryptocurrencyHeader currency : currencyList) {
-			if (currency.getId() == id) {
-			//	System.out.println(currency);
-				return currency;
-			}
-
-		}
-		return null;
-	}
+//	public CryptocurrencyHeader findById(long id) {
+//		for (CryptocurrencyHeader currency : currencyList) {
+//			if (currency.getId() == id) {
+//			//	System.out.println(currency);
+//				return currency;
+//			}
+//
+//		}
+//		return null;
+//	}
 
 	// Get Currency Symbol in the API
 	public CryptocurrencyHeader findByCurrencyBySymbol(String currencySearch) {

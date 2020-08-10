@@ -32,10 +32,10 @@ public class CurrencyController {
 		return currencyServices.listTopFive();
 	}
 	// GET: A Currency by Id
-	@GetMapping("/users/{username}/cryptocurrency/id/{id}")
-	public CryptocurrencyHeader getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
-		return currencyServices.findById(id);
-	}
+//	@GetMapping("/users/{username}/cryptocurrency/id/{id}")
+//	public CryptocurrencyHeader getByCurrencyId(@PathVariable String username, @PathVariable Long id) {
+//		return currencyServices.findById(id);
+//	}
 	
 	// GET: A Currency by Symbol
 	@GetMapping("/users/{username}/cryptocurrency/{symbol}")

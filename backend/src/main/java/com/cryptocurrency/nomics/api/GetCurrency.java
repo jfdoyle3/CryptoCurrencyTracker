@@ -14,30 +14,12 @@ import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
 	private static List<CryptocurrencyHeader> cryptoList = new ArrayList<>();
-<<<<<<< HEAD
-<<<<<<< HEAD
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
-	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
-	private static long idCounter = 0;
-	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
-			volChange;
-
-=======
-	private static List<CurrencyInfo> currencyInfoList=new ArrayList<>();
-=======
-	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
->>>>>>> Working
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
-	private static long idCounter = 0;
-<<<<<<< HEAD
-	
-	
->>>>>>> Working
-=======
+	private static int idCounter = 0;
 
->>>>>>> Working
 	public static JSONArray Currencies(String currency, String interval) {
 
 		// ******** REMOVE API KEY before committing *****
@@ -47,23 +29,7 @@ public class GetCurrency {
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		System.out.println("API Data: " + json.toString());
-=======
-		//System.out.println("API Data: "+json.toString());
->>>>>>> Working
-=======
-		System.out.println("API Data: "+json.toString());
->>>>>>> Working
-=======
-	//	System.out.println("Currencies: --> API Data: "+json.toString());
->>>>>>> Working
-=======
 //	System.out.println("Currencies: --> API Data: "+json.toString());
->>>>>>> Working
 		return currencyJson;
 	}
 
@@ -74,14 +40,14 @@ public class GetCurrency {
 
 			JSONObject key = (JSONObject) currencyData;
 
-			String id = (String) key.get("id");
+			String currency_id = (String) key.get("id");
 			String currency = (String) key.get("currency");
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
 			String rank = (String) key.get("rank");
 
-			CryptocurrencyHeader cryptoMoney = new CryptocurrencyHeader(++idCounter, id, currency, symbol, name, logo,
+			CryptocurrencyHeader cryptoMoney = new CryptocurrencyHeader(currency_id, currency, symbol, name, logo,
 					rank);
 			cryptoList.add(cryptoMoney);
 
@@ -124,10 +90,6 @@ public class GetCurrency {
 			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, priceDate, priceTimeStamp,
 					circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
-<<<<<<< HEAD
-
-=======
->>>>>>> Working
 		}
 		return currencyInfoList;
 	}
@@ -165,28 +127,7 @@ public class GetCurrency {
 				} else {
 					marketCapChgPct = "N/A";
 				}
-<<<<<<< HEAD
-<<<<<<< HEAD
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, symbol, interval, volume,
-						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
-				currencyIntervalList.add(currencyInterval);
 
-			} else {
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
-						"N/A", "N/A", "N/A", "N/A", "N/A");
-				currencyIntervalList.add(currencyInterval);
-
-			}
-
-		}
-		return currencyIntervalList;
-	}
-
-	public static void CurrencyDateStamp(JSONArray json) {
-=======
-=======
-
->>>>>>> Working
 				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
 						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
 				currencyIntervalList.add(currencyInterval);
@@ -202,7 +143,6 @@ public class GetCurrency {
 	}
 
 	public static void CurrencyTimeStamp(JSONArray json) {
->>>>>>> Working
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);

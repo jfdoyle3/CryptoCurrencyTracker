@@ -1,9 +1,13 @@
 package com.cryptocurrency.entity.crud;
 
+import java.util.List;
+
 import org.hibernate.Session;
 
 
 import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.nomics.api.ListCurrencies;
+import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
 
 public class TestHibernate {
 
@@ -11,11 +15,15 @@ public class TestHibernate {
 		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		CryptocurrencyEntity currency = new CryptocurrencyEntity("BOO", "BTC", "BTC", "Bitcoin","1",
-				"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
-
-		session.save(currency);
-
+		String defaultSearch = "XRP";
+		List<CryptocurrencyHeader> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
+			
+			for (CryptocurrencyHeader currency : currencyList) {
+			System.out.println(currency);
+			session.save(currency);
+			
+			}
+			
 	
 		session.getTransaction().commit();
 		HibernateCurrencyFactory.shutdown();

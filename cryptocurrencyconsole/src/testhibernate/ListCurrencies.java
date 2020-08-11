@@ -1,16 +1,18 @@
 package testhibernate;
 
-import java.util.Currency;
 import java.util.List;
+
+import kong.unirest.json.JSONArray;
 
 public class ListCurrencies {
 
 	public static void main(String[] args) {
 	
-		List<Cryptocurrencies> list=CurrencyList.ListCurrency();
+		JSONArray json = APIEntity.Currencies("", "1D");
+		List<Cryptocurrencies> list=APIEntity.CurrencyID(json);
 		
-		for(Cryptocurrencies currency : list) {
-			System.out.println(currency);
+		for (int idx=0; idx<5; idx++) {
+			System.out.println(list.get(idx));
 		}
 
 	}

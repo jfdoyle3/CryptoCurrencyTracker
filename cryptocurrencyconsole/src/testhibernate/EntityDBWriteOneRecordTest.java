@@ -18,7 +18,7 @@ public class EntityDBWriteOneRecordTest {
 
 		try {
 
-			Cryptocurrencies currency = new Cryptocurrencies("WHO", "BTC", "BTC", "Bitcoin",
+			Cryptocurrencies currency = new Cryptocurrencies("WHO", "BTC", "BTC", "Bitcoin","1",
 				"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
 
 		//	Cryptocurrencies currency = new Cryptocurrencies();

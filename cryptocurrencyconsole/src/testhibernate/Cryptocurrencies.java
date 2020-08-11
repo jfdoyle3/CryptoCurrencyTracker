@@ -33,6 +33,9 @@ public class Cryptocurrencies {
 	@Column(name="name")
 	private String name;
 	
+	@Column(name = "ranking")
+	private String ranking;
+
 	@Column(name="logo_url")
 	private String logoUrl;
 	
@@ -42,22 +45,24 @@ public class Cryptocurrencies {
 		
 	}
 
-	public Cryptocurrencies(String currency_id, String currency, String symbol, String name, String logoUrl) {
+	
+
+
+
+	public Cryptocurrencies(String currency_id, String currency, String symbol, String name, String logoUrl,
+			String ranking) {
+		super();
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
 		this.name = name;
 		this.logoUrl = logoUrl;
+		this.ranking = ranking;
 	}
 
 
-	public String getcurrency_id() {
-		return currency_id;
-	}
 
-	public void setcurrency_id(String currency_id) {
-		this.currency_id = currency_id;
-	}
+
 
 	public String getCurrency() {
 		return currency;
@@ -91,12 +96,31 @@ public class Cryptocurrencies {
 		this.logoUrl = logoUrl;
 	}
 
+	public String getCurrency_id() {
+		return currency_id;
+	}
+
+	public void setCurrency_id(String currency_id) {
+		this.currency_id = currency_id;
+	}
+
+	public String getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "Cryptocurrencies [id=" + id + ", currency_id=" + currency_id + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
+		return "Cryptocurrencies [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
+				+ ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
 	}
-	
 
 	
 	

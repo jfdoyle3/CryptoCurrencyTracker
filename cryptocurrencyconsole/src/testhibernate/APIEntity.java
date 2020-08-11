@@ -1,4 +1,4 @@
-package get_api_data;
+package testhibernate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +7,10 @@ import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-import objects.Cryptocurrencies;
-import objects.Cryptocurrencies;
 import objects.CurrencyInfo;
 import objects.CurrencyInterval;
 
-public class GetCurrency {
+public class APIEntity {
 	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
@@ -41,13 +39,16 @@ public class GetCurrency {
 
 			JSONObject key = (JSONObject) currencyData;
 
-			String id = (String) key.get("id");
+			String currency_id = (String) key.get("id");
 			String currency = (String) key.get("currency");
 			String name = (String) key.get("name");
-			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
+			String ranking = (String) key.get("rank");
+			String logo = (String) key.get("logo_url");
+			
+			
 
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies(++idCounter, id, currency, symbol, name, logo);
+			Cryptocurrencies cryptoMoney = new Cryptocurrencies( currency_id, currency, symbol, name, logo, ranking);
 			cryptoList.add(cryptoMoney);
 
 		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,

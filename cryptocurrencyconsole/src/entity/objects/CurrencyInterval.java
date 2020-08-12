@@ -1,4 +1,4 @@
-package entity;
+package entity.objects;
 
 public class CurrencyInterval {
 

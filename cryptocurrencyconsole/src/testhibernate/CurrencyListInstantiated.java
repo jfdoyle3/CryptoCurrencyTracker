@@ -3,7 +3,7 @@ package testhibernate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrencyList {
+public class CurrencyListInstantiated {
 	
 	public static List<Cryptocurrencies> ListCurrency(){
 	

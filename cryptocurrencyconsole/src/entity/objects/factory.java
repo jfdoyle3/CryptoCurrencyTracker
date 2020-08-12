@@ -1,4 +1,4 @@
-package entity;
+package entity.objects;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

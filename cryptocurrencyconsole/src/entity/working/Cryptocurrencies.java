@@ -1,4 +1,4 @@
-package  entity.working;
+package entity.working;
 
 import java.util.List;
 
@@ -13,41 +13,35 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cryptocurrencies")
+@Table(name = "cryptocurrencies")
 public class Cryptocurrencies {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="currency_id")
+
+	@Column(name = "currency_id")
 	private String currency_id;
-	
-	@Column(name="currency")
+
+	@Column(name = "currency")
 	private String currency;
-	
-	@Column(name="symbol")
+
+	@Column(name = "symbol")
 	private String symbol;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "ranking")
 	private String ranking;
 
-	@Column(name="logo_url")
+	@Column(name = "logo_url")
 	private String logoUrl;
-	
-
 
 	public Cryptocurrencies() {
-		
+
 	}
-
-	
-
-
 
 	public Cryptocurrencies(String currency_id, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
@@ -59,10 +53,6 @@ public class Cryptocurrencies {
 		this.logoUrl = logoUrl;
 		this.ranking = ranking;
 	}
-
-
-
-
 
 	public String getCurrency() {
 		return currency;
@@ -112,20 +102,10 @@ public class Cryptocurrencies {
 		this.ranking = ranking;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
 				+ ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
 	}
 
-	
-	
-
-	
-
-	
 }

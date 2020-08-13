@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "currency_info")
-public class CurrencyInfo {
+@Table(name = "currency_daily_price")
+public class CurrencyDailyPriceEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +44,11 @@ public class CurrencyInfo {
 	@Column(name = "high_timestamp")
 	private String highTimeStamp;
 
-	public CurrencyInfo() {
+	public CurrencyDailyPriceEntity() {
 
 	}
 
-	public CurrencyInfo(String symbol, String price, String priceDate, String priceTimeStamp, String circulatingSupply,
+	public CurrencyDailyPriceEntity(String symbol, String price, String priceDate, String priceTimeStamp, String circulatingSupply,
 			String maxSupply, String marketCap, String high, String highTimeStamp) {
 		super();
 		this.symbol = symbol;

@@ -14,8 +14,8 @@ public class CurrencyTopFive {
 		session.beginTransaction();
 
 		String hql = "from Cryptocurrencies";
-		Query<Cryptocurrencies> query = session.createQuery(hql);
-		List<Cryptocurrencies> listCategories = query.list();
+		Query<CryptocurrencyEntity> query = session.createQuery(hql);
+		List<CryptocurrencyEntity> listCategories = query.list();
 		 
 		for (int idx=0; idx<5; idx++) {
 			 System.out.println(listCategories.get(idx));

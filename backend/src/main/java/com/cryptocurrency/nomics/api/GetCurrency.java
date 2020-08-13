@@ -3,8 +3,8 @@ package com.cryptocurrency.nomics.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
-import com.cryptocurrency.nomics.objects.CurrencyInfo;
+import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
 import kong.unirest.HttpResponse;
@@ -13,8 +13,8 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
-	private static List<CryptocurrencyHeader> cryptoList = new ArrayList<>();
-	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
+	private static List<CryptocurrencyEntity> cryptocurrencyList = new ArrayList<>();
+	private static List<CurrencyDailyPriceEntity> currencyDailyPriceEntityList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
@@ -22,18 +22,17 @@ public class GetCurrency {
 
 	public static JSONArray Currencies(String currency, String interval) {
 
-		// ******** REMOVE API KEY before committing *****
+	
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
 				.queryString("key", "8381f81057e8766c11cd0109bae84864").queryString("ids", currency)
 				.queryString("interval", interval).asString();
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);
-//	System.out.println("Currencies: --> API Data: "+json.toString());
 		return currencyJson;
 	}
 
-	public static List<CryptocurrencyHeader> CurrencyID(JSONArray json) {
+	public static List<CryptocurrencyEntity> Cryptocurrency(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -47,15 +46,15 @@ public class GetCurrency {
 			String symbol = (String) key.get("symbol");
 			String rank = (String) key.get("rank");
 
-			CryptocurrencyHeader cryptoMoney = new CryptocurrencyHeader(currency_id, currency, symbol, name, logo,
+			CryptocurrencyEntity cryptocurrency = new CryptocurrencyEntity(currency_id, currency, symbol, name, logo,
 					rank);
-			cryptoList.add(cryptoMoney);
+			cryptocurrencyList.add(cryptocurrency);
 
 		}
-		return cryptoList;
+		return cryptocurrencyList;
 	}
 
-	public static List<CurrencyInfo> CurrencyInfo(JSONArray json) {
+	public static List<CurrencyDailyPriceEntity> CurrencyDailyPrice(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 
@@ -83,15 +82,14 @@ public class GetCurrency {
 				market_cap = "N/A";
 			}
 
-			String rank = (String) key.get("rank");
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price, priceDate, priceTimeStamp,
-					circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
-			currencyInfoList.add(currencyInfo);
+			CurrencyDailyPriceEntity currencyDailyPriceEntity = new CurrencyDailyPriceEntity(symbol, price, priceDate,
+					priceTimeStamp, circulating_supply, maxSupply, market_cap, high, high_timestamp);
+			currencyDailyPriceEntityList.add(currencyDailyPriceEntity);
 		}
-		return currencyInfoList;
+		return currencyDailyPriceEntityList;
 	}
 
 	public static List<CurrencyInterval> CurrencyTimeInterval(JSONArray json, String interval) {

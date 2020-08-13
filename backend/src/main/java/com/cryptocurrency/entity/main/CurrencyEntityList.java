@@ -1,8 +1,12 @@
-package entity.working;
+package com.cryptocurrency.entity.main;
 
 import java.util.List;
 
 import org.hibernate.Session;
+
+import com.cryptocurrency.entity.factories.HibernateCurrencyFactory;
+import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.nomics.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 
@@ -12,8 +16,8 @@ public class CurrencyEntityList {
 		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		JSONArray json = APIEntity.Currencies("", "7d");
-		List<CryptocurrencyEntity> list = APIEntity.CurrencyID(json);
+		JSONArray json = GetCurrency.Currencies("", "7d");
+		List<CryptocurrencyEntity> list = GetCurrency.Cryptocurrency(json);
 
 		for (CryptocurrencyEntity currency : list) {
 			System.out.println(currency);

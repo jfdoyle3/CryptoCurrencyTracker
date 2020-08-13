@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cryptocurrencies")
-public class Cryptocurrencies {
+public class CryptocurrencyEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,11 +39,11 @@ public class Cryptocurrencies {
 	@Column(name = "logo_url")
 	private String logoUrl;
 
-	public Cryptocurrencies() {
+	public CryptocurrencyEntity() {
 
 	}
 
-	public Cryptocurrencies(String currency_id, String currency, String symbol, String name, String logoUrl,
+	public CryptocurrencyEntity(String currency_id, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
 		super();
 		this.currency_id = currency_id;

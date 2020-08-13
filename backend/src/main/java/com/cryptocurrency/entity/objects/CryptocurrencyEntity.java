@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
-
 @Entity
 @Table(name = "cryptocurrencies")
 public class CryptocurrencyEntity {
@@ -45,23 +43,15 @@ public class CryptocurrencyEntity {
 
 	}
 
-	public CryptocurrencyEntity(String currency_id, String currency, String symbol, String name, String ranking,
-			String logoUrl) {
-
+	public CryptocurrencyEntity(String currency_id, String currency, String symbol, String name, String logoUrl,
+			String ranking) {
+		super();
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
 		this.name = name;
-		this.ranking = ranking;
 		this.logoUrl = logoUrl;
-	}
-
-	public String getCurrency_id() {
-		return currency_id;
-	}
-
-	public void setCurrency_id(String currency_id) {
-		this.currency_id = currency_id;
+		this.ranking = ranking;
 	}
 
 	public String getCurrency() {
@@ -88,14 +78,6 @@ public class CryptocurrencyEntity {
 		this.name = name;
 	}
 
-	public String getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(String ranking) {
-		this.ranking = ranking;
-	}
-
 	public String getLogoUrl() {
 		return logoUrl;
 	}
@@ -104,10 +86,26 @@ public class CryptocurrencyEntity {
 		this.logoUrl = logoUrl;
 	}
 
+	public String getCurrency_id() {
+		return currency_id;
+	}
+
+	public void setCurrency_id(String currency_id) {
+		this.currency_id = currency_id;
+	}
+
+	public String getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
+	}
+
 	@Override
 	public String toString() {
-		return "CryptocurrencyEntity [id=" + id + ", currency_id=" + currency_id + ", currency=" + currency
-				+ ", symbol=" + symbol + ", name=" + name + ", ranking=" + ranking + ", logoUrl=" + logoUrl + "]";
+		return "Cryptocurrencies [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
+				+ ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
 	}
 
 }

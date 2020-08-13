@@ -7,14 +7,11 @@ import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-import objects.CurrencyInfo;
-import objects.CurrencyInterval;
 
 public class APIEntity {
 	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
-	private static long idCounter = 0;
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
 
@@ -45,15 +42,10 @@ public class APIEntity {
 			String symbol = (String) key.get("symbol");
 			String ranking = (String) key.get("rank");
 			String logo = (String) key.get("logo_url");
-			
-			
 
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies( currency_id, currency, symbol, name, logo, ranking);
+			Cryptocurrencies cryptoMoney = new Cryptocurrencies(currency_id, currency, symbol, name, logo, ranking);
 			cryptoList.add(cryptoMoney);
 
-		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
-		//			logo);
-		//	System.out.println("---------------------");
 		}
 		return cryptoList;
 	}
@@ -67,8 +59,8 @@ public class APIEntity {
 			JSONObject key = (JSONObject) currencyData;
 			String symbol = (String) key.get("symbol");
 			String price = (String) key.get("price");
-			String priceDate=(String) key.get("price_date");
-			String priceTimeStamp=(String) key.get("price_timestamp");
+			String priceDate = (String) key.get("price_date");
+			String priceTimeStamp = (String) key.get("price_timestamp");
 
 			if (key.has("circulating_supply")) {
 				circulating_supply = (String) key.get("circulating_supply");
@@ -85,20 +77,12 @@ public class APIEntity {
 			} else {
 				market_cap = "N/A";
 			}
-
-			String rank = (String) key.get("rank");
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price,priceDate,priceTimeStamp, circulating_supply, maxSupply,
-					market_cap, rank, high, high_timestamp);
+			CurrencyInfo currencyInfo = new CurrencyInfo(symbol, price, priceDate, priceTimeStamp, circulating_supply,
+					maxSupply, market_cap, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
-			// System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
-			// System.out.printf("id: %d\n,symbol %s\n, price: %s\nsupply: %s\nmax: %s\ncap:
-			// %s\nrank: %s\nhigh: %s\nhigh time: %s\n",idCounter,symbol,
-			// price,circulating_supply, maxSupply, market_cap, rank, high, high_timestamp);
-			// System.out.println("---------------------");
-
 		}
 		return currencyInfoList;
 	}
@@ -135,24 +119,10 @@ public class APIEntity {
 				} else {
 					marketCapChgPct = "N/A";
 				}
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
-						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
+				CurrencyInterval currencyInterval = new CurrencyInterval(symbol, interval, volume, priceChange,
+						priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
 				currencyIntervalList.add(currencyInterval);
-				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
-				// Volume: "+volume+" | Price Chg: "+priceChange+" | Price %: "+priceChgPct+" |
-				// Vol Chg: "+volChange+" | Vol %: "+volChgPct+" | Market: "+marketCapChg+" |
-				// Market %: "+marketCapChgPct);
-				
-//			} else {
-//				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, "N/A", "N/A",
-//						"N/A", "N/A", "N/A", "N/A", "N/A");
-//				currencyIntervalList.add(currencyInterval);
-				// System.out.println("Time Interval: "+interval+" | Symbol: "+symbol+" |
-				// Volume: N/A | Price Chg: N/A | Price %: N/A | Vol Chg: N/A | Vol %: N/A |
-				// Market: N/A | Market %: N/A");
 			}
-
-			// System.out.println("---------------------");
 		}
 		return currencyIntervalList;
 	}

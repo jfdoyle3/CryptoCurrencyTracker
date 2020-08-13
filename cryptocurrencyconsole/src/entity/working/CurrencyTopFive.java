@@ -17,9 +17,12 @@ public class CurrencyTopFive {
 		Query<Cryptocurrencies> query = session.createQuery(hql);
 		List<Cryptocurrencies> listCategories = query.list();
 		 
-		for (Cryptocurrencies aCategory : listCategories) {
-		    System.out.println(aCategory.getName());
+		for (int idx=0; idx<5; idx++) {
+			 System.out.println(listCategories.get(idx));
 		}
+//		for (Cryptocurrencies aCategory : listCategories) {
+//		    System.out.println(aCategory);
+//		}
 		
 		session.getTransaction().commit();
 		HibernateCurrencyFactory.shutdown();

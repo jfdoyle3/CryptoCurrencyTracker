@@ -9,7 +9,7 @@ import com.cryptocurrency.nomics.api.ListCurrenciesInfo;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 @Service
-public class CurrencyInfoServices {
+public class CurrencyDailyPriceEntityServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";

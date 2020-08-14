@@ -20,10 +20,10 @@ class CryptocurrencyTracker extends Component {
             <Switch>
               <Route path="/" exact component={LoginComponent} />
               <Route path="/login" component={LoginComponent} />
-              <AuthenticatedRoute
+              {/* <AuthenticatedRoute
                 path="/welcome/:name"
                 component={TestPageComponent}
-              />
+              /> */}
               <AuthenticatedRoute
                 path="/list"
                 component={CurrencyListComponent}

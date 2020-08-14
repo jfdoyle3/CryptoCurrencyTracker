@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
-@RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@RestController
+//@CrossOrigin(origins = "http://localhost:4200")
 public class CurrencyDailyPriceController {
 
-	@Autowired
-	private CurrencyDailyPriceEntity currencyDailyPriceServices;
+//	@Autowired
+//	private CurrencyDailyPriceEntity currencyDailyPriceServices;
 
 	// GET: All Currencies
 //	@GetMapping("/users/{username}/cryptocurrenciesInfo")

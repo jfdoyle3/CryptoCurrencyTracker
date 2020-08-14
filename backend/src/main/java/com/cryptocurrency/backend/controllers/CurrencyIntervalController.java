@@ -12,17 +12,17 @@ import com.cryptocurrency.backend.services.CurrencyIntervalServices;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
 
-@RestController
-@CrossOrigin(origins = "http://localhost:4200")
-public class CurrencyIntervalController {
-
-	@Autowired
-	private CurrencyIntervalServices currencyIntervalServices;
-
-	// GET: All Currencies
-	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
-	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
-		return currencyIntervalServices.getIntervals(symbol);
-	}
-
-}
+//@RestController
+//@CrossOrigin(origins = "http://localhost:4200")
+//public class CurrencyIntervalController {
+//
+//	@Autowired
+//	private CurrencyIntervalServices currencyIntervalServices;
+//
+//	// GET: All Currencies
+//	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
+//	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
+//		return currencyIntervalServices.getIntervals(symbol);
+//	}
+//
+//}

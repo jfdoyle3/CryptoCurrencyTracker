@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.cryptocurrency.entity.factories.HibernateCurrencyDailyPriceFactory;
 import com.cryptocurrency.entity.factories.HibernateCurrencyFactory;
-import com.cryptocurrency.entity.factories.HibernateCurrencyInfoFactory;
 import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.api.GetCurrency;
 
@@ -14,7 +14,7 @@ import kong.unirest.json.JSONArray;
 public class CurrencyDailyPriceEntityList {
 
 	public static void main(String[] args) {
-		Session session = HibernateCurrencyInfoFactory.getSessionFactory().openSession();
+		Session session = HibernateCurrencyDailyPriceFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		JSONArray json = GetCurrency.Currencies("", "7d");

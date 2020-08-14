@@ -11,9 +11,9 @@ import com.cryptocurrency.nomics.objects.CurrencyInfo;
 public class CurrencyDailyPriceServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
-	private String defaultSearch = "";
+//	private String defaultSearch = "";
 //	private List<CurrencyDailyPriceEntity> currencyDailyPriceList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
-	private int idCounter = 0;
+//	private int idCounter = 0;
 
 	// Show All currencies in List
 //	public List<CurrencyInfo> findAll() {

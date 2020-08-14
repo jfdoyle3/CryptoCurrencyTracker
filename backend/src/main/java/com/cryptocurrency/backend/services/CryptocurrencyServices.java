@@ -42,7 +42,7 @@ public class CryptocurrencyServices {
 		List<CryptocurrencyEntity> listCurrencies = query.list();
 		 
 		for (int idx=0; idx<5; idx++) {
-			// System.out.println(listCurrencies.get(idx));
+			System.out.println(listCurrencies.get(idx));
 			topFiveList.add(listCurrencies.get(idx));
 		}
 		

@@ -14,7 +14,6 @@ public class CreateCurrencyList {
 	
 	public static void main(String[] args) {
 		String defaultSearch = "";
-	List<CryptocurrencyHeader> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
 		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 		for (CryptocurrencyHeader currency : currencyList) {

@@ -11,7 +11,7 @@ import com.cryptocurrency.nomics.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 
-public class CurrencyInfoEntityList {
+public class CurrencyDailyPriceEntityList {
 
 	public static void main(String[] args) {
 		Session session = HibernateCurrencyInfoFactory.getSessionFactory().openSession();

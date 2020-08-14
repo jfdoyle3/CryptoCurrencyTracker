@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
 import com.cryptocurrency.nomics.api.ListCurrencies;
 import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
 
@@ -13,21 +14,20 @@ public class CryptocurrencyServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CryptocurrencyHeader> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
-	private int idCounter = 0;
-
+	private List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
+	
 	// Show All currencies in List
-	public List<CryptocurrencyHeader> findAll() {
+	public List<CryptocurrencyEntity> findAll() {
 		return currencyList;
 	}
 
-	public List<CryptocurrencyHeader> listTopFive() {
-		List<CryptocurrencyHeader> topTenList = new ArrayList<>();
+	public List<CryptocurrencyEntity> listTopFive() {
+		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
 		for (int idx = 0; idx < 5; idx++) {
-			topTenList.add(currencyList.get(idx));
+			topFiveList.add(currencyList.get(idx));
 		}
 
-		return topTenList;
+		return topFiveList;
 
 	}
 

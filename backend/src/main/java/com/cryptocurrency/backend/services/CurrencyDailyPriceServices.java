@@ -1,19 +1,19 @@
 package com.cryptocurrency.backend.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.api.ListCurrenciesInfo;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 @Service
-public class CurrencyDailyPriceEntityServices {
+public class CurrencyDailyPriceServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CurrencyInfo> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
+	private List<CurrencyDailyPriceEntity> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
 	private long idCounter = 0;
 
 	// Show All currencies in List
@@ -32,8 +32,8 @@ public class CurrencyDailyPriceEntityServices {
 //	}
 
 	// Find A Currency in the List
-	public CurrencyInfo findById(long id) {
-		for (CurrencyInfo currencyInfo : currencyInfoList) {
+	public CurrencyDailyPriceEntity findById(int id) {
+		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
 			if (currencyInfo.getId() == id) {
 			//	System.out.println(currency);
 				return currencyInfo;
@@ -51,9 +51,9 @@ public class CurrencyDailyPriceEntityServices {
 //			if (currency.getSymbol().equals(currencySymbol)) {
 //				return currency;
 
-	public CurrencyInfo findBySymbol(String currencySearch) {
+	public CurrencyDailyPriceEntity findBySymbol(String currencySearch) {
 		String currencySymbol = currencySearch.toUpperCase();
-		for (CurrencyInfo currencyInfo : currencyInfoList) {
+		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
 			if (currencyInfo.getSymbol().equals(currencySymbol) ) {
 				return currencyInfo;
 

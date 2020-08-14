@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 
-public class HibernateCurrencyInfoFactory {
+public class HibernateCurrencyDailyPriceFactory {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {

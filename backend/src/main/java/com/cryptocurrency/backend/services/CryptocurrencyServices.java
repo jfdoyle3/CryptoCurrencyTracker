@@ -3,29 +3,52 @@ package com.cryptocurrency.backend.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
+import com.cryptocurrency.entity.factories.HibernateCurrencyFactory;
 import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
-import com.cryptocurrency.nomics.api.ListCurrencies;
-import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
 
 @Service
 public class CryptocurrencyServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
+//	private List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
 	
 	// Show All currencies in List
-	public List<CryptocurrencyEntity> findAll() {
-		return currencyList;
-	}
+//	public List<CryptocurrencyEntity> findAll() {
+//		return currencyList;
+//	}
 
+//	public List<CryptocurrencyEntity> listTopFive() {
+//		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
+//		for (int idx = 0; idx < 5; idx++) {
+//			topFiveList.add(currencyList.get(idx));
+//		}
+//
+//		return topFiveList;
+//
+//	}
+	
 	public List<CryptocurrencyEntity> listTopFive() {
 		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
-		for (int idx = 0; idx < 5; idx++) {
-			topFiveList.add(currencyList.get(idx));
+		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		String hql = "from Cryptocurrencies";
+		Query<CryptocurrencyEntity> query = session.createQuery(hql);
+		List<CryptocurrencyEntity> listCurrencies = query.list();
+		 
+		for (int idx=0; idx<5; idx++) {
+			// System.out.println(listCurrencies.get(idx));
+			topFiveList.add(listCurrencies.get(idx));
 		}
+		
+		session.getTransaction().commit();
+		HibernateCurrencyFactory.shutdown();
+	
 
 		return topFiveList;
 
@@ -44,15 +67,15 @@ public class CryptocurrencyServices {
 //	}
 
 	// Get Currency Symbol in the API
-	public CryptocurrencyHeader findByCurrencyBySymbol(String currencySearch) {
-		String currencySymbol = currencySearch.toUpperCase();
-		for (CryptocurrencyHeader currency : currencyList) {
-			if (currency.getSymbol().equals(currencySymbol)) {
-				return currency;
-			}
-		}
-		return null;
-	}
+//	public CryptocurrencyHeader findByCurrencyBySymbol(String currencySearch) {
+//		String currencySymbol = currencySearch.toUpperCase();
+//		for (CryptocurrencyHeader currency : currencyList) {
+//			if (currency.getSymbol().equals(currencySymbol)) {
+//				return currency;
+//			}
+//		}
+//		return null;
+//	}
 
 	// Delete by Id
 //	public Cryptocurrency deleteById(long id) {

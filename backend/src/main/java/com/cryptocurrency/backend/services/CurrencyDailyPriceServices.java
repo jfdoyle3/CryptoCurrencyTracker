@@ -13,7 +13,7 @@ public class CurrencyDailyPriceServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-	private List<CurrencyDailyPriceEntity> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
+	private List<CurrencyDailyPriceEntity> currencyDailyPriceList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
 	private long idCounter = 0;
 
 	// Show All currencies in List

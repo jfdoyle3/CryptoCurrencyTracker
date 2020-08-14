@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cryptocurrency.backend.services.CurrencyInfoServices;
+import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class CurrencyInfoController {
+public class CurrencyDailyPriceController {
 
 	@Autowired
-	private CurrencyInfoServices currencyInfoServices;
+	private CurrencyDailyPriceEntity currencyDailyPriceServices;
 
 	// GET: All Currencies
-	@GetMapping("/users/{username}/cryptocurrenciesInfo")
-	public List<CurrencyInfo> getAllInfo(@PathVariable String username) {
-		return currencyInfoServices.findAll();
-	}
-
-	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrencyInfo/{symbol}")
-	public CurrencyInfo getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
-		return currencyInfoServices.findBySymbol(symbol);
-	}
+//	@GetMapping("/users/{username}/cryptocurrenciesInfo")
+//	public List<CurrencyInfo> getAllInfo(@PathVariable String username) {
+//		return currencyDailyPriceServices.findAll();
+//	}
+//
+//	// GET: A Currency
+//	@GetMapping("/users/{username}/cryptocurrencyInfo/{symbol}")
+//	public CurrencyInfo getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
+//		return currencyDailyPriceServices.findBySymbol(symbol);
+//	}
 //	
 //	// GET: A Currency
 //	@GetMapping("/users/{username}/cryptocurrencies/{currency}")

@@ -22,10 +22,10 @@ public class CurrencyController {
 	private CryptocurrencyServices cryptocurrencyServices;
 
 //	// GET: All Currencies
-//	@GetMapping("/users/{username}/cryptocurrencies")
-//	public List<CryptocurrencyHeader> getAllCurrencies(@PathVariable String username) {
-//		return cryptocurrencyServices.findAll();
-//	}
+	@GetMapping("/users/{username}/cryptocurrencies")
+	public List<CryptocurrencyEntity> getAllCurrencies(@PathVariable String username) {
+		return cryptocurrencyServices.findAll();
+	}
 
 	// GET: Top Ten Currencies
 	@GetMapping("/users/{username}/cryptocurrencies/topfive")

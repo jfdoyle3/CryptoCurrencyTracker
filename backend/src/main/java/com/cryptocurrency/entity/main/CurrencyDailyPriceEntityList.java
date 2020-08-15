@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.cryptocurrency.entity.factories.HibernateCurrencyDailyPriceFactory;
-import com.cryptocurrency.entity.factories.HibernateCurrencyFactory;
 import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.api.GetCurrency;
 
@@ -26,6 +25,6 @@ public class CurrencyDailyPriceEntityList {
 		}
 
 		session.getTransaction().commit();
-		HibernateCurrencyFactory.shutdown();
+		HibernateCurrencyDailyPriceFactory.shutdown();
 	}
 }

@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.entity.factories.HibernateCurrencyFactory;
+import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
 import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
 
 @Service
@@ -18,10 +18,26 @@ public class CryptocurrencyServices {
 //	private List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
 	
 	// Show All currencies in List
-//	public List<CryptocurrencyEntity> findAll() {
-//		return currencyList;
-//	}
+	public List<CryptocurrencyEntity> findAll() {
+		List<CryptocurrencyEntity> makeList=new ArrayList<>();
+		Session session = HibernateCryptocurrencyFactory .getSessionFactory().openSession();
+		session.beginTransaction();
 
+		String hql = "from CryptocurrencyEntity";
+		Query<CryptocurrencyEntity> query = session.createQuery(hql);
+		List<CryptocurrencyEntity> listCurrencies = query.list();
+		  
+		for(CryptocurrencyEntity currency : listCurrencies) {
+		//	System.out.println(currency);
+			makeList.add(currency);
+			
+		}
+		
+		session.getTransaction().commit();
+		HibernateCryptocurrencyFactory .shutdown();
+		System.out.println("----->   "+makeList.get(0));
+		return makeList;
+	}
 //	public List<CryptocurrencyEntity> listTopFive() {
 //		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
 //		for (int idx = 0; idx < 5; idx++) {
@@ -30,11 +46,11 @@ public class CryptocurrencyServices {
 //
 //		return topFiveList;
 //
-//	}
+//}
 	
 	public List<CryptocurrencyEntity> listTopFive() {
 		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
-		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
+		Session session = HibernateCryptocurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		String hql = "from Cryptocurrencies";
@@ -47,7 +63,7 @@ public class CryptocurrencyServices {
 		}
 		
 		session.getTransaction().commit();
-		HibernateCurrencyFactory.shutdown();
+		HibernateCryptocurrencyFactory.shutdown();
 	
 
 		return topFiveList;

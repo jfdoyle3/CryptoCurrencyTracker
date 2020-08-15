@@ -8,26 +8,26 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 @Service
 public class CryptocurrencyServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
 	private String defaultSearch = "";
-//	private List<CryptocurrencyEntity> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
+//	private List<Cryptocurrency> currencyList = ListCurrencies.CreateCurrencyList(defaultSearch);
 	
 	// Show All currencies in List
-	public List<CryptocurrencyEntity> findAll() {
-		List<CryptocurrencyEntity> makeList=new ArrayList<>();
+	public List<Cryptocurrency> findAll() {
+		List<Cryptocurrency> makeList=new ArrayList<>();
 		Session session = HibernateCryptocurrencyFactory .getSessionFactory().openSession();
 		session.beginTransaction();
 
-		String hql = "from CryptocurrencyEntity";
-		Query<CryptocurrencyEntity> query = session.createQuery(hql);
-		List<CryptocurrencyEntity> listCurrencies = query.list();
+		String hql = "from Cryptocurrency";
+		Query<Cryptocurrency> query = session.createQuery(hql);
+		List<Cryptocurrency> listCurrencies = query.list();
 		  
-		for(CryptocurrencyEntity currency : listCurrencies) {
+		for(Cryptocurrency currency : listCurrencies) {
 		//	System.out.println(currency);
 			makeList.add(currency);
 			
@@ -38,8 +38,8 @@ public class CryptocurrencyServices {
 		System.out.println("----->   "+makeList.get(0));
 		return makeList;
 	}
-//	public List<CryptocurrencyEntity> listTopFive() {
-//		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
+//	public List<Cryptocurrency> listTopFive() {
+//		List<Cryptocurrency> topFiveList = new ArrayList<>();
 //		for (int idx = 0; idx < 5; idx++) {
 //			topFiveList.add(currencyList.get(idx));
 //		}
@@ -48,17 +48,17 @@ public class CryptocurrencyServices {
 //
 //}
 	
-	public List<CryptocurrencyEntity> listTopFive() {
-		List<CryptocurrencyEntity> topFiveList = new ArrayList<>();
+	public List<Cryptocurrency> listTopFive() {
+		List<Cryptocurrency> topFiveList = new ArrayList<>();
 		Session session = HibernateCryptocurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		String hql = "from Cryptocurrencies";
-		Query<CryptocurrencyEntity> query = session.createQuery(hql);
-		List<CryptocurrencyEntity> listCurrencies = query.list();
+		String hql = "from Cryptocurrency";
+		Query<Cryptocurrency> query = session.createQuery(hql);
+		List<Cryptocurrency> listCurrencies = query.list();
 		 
 		for (int idx=0; idx<5; idx++) {
-			System.out.println(listCurrencies.get(idx));
+			System.out.println("-----> "+listCurrencies.get(idx));
 			topFiveList.add(listCurrencies.get(idx));
 		}
 		

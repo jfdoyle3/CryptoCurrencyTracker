@@ -3,7 +3,7 @@ package com.cryptocurrency.entity.factories;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
+import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
 
 public class HibernateCurrencyDailyPriceFactory {
 	private static final SessionFactory sessionFactory = buildSessionFactory();

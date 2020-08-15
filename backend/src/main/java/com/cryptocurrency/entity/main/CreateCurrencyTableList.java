@@ -5,19 +5,19 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 import com.cryptocurrency.nomics.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 
-public class CurrencyEntityList {
+public class CreateCurrencyTableList {
 
 	public static void main(String[] args) {
 		Session session = HibernateCryptocurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
 		JSONArray json = GetCurrency.Currencies("", "7d");
-		List<CryptocurrencyEntity> list = GetCurrency.Cryptocurrency(json);
+		List<Cryptocurrency> list = GetCurrency.Cryptocurrency(json);
 
 		for (Cryptocurrency currency : list) {
 			System.out.println(currency);

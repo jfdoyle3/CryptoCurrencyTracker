@@ -13,7 +13,7 @@ public class CurrencyTopFive {
 		Session session = HibernateCurrencyFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		String hql = "from Cryptocurrencies";
+		String hql = "from Cryptocurrency";
 		Query<CryptocurrencyEntity> query = session.createQuery(hql);
 		List<CryptocurrencyEntity> listCategories = query.list();
 		 

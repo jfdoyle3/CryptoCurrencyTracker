@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class CurrencyTopFive {
 
@@ -14,12 +14,12 @@ public class CurrencyTopFive {
 		Session session = HibernateCryptocurrencyFactory .getSessionFactory().openSession();
 		session.beginTransaction();
 
-		String hql = "from CryptocurrencyEntity";
-		Query<CryptocurrencyEntity> query = session.createQuery(hql);
-		List<CryptocurrencyEntity> listCategories = query.list();
+		String hql = "from Cryptocurrency";
+		Query<Cryptocurrency> query = session.createQuery(hql);
+		List<Cryptocurrency> listCategories = query.list();
 		 
 		for (int idx=0; idx<5; idx++) {
-			 System.out.println(listCategories.get(idx));
+			 System.out.println("----->  "+listCategories.get(idx));
 		}
 		
 		session.getTransaction().commit();

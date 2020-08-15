@@ -3,7 +3,7 @@ package com.cryptocurrency.entity.factories;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class HibernateCryptocurrencyFactory {
 	private static final SessionFactory sessionFactory = buildSessionFactory();

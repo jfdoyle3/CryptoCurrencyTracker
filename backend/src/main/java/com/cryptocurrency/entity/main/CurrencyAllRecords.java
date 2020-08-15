@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class CurrencyAllRecords {
 

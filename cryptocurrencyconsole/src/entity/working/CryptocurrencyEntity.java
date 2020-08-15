@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cryptocurrencies")
+@Table(name = "cryptocurrency")
 public class CryptocurrencyEntity {
 
 	@Id

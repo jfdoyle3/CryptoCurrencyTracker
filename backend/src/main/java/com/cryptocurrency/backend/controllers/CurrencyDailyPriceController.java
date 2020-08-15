@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
+import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 //@RestController
@@ -16,7 +16,7 @@ import com.cryptocurrency.nomics.objects.CurrencyInfo;
 public class CurrencyDailyPriceController {
 
 //	@Autowired
-//	private CurrencyDailyPriceEntity currencyDailyPriceServices;
+//	private CurrencyDailyPrice currencyDailyPriceServices;
 
 	// GET: All Currencies
 //	@GetMapping("/users/{username}/cryptocurrenciesInfo")

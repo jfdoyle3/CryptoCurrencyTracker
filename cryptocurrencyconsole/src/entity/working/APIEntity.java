@@ -9,8 +9,8 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class APIEntity {
-	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
-	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
+	private static List<CryptocurrencyEntity> cryptoList = new ArrayList<>();
+	private static List<CurrencyDailyPriceEntity> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
@@ -29,7 +29,7 @@ public class APIEntity {
 		return currencyJson;
 	}
 
-	public static List<Cryptocurrencies> CurrencyID(JSONArray json) {
+	public static List<CryptocurrencyEntity> CurrencyID(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -43,14 +43,14 @@ public class APIEntity {
 			String ranking = (String) key.get("rank");
 			String logo = (String) key.get("logo_url");
 
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies(currency_id, currency, symbol, name, logo, ranking);
+			CryptocurrencyEntity cryptoMoney = new CryptocurrencyEntity(currency_id, currency, symbol, name, logo, ranking);
 			cryptoList.add(cryptoMoney);
 
 		}
 		return cryptoList;
 	}
 
-	public static List<CurrencyInfo> CurrencyInfo(JSONArray json) {
+	public static List<CurrencyDailyPriceEntity> CurrencyInfo(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 
@@ -80,7 +80,7 @@ public class APIEntity {
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyInfo currencyInfo = new CurrencyInfo(symbol, price, priceDate, priceTimeStamp, circulating_supply,
+			CurrencyDailyPriceEntity currencyInfo = new CurrencyDailyPriceEntity(symbol, price, priceDate, priceTimeStamp, circulating_supply,
 					maxSupply, market_cap, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
 		}

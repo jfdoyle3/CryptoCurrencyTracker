@@ -9,66 +9,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.services.CurrencyIntervalServices;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
-=======
-=======
-import com.cryptocurrency.nomics.objects.CurrencyInterval;
->>>>>>> Working
 
->>>>>>> Working
 
-@RestController
-@CrossOrigin(origins = "http://localhost:4200")
-public class CurrencyIntervalController {
-
-	@Autowired
-	private CurrencyIntervalServices currencyIntervalServices;
-
-	// GET: All Currencies
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	@GetMapping("/users/{username}/cryptocurrenciesInterval")
-	public List<CurrencyInterval> getAllInfo(@PathVariable String username) {
-		return currencyIntervalServices.findAll();
-	}
-
-//	// GET: Top Ten Currencies
-//	@GetMapping("/users/{username}/cryptocurrencies/topTen")
-//	public List<CurrencyInfo> getTopTen(@PathVariable String username) {
-//		return currencyServices.listTopTen();
+//@RestController
+//@CrossOrigin(origins = "http://localhost:4200")
+//public class CurrencyIntervalController {
+//
+//	@Autowired
+//	private CurrencyIntervalServices currencyIntervalServices;
+//
+//	// GET: All Currencies
+//	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
+//	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
+//		return currencyIntervalServices.getIntervals(symbol);
 //	}
-//	// GET: A Currency
-	@GetMapping("/users/{username}/cryptocurrenciesInterval/id/{symbol}/{interval}")
-	public List<CurrencyInterval> getByCurrencyId(@PathVariable String username, @PathVariable String symbol, @PathVariable String interval) {
-		return currencyIntervalServices.currencyDayInterval(symbol,interval);
-	}
-//	
-//	// GET: A Currency
-//	@GetMapping("/users/{username}/cryptocurrencies/{currency}")
-//	public CurrencyInfo getByCurrency(@PathVariable String username, @PathVariable String currency) {
-//		return currencyServices.findByAnyCurrency(currency);
-//	}
-=======
-	//@GetMapping("/users/{username}/cryptocurrenciesInfo")
-//	public List<CurrencyInfo> getAllInfo(@PathVariable String username) {
-//		return currencyIntervalServices.findAll();
-	//}
-=======
-	@GetMapping("/users/{username}/cryptocurrenciesInterval/{symbol}")
-=======
-	@GetMapping("/users/{username}/cryptocurrencyIntervals/{symbol}")
-<<<<<<< HEAD
->>>>>>> Working
-	public List<CurrencyInterval> getAllInfo(@PathVariable String username,@PathVariable String symbol ) {
-=======
-	public List<CurrencyInterval> getCurrencyIntervals(@PathVariable String username,@PathVariable String symbol ) {
->>>>>>> Working
-		return currencyIntervalServices.getIntervals(symbol);
-	}
->>>>>>> Working
-
->>>>>>> Working
-}
+//
+//}

@@ -1,10 +1,11 @@
-package entity.working;
+package com.cryptocurrency.entity.factories;
 
-import java.io.File;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateCurrencyInfoFactory {
+import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
+
+public class HibernateCurrencyDailyPriceFactory {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
 	private static SessionFactory buildSessionFactory() {

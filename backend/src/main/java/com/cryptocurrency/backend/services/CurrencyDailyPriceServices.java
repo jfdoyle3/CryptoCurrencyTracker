@@ -1,25 +1,24 @@
 package com.cryptocurrency.backend.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.nomics.api.ListCurrenciesInfo;
+import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
 import com.cryptocurrency.nomics.objects.CurrencyInfo;
 
 @Service
-public class CurrencyInfoServices {
+public class CurrencyDailyPriceServices {
 
 	// private String defaultSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
-	private String defaultSearch = "";
-	private List<CurrencyInfo> currencyInfoList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
-	private long idCounter = 0;
+//	private String defaultSearch = "";
+//	private List<CurrencyDailyPriceEntity> currencyDailyPriceList = ListCurrenciesInfo.CreateCurrencyListInfo(defaultSearch);
+//	private int idCounter = 0;
 
 	// Show All currencies in List
-	public List<CurrencyInfo> findAll() {
-		return currencyInfoList;
-	}
+//	public List<CurrencyInfo> findAll() {
+//		return currencyInfoList;
+//	}
 
 //	public List<CurrencyInfo> listTopTen() {
 //		List<CurrencyInfo> topTenList = new ArrayList<>();
@@ -32,16 +31,16 @@ public class CurrencyInfoServices {
 //	}
 
 	// Find A Currency in the List
-	public CurrencyInfo findById(long id) {
-		for (CurrencyInfo currencyInfo : currencyInfoList) {
-			if (currencyInfo.getId() == id) {
-			//	System.out.println(currency);
-				return currencyInfo;
-			}
-
-		}
-		return null;
-	}
+//	public CurrencyDailyPriceEntity findById(int id) {
+//		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
+//			if (currencyInfo.getId() == id) {
+//			//	System.out.println(currency);
+//				return currencyInfo;
+//			}
+//
+//		}
+//		return null;
+//	}
 
 	// Get any known Currency in the API
 
@@ -51,16 +50,16 @@ public class CurrencyInfoServices {
 //			if (currency.getSymbol().equals(currencySymbol)) {
 //				return currency;
 
-	public CurrencyInfo findBySymbol(String currencySearch) {
-		String currencySymbol = currencySearch.toUpperCase();
-		for (CurrencyInfo currencyInfo : currencyInfoList) {
-			if (currencyInfo.getSymbol().equals(currencySymbol) ) {
-				return currencyInfo;
-
-			}
-		}
-		return null;
-	}
+//	public CurrencyDailyPriceEntity findBySymbol(String currencySearch) {
+//		String currencySymbol = currencySearch.toUpperCase();
+//		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
+//			if (currencyInfo.getSymbol().equals(currencySymbol) ) {
+//				return currencyInfo;
+//
+//			}
+//		}
+//		return null;
+//	}
 
 	// Delete by Id
 //	public Cryptocurrency deleteById(long id) {

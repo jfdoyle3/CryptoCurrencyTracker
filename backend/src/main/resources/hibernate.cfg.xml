@@ -14,7 +14,7 @@
         <property name="connection.password">Fl1pp3r6467</property>
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">100</property>
 
         <!-- Select our SQL dialect -->
  

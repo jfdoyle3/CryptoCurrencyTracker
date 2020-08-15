@@ -9,27 +9,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cryptocurrency.backend.services.CurrencyServices;
+import com.cryptocurrency.backend.services.CryptocurrencyServices;
+import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
 import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
 import com.cryptocurrency.testhibernate.EntityDBWriteOneRecordTest;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class CurrencyController {
-
+//	CryptocurrencyEntity
 	@Autowired
-	private CurrencyServices currencyServices;
+	private CryptocurrencyServices cryptocurrencyServices;
 
-	// GET: All Currencies
+//	// GET: All Currencies
 	@GetMapping("/users/{username}/cryptocurrencies")
-	public List<CryptocurrencyHeader> getAllCurrencies(@PathVariable String username) {
-		return currencyServices.findAll();
+	public List<CryptocurrencyEntity> getAllCurrencies(@PathVariable String username) {
+		return cryptocurrencyServices.findAll();
 	}
 
 	// GET: Top Ten Currencies
 	@GetMapping("/users/{username}/cryptocurrencies/topfive")
-	public List<CryptocurrencyHeader> getTopTen(@PathVariable String username) {
-		return currencyServices.listTopFive();
+	public List<CryptocurrencyEntity> getTopTen(@PathVariable String username) {
+		return cryptocurrencyServices.listTopFive();
 	}
 	// GET: A Currency by Id
 //	@GetMapping("/users/{username}/cryptocurrency/id/{id}")
@@ -38,16 +39,16 @@ public class CurrencyController {
 //	}
 	
 	// GET: A Currency by Symbol
-	@GetMapping("/users/{username}/cryptocurrency/{symbol}")
-	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
-	
-		return currencyServices.findByCurrencyBySymbol(symbol);
-	}
-	@PostMapping("/users/{username}/cryptocurrency/create")
-	public CryptocurrencyHeader getByCurrencySymbol(@PathVariable String username) {
-		EntityDBWriteOneRecordTest.RunASession();
-		return null;
-				
-		
-	}
+//	@GetMapping("/users/{username}/cryptocurrency/{symbol}")
+//	public CryptocurrencyEntity getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
+//	
+//		return currencyServices.findByCurrencyBySymbol(symbol);
+//	}
+//	@PostMapping("/users/{username}/cryptocurrency/create")
+//	public CryptocurrencyEntity getByCurrencySymbol(@PathVariable String username) {
+//		EntityDBWriteOneRecordTest.RunASession();
+//		return null;
+//				
+//		
+//	}
 }

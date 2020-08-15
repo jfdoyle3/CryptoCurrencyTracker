@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cryptocurrencies")
-public class CryptocurrencyEntity {
+@Table(name = "cryptocurrency")
+public class Cryptocurrency {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

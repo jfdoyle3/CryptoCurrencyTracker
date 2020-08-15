@@ -14,11 +14,11 @@ public class CurrencyAllRecords {
 		Session session = HibernateCryptocurrencyFactory .getSessionFactory().openSession();
 		session.beginTransaction();
 
-		String hql = "from CryptocurrencyEntity";
-		Query<CryptocurrencyEntity> query = session.createQuery(hql);
-		List<CryptocurrencyEntity> listCurrencies = query.list();
+		String hql = "from Cryptocurrency";
+		Query<Cryptocurrency> query = session.createQuery(hql);
+		List<Cryptocurrency> listCurrencies = query.list();
 		  
-		for(CryptocurrencyEntity currency : listCurrencies) {
+		for(Cryptocurrency currency : listCurrencies) {
 			System.out.println(currency);
 		}
 		

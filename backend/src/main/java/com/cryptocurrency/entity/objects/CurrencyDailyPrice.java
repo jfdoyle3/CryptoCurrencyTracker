@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency_daily_price")
-public class CurrencyDailyPriceEntity {
+public class CurrencyDailyPrices {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

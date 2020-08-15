@@ -24,7 +24,7 @@ CREATE TABLE `datestamp` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `currency_info`;
+DROP TABLE IF EXISTS `currency_daily_price`;
 
 CREATE TABLE `currency_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -32,20 +32,20 @@ CREATE TABLE `currency_info` (
   `circulating_supply` varchar(100) DEFAULT NULL,
   `max_supply` varchar(100) DEFAULT NULL,
   `market_cap` varchar(100) DEFAULT NULL,
-  `ranking` varchar(100) DEFAULT NULL,
   `high` varchar(100) DEFAULT NULL,
   `high_timestamp` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `cryptocurrencies`;
+DROP TABLE IF EXISTS `cryptocurrency`;
 
-CREATE TABLE `cryptocurrencies` (
+CREATE TABLE `cryptocurrency` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `currencyId` varchar(45) DEFAULT NULL,
+  `currencyId` varchar(45) DEFAULT NULL,  
   `currency` varchar(45) DEFAULT NULL,
   `symbol` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
+  `ranking` varchar(100) DEFAULT NULL,
   `logo_url` varchar(100) DEFAULT NULL,
   `info_id` int(11) DEFAULT NULL,
   `interval_id` int(11) DEFAULT NULL,
@@ -61,7 +61,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 DROP TABLE IF EXISTS `intervals`;
   
 CREATE TABLE `intervals` (
-  `id` INT(11) NOT NULL UTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `symbol` VARCHAR(45) NULL,
   `time` VARCHAR(45) NULL,
   `price_change` VARCHAR(45) NULL,

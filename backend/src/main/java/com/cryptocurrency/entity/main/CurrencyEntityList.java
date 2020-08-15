@@ -19,7 +19,7 @@ public class CurrencyEntityList {
 		JSONArray json = GetCurrency.Currencies("", "7d");
 		List<CryptocurrencyEntity> list = GetCurrency.Cryptocurrency(json);
 
-		for (CryptocurrencyEntity currency : list) {
+		for (Cryptocurrency currency : list) {
 			System.out.println(currency);
 			session.save(currency);
 		}

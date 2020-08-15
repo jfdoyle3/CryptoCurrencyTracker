@@ -17,9 +17,9 @@ public class CurrencyDailyPriceEntityList {
 		session.beginTransaction();
 
 		JSONArray json = GetCurrency.Currencies("", "7d");
-		List<CurrencyDailyPriceEntity> currencyInfoList = GetCurrency.CurrencyDailyPrice(json);
+		List<CurrencyDailyPrice> currencyInfoList = GetCurrency.CurrencyDailyPrice(json);
 
-		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
+		for (CurrencyDailyPrice currencyInfo : currencyInfoList) {
 			System.out.println(currencyInfo);
 			session.save(currencyInfo);
 		}

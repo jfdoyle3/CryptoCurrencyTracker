@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cryptocurrencies")
-public class CryptocurrencyEntity {
+@Table(name = "cryptocurrency")
+public class Cryptocurrency {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,13 +39,12 @@ public class CryptocurrencyEntity {
 	@Column(name = "logo_url")
 	private String logoUrl;
 
-	public CryptocurrencyEntity() {
+	public Cryptocurrency() {
 
 	}
 
-	public CryptocurrencyEntity(String currency_id, String currency, String symbol, String name, String logoUrl,
+	public Cryptocurrency(String currency_id, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
-		super();
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -104,7 +103,7 @@ public class CryptocurrencyEntity {
 
 	@Override
 	public String toString() {
-		return "Cryptocurrencies [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
+		return "Cryptocurrency [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
 				+ ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
 	}
 

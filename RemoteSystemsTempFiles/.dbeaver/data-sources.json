@@ -1,0 +1,33 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-173f2600974-2993c9e0e982fd78": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "cryptocurrencytracker",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "192.168.1.201",
+				"port": "3306",
+				"database": "cryptocurrencytracker",
+				"url": "jdbc:mysql://192.168.1.201:3306/cryptocurrencytracker",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

@@ -4,21 +4,21 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class CreateACurrencyFactory {
 
 	public static void CreateACurrencyRecord() {
 
 		SessionFactory factory = new Configuration().configure()
-				.addAnnotatedClass(CryptocurrencyEntity.class)
+				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
 
 		Session session = factory.getCurrentSession();
 
 		try {
 
-			CryptocurrencyEntity currency = new CryptocurrencyEntity("ZXY", "BTC", "BTC", "Bitcoin","1",
+			Cryptocurrency currency = new Cryptocurrency("ZXY", "BTC", "BTC", "Bitcoin","1",
 					"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
 
 			session.beginTransaction();

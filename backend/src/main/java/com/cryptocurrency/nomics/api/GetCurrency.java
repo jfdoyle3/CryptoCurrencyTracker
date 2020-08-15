@@ -3,8 +3,8 @@ package com.cryptocurrency.nomics.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.entity.objects.CryptocurrencyEntity;
-import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
+import com.cryptocurrency.entity.objects.Cryptocurrency;
+import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
 import kong.unirest.HttpResponse;
@@ -13,8 +13,8 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
-	private static List<CryptocurrencyEntity> cryptocurrencyList = new ArrayList<>();
-	private static List<CurrencyDailyPriceEntity> currencyDailyPriceEntityList = new ArrayList<>();
+	private static List<Cryptocurrency> cryptocurrencyList = new ArrayList<>();
+	private static List<CurrencyDailyPrice> currencyDailyPriceEntityList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
@@ -32,7 +32,7 @@ public class GetCurrency {
 		return currencyJson;
 	}
 
-	public static List<CryptocurrencyEntity> Cryptocurrency(JSONArray json) {
+	public static List<Cryptocurrency> Cryptocurrency(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -46,7 +46,7 @@ public class GetCurrency {
 			String symbol = (String) key.get("symbol");
 			String rank = (String) key.get("rank");
 
-			CryptocurrencyEntity cryptocurrency = new CryptocurrencyEntity(currency_id, currency, symbol, name, logo,
+			Cryptocurrency cryptocurrency = new Cryptocurrency(currency_id, currency, symbol, name, logo,
 					rank);
 			cryptocurrencyList.add(cryptocurrency);
 
@@ -54,7 +54,7 @@ public class GetCurrency {
 		return cryptocurrencyList;
 	}
 
-	public static List<CurrencyDailyPriceEntity> CurrencyDailyPrice(JSONArray json) {
+	public static List<CurrencyDailyPrice> CurrencyDailyPrice(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 
@@ -85,7 +85,7 @@ public class GetCurrency {
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
-			CurrencyDailyPriceEntity currencyDailyPriceEntity = new CurrencyDailyPriceEntity(symbol, price, priceDate,
+			CurrencyDailyPrice currencyDailyPriceEntity = new CurrencyDailyPrice(symbol, price, priceDate,
 					priceTimeStamp, circulating_supply, maxSupply, market_cap, high, high_timestamp);
 			currencyDailyPriceEntityList.add(currencyDailyPriceEntity);
 		}

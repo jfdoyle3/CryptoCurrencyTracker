@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.cryptocurrency.entity.factories.HibernateCurrencyDailyPriceFactory;
-import com.cryptocurrency.entity.objects.CurrencyDailyPriceEntity;
+import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
 import com.cryptocurrency.nomics.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
@@ -17,9 +17,9 @@ public class CurrencyDailyPriceEntityList {
 		session.beginTransaction();
 
 		JSONArray json = GetCurrency.Currencies("", "7d");
-		List<CurrencyDailyPriceEntity> currencyInfoList = GetCurrency.CurrencyDailyPrice(json);
+		List<CurrencyDailyPrice> currencyInfoList = GetCurrency.CurrencyDailyPrice(json);
 
-		for (CurrencyDailyPriceEntity currencyInfo : currencyInfoList) {
+		for (CurrencyDailyPrice currencyInfo : currencyInfoList) {
 			System.out.println(currencyInfo);
 			session.save(currencyInfo);
 		}

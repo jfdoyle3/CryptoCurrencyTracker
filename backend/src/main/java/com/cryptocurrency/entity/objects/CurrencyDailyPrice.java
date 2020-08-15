@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency_daily_price")
-public class CurrencyDailyPriceEntity {
+public class CurrencyDailyPrice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,13 +44,13 @@ public class CurrencyDailyPriceEntity {
 	@Column(name = "high_timestamp")
 	private String highTimeStamp;
 
-	public CurrencyDailyPriceEntity() {
+	public CurrencyDailyPrice() {
 
 	}
 
-	public CurrencyDailyPriceEntity(String symbol, String price, String priceDate, String priceTimeStamp,
+	public CurrencyDailyPrice(String symbol, String price, String priceDate, String priceTimeStamp,
 			String circulatingSupply, String maxSupply, String marketCap, String high, String highTimeStamp) {
-		super();
+		
 		this.symbol = symbol;
 		this.price = price;
 		this.priceDate = priceDate;
@@ -136,7 +136,7 @@ public class CurrencyDailyPriceEntity {
 
 	@Override
 	public String toString() {
-		return "CurrencyInfo [symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate + ", priceTimeStamp="
+		return "CurrencyDailyPrice [symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate + ", priceTimeStamp="
 				+ priceTimeStamp + ", circulatingSupply=" + circulatingSupply + ", maxSupply=" + maxSupply
 				+ ", marketCap=" + marketCap + ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
 	}

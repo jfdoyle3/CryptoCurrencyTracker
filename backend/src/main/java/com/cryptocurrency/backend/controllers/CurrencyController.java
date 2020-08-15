@@ -17,7 +17,7 @@ import com.cryptocurrency.testhibernate.EntityDBWriteOneRecordTest;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class CurrencyController {
-//	Cryptocurrency
+
 	@Autowired
 	private CryptocurrencyServices cryptocurrencyServices;
 
@@ -27,7 +27,7 @@ public class CurrencyController {
 		return cryptocurrencyServices.findAll();
 	}
 
-	// GET: Top Ten Currencies
+	// GET: Top Five Currencies
 	@GetMapping("/users/{username}/cryptocurrencies/topfive")
 	public List<Cryptocurrency> getTopTen(@PathVariable String username) {
 		return cryptocurrencyServices.listTopFive();

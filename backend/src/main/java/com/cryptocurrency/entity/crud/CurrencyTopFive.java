@@ -1,4 +1,4 @@
-package com.cryptocurrency.entity.main;
+package com.cryptocurrency.entity.crud;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class CurrencyTopFive {
 
-	public static void main(String[] args) {
+	public static List<Cryptocurrency> TopFiveList() {
 		List<Cryptocurrency> topFiveList=new ArrayList<>();
 		Session session = HibernateCryptocurrencyFactory .getSessionFactory().openSession();
 		session.beginTransaction();
@@ -28,9 +28,9 @@ public class CurrencyTopFive {
 		session.getTransaction().commit();
 		HibernateCryptocurrencyFactory .shutdown();
 	
-
-	for (Cryptocurrency currency : topFiveList) {
-		System.out.println("<-- "+currency);
-	}
+		return topFiveList;
+//	for (Cryptocurrency currency : topFiveList) {
+//		System.out.println("<-- "+currency);
+//	}
 }
 }

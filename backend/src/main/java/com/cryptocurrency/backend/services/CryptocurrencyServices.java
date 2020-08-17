@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cryptocurrency.entity.crud.CurrencyTopFive;
-import com.cryptocurrency.entity.crud.CurrencyAllRecords;
+import com.cryptocurrency.entity.crud.GetAllCurrencies;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 @Service
@@ -17,7 +17,8 @@ public class CryptocurrencyServices {
 	
 	// Show All currencies in List
 	public List<Cryptocurrency> findAll() {
-		List<Cryptocurrency> all=CurrencyAllRecords.AllCurrencies();
+		System.out.println("--->All Service running <---");
+		List<Cryptocurrency> all=GetAllCurrencies.getCurrencies();
 		return all;
 	}
 //	public List<Cryptocurrency> listTopFive() {
@@ -31,6 +32,7 @@ public class CryptocurrencyServices {
 //}
 	
 	public List<Cryptocurrency> listTopFive() {
+		System.out.println("--->TopFive Service running <---");
 		List<Cryptocurrency> topFive=CurrencyTopFive.TopFiveList();
 		return topFive;
 

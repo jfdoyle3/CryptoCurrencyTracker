@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.entity.crud.CurrencyTopFive;
+import com.cryptocurrency.entity.crud.GetACurrency;
 import com.cryptocurrency.entity.crud.GetAllCurrencies;
+import com.cryptocurrency.entity.crud.GetCurrencyTopFive;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 @Service
@@ -17,7 +18,7 @@ public class CryptocurrencyServices {
 	
 	// Show All currencies in List
 	public List<Cryptocurrency> findAll() {
-		System.out.println("--->All Service running <---");
+		System.out.println("---> All Service running <---");
 		List<Cryptocurrency> all=GetAllCurrencies.getCurrencies();
 		return all;
 	}
@@ -32,11 +33,20 @@ public class CryptocurrencyServices {
 //}
 	
 	public List<Cryptocurrency> listTopFive() {
-		System.out.println("--->TopFive Service running <---");
-		List<Cryptocurrency> topFive=CurrencyTopFive.TopFiveList();
+		System.out.println("---> TopFive Service running <---");
+		List<Cryptocurrency> topFive=GetCurrencyTopFive.getTopFive();
 		return topFive;
 
 	}
+	
+	// Get Currency Symbol in the API
+		public static void findByCurrencyBySymbol(String currencySearch) {
+			String currencySymbol = currencySearch.toUpperCase();
+			System.out.println("---> Symbol Service running <---");
+			GetACurrency.getACurrency();
+			
+			
+		}
 
 	// Find A Currency in the List
 //	public CryptocurrencyHeader findById(long id) {
@@ -50,10 +60,10 @@ public class CryptocurrencyServices {
 //		return null;
 //	}
 
-	// Get Currency Symbol in the API
-//	public CryptocurrencyHeader findByCurrencyBySymbol(String currencySearch) {
+// Get Currency Symbol in the API
+//	public Cryptocurrency findByCurrencyBySymbol(String currencySearch) {
 //		String currencySymbol = currencySearch.toUpperCase();
-//		for (CryptocurrencyHeader currency : currencyList) {
+//		for (Cryptocurrency currency : currencyList) {
 //			if (currency.getSymbol().equals(currencySymbol)) {
 //				return currency;
 //			}

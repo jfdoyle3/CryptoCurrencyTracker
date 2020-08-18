@@ -11,7 +11,7 @@ import objects.CurrencyInfo;
 import objects.CurrencyInterval;
 
 public class APIEntity {
-	private static List<Cryptocurrencies> cryptoList = new ArrayList<>();
+	private static List<Cryptocurrency> cryptoList = new ArrayList<>();
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static long idCounter = 0;
@@ -32,7 +32,7 @@ public class APIEntity {
 		return currencyJson;
 	}
 
-	public static List<Cryptocurrencies> CurrencyID(JSONArray json) {
+	public static List<Cryptocurrency> CurrencyID(JSONArray json) {
 
 		for (int idx = 0; idx < json.length(); idx++) {
 			JSONObject currencyData = json.getJSONObject(idx);
@@ -48,7 +48,7 @@ public class APIEntity {
 			
 			
 
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies( currency_id, currency, symbol, name, logo, ranking);
+			Cryptocurrency cryptoMoney = new Cryptocurrency( currency_id, currency, symbol, name, logo, ranking);
 			cryptoList.add(cryptoMoney);
 
 		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,

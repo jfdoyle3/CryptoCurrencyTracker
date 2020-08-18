@@ -6,8 +6,8 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class GetAllCurrencies {
@@ -37,8 +37,9 @@ public class GetAllCurrencies {
 		session.beginTransaction();
 
 		
-		currencies = session.createQuery("from Cryptocurrency").getResultList();
-		session.save(currencies);
+		Query<Cryptocurrency> theQuery=session.createQuery("from Cryptocurrency", Cryptocurrency.class);
+	
+		List<Cryptocurrency> currencies1=theQuery.getResultList();
 
 		session.getTransaction().commit();
 		System.out.println("Done!");

@@ -1,15 +1,19 @@
 package  testhibernate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
 
-public class EntityDBWriteOneRecordTest {
+public class CurrencyFindAll {
 
 	public static void main(String[] args) {
-
+	//	List<Cryptocurrency> currencies=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -18,19 +22,17 @@ public class EntityDBWriteOneRecordTest {
 
 		try {
 
-			Cryptocurrency currency = new Cryptocurrency("WHO", "BTC", "BTC", "Bitcoin","1",
-				"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
-
-		//	Cryptocurrencies currency = new Cryptocurrencies();
-			
-		//	currency.setSymbol("BTC");
+;
 			
 			session.beginTransaction();
 
-			System.out.println("||Saving Currency: " + currency);
-
-			session.save(currency);
-
+			Query<Cryptocurrency> theQuery=session.createQuery("from Cryptocurrency", Cryptocurrency.class);
+		
+			List<Cryptocurrency> currencies=theQuery.getResultList();
+					for(Cryptocurrency currency: currencies) {
+			System.out.println("----->   "+currency);
+		}
+			
 			session.getTransaction().commit();
 			System.out.println("Done!");
 

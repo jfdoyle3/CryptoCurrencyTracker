@@ -4,7 +4,7 @@
 		"mysql8-173f2600974-2993c9e0e982fd78": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "cryptocurrencytracker",
+			"name": "DataFarm",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
@@ -15,8 +15,7 @@
 				"url": "jdbc:mysql://192.168.1.201:3306/cryptocurrencytracker",
 				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},

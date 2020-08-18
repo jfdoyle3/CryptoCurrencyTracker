@@ -1,15 +1,18 @@
 package  testhibernate;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
 
-public class EntityDBWriteOneRecordTest {
+public class GetCurrencyTopfive {
 
 	public static void main(String[] args) {
-
+	//	List<Cryptocurrency> currencies=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -17,20 +20,18 @@ public class EntityDBWriteOneRecordTest {
 		Session session = factory.getCurrentSession();
 
 		try {
-
-			Cryptocurrency currency = new Cryptocurrency("WHO", "BTC", "BTC", "Bitcoin","1",
-				"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
-
-		//	Cryptocurrencies currency = new Cryptocurrencies();
-			
-		//	currency.setSymbol("BTC");
-			
 			session.beginTransaction();
+			  Query<Cryptocurrency> query = session.createQuery("from Cryptocurrency", Cryptocurrency.class);
 
-			System.out.println("||Saving Currency: " + currency);
+		 
+		        query.setFirstResult(0);
+		        query.setMaxResults(5);
 
-			session.save(currency);
-
+		        List<Cryptocurrency> labels = query.list();
+					for(Cryptocurrency currency : labels) {
+			System.out.println("----->   "+currency);
+		}
+			
 			session.getTransaction().commit();
 			System.out.println("Done!");
 

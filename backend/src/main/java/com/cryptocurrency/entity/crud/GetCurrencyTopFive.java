@@ -32,7 +32,7 @@ public class GetCurrencyTopFive {
 
 		        List<Cryptocurrency> queryList = query.list();
 				for(Cryptocurrency currency : queryList) {
-//			System.out.println("----->   "+currency);
+			System.out.println("sf:->   "+currency);
 			currenciesList.add(currency);
 		}
 			

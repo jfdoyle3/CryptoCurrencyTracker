@@ -1,5 +1,6 @@
 package com.cryptocurrency.entity.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,8 +12,8 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class GetACurrency {
 
-	public static void getACurrency() {
-	// List<Cryptocurrency> currencies=new ArrayList<>();
+	public static List<Cryptocurrency> getACurrency() {
+	 List<Cryptocurrency> currencies=new ArrayList<>();
 	String currencySymbol = "XRP";
 	SessionFactory factory = new Configuration().configure().addAnnotatedClass(Cryptocurrency.class)
 			.buildSessionFactory();
@@ -28,7 +29,8 @@ public class GetACurrency {
 		
 		List<Cryptocurrency> currencyList = query.list();
 		for (Cryptocurrency currency : currencyList) {
-			System.out.println("----->   " + currency);
+			System.out.println("sf:->   " + currency);
+			currencies.add(currency);
 		}
 
 		session.getTransaction().commit();
@@ -41,6 +43,7 @@ public class GetACurrency {
 		session.close();
 		factory.close();
 	}
+	return currencies;
 	}
 
 }

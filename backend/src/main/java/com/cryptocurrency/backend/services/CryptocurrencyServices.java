@@ -1,5 +1,6 @@
 package com.cryptocurrency.backend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -40,11 +41,17 @@ public class CryptocurrencyServices {
 	}
 	
 	// Get Currency Symbol in the API
-		public static void findByCurrencyBySymbol(String currencySearch) {
+		public  List<Cryptocurrency> findByCurrencyBySymbol(String currencySearch) {
 			String currencySymbol = currencySearch.toUpperCase();
-			System.out.println("---> Symbol Service running <---");
-			GetACurrency.getACurrency();
+		//	List<Cryptocurrency> symbolList=new ArrayList<Cryptocurrency>();
+			System.out.printf("\n---> Symbol: %s Service running <---",currencySymbol);
+			List<Cryptocurrency> symbol=GetACurrency.getACurrency();
 			
+//			Cryptocurrency currency = new Cryptocurrency("ZXY", "BTC", "BTC", "Bitcoin","1",
+//					"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
+//			symbolList.add(currency);
+			
+			return symbol;
 			
 		}
 

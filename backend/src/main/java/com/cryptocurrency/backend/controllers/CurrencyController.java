@@ -34,7 +34,7 @@ public class CurrencyController {
 	}
 	// GET: A Currency by Id
 	@GetMapping("/users/{username}/cryptocurrency/symbol/{symbol}")
-	public List<Cryptocurrency> getByCurrencyId(@PathVariable String username, @PathVariable String symbol) {
+	public List<Cryptocurrency> getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
 		System.out.println("---> Symbol Controller running <---");
 		return cryptocurrencyServices.findByCurrencyBySymbol(symbol);
 	}

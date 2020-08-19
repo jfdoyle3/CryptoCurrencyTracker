@@ -1,5 +1,6 @@
 package  com.cryptocurrency.entity.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -14,7 +15,7 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 public class GetCurrencyTopfiveTestConsole {
 
 	public static void main(String[] args) {
-	//	List<Cryptocurrency> currencies=new ArrayList<>();
+		List<Cryptocurrency> currencies=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -31,7 +32,8 @@ public class GetCurrencyTopfiveTestConsole {
 
 		        List<Cryptocurrency> labels = query.list();
 					for(Cryptocurrency currency : labels) {
-			System.out.println("----->   "+currency);
+			System.out.println("sf:->   "+currency);
+			currencies.add(currency);
 		}
 			
 			session.getTransaction().commit();
@@ -44,7 +46,10 @@ public class GetCurrencyTopfiveTestConsole {
 			session.close();
 			factory.close();
 		}
-
+		for(Cryptocurrency currency : currencies) {
+			System.out.println("currencies List: -->   "+currency);
+		}
+		System.out.println("\n\nend of line");
 	}
 
 }

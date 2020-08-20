@@ -1,4 +1,4 @@
-package com.cryptocurrency.entity.crud;
+package com.cryptocurrency.entity.tests;
 
 import java.util.List;
 
@@ -26,10 +26,10 @@ public class GetACurrencyTestConsole {
 
 			query.setParameter("currency_symbol", currencySymbol);
 			
-			List<Cryptocurrency> currencyList = query.list();
-			for (Cryptocurrency currency : currencyList) {
-				System.out.println("----->   " + currency);
-			}
+			Cryptocurrency currencyList = query.getSingleResult();
+	//		for (Cryptocurrency currency : currencyList) {
+				System.out.println("----->   " + currencyList);
+	//		}
 
 			session.getTransaction().commit();
 			System.out.println("Done!");

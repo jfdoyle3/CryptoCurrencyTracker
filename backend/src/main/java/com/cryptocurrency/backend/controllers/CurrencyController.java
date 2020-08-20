@@ -27,14 +27,14 @@ public class CurrencyController {
 	}
 
 	// GET: Top Five Currencies
-	@GetMapping("/users/{username}/cryptocurrencies/topFive")
+	@GetMapping("/users/{username}/cryptocurrency/topFive")
 	public List<Cryptocurrency> getTopFive(@PathVariable String username) {
 		System.out.println("---> TopFive Controller running <---");
 		return cryptocurrencyServices.listTopFive();
 	}
 	// GET: A Currency by Id
 	@GetMapping("/users/{username}/cryptocurrency/symbol/{symbol}")
-	public List<Cryptocurrency> getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
+	public Cryptocurrency getByCurrencySymbol(@PathVariable String username, @PathVariable String symbol) {
 		System.out.println("---> Symbol Controller running <---");
 		return cryptocurrencyServices.findByCurrencyBySymbol(symbol);
 	}

@@ -3,11 +3,15 @@ package com.cryptocurrency.backend.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.cryptocurrency.entity.crud.GetACurrency;
 import com.cryptocurrency.entity.crud.GetAllCurrencies;
-import com.cryptocurrency.entity.crud.GetCurrencyTopFive;
+import com.cryptocurrency.entity.crud.GetTopFiveCryptocurrencies;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 @Service
@@ -33,26 +37,70 @@ public class CryptocurrencyServices {
 //
 //}
 	
+//	public List<Cryptocurrency> listTopFive() {
+//		System.out.println("---> TopFive Service running <---");
+//		List<Cryptocurrency> topFive=GetTopFiveCryptocurrencies.getTopFive();
+//		return topFive;
+//
+//	}
 	public List<Cryptocurrency> listTopFive() {
-		System.out.println("---> TopFive Service running <---");
-		List<Cryptocurrency> topFive=GetCurrencyTopFive.getTopFive();
-		return topFive;
+		List<Cryptocurrency> currenciesList=new ArrayList<>();
+		SessionFactory factory = new Configuration().configure()
+				.addAnnotatedClass(Cryptocurrency.class)
+				.buildSessionFactory();
+
+		Session session = factory.getCurrentSession();
+
+		try {
+			session.beginTransaction();
+			  Query<Cryptocurrency> query = session.createQuery("from Cryptocurrency", Cryptocurrency.class);
+
+		 
+		        query.setFirstResult(0);
+		        query.setMaxResults(5);
+
+		        List<Cryptocurrency> queryList = query.list();
+				for(Cryptocurrency currency : queryList) {
+			System.out.println("sf:->   "+currency);
+			currenciesList.add(currency);
+		}
+			
+			session.getTransaction().commit();
+			System.out.println("Done!");
+
+		} catch (Exception err) {
+			err.printStackTrace();
+
+		} finally {
+			session.close();
+			factory.close();
+		}
+		for(Cryptocurrency currency : currenciesList) {
+		System.out.println("currencies list----->   "+currency);
+		}
+		return currenciesList;
 
 	}
 	
-	// Get Currency Symbol in the API
-		public  List<Cryptocurrency> findByCurrencyBySymbol(String currencySearch) {
-			String currencySymbol = currencySearch.toUpperCase();
-		//	List<Cryptocurrency> symbolList=new ArrayList<Cryptocurrency>();
-			System.out.printf("\n---> Symbol: %s Service running <---",currencySymbol);
-			List<Cryptocurrency> symbol=GetACurrency.getACurrency();
-			
+	// Get Currency Symbol static object
+//		public  Cryptocurrency findByCurrencyBySymbol(String currencySearch) {
+//			String currencySymbol = currencySearch.toUpperCase();
+//		//	List<Cryptocurrency> symbolList=new ArrayList<Cryptocurrency>();
+//			System.out.printf("\n---> Symbol: %s Service running <---",currencySymbol);
+//			//List<Cryptocurrency> symbol=GetACurrency.getACurrency();
+//			
 //			Cryptocurrency currency = new Cryptocurrency("ZXY", "BTC", "BTC", "Bitcoin","1",
 //					"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
-//			symbolList.add(currency);
-			
-			return symbol;
-			
+////			symbolList.add(currency);
+//			
+//			return currency;
+//			
+//		}
+	// Get Currency Symbol in the API
+		public Cryptocurrency findByCurrencyBySymbol(String currencySearch) {
+			String currencySymbol = currencySearch.toUpperCase();
+			return GetACurrency.getACurrency();
+		//	return null;
 		}
 
 	// Find A Currency in the List

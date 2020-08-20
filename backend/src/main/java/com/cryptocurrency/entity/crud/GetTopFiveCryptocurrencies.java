@@ -12,10 +12,10 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 
 
-public class GetCurrencyTopfiveTestConsole {
+public class GetTopFiveCryptocurrencies {
 
-	public static void main(String[] args) {
-		List<Cryptocurrency> currencies=new ArrayList<>();
+	public static List<Cryptocurrency> getTopFive() {
+		List<Cryptocurrency> currenciesList=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -30,10 +30,10 @@ public class GetCurrencyTopfiveTestConsole {
 		        query.setFirstResult(0);
 		        query.setMaxResults(5);
 
-		        List<Cryptocurrency> labels = query.list();
-					for(Cryptocurrency currency : labels) {
+		        List<Cryptocurrency> queryList = query.list();
+				for(Cryptocurrency currency : queryList) {
 			System.out.println("sf:->   "+currency);
-			currencies.add(currency);
+			currenciesList.add(currency);
 		}
 			
 			session.getTransaction().commit();
@@ -46,10 +46,11 @@ public class GetCurrencyTopfiveTestConsole {
 			session.close();
 			factory.close();
 		}
-		for(Cryptocurrency currency : currencies) {
-			System.out.println("currencies List: -->   "+currency);
+		for(Cryptocurrency currency : currenciesList) {
+		System.out.println("currencies list----->   "+currency);
 		}
-		System.out.println("\n\nend of line");
+		return currenciesList;
+
 	}
 
 }

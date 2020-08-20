@@ -1,4 +1,4 @@
-package  com.cryptocurrency.entity.crud;
+package  com.cryptocurrency.entity.tests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 
 
-public class GetCurrencyTopFive {
+public class GetCurrencyTopfiveTestConsole {
 
-	public static List<Cryptocurrency> getTopFive() {
-		List<Cryptocurrency> currenciesList=new ArrayList<>();
+	public static void main(String[] args) {
+		List<Cryptocurrency> currencies=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -30,10 +30,10 @@ public class GetCurrencyTopFive {
 		        query.setFirstResult(0);
 		        query.setMaxResults(5);
 
-		        List<Cryptocurrency> queryList = query.list();
-				for(Cryptocurrency currency : queryList) {
+		        List<Cryptocurrency> labels = query.list();
+					for(Cryptocurrency currency : labels) {
 			System.out.println("sf:->   "+currency);
-			currenciesList.add(currency);
+			currencies.add(currency);
 		}
 			
 			session.getTransaction().commit();
@@ -46,11 +46,10 @@ public class GetCurrencyTopFive {
 			session.close();
 			factory.close();
 		}
-		for(Cryptocurrency currency : currenciesList) {
-		System.out.println("BR----->   "+currency);
+		for(Cryptocurrency currency : currencies) {
+			System.out.println("currencies List: -->   "+currency);
 		}
-		return currenciesList;
-
+		System.out.println("\n\nend of line");
 	}
 
 }

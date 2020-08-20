@@ -12,8 +12,9 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 public class GetACurrency {
 
-	public static List<Cryptocurrency> getACurrency() {
-	 List<Cryptocurrency> currencies=new ArrayList<>();
+	public static Cryptocurrency getACurrency() {
+	//	Cryptocurrency currencyList = null;
+//	 List<Cryptocurrency> currencies=new ArrayList<>();
 	String currencySymbol = "XRP";
 	SessionFactory factory = new Configuration().configure().addAnnotatedClass(Cryptocurrency.class)
 			.buildSessionFactory();
@@ -27,11 +28,11 @@ public class GetACurrency {
 
 		query.setParameter("currency_symbol", currencySymbol);
 		
-		List<Cryptocurrency> currencyList = query.list();
-		for (Cryptocurrency currency : currencyList) {
-			System.out.println("sf:->   " + currency);
-			currencies.add(currency);
-		}
+		Cryptocurrency currencyList = query.getSingleResult();
+//		for (Cryptocurrency currency : currencyList) {
+			System.out.println("sf:->   " + currencyList);
+//			currencies.add(currency);
+//		}
 
 		session.getTransaction().commit();
 		System.out.println("Done!");
@@ -43,7 +44,9 @@ public class GetACurrency {
 		session.close();
 		factory.close();
 	}
-	return currencies;
+	Cryptocurrency staticCurrency = new Cryptocurrency("TST", "BTC", "TST", "Bitcoin","1",
+			"https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
+	return staticCurrency;
 	}
 
 }

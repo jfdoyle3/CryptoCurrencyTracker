@@ -15,7 +15,7 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 public class GetTopFiveCryptocurrencies {
 
 	public static List<Cryptocurrency> getTopFive() {
-		List<Cryptocurrency> currenciesList=new ArrayList<>();
+		List<Cryptocurrency> currencies=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -25,19 +25,18 @@ public class GetTopFiveCryptocurrencies {
 		try {
 			session.beginTransaction();
 			  Query<Cryptocurrency> query = session.createQuery("from Cryptocurrency", Cryptocurrency.class);
-
 		 
 		        query.setFirstResult(0);
 		        query.setMaxResults(5);
 
-		        List<Cryptocurrency> queryList = query.list();
-				for(Cryptocurrency currency : queryList) {
+		        List<Cryptocurrency> labels = query.list();
+					for(Cryptocurrency currency : labels) {
 			System.out.println("sf:->   "+currency);
-			currenciesList.add(currency);
+			currencies.add(currency);
 		}
 			
 			session.getTransaction().commit();
-			System.out.println("Done!");
+			System.out.println("Session committed!");
 
 		} catch (Exception err) {
 			err.printStackTrace();
@@ -46,11 +45,11 @@ public class GetTopFiveCryptocurrencies {
 			session.close();
 			factory.close();
 		}
-		for(Cryptocurrency currency : currenciesList) {
-		System.out.println("currencies list----->   "+currency);
+		for(Cryptocurrency currency : currencies) {
+			System.out.println("currencies List: -->   "+currency);
 		}
-		return currenciesList;
-
+		System.out.println("\n\nend of line");
+		return null;
 	}
 
 }

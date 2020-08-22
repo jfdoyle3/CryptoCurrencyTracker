@@ -12,7 +12,7 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 
 
-public class GetCurrencyTopfiveTestConsole {
+public class GetCurrencyTopfiveHQLTestConsole {
 
 	public static void main(String[] args) {
 		List<Cryptocurrency> currencies=new ArrayList<>();
@@ -24,10 +24,9 @@ public class GetCurrencyTopfiveTestConsole {
 
 		try {
 			session.beginTransaction();
-			  Query<Cryptocurrency> query = session.createQuery("from Cryptocurrency", Cryptocurrency.class);
+			  Query<Cryptocurrency> query = session.createQuery("FROM Cryptocurrency C WHERE C.ranking<6 ORDER BY C.ranking DESC");
 		 
-		        query.setFirstResult(0);
-		        query.setMaxResults(5);
+
 
 		        List<Cryptocurrency> labels = query.list();
 					for(Cryptocurrency currency : labels) {

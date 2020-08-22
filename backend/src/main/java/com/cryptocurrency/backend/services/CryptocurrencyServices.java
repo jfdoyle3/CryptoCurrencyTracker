@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.cryptocurrency.entity.crud.GetACurrency;
 import com.cryptocurrency.entity.crud.GetAllCurrencies;
-import com.cryptocurrency.entity.crud.GetTopFiveCryptocurrencies;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
 @Service
@@ -27,15 +26,6 @@ public class CryptocurrencyServices {
 		List<Cryptocurrency> all=GetAllCurrencies.getCurrencies();
 		return all;
 	}
-//	public List<Cryptocurrency> listTopFive() {
-//		List<Cryptocurrency> topFiveList = new ArrayList<>();
-//		for (int idx = 0; idx < 5; idx++) {
-//			topFiveList.add(currencyList.get(idx));
-//		}
-//
-//		return topFiveList;
-//
-//}
 	
 //	public List<Cryptocurrency> listTopFive() {
 //		System.out.println("---> TopFive Service running <---");
@@ -44,7 +34,8 @@ public class CryptocurrencyServices {
 //
 //	}
 	public List<Cryptocurrency> listTopFive() {
-		List<Cryptocurrency> currenciesList=new ArrayList<>();
+		System.out.println("Top Five Service Direct code.");
+		//List<Cryptocurrency> currenciesList=new ArrayList<>();
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
 				.buildSessionFactory();
@@ -53,16 +44,12 @@ public class CryptocurrencyServices {
 
 		try {
 			session.beginTransaction();
-			  Query<Cryptocurrency> query = session.createQuery("from Cryptocurrency", Cryptocurrency.class);
-
-		 
-		        query.setFirstResult(0);
-		        query.setMaxResults(5);
+			  Query<Cryptocurrency> query = session.createQuery("FROM Cryptocurrency C WHERE C.ranking<6 ORDER BY C.ranking DESC");
 
 		        List<Cryptocurrency> queryList = query.list();
 				for(Cryptocurrency currency : queryList) {
 			System.out.println("sf:->   "+currency);
-			currenciesList.add(currency);
+		//	currenciesList.add(currency);
 		}
 			
 			session.getTransaction().commit();
@@ -75,10 +62,10 @@ public class CryptocurrencyServices {
 			session.close();
 			factory.close();
 		}
-		for(Cryptocurrency currency : currenciesList) {
-		System.out.println("currencies list----->   "+currency);
-		}
-		return currenciesList;
+//		for(Cryptocurrency currency : currenciesList) {
+//		System.out.println("currencies list----->   "+currency);
+//		}
+		return null;
 
 	}
 	

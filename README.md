@@ -1,2 +1,2 @@
 # CryptocurrencyTracker
-Cryptocurrency Tacker Full Stack project
+Cryptocurrency Tacker Java/React Full Stack project

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cryptocurrencies")
-public class CryptocurrencyHeader {
+public class Cryptocurrency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -27,11 +27,11 @@ public class CryptocurrencyHeader {
 	@Column(name = "logo_url")
 	private String logoUrl;
 
-	public CryptocurrencyHeader() {
+	public Cryptocurrency() {
 
 	}
 
-	public CryptocurrencyHeader(String currency_id, String currency, String symbol, String name, String logoUrl,
+	public Cryptocurrency(String currency_id, String currency, String symbol, String name, String logoUrl,
 			String ranking) {
 
 		// this.id = id;

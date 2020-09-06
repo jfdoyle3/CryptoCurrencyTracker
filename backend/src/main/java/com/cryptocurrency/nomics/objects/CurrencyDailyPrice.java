@@ -1,8 +1,8 @@
 package com.cryptocurrency.nomics.objects;
 
-public class CurrencyInfo {
+public class CurrencyDailyPrice {
 
-	private long id;
+	private int id;
 
 	private String symbol;
 
@@ -24,11 +24,11 @@ public class CurrencyInfo {
 
 	private String highTimeStamp;
 
-	public CurrencyInfo() {
+	public CurrencyDailyPrice() {
 
 	}
 
-	public CurrencyInfo(long id, String symbol, String price, String priceDate, String priceTimeStamp,
+	public CurrencyDailyPrice(int id, String symbol, String price, String priceDate, String priceTimeStamp,
 			String circulatingSupply, String maxSupply, String marketCap, String ranking, String high,
 			String highTimeStamp) {
 		this.id = id;
@@ -44,11 +44,11 @@ public class CurrencyInfo {
 		this.highTimeStamp = highTimeStamp;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

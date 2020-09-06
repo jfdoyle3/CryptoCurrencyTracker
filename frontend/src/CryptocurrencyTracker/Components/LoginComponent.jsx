@@ -22,14 +22,21 @@ class LoginComponent extends Component {
     });
   }
   loginClicked() {
-    //     AuthenticationService.basicAuthenticationService(
-    //     this.state.username, this.state.password
-    //   ).then (()=>{ AuthenticationService.registerSuccessfulLogin(
-    //       this.state.username,
-    //       this.state.password
-    //     );
-    // this.props.history.push(`/welcome/${this.state.username}`);}).catch(()=>{      this.setState({ showSuccessMessage: false });
-    //     this.setState({ hasLoginFailed: true });})
+    AuthenticationService.basicAuthenticationService(
+      this.state.username,
+      this.state.password
+    )
+      .then(() => {
+        AuthenticationService.registerSuccessfulLogin(
+          this.state.username,
+          this.state.password
+        );
+        this.props.history.push(`/welcome/${this.state.username}`);
+      })
+      .catch(() => {
+        this.setState({ showSuccessMessage: false });
+        this.setState({ hasLoginFailed: true });
+      });
 
     AuthenticationService.executeJwtAuthenticationService(
       this.state.username,
@@ -83,7 +90,11 @@ class LoginComponent extends Component {
         </div>
         <div className="row">
           <div className="col s7">
-            <button id="loginButton" className="btn btn-success" onClick={this.loginClicked}>
+            <button
+              id="loginButton"
+              className="btn btn-success"
+              onClick={this.loginClicked}
+            >
               Login
             </button>
           </div>

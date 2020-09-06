@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+//Entity use this import to read from a Database.
 import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
-import com.cryptocurrency.nomics.objects.CurrencyInfo;
+
+//Real Time using ArrayList to store the data.
+//import com.cryptocurrency.nomics.objects.CurrencyDailyPrice;
 
 @Service
 public class CurrencyDailyPriceServices {

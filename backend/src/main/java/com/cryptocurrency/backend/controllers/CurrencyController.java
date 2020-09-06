@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.services.CryptocurrencyServices;
+
+// Entity use this import to read from a Database.
 import com.cryptocurrency.entity.objects.Cryptocurrency;
 
+// Real Time using ArrayList to store the data.
+//import com.cryptocurrency.nomics.objects.Cryptocurrency;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

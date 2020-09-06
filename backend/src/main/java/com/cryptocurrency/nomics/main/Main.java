@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cryptocurrency.nomics.api.GetCurrency;
-import com.cryptocurrency.nomics.objects.CryptocurrencyHeader;
-import com.cryptocurrency.nomics.objects.CurrencyInfo;
+import com.cryptocurrency.nomics.objects.Cryptocurrency;
+import com.cryptocurrency.nomics.objects.CurrencyDailyPrice;
 
 import kong.unirest.json.JSONArray;
 

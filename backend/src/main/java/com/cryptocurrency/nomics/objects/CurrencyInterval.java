@@ -2,7 +2,7 @@ package com.cryptocurrency.nomics.objects;
 
 public class CurrencyInterval {
 	
-	private long id;
+	private int id;
 	private String timeInterval;
 	private String Symbol;
 	private String volume;
@@ -19,7 +19,7 @@ public class CurrencyInterval {
 	}
 
 
-	public CurrencyInterval(long id, String timeInterval, String symbol, String volume, String priceChange,
+	public CurrencyInterval(int id, String timeInterval, String symbol, String volume, String priceChange,
 			String priceChangePct, String volumeChange, String volumeChangePct, String marketCapChange,
 			String marketCapChangePct) {
 		this.id = id;
@@ -35,12 +35,12 @@ public class CurrencyInterval {
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

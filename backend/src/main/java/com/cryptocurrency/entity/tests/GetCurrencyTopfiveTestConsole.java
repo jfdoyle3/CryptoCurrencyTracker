@@ -9,15 +9,19 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import com.cryptocurrency.entity.objects.Cryptocurrency;
+import com.cryptocurrency.entity.objects.CurrencyDailyPrice;
 
 
 
 public class GetCurrencyTopfiveTestConsole {
 
 	public static void main(String[] args) {
+		
 		List<Cryptocurrency> currencies=new ArrayList<>();
+		
 		SessionFactory factory = new Configuration().configure()
 				.addAnnotatedClass(Cryptocurrency.class)
+			//	.addAnnotatedClass(CurrencyDailyPrice.class)
 				.buildSessionFactory();
 
 		Session session = factory.getCurrentSession();

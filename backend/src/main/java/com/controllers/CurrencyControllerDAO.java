@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.controllers;
+package com.controllers;
 
 //import java.util.List;
 //

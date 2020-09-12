@@ -7,7 +7,7 @@ import CurrencyHeaderComponent from "./CurrencyHeaderComponent.jsx";
 import FooterComponent from "./FooterComponent.jsx";
 import LogoutComponent from "./LogoutComponent.jsx";
 import ErrorComponent from "./ErrorComponent.jsx";
-import TestPageComponent from "./TestPageComponent.jsx";
+//import TestPageComponent from "./TestPageComponent.jsx";
 import CurrencyListComponent from "./CurrencyListComponent.jsx";
 
 class CryptocurrencyTracker extends Component {

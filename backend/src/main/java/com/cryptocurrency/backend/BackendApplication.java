@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 //@ImportResource("classpath:app-config.xml")
 @EntityScan("com.cryptocurrency.entity")
-@EnableJpaRepositories("com.cryptocurrency.jpa.repository")
+ @EnableJpaRepositories("com.cryptocurrency.jpa.repository")
 public class BackendApplication {
 
 	public static void main(String[] args) {

@@ -22,9 +22,9 @@ public class CurrencyController {
 	@Autowired
 	private CurrencyServices service;
 
-	@GetMapping("/hello-currency")
-	public String helloCuurency() {
-		return "Hello currency";
+	@GetMapping("/users/{username}/test-currency")
+	public String helloCuurency(@PathVariable String username) {
+		return "JPA currency controller working";
 	}
 	
 	@PostMapping("/addCryptocurrency")
@@ -37,8 +37,8 @@ public class CurrencyController {
 		return service.saveCryptocurrencyList(Cryptocurrencys);
 	}
 
-	@GetMapping("/list")
-	public List<Cryptocurrency> findAllCryptocurrencys() {
+	@GetMapping("users/{username}/list")
+	public List<Cryptocurrency> findAllCryptocurrencys(@PathVariable String username) {
 		return service.getCryptocurrencyList();
 	}
 	

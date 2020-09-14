@@ -1,2 +1,2 @@
-TRUNCATE TABLE cryptocurrencies;
-ALTER TABLE cryptocurrencies AUTO_INCREMENT = 1;
+TRUNCATE TABLE cryptocurrency;
+ALTER TABLE cryptocurrency AUTO_INCREMENT = 1;

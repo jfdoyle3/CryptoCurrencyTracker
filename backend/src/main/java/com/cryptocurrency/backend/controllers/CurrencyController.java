@@ -2,6 +2,11 @@ package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -60,7 +65,21 @@ public class CurrencyController {
 	@DeleteMapping("/delete/{id}")
 	public String deleteCryptocurrency(Integer id) {
 		return service.deleteCryptocurrency(id);
-		
+	}
+	@GetMapping("/testManager")
+    public static void testManager() {
+	      EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
+	      EntityManager entitymanager = emfactory.createEntityManager();
+	      
+	      //Between
+	      Query query = entitymanager.createQuery( "Select e " + "from Cryptocurrency e " + "where e.rank " + "Between 1 and 6" );
+	      
+	      List<Cryptocurrency> list=(List<Cryptocurrency>)query.getResultList( );
+
+	      for( Cryptocurrency e:list ){
+	         System.out.print("symbol :" + e.getSymbol( ));
+	         System.out.println("\t rank :" + e.getRanking( ));
+	      }
 	}
 	
 }

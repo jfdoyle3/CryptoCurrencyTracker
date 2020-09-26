@@ -86,12 +86,12 @@ public class APIEntity {
 				market_cap = "N/A";
 			}
 
-			String rank = (String) key.get("rank");
+		
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
 			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price,priceDate,priceTimeStamp, circulating_supply, maxSupply,
-					market_cap, rank, high, high_timestamp);
+					market_cap,  high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
 			// System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
 			// System.out.printf("id: %d\n,symbol %s\n, price: %s\nsupply: %s\nmax: %s\ncap:

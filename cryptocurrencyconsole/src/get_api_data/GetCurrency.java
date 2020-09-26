@@ -46,13 +46,12 @@ public class GetCurrency {
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
-
-			Cryptocurrencies cryptoMoney = new Cryptocurrencies(++idCounter, id, currency, symbol, name, logo);
+			String ranking = (String) key.get("rank");
+			Cryptocurrencies cryptoMoney = new Cryptocurrencies(++idCounter, id, currency, symbol, name,ranking,logo);
 			cryptoList.add(cryptoMoney);
 
-		//	System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nlogo: %s\n", id, currency, symbol, name,
-		//			logo);
-		//	System.out.println("---------------------");
+			System.out.printf("id: %s\ncurrency: %s\nsymbol: %s\nname: %s\nrank: %s\nlogo: %s\n", id, currency, symbol, name, ranking,logo);
+			System.out.println("---------------------");
 		}
 		return cryptoList;
 	}
@@ -85,12 +84,12 @@ public class GetCurrency {
 				market_cap = "N/A";
 			}
 
-			String rank = (String) key.get("rank");
+
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
 			CurrencyInfo currencyInfo = new CurrencyInfo(++idCounter, symbol, price,priceDate,priceTimeStamp, circulating_supply, maxSupply,
-					market_cap, rank, high, high_timestamp);
+					market_cap, high, high_timestamp);
 			currencyInfoList.add(currencyInfo);
 			// System.out.printf("idx: %d | idCounter: %d\n",idx, idCounter);
 			// System.out.printf("id: %d\n,symbol %s\n, price: %s\nsupply: %s\nmax: %s\ncap:

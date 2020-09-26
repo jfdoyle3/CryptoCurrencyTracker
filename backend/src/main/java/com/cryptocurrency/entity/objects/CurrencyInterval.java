@@ -23,8 +23,8 @@ public class CurrencyInterval {
 			String priceChangePct, String volumeChange, String volumeChangePct, String marketCapChange,
 			String marketCapChangePct) {
 		this.id = id;
-		this.timeInterval = timeInterval;
 		this.Symbol = symbol;
+		this.timeInterval = timeInterval;
 		this.volume = volume;
 		this.priceChange = priceChange;
 		this.priceChangePct = priceChangePct;

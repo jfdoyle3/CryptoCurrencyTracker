@@ -26,9 +26,12 @@ CREATE TABLE `datestamp` (
 
 DROP TABLE IF EXISTS `currency_daily_price`;
 
-CREATE TABLE `currency_info` (
+CREATE TABLE `currency_daily_price` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `symbol` varchar(45) DEFAULT NULL,
   `price` varchar(100) DEFAULT NULL,
+  `price_date` varchar(100) DEFAULT NULL,
+  `price_timestamp` varchar(100) DEFAULT NULL,
   `circulating_supply` varchar(100) DEFAULT NULL,
   `max_supply` varchar(100) DEFAULT NULL,
   `market_cap` varchar(100) DEFAULT NULL,
@@ -41,7 +44,7 @@ DROP TABLE IF EXISTS `cryptocurrency`;
 
 CREATE TABLE `cryptocurrency` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `currencyId` varchar(45) DEFAULT NULL,  
+  `currency_id` varchar(45) DEFAULT NULL,  
   `currency` varchar(45) DEFAULT NULL,
   `symbol` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
@@ -58,12 +61,12 @@ CREATE TABLE `cryptocurrency` (
 
 SET FOREIGN_KEY_CHECKS = 1;
   
-DROP TABLE IF EXISTS `intervals`;
+DROP TABLE IF EXISTS `currency_interval`;
   
-CREATE TABLE `intervals` (
+CREATE TABLE `currency_interval` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `symbol` VARCHAR(45) NULL,
-  `time` VARCHAR(45) NULL,
+  `time_interval` VARCHAR(45) NULL,
   `price_change` VARCHAR(45) NULL,
   `price_change_pct` VARCHAR(45) NULL,
   `volume` VARCHAR(45) NULL,

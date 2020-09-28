@@ -18,8 +18,6 @@ public class CurrencyInfo {
 
 	private String marketCap;
 
-	private String ranking;
-
 	private String high;
 
 	private String highTimeStamp;
@@ -29,7 +27,7 @@ public class CurrencyInfo {
 	}
 
 	public CurrencyInfo(long id, String symbol, String price, String priceDate, String priceTimeStamp,
-			String circulatingSupply, String maxSupply, String marketCap, String ranking, String high,
+			String circulatingSupply, String maxSupply, String marketCap, String high,
 			String highTimeStamp) {
 		this.id = id;
 		this.symbol = symbol;
@@ -39,7 +37,7 @@ public class CurrencyInfo {
 		this.circulatingSupply = circulatingSupply;
 		this.maxSupply = maxSupply;
 		this.marketCap = marketCap;
-		this.ranking = ranking;
+	
 		this.high = high;
 		this.highTimeStamp = highTimeStamp;
 	}
@@ -108,14 +106,6 @@ public class CurrencyInfo {
 		this.marketCap = marketCap;
 	}
 
-	public String getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(String ranking) {
-		this.ranking = ranking;
-	}
-
 	public String getHigh() {
 		return high;
 	}
@@ -136,7 +126,7 @@ public class CurrencyInfo {
 	public String toString() {
 		return "CurrencyInfo [id=" + id + ", symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate
 				+ ", priceTimeStamp=" + priceTimeStamp + ", circulatingSupply=" + circulatingSupply + ", maxSupply="
-				+ maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking + ", high=" + high
+				+ maxSupply + ", marketCap=" + marketCap + ", high=" + high
 				+ ", highTimeStamp=" + highTimeStamp + "]";
 	}
 

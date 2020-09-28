@@ -44,10 +44,10 @@ public class GetCurrency {
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
-			String rank = (String) key.get("rank");
+			String ranking = (String) key.get("rank");
 
 			Cryptocurrency cryptocurrency = new Cryptocurrency(currency_id, currency, symbol, name, logo,
-					rank);
+					ranking);
 			cryptocurrencyList.add(cryptocurrency);
 
 		}

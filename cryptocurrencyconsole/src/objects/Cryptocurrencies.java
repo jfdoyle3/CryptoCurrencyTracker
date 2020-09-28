@@ -11,6 +11,8 @@ public class Cryptocurrencies {
 	private String symbol;
 
 	private String name;
+	
+	private String ranking;
 
 	private String logoUrl;
 
@@ -19,12 +21,13 @@ public class Cryptocurrencies {
 
 	}
 
-	public Cryptocurrencies(long id, String currencyId, String currency, String symbol, String name, String logoUrl) {
+	public Cryptocurrencies(long id, String currencyId, String currency, String symbol, String name,String ranking, String logoUrl) {
 		this.id = id;
 		this.currencyId = currencyId;
 		this.currency = currency;
 		this.symbol = symbol;
 		this.name = name;
+		this.ranking=ranking;
 		this.logoUrl = logoUrl;
 	}
 
@@ -68,6 +71,15 @@ public class Cryptocurrencies {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+
+	public String getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
+	}
 
 	public String getLogoUrl() {
 		return logoUrl;
@@ -80,7 +92,9 @@ public class Cryptocurrencies {
 	@Override
 	public String toString() {
 		return "Cryptocurrencies [id=" + id + ", currencyId=" + currencyId + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + "]";
+				+ symbol + ", name=" + name + ", ranking=" + ranking + ", logoUrl=" + logoUrl + "]";
 	}
+
+
 
 }

@@ -39,9 +39,10 @@ public class APIEntity {
 			String currency_id = (String) key.get("id");
 			String currency = (String) key.get("currency");
 			String name = (String) key.get("name");
+			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
 			String ranking = (String) key.get("rank");
-			String logo = (String) key.get("logo_url");
+			
 
 			CryptocurrencyEntity cryptoMoney = new CryptocurrencyEntity(currency_id, currency, symbol, name, logo, ranking);
 			cryptoList.add(cryptoMoney);

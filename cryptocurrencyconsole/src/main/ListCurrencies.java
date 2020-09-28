@@ -11,7 +11,7 @@ public class ListCurrencies {
 
 	public static void main(String[] args) {
 
-		String userSearch="BTC,ETH,USDT,XRP,BCH,BSV,LTC,BNB,EOS,ADA";
+		String userSearch="BTC,ETH";
 		String interval="7d";
 		JSONArray json = GetCurrency.Currencies(userSearch,interval);
 		List<Cryptocurrencies> cryptoMoney=GetCurrency.CurrencyID(json);

@@ -1,4 +1,4 @@
-package com.cryptocurrency.entity.objects;
+package  com.cryptocurrency.testhibernate;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class Cryptocurrency {
 
 	}
 
-	public Cryptocurrency(String currency_id, String currency, String symbol, String name,String ranking, String logoUrl) {
+	public Cryptocurrency(String currency_id, String currency, String symbol, String name, String ranking,String logoUrl) {
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;

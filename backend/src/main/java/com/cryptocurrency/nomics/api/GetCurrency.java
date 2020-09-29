@@ -16,7 +16,7 @@ public class GetCurrency {
 	private static List<Cryptocurrency> cryptocurrencyList = new ArrayList<>();
 	private static List<CurrencyDailyPrice> currencyDailyPriceEntityList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
-	private static String maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
+	private static String ranking,maxSupply, circulating_supply, market_cap, volChgPct, marketCapChg, marketCapChgPct,
 			volChange;
 	private static int idCounter = 0;
 
@@ -44,10 +44,14 @@ public class GetCurrency {
 			String name = (String) key.get("name");
 			String logo = (String) key.get("logo_url");
 			String symbol = (String) key.get("symbol");
-			String ranking = (String) key.get("rank");
+			//String ranking = (String) key.get("rank");
+			if (key.has("rank")) {
+				ranking = (String) key.get("rank");
+			} else {
+				ranking = "N/A";
+			}
 
-			Cryptocurrency cryptocurrency = new Cryptocurrency(currency_id, currency, symbol, name, logo,
-					ranking);
+			Cryptocurrency cryptocurrency = new Cryptocurrency(currency_id, currency, symbol, name,ranking, logo);
 			cryptocurrencyList.add(cryptocurrency);
 
 		}

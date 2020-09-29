@@ -9,8 +9,7 @@ public class TestHibernate {
 		session.beginTransaction();
 
 
-		Cryptocurrencies currencyEntity = new Cryptocurrencies("TEST", "BTC", "BTC",
-		 "Bitcoin","https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
+		Cryptocurrency currencyEntity = new Cryptocurrency("TEST", "BTC", "BTC","Bitcoin","1","https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg");
 		
 		session.save(currencyEntity);
 

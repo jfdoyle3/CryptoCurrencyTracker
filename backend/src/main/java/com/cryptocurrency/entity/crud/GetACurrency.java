@@ -13,8 +13,7 @@ import com.cryptocurrency.entity.objects.Cryptocurrency;
 public class GetACurrency {
 
 	public static Cryptocurrency getACurrency() {
-	//	Cryptocurrency currencyList = null;
-//	 List<Cryptocurrency> currencies=new ArrayList<>();
+
 	String currencySymbol = "XRP";
 	SessionFactory factory = new Configuration().configure().addAnnotatedClass(Cryptocurrency.class)
 			.buildSessionFactory();

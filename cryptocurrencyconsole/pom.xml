@@ -46,5 +46,10 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.15.Final</version>
 		</dependency>
+		<dependency>
+   <groupId>com.opencsv</groupId>
+   <artifactId>opencsv</artifactId>
+   <version>5.0</version>
+</dependency>
 	</dependencies>
 </project>

@@ -14,8 +14,7 @@ import kong.unirest.json.JSONObject;
 
 public class GetCurrency {
 	private static List<CryptocurrencyHeader> cryptoList = new ArrayList<>();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	private static List<CurrencyInfo> currencyInfoList = new ArrayList<>();
 	private static List<CurrencyInterval> currencyIntervalList = new ArrayList<>();
 	private static long idCounter = 0;

@@ -1,4 +1,4 @@
-package com.cryptocurrency.nomics.api;
+package com.cryptocurrency.backend.payload.nomics.api;
 
 import java.util.ArrayList;
 import java.util.List;

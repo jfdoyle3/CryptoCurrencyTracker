@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.nomics.api.ListCurrenciesInterval;
+import com.cryptocurrency.backend.payload.nomics.api.ListCurrenciesInterval;
 import com.cryptocurrency.nomics.objects.CurrencyInterval;
 
 @Service

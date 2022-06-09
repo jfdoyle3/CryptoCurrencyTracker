@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.cryptocurrency.backend.payload.nomics.api.GetCurrency;
 import com.cryptocurrency.entity.factories.HibernateCryptocurrencyFactory;
 import com.cryptocurrency.entity.objects.Cryptocurrency;
-import com.cryptocurrency.nomics.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 

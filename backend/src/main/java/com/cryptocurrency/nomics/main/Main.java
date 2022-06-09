@@ -3,7 +3,7 @@ package com.cryptocurrency.nomics.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.nomics.api.GetCurrency;
+import com.cryptocurrency.backend.payload.nomics.api.GetCurrency;
 import com.cryptocurrency.nomics.objects.Cryptocurrency;
 import com.cryptocurrency.nomics.objects.CurrencyDailyPrice;
 

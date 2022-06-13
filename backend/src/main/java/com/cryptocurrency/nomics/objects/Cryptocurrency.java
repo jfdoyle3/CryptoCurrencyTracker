@@ -1,33 +1,24 @@
 package com.cryptocurrency.nomics.objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 
 public class Cryptocurrency {
 
 	private int id;
 
-
 	private String currency_id;
-
 
 	private String currency;
 
 	private String symbol;
-	
+
 	private String name;
-	
+
 	private String ranking;
 
 	private String logoUrl;
 
-	public Cryptocurrency() {
-
-	}
+	public Cryptocurrency() {}
 
 	public Cryptocurrency(String currency_id, String currency, String symbol, String name, String logoUrl,
 			String ranking) {

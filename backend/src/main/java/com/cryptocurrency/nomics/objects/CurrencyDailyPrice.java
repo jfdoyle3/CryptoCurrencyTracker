@@ -24,9 +24,7 @@ public class CurrencyDailyPrice {
 
 	private String highTimeStamp;
 
-	public CurrencyDailyPrice() {
-
-	}
+	public CurrencyDailyPrice() {}
 
 	public CurrencyDailyPrice(int id, String symbol, String price, String priceDate, String priceTimeStamp,
 			String circulatingSupply, String maxSupply, String marketCap, String ranking, String high,

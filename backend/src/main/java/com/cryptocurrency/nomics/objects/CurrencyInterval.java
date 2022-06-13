@@ -14,9 +14,7 @@ public class CurrencyInterval {
 	private String marketCapChangePct;
 
 
-	public CurrencyInterval() {
-		
-	}
+	public CurrencyInterval() {}
 
 
 	public CurrencyInterval(int id, String timeInterval, String symbol, String volume, String priceChange,

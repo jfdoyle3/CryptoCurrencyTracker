@@ -1,0 +1,22 @@
+#spring:
+#	main:
+#		banner-mode: off
+#
+#	output:
+#		ansi:
+#			enabled:always
+#
+#	datasource:
+#		driverClassName: com.mysql.cj.jdbc.Driver
+#		url: jdbc:mysql://localhost:3306/cryptocurrencytracker
+#		username: username
+#		password: password
+#
+#jpa:
+#	show-sql:	true
+#	properties:
+#	hibernate:
+#		ddl-auto: update
+#		dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#
+

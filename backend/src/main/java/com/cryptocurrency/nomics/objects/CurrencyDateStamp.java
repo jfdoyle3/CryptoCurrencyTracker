@@ -8,9 +8,7 @@ public class CurrencyDateStamp {
 
 	private String priceTimeStamp;
 
-	public CurrencyDateStamp() {
-
-	}
+	public CurrencyDateStamp() {}
 
 	public CurrencyDateStamp(String priceDate, String priceTimeStamp) {
 		this.priceDate = priceDate;

@@ -15,7 +15,7 @@
 	<description>Cryptocurrency backend</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.3</spring-cloud.version>
 	</properties>
 
@@ -72,6 +72,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

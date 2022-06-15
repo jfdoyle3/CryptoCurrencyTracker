@@ -10,11 +10,7 @@ make new branch and rewrite/change project over to JPA
 
 figure out how to get 3rd party API into entities
 
-
-
-
-
-
+--------------------------------------------------------------
 
 Micro Services Project: Convert to a Bank
 
@@ -29,3 +25,11 @@ Deposit/Withdraw/Balance currencies.
 ATM machine.
 
 issue a currency card.
+
+---------------------------------
+
+Big Data - Python:
+
+use bitstamp_cleaned.csv - Bitcoin
+
+to show Bitcoin progress/projection from dataset

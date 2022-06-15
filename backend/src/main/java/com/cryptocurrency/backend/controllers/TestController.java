@@ -4,7 +4,7 @@ import java.util.List;
 
 // import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-// import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 // import org.springframework.web.client.RestTemplate;
@@ -26,14 +26,14 @@ public class TestController {
     @Value("${api.key}")
     private String apiKey;
 
-    @GetMapping("/public")
-    public List<Cryptocurrency> allAccess() {
-    	String userSearch = "BTC";
+    @GetMapping("/currency/{q}")
+    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@PathVariable String q) {
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
-		JSONArray json = gc.Currencies(userSearch, interval,apiKey);
+		JSONArray json = gc.Currencies(q, interval,apiKey);
 		List<Cryptocurrency> list=gc.Cryptocurrency(json);
-        return list;
+		
+        return ResponseEntity.ok(list);
     }
 
 

@@ -16,8 +16,8 @@ import kong.unirest.json.JSONArray;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/test")
-public class TestController {
+@RequestMapping("/api")
+public class CurrencyController {
 
 
 //    @Autowired

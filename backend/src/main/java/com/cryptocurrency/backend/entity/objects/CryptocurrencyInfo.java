@@ -1,25 +1,23 @@
-package com.cryptocurrency.entity.objects;
+package com.cryptocurrency.backend.entity.objects;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import kong.unirest.json.JSONArray;
 
 @Entity
 @Table(name = "cryptocurrency")
-public class Cryptocurrency {
+public class CryptocurrencyInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@Column(name = "currency_id")
 	private String currency_id;
@@ -39,11 +37,17 @@ public class Cryptocurrency {
 	@Column(name = "logo_url")
 	private String logoUrl;
 
-	public Cryptocurrency() {
+	public CryptocurrencyInfo() {}
 
-	}
-
-	public Cryptocurrency(String currency_id, String currency, String symbol, String name,String ranking, String logoUrl) {
+	public CryptocurrencyInfo(
+							  String currency_id,
+							  String currency,
+							  String symbol,
+							  String name,
+							  String ranking,
+							  String logoUrl
+							  )
+	{
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -51,6 +55,16 @@ public class Cryptocurrency {
 		this.ranking = ranking;
 		this.logoUrl = logoUrl;
 		
+	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCurrency() {
@@ -100,11 +114,4 @@ public class Cryptocurrency {
 	public void setRanking(String ranking) {
 		this.ranking = ranking;
 	}
-
-	@Override
-	public String toString() {
-		return "Cryptocurrency [currency_id=" + currency_id + ", currency=" + currency + ", symbol=" + symbol
-				+ ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
-	}
-
 }

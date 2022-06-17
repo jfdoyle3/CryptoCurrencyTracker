@@ -2,15 +2,18 @@ package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
-// import org.springframework.web.client.RestTemplate;
 
-import com.cryptocurrency.backend.payload.nomics.api.GetCurrency;
-import com.cryptocurrency.entity.objects.Cryptocurrency;
+import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
+import com.cryptocurrency.backend.payload.api.GetCurrency;
+import com.cryptocurrency.backend.payload.response.Cryptocurrency;
+import com.cryptocurrency.backend.repository.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.services.CurrencyToEntity;
 
 import kong.unirest.json.JSONArray;
 
@@ -19,10 +22,10 @@ import kong.unirest.json.JSONArray;
 @RequestMapping("/api")
 public class CurrencyController {
 
+	@Autowired
+	private CryptocurrencyInfoRepository repository;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
-
+	
     @Value("${api.key}")
     private String apiKey;
 
@@ -30,20 +33,13 @@ public class CurrencyController {
     public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@PathVariable String q) {
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
+		CryptocurrencyInfo ci=new CryptocurrencyInfo();
 		JSONArray json = gc.Currencies(q, interval,apiKey);
-		List<Cryptocurrency> list=gc.Cryptocurrency(json);
+		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
 		
-        return ResponseEntity.ok(list);
+		
+        return ResponseEntity.ok(currency);
     }
 
-
-//    @GetMapping("/news/{q}")
-//    public ResponseEntity<?> getNewsArticles(@PathVariable String q) {
-//        String uri = "https://newsapi.org/v2/everything?sortBy=popularity&apiKey=" + apiKey + "&q=" + q;
-//
-//        NewsResponse response = restTemplate.getForObject(uri, NewsResponse.class);
-//
-//        return ResponseEntity.ok(response.getArticles());
-//    }
 
 }

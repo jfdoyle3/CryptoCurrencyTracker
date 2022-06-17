@@ -1,4 +1,4 @@
-package com.cryptocurrency.nomics.objects;
+package com.cryptocurrency.backend.payload.response;
 
 public class CurrencyDateStamp {
 
@@ -38,10 +38,4 @@ public class CurrencyDateStamp {
 	public void setPriceTimeStamp(String priceTimeStamp) {
 		this.priceTimeStamp = priceTimeStamp;
 	}
-
-	@Override
-	public String toString() {
-		return "Intervals [id=" + id + ", priceDate=" + priceDate + ", priceTimeStamp=" + priceTimeStamp + "]";
-	}
-
 }

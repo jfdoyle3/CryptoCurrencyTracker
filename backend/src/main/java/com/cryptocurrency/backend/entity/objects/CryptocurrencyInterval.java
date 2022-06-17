@@ -1,6 +1,6 @@
-package com.cryptocurrency.entity.objects;
+package com.cryptocurrency.backend.entity.objects;
 
-public class CurrencyInterval {
+public class CryptocurrencyInterval {
 	
 	private int id;
 	private String timeInterval;
@@ -14,15 +14,21 @@ public class CurrencyInterval {
 	private String marketCapChangePct;
 
 
-	public CurrencyInterval() {
-		
-	}
+	public CryptocurrencyInterval() {}
 
 
-	public CurrencyInterval(int id, String timeInterval, String symbol, String volume, String priceChange,
-			String priceChangePct, String volumeChange, String volumeChangePct, String marketCapChange,
-			String marketCapChangePct) {
-		this.id = id;
+	public CryptocurrencyInterval(
+							String timeInterval,
+							String symbol,
+							String volume,
+							String priceChange,
+							String priceChangePct,
+							String volumeChange,
+							String volumeChangePct,
+							String marketCapChange,
+							String marketCapChangePct
+							) 
+	{
 		this.Symbol = symbol;
 		this.timeInterval = timeInterval;
 		this.volume = volume;
@@ -133,15 +139,4 @@ public class CurrencyInterval {
 	public void setMarketCapChangePct(String marketCapChangePct) {
 		this.marketCapChangePct = marketCapChangePct;
 	}
-
-
-	@Override
-	public String toString() {
-		return "CurrencyInterval [id=" + id + ", timeInterval=" + timeInterval + ", Symbol=" + Symbol + ", volume="
-				+ volume + ", priceChange=" + priceChange + ", priceChangePct=" + priceChangePct + ", volumeChange="
-				+ volumeChange + ", volumeChangePct=" + volumeChangePct + ", marketCapChange=" + marketCapChange
-				+ ", marketCapChangePct=" + marketCapChangePct + "]";
-	}
-
-
 }

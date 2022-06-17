@@ -1,4 +1,4 @@
-package com.cryptocurrency.entity.objects;
+package com.cryptocurrency.backend.entity.objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency_daily_price")
-public class CurrencyDailyPrice {
+public class CryptocurrencyDailyPrice {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,13 +44,20 @@ public class CurrencyDailyPrice {
 	@Column(name = "high_timestamp")
 	private String highTimeStamp;
 
-	public CurrencyDailyPrice() {
+	public CryptocurrencyDailyPrice() {}
 
-	}
-
-	public CurrencyDailyPrice(String symbol, String price, String priceDate, String priceTimeStamp,
-			String circulatingSupply, String maxSupply, String marketCap, String high, String highTimeStamp) {
-		
+	public CryptocurrencyDailyPrice(
+							  String symbol,
+							  String price,
+							  String priceDate,
+							  String priceTimeStamp,
+							  String circulatingSupply,
+							  String maxSupply,
+							  String marketCap,
+							  String high,
+							  String highTimeStamp
+							  )
+	{
 		this.symbol = symbol;
 		this.price = price;
 		this.priceDate = priceDate;

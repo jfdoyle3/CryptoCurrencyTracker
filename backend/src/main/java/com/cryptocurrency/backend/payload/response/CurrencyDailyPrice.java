@@ -1,8 +1,6 @@
-package com.cryptocurrency.nomics.objects;
+package com.cryptocurrency.backend.payload.response;
 
 public class CurrencyDailyPrice {
-
-	private int id;
 
 	private String symbol;
 
@@ -26,10 +24,19 @@ public class CurrencyDailyPrice {
 
 	public CurrencyDailyPrice() {}
 
-	public CurrencyDailyPrice(int id, String symbol, String price, String priceDate, String priceTimeStamp,
-			String circulatingSupply, String maxSupply, String marketCap, String ranking, String high,
-			String highTimeStamp) {
-		this.id = id;
+	public CurrencyDailyPrice(
+			String symbol,
+			String price,
+			String priceDate,
+			String priceTimeStamp,
+			String circulatingSupply,
+			String maxSupply,
+			String marketCap,
+			String ranking,
+			String high,
+			String highTimeStamp
+			) 
+	{
 		this.symbol = symbol;
 		this.price = price;
 		this.priceDate = priceDate;
@@ -42,13 +49,6 @@ public class CurrencyDailyPrice {
 		this.highTimeStamp = highTimeStamp;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getSymbol() {
 		return symbol;
@@ -129,14 +129,4 @@ public class CurrencyDailyPrice {
 	public void setHighTimeStamp(String highTimeStamp) {
 		this.highTimeStamp = highTimeStamp;
 	}
-
-	@Override
-	public String toString() {
-		return "CurrencyInfo [id=" + id + ", symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate
-				+ ", priceTimeStamp=" + priceTimeStamp + ", circulatingSupply=" + circulatingSupply + ", maxSupply="
-				+ maxSupply + ", marketCap=" + marketCap + ", ranking=" + ranking + ", high=" + high
-				+ ", highTimeStamp=" + highTimeStamp + "]";
-	}
-
-
 }

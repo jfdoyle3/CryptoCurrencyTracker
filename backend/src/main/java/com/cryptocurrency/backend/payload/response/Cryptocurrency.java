@@ -1,10 +1,6 @@
-package com.cryptocurrency.nomics.objects;
-
-
+package com.cryptocurrency.backend.payload.response;
 
 public class Cryptocurrency {
-
-	private int id;
 
 	private String currency_id;
 
@@ -20,10 +16,16 @@ public class Cryptocurrency {
 
 	public Cryptocurrency() {}
 
-	public Cryptocurrency(String currency_id, String currency, String symbol, String name, String logoUrl,
-			String ranking) {
+	public Cryptocurrency(
+						  String currency_id,
+						  String currency,
+						  String symbol,
+						  String name,
+						  String ranking,
+						  String logoUrl
+						  )
+	{
 
-		// this.id = id;
 		this.currency_id = currency_id;
 		this.currency = currency;
 		this.symbol = symbol;
@@ -32,20 +34,21 @@ public class Cryptocurrency {
 		this.ranking = ranking;
 	}
 
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
 
-	public String getcurrency_id() {
+	public String getCurrency_id() {
 		return currency_id;
 	}
 
-	public void setcurrency_id(String currency_id) {
+	public void setCurrency_id(String currency_id) {
 		this.currency_id = currency_id;
+	}
+
+	public String getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
 	}
 
 	public String getCurrency() {
@@ -80,18 +83,5 @@ public class Cryptocurrency {
 		this.logoUrl = logoUrl;
 	}
 
-	public String getranking() {
-		return ranking;
-	}
-
-	public void setranking(String ranking) {
-		this.ranking = ranking;
-	}
-
-	@Override
-	public String toString() {
-		return "Cryptocurrency [id=" + id + ", currency_id=" + currency_id + ", currency=" + currency + ", symbol="
-				+ symbol + ", name=" + name + ", logoUrl=" + logoUrl + ", ranking=" + ranking + "]";
-	}
-
+	
 }

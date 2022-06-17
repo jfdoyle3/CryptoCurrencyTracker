@@ -1,4 +1,4 @@
-//package com.cryptocurrency.backend.payload.nomics.api;
+//package com.cryptocurrency.backend.payload.api;
 //
 //import java.util.List;
 //

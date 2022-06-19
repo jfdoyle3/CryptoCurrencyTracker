@@ -33,10 +33,11 @@ public class CurrencyController {
     public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@PathVariable String q) {
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
-		CryptocurrencyInfo ci=new CryptocurrencyInfo();
+		// CryptocurrencyInfo ci=new CryptocurrencyInfo();
 		JSONArray json = gc.Currencies(q, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
-		
+		for(Cryptocurrency item : currency)
+			System.out.println(item);
 		
         return ResponseEntity.ok(currency);
     }

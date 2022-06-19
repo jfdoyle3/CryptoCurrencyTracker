@@ -8,7 +8,7 @@ todo:
 
 make new branch and rewrite/change project over to JPA
 
-figure out how to get 3rd party API into entities
+Still figuring out how to get 3rd party API into entities
 
 --------------------------------------------------------------
 

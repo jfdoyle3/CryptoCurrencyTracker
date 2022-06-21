@@ -92,7 +92,7 @@ public class GetCurrency {
 			} else {
 				market_cap = "N/A";
 			}
-			String rank=(String) key.get("rank");
+//			String rank=(String) key.get("rank");
 			String high = (String) key.get("high");
 			String high_timestamp = (String) key.get("high_timestamp");
 
@@ -105,7 +105,6 @@ public class GetCurrency {
 							circulating_supply,
 							maxSupply,
 							market_cap,
-							rank,
 							high,
 							high_timestamp
 							);

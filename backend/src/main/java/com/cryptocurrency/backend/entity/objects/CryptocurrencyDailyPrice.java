@@ -69,6 +69,14 @@ public class CryptocurrencyDailyPrice {
 		this.highTimeStamp = highTimeStamp;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getSymbol() {
 		return symbol;
 	}
@@ -140,12 +148,4 @@ public class CryptocurrencyDailyPrice {
 	public void setHighTimeStamp(String highTimeStamp) {
 		this.highTimeStamp = highTimeStamp;
 	}
-
-	@Override
-	public String toString() {
-		return "CurrencyDailyPrice [symbol=" + symbol + ", price=" + price + ", priceDate=" + priceDate + ", priceTimeStamp="
-				+ priceTimeStamp + ", circulatingSupply=" + circulatingSupply + ", maxSupply=" + maxSupply
-				+ ", marketCap=" + marketCap + ", high=" + high + ", highTimeStamp=" + highTimeStamp + "]";
-	}
-
 }

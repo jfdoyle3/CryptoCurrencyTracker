@@ -16,8 +16,6 @@ public class CurrencyDailyPrice {
 
 	private String marketCap;
 
-	private String ranking;
-
 	private String high;
 
 	private String highTimeStamp;
@@ -32,7 +30,6 @@ public class CurrencyDailyPrice {
 			String circulatingSupply,
 			String maxSupply,
 			String marketCap,
-			String ranking,
 			String high,
 			String highTimeStamp
 			) 
@@ -44,7 +41,6 @@ public class CurrencyDailyPrice {
 		this.circulatingSupply = circulatingSupply;
 		this.maxSupply = maxSupply;
 		this.marketCap = marketCap;
-		this.ranking = ranking;
 		this.high = high;
 		this.highTimeStamp = highTimeStamp;
 	}
@@ -104,14 +100,6 @@ public class CurrencyDailyPrice {
 
 	public void setMarketCap(String marketCap) {
 		this.marketCap = marketCap;
-	}
-
-	public String getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(String ranking) {
-		this.ranking = ranking;
 	}
 
 	public String getHigh() {

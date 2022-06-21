@@ -59,7 +59,7 @@ public class GetCurrency {
 			Cryptocurrency cryptocurrency = new Cryptocurrency(currency_id, currency, symbol, name, ranking,
 					logo);
 			cryptocurrencyList.add(cryptocurrency);
-
+			
 		}
 		return cryptocurrencyList;
 	}

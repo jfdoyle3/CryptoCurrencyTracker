@@ -66,6 +66,8 @@ public class CryptocurrencyInfo {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	
 
 	public String getCurrency() {
 		return currency;

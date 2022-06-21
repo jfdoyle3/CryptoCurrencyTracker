@@ -13,7 +13,6 @@ import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
 import com.cryptocurrency.backend.payload.api.GetCurrency;
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import com.cryptocurrency.backend.repository.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.services.CurrencyToEntity;
 
 import kong.unirest.json.JSONArray;
 
@@ -33,14 +32,12 @@ public class CurrencyController {
     public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@PathVariable String q) {
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
-		// CryptocurrencyInfo ci=new CryptocurrencyInfo();
 		JSONArray json = gc.Currencies(q, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
-		for(Cryptocurrency item : currency)
-			System.out.println(item);
-		
+		for(Cryptocurrency item : currency) {
+			CryptocurrencyInfo ci=new CryptocurrencyInfo(item.getCurrency_id(),item.getCurrency(),item.getSymbol(),item.getName(),item.getRanking(),item.getLogoUrl());
+			repository.save(ci);
+		}
         return ResponseEntity.ok(currency);
     }
-
-
 }

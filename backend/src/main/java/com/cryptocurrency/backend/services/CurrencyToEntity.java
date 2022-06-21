@@ -7,11 +7,15 @@ public class CurrencyToEntity {
 	
 	public CurrencyToEntity(CryptocurrencyInfo entity, Cryptocurrency obj) {
 	    
-	    entity.setCurrency_id(obj.getCurrency_id());
-	    entity.setCurrency(obj.getCurrency());
-	    entity.setSymbol(obj.getSymbol());
-	    entity.setName(obj.getName());
-	    entity.setRanking(obj.getRanking());
-	    entity.setLogoUrl(obj.getLogoUrl());
+		
+		
+//	    entity.setCurrency_id(obj.getCurrency_id());
+//	    entity.setCurrency(obj.getCurrency());
+//	    entity.setSymbol(obj.getSymbol());
+//	    entity.setName(obj.getName());
+//	    entity.setRanking(obj.getRanking());
+//	    entity.setLogoUrl(obj.getLogoUrl());
 	}
+	
+	
 }

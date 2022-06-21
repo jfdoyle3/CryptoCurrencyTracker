@@ -9,5 +9,4 @@ import com.cryptocurrency.backend.services.CurrencyToEntity;
 public interface CryptocurrencyInfoRepository extends JpaRepository<CryptocurrencyInfo, Long> {
 
 	
-
 }

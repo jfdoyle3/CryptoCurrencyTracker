@@ -8,10 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import kong.unirest.json.JSONArray;
-
 @Entity
-@Table(name = "cryptocurrency")
+@Table(name = "cryptocurrency_info")
 public class CryptocurrencyInfo {
 
 	@Id
@@ -54,11 +52,8 @@ public class CryptocurrencyInfo {
 		this.name = name;
 		this.ranking = ranking;
 		this.logoUrl = logoUrl;
-		
 	}
 	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -67,8 +62,6 @@ public class CryptocurrencyInfo {
 		this.id = id;
 	}
 	
-	
-
 	public String getCurrency() {
 		return currency;
 	}

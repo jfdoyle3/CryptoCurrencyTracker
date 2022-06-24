@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import com.cryptocurrency.backend.entity.objects.CryptocurrencyDailyPrice;
 import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entity.objects.CryptocurrencyInterval;
 import com.cryptocurrency.backend.payload.api.GetCurrency;
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payload.response.CurrencyInterval;
 import com.cryptocurrency.backend.repository.CryptocurrencyDailyPriceRepository;
 import com.cryptocurrency.backend.repository.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repository.CryptocurrencyIntervalRepository;
 
 import kong.unirest.json.JSONArray;
 
@@ -28,6 +31,9 @@ public class CurrencyController {
 	
 	@Autowired
 	private CryptocurrencyDailyPriceRepository priceRepository;
+	
+	@Autowired
+	private CryptocurrencyIntervalRepository intervalRepository;
 
 	
     @Value("${api.key}")
@@ -75,4 +81,29 @@ public class CurrencyController {
 		}
     	return ResponseEntity.ok(prices);
     }
+
+    
+    @GetMapping("/interval/{c}/{i}")
+    public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
+    	GetCurrency gc=new GetCurrency();
+    	JSONArray json = gc.Currencies(c, i,apiKey);
+    	List<CurrencyInterval> interval=gc.CurrencyTimeInterval(json,i);
+    	for(CurrencyInterval item : interval) {
+    		CryptocurrencyInterval ci=new CryptocurrencyInterval(
+    															 item.getTimeInterval(),
+    															 item.getSymbol(),
+    															 item.getVolume(),
+    															 item.getPriceChange(),
+    															 item.getPriceChangePct(),
+    															 item.getVolumeChange(),
+    															 item.getVolumeChangePct(),
+    															 item.getMarketCapChange(),
+    															 item.getMarketCapChangePct()
+    															);
+    		intervalRepository.save(ci);
+    	}   	
+    	return ResponseEntity.ok(interval);
+    }
+    
+    
 }

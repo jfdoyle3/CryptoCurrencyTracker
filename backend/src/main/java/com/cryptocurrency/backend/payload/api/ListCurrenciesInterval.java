@@ -2,7 +2,7 @@
 //
 //import java.util.List;
 //
-//import com.cryptocurrency.nomics.objects.CurrencyInterval;
+//import com.cryptocurrency.backend.payload.response.CurrencyInterval;
 //
 //import kong.unirest.json.JSONArray;
 //

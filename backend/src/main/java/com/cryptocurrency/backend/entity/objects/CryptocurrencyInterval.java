@@ -1,21 +1,49 @@
 package com.cryptocurrency.backend.entity.objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "currency_interval")
 public class CryptocurrencyInterval {
 	
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+	
+	@Column(name="time_interval")
 	private String timeInterval;
-	private String Symbol;
+	
+	@Column(name="symbol")
+	private String symbol;
+	
+	@Column(name="volumne")
 	private String volume;
+	
+	@Column(name="price_change")
 	private String priceChange;
+	
+	@Column(name="price_change_pct")
 	private String priceChangePct;
+	
+	@Column(name="volume_change")
 	private String volumeChange;
+	
+	@Column(name="volume_change_pct")
 	private String volumeChangePct;
+	
+	@Column(name="market_cap_change")
 	private String marketCapChange;
+	
+	@Column(name="market_cap_change_pct")
 	private String marketCapChangePct;
 
-
 	public CryptocurrencyInterval() {}
-
 
 	public CryptocurrencyInterval(
 							String timeInterval,
@@ -29,7 +57,7 @@ public class CryptocurrencyInterval {
 							String marketCapChangePct
 							) 
 	{
-		this.Symbol = symbol;
+		this.symbol = symbol;
 		this.timeInterval = timeInterval;
 		this.volume = volume;
 		this.priceChange = priceChange;
@@ -41,12 +69,12 @@ public class CryptocurrencyInterval {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -62,12 +90,12 @@ public class CryptocurrencyInterval {
 
 
 	public String getSymbol() {
-		return Symbol;
+		return symbol;
 	}
 
 
 	public void setSymbol(String symbol) {
-		Symbol = symbol;
+		this.symbol = symbol;
 	}
 
 

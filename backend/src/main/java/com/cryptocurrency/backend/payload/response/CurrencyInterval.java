@@ -1,7 +1,6 @@
 package com.cryptocurrency.backend.payload.response;
 
 public class CurrencyInterval {
-	private int id;
 	private String timeInterval;
 	private String Symbol;
 	private String volume;
@@ -15,7 +14,6 @@ public class CurrencyInterval {
 	public CurrencyInterval() {}
 
 	public CurrencyInterval(
-					int id,
 					String timeInterval,
 					String symbol,
 					String volume,
@@ -27,7 +25,6 @@ public class CurrencyInterval {
 					String marketCapChangePct
 					) 
 	{
-		this.id=id;
 		this.timeInterval = timeInterval;
 		this.Symbol = symbol;
 		this.volume = volume;
@@ -39,13 +36,6 @@ public class CurrencyInterval {
 		this.marketCapChangePct = marketCapChangePct;
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getTimeInterval() {
 		return timeInterval;

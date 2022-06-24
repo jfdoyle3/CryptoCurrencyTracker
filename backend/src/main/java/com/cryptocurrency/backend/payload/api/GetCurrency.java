@@ -25,7 +25,7 @@ public class GetCurrency {
 				   marketCapChgPct,
 				   volChange;
 	
-	private int idCounter = 0;
+	// private Long idCounter = 0;
 
 	public JSONArray Currencies(String currency, String interval, String apiKey) {
 
@@ -148,12 +148,12 @@ public class GetCurrency {
 					marketCapChgPct = "N/A";
 				}
 
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, interval, symbol, volume,
+				CurrencyInterval currencyInterval = new CurrencyInterval( interval, symbol, volume,
 						priceChange, priceChgPct, volChange, volChgPct, marketCapChg, marketCapChgPct);
 				currencyIntervalList.add(currencyInterval);
 
 			} else {
-				CurrencyInterval currencyInterval = new CurrencyInterval(++idCounter, "N/A", symbol, "N/A", "N/A",
+				CurrencyInterval currencyInterval = new CurrencyInterval( "N/A", symbol, "N/A", "N/A",
 						"N/A", "N/A", "N/A", "N/A", "N/A");
 				currencyIntervalList.add(currencyInterval);
 			}

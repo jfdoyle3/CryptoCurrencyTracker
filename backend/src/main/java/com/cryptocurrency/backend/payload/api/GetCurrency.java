@@ -30,7 +30,11 @@ public class GetCurrency {
 	public JSONArray Currencies(String currency, String interval, String apiKey) {
 
 		final HttpResponse<String> jsonStringResponse = Unirest.get("https://api.nomics.com/v1/currencies/ticker")
-				.queryString("key", apiKey).queryString("ids", currency).queryString("interval", interval).asString();
+				.queryString("key", apiKey)
+				.queryString("ids", currency)
+				.queryString("interval", interval)
+				.queryString("filter", "any")
+				.asString();
 
 		String json = jsonStringResponse.getBody();
 		JSONArray currencyJson = new JSONArray(json);

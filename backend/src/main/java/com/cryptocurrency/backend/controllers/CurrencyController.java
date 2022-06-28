@@ -39,8 +39,9 @@ public class CurrencyController {
     @Value("${api.key}")
     private String apiKey;
 
-    @GetMapping("/currency/{q}")
-    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@PathVariable String q) {
+    @GetMapping("/currency/")
+    public ResponseEntity<List<Cryptocurrency>> cryptoHeader() {
+    	String q="";
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
 		JSONArray json = gc.Currencies(q, interval,apiKey);

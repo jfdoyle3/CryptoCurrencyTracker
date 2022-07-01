@@ -40,8 +40,7 @@ public class CurrencyController {
     private String apiKey;
 
     @GetMapping("/currency/")
-    public ResponseEntity<List<Cryptocurrency>> cryptoHeader() {
-    	String q="";
+    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@RequestParam(defaultValue="") String q) {
 		String interval = "1d";
 		GetCurrency gc=new GetCurrency();
 		JSONArray json = gc.Currencies(q, interval,apiKey);

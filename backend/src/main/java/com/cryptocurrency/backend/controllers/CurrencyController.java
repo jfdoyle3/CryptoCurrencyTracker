@@ -40,10 +40,11 @@ public class CurrencyController {
     private String apiKey;
 
     @GetMapping("/currency/")
-    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@RequestParam(defaultValue="") String q) {
-		String interval = "1d";
+    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
+    	String upperCurrencies=currencies.toUpperCase();
+    	String interval = "1d";
 		GetCurrency gc=new GetCurrency();
-		JSONArray json = gc.Currencies(q, interval,apiKey);
+		JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
 		for(Cryptocurrency item : currency) {
 			CryptocurrencyInfo ci=new CryptocurrencyInfo(

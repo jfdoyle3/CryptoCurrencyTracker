@@ -10,7 +10,11 @@ public class CurrencyDateStamp {
 
 	public CurrencyDateStamp() {}
 
-	public CurrencyDateStamp(String priceDate, String priceTimeStamp) {
+	public CurrencyDateStamp(
+							  String priceDate,
+							  String priceTimeStamp
+							  ) 
+	{
 		this.priceDate = priceDate;
 		this.priceTimeStamp = priceTimeStamp;
 	}

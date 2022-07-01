@@ -23,16 +23,16 @@ public class CurrencyDailyPrice {
 	public CurrencyDailyPrice() {}
 
 	public CurrencyDailyPrice(
-			String symbol,
-			String price,
-			String priceDate,
-			String priceTimeStamp,
-			String circulatingSupply,
-			String maxSupply,
-			String marketCap,
-			String high,
-			String highTimeStamp
-			) 
+							  String symbol,
+							  String price,
+							  String priceDate,
+							  String priceTimeStamp,
+							  String circulatingSupply,
+							  String maxSupply,
+							  String marketCap,
+							  String high,
+							  String highTimeStamp
+							  ) 
 	{
 		this.symbol = symbol;
 		this.price = price;

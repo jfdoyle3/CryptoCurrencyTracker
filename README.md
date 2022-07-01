@@ -6,9 +6,7 @@ Cryptocurrency Tacker Java/React Full Stack project
 
 todo:
 
-make new branch and rewrite/change project over to JPA
 
-Still figuring out how to get 3rd party API into entities
 
 --------------------------------------------------------------
 
@@ -25,6 +23,8 @@ Deposit/Withdraw/Balance currencies.
 ATM machine.
 
 issue a currency card.
+
+create a blockchain per transaction
 
 ---------------------------------
 

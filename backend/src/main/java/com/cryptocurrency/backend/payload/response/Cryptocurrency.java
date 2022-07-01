@@ -82,6 +82,4 @@ public class Cryptocurrency {
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
-	
 }

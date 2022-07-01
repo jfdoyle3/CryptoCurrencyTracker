@@ -14,16 +14,16 @@ public class CurrencyInterval {
 	public CurrencyInterval() {}
 
 	public CurrencyInterval(
-					String timeInterval,
-					String symbol,
-					String volume,
-					String priceChange,
-					String priceChangePct,
-					String volumeChange,
-					String volumeChangePct,
-					String marketCapChange,
-					String marketCapChangePct
-					) 
+							String timeInterval,
+							String symbol,
+							String volume,
+							String priceChange,
+							String priceChangePct,
+							String volumeChange,
+							String volumeChangePct,
+							String marketCapChange,
+							String marketCapChangePct
+							) 
 	{
 		this.timeInterval = timeInterval;
 		this.Symbol = symbol;

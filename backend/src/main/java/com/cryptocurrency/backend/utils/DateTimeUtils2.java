@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateTimeUtils {
+public class DateTimeUtils2 {
 
 	private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static final double MILLISECOND_TO_HOUR = 1000 * 60 * 60;
@@ -28,33 +28,33 @@ public class DateTimeUtils {
 		return dateTimeFormatted;
 	}
 	
-	public static double calculateDays(long unixEpoch1, long unixEpoch2) throws ParseException {
+	public static double calculateEpochTimeToDayAndTime(long unixEpoch1, long unixEpoch2, String option) throws ParseException {
 
+		
 		Date date1 = new Date(unixEpoch1 * 1000L);
 		Date date2 = new Date(unixEpoch2 * 1000L);
-		Double days = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_DAY;
-
-		return days;
+		
+		option.toLowerCase();
+		String[] findOption=option.split("");
+		String setting=findOption[0];
+		
+			
+		switch(setting){
+			case "d":
+				Double days = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_DAY;
+				return days;
+			case "h":
+				Double hours = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_HOUR;
+				return hours;
+			case "m":
+				Double minutes = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_MINUTE;
+				return minutes;
+			default:
+				System.out.println("ERROR - Not A Valid Input");
+				return 0;
+		}
 	}
-
-	public static double calculateHours(long unixEpoch1, long unixEpoch2) throws ParseException {
-
-		Date date1 = new Date(unixEpoch1 * 1000L);
-		Date date2 = new Date(unixEpoch2 * 1000L);
-		Double hours = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_HOUR;
-
-		return hours;
-	}
-	
-	public static double calculateMinutes(long unixEpoch1, long unixEpoch2) throws ParseException {
-
-		Date date1 = new Date(unixEpoch1 * 1000L);
-		Date date2 = new Date(unixEpoch2 * 1000L);
-		Double minutes = (date2.getTime() - date1.getTime()) / MILLISECOND_TO_MINUTE;
-
-		return minutes;
-	}
-	
+		
 	// Maybe a Method for Week Number in Calendar Year.
 	
 	public int getDayOfWeekFromDate(Date date) {

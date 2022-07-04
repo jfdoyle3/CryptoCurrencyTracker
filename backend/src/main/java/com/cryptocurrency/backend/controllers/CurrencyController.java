@@ -41,6 +41,9 @@ public class CurrencyController {
 
     @GetMapping("/currency/")
     public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
+    	if (currencies=="" && infoRepository.numberOfEntries()>1) {
+    		List<CryptocurrencyInfo> getAll=infoRepository.findAll();
+    	}
     	String upperCurrencies=currencies.toUpperCase();
     	String interval = "1d";
 		GetCurrency gc=new GetCurrency();
@@ -57,7 +60,6 @@ public class CurrencyController {
 														 );
 			infoRepository.save(ci);
 		}
-		System.out.println(infoRepository.numberOfEntries());
         return ResponseEntity.ok(currency);
     }
     

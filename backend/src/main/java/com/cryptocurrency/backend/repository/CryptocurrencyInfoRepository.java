@@ -15,4 +15,6 @@ public interface CryptocurrencyInfoRepository extends JpaRepository<Cryptocurren
 	
 	@Query("SELECT COUNT(*) FROM CryptocurrencyInfo")
 	Long numberOfEntries();
+	
+	List<CryptocurrencyInfo> findAll();
 }

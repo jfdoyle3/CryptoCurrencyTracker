@@ -57,6 +57,7 @@ public class CurrencyController {
 														 );
 			infoRepository.save(ci);
 		}
+		System.out.println(infoRepository.numberOfEntries());
         return ResponseEntity.ok(currency);
     }
     

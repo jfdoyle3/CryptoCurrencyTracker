@@ -108,4 +108,10 @@ public class CurrencyController {
     	}   	
     	return ResponseEntity.ok(interval);
     }
+    @GetMapping("/currency/topten")
+    public ResponseEntity<List<CryptocurrencyInfo>> getTopTen(){
+    	List<CryptocurrencyInfo> topTen=infoRepository.findTopTen();
+    	return ResponseEntity.ok(topTen);
+    }
+    	
 }

@@ -10,8 +10,8 @@ import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
 
 public interface CryptocurrencyInfoRepository extends JpaRepository<CryptocurrencyInfo, Long> {
 	
-	@Query("SELECT C FROM CryptocurrencyInfo C WHERE C.ranking<11 ORDER BY C.ranking DESC")
-	List<CryptocurrencyInfo> findTopTen();
+	@Query("SELECT C FROM CryptocurrencyInfo C WHERE C.ranking<6 ORDER BY C.ranking+0 ASC")
+	List<CryptocurrencyInfo> findTopFive();
 	
 	@Query("SELECT COUNT(*) FROM CryptocurrencyInfo")
 	Long numberOfEntries();

@@ -25,7 +25,7 @@ import kong.unirest.json.JSONArray;
 @RestController
 @RequestMapping("/api")
 public class CurrencyController {
-
+	private int methodRan=0;
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
 	
@@ -40,12 +40,15 @@ public class CurrencyController {
     private String apiKey;
 
     @GetMapping("/currency/")
-    public ResponseEntity<List<Cryptocurrency>> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
-    	if (currencies=="" && infoRepository.numberOfEntries()>1) {
-    		List<CryptocurrencyInfo> getAll=infoRepository.findAll();
-    	}
+    public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
     	String upperCurrencies=currencies.toUpperCase();
     	String interval = "1d";
+    	methodRan++;
+    	System.out.println("Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
+    	if (currencies.equals("") && infoRepository.numberOfEntries()>1) {
+    		List<CryptocurrencyInfo> getAll=infoRepository.findAll();
+    		return ResponseEntity.ok(getAll);
+    	}
 		GetCurrency gc=new GetCurrency();
 		JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);

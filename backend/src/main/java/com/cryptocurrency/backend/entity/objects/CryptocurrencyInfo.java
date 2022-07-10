@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cryptocurrency_info")
+@Table(name = "currency_info")
 public class CryptocurrencyInfo {
 
 	@Id

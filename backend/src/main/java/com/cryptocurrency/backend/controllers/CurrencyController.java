@@ -92,6 +92,7 @@ public class CurrencyController {
     
     @GetMapping("/interval/{c}/{i}")
     public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
+    	
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(c, i,apiKey);
     	List<CurrencyInterval> interval=gc.CurrencyTimeInterval(json,i);

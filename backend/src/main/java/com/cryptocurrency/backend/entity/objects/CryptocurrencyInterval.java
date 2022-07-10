@@ -22,7 +22,7 @@ public class CryptocurrencyInterval {
 	@Column(name="symbol")
 	private String symbol;
 	
-	@Column(name="volumne")
+	@Column(name="volume")
 	private String volume;
 	
 	@Column(name="price_change")

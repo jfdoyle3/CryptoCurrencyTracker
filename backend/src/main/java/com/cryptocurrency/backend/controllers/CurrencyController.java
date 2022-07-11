@@ -41,17 +41,27 @@ public class CurrencyController {
 
     @GetMapping("/currency/")
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
+    	
     	String upperCurrencies=currencies.toUpperCase();
     	String interval = "1d";
+    	
     	methodRan++;
     	System.out.println("Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
+    	
+    	// Check if records are on the table.
+    	// need to check against ranking to update table with new values
     	if (currencies.equals("") && infoRepository.numberOfEntries()>1) {
     		List<CryptocurrencyInfo> getAll=infoRepository.findAll();
     		return ResponseEntity.ok(getAll);
     	}
+    	
+    	// Get Currency API and create a List
 		GetCurrency gc=new GetCurrency();
 		JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
+		
+		// Iterate thru currencies that the user inputs.
+		// save to database through entity
 		for(Cryptocurrency item : currency) {
 			CryptocurrencyInfo ci=new CryptocurrencyInfo(
 														 item.getCurrency_id(),
@@ -68,9 +78,17 @@ public class CurrencyController {
     
     @GetMapping("/dailyPrice/{p}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String p){
+    	String upperCurrencies=p.toUpperCase();
     	String interval="1d";
+    	
+    	
+    	// Find if the record exists
+    	if(priceRepository.numberOfEntries()>=1)
+    		return null;
+    	
+    	
     	GetCurrency gc=new GetCurrency();
-    	JSONArray json = gc.Currencies(p, interval,apiKey);
+    	JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
     	for(CurrencyDailyPrice item : prices) {
     		CryptocurrencyDailyPrice dp=new CryptocurrencyDailyPrice(
@@ -92,9 +110,9 @@ public class CurrencyController {
     
     @GetMapping("/interval/{c}/{i}")
     public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
-    	
+    	String upperCurrencies=c.toUpperCase();
     	GetCurrency gc=new GetCurrency();
-    	JSONArray json = gc.Currencies(c, i,apiKey);
+    	JSONArray json = gc.Currencies(upperCurrencies, i,apiKey);
     	List<CurrencyInterval> interval=gc.CurrencyTimeInterval(json,i);
     	for(CurrencyInterval item : interval) {
     		CryptocurrencyInterval ci=new CryptocurrencyInterval(
@@ -116,6 +134,5 @@ public class CurrencyController {
     public ResponseEntity<List<CryptocurrencyInfo>> getTopFive(){
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
-    }
-    	
+    }	
 }

@@ -10,17 +10,22 @@ import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import kong.unirest.json.JSONArray;
 
 public class CurrencyServices {
-	
-    @Value("${api.key}")
-    private String apiKey;
-	
-	public List<Cryptocurrency> currencyAPI(String cryptoCurrency, String apiKey) {
-		String interval = "1d";
-		GetCurrency gc=new GetCurrency();
-		JSONArray json = gc.Currencies(cryptoCurrency, interval,apiKey);
-		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
+
+//	@Value("${api.key}")
+//	private String apiKey;
+
+	public JSONArray callAPI(String currencies, String interval,String apiKey) {
+		String upperCurrencies = currencies.toUpperCase();
+		String setInterval=!interval.equals("") ? interval : "1d";
+		GetCurrency gc = new GetCurrency();
+		JSONArray json = gc.Currencies(upperCurrencies, setInterval, apiKey);
 		
-		return currency;
+		return json;
 	}
+	
+//	public List<Cryptocurrency> getCurrencies(){
+//		// List<Cryptocurrency> currency = gc.Cryptocurrency(json);
+//		
+//	}
 
 }

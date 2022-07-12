@@ -9,6 +9,11 @@ public class Main {
 //	                = new Thread(new MultithreadingDemo());
 //	            object.start();
 //	        }
+//		String interval="abc";
+//
+//		String setInterval=!interval.equals("") ? interval : "1d";
+//		
+//		System.out.println(setInterval);
 
 		
 	}

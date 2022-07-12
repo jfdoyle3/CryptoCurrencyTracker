@@ -1,6 +1,7 @@
 package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,10 +42,7 @@ public class CurrencyController {
 
     @GetMapping("/currency/")
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
-    	
-    	String upperCurrencies=currencies.toUpperCase();
-    	String interval = "1d";
-    	
+
     	methodRan++;
     	System.out.println("Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
     	
@@ -56,6 +54,10 @@ public class CurrencyController {
     	}
     	
     	// Get Currency API and create a List
+    	// CALL API
+    	// JSONArray json=callAPI(currencies, apiKey);
+    	String upperCurrencies=currencies.toUpperCase();
+    	String interval = "1d";
 		GetCurrency gc=new GetCurrency();
 		JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
 		List<Cryptocurrency> currency=gc.Cryptocurrency(json);
@@ -78,18 +80,20 @@ public class CurrencyController {
     
     @GetMapping("/dailyPrice/{p}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String p){
+//    	// Find if the record exists
+//    	if(priceRepository.numberOfEntries()>=1)
+//    		return null;
+    	
+    	// Get Currency API and create a List
     	String upperCurrencies=p.toUpperCase();
     	String interval="1d";
-    	
-    	
-    	// Find if the record exists
-    	if(priceRepository.numberOfEntries()>=1)
-    		return null;
-    	
-    	
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
+    	
+    	
+    	// Iterate thru currencies that the user inputs.
+    	// save to database through entity
     	for(CurrencyDailyPrice item : prices) {
     		CryptocurrencyDailyPrice dp=new CryptocurrencyDailyPrice(
     																 item.getSymbol(),
@@ -110,10 +114,16 @@ public class CurrencyController {
     
     @GetMapping("/interval/{c}/{i}")
     public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
+    	
+    	// Get Currency API and create a List
     	String upperCurrencies=c.toUpperCase();
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencies, i,apiKey);
     	List<CurrencyInterval> interval=gc.CurrencyTimeInterval(json,i);
+    	
+    	
+    	// Iterate thru currencies that the user inputs.
+    	// save to database through entity
     	for(CurrencyInterval item : interval) {
     		CryptocurrencyInterval ci=new CryptocurrencyInterval(
     															 item.getTimeInterval(),
@@ -130,9 +140,18 @@ public class CurrencyController {
     	}   	
     	return ResponseEntity.ok(interval);
     }
+    
+    
     @GetMapping("/currency/topfive")
     public ResponseEntity<List<CryptocurrencyInfo>> getTopFive(){
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
+    }
+    
+    @GetMapping("/getDailyPrice/{p}")
+    public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
+    	String upperCurrencies=p.toUpperCase();
+    	List<CryptocurrencyDailyPrice> price=priceRepository.findBySymbol(upperCurrencies);
+    	return ResponseEntity.ok(price);
     }	
 }

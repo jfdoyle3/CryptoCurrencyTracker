@@ -1,8 +1,5 @@
 package com.cryptocurrency.backend.services;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Value;
 
 import com.cryptocurrency.backend.payload.api.GetCurrency;
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;

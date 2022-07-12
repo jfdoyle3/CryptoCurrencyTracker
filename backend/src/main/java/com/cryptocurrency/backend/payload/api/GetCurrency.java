@@ -2,10 +2,10 @@ package com.cryptocurrency.backend.payload.api;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
 import com.cryptocurrency.backend.payload.response.CurrencyInterval;
-
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entity.CryptocurrencyInfo;
 
 public interface CryptocurrencyInfoRepository extends JpaRepository<CryptocurrencyInfo, Long> {
 	

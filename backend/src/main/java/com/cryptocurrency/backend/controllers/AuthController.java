@@ -11,7 +11,11 @@ import com.cryptocurrency.backend.repositories.RoleRepository;
 import com.cryptocurrency.backend.repositories.UserRepository;
 import com.cryptocurrency.backend.security.jwt.JwtUtils;
 import com.cryptocurrency.backend.security.services.UserDetailsImpl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +25,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,6 +51,13 @@ public class AuthController {
 
     @Autowired
     private JwtUtils jwtUtils;
+  
+    
+    @Value("${spring.datasource.driver-class-name}")
+    public String myDriver;
+
+    @Value("${spring.datasource.url}")
+    public String myUrl;
 
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
@@ -66,7 +80,35 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
-        if (userRepository.existsByUsername(signupRequest.getUsername())) {
+    	System.out.println("CODE STARTING!!!!!!!!!!!!!!!!!!!!!!");
+    	int roleCheck=roleRepository.isRoleEmpty();
+    	System.out.println(roleCheck);
+    	if (roleCheck < ERole.values().length) {
+    	    int id = 0;
+    	    for (ERole role : ERole.values()) {
+    	        if (roleRepository.findByName(role).isEmpty()) {
+    	            try {
+    	                Connection conn = DriverManager.getConnection(myUrl, "reflect", "whoiam");
+    	                Class.forName(myDriver);
+    	                String query = "Insert into role (id, name) values (?,?)";
+    	                PreparedStatement statement = conn.prepareStatement(query);
+
+    	                statement.setString(1, Integer.toString(++id));
+    	                statement.setString(2, role.toString());
+
+    	                statement.executeUpdate();
+
+    	            } catch (Exception e) {
+    	                Logger logger = LoggerFactory.getLogger(AuthController.class);
+    	                System.out.println(e.getMessage());
+
+    	            }
+    	        }
+    	    }
+    	}
+    	
+    	
+    	if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email already in use please login or reset password"));
@@ -96,7 +138,8 @@ public class AuthController {
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found"));
+                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Error: Role is not found"));
                         roles.add(userRole);
 
                         break;

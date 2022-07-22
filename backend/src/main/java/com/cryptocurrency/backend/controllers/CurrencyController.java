@@ -15,9 +15,9 @@ import com.cryptocurrency.backend.payload.api.GetCurrency;
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
 import com.cryptocurrency.backend.payload.response.CurrencyInterval;
-import com.cryptocurrency.backend.repository.CryptocurrencyDailyPriceRepository;
-import com.cryptocurrency.backend.repository.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.repository.CryptocurrencyIntervalRepository;
+import com.cryptocurrency.backend.repositories.CryptocurrencyDailyPriceRepository;
+import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repositories.CryptocurrencyIntervalRepository;
 
 import kong.unirest.json.JSONArray;
 

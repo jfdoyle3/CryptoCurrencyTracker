@@ -78,8 +78,11 @@ public class AuthController {
                                                  roles));
     }
 
-    @PostMapping("/signup")
+	@PostMapping("/signup")
+    @SuppressWarnings("unused")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
+    	
+    	// Check for ROLES before signing up
     	System.out.println("CODE STARTING!!!!!!!!!!!!!!!!!!!!!!");
     	int roleCheck=roleRepository.isRoleEmpty();
     	System.out.println(roleCheck);
@@ -108,17 +111,19 @@ public class AuthController {
     	}
     	
     	
+    	//SIGN IN : Check for existing accounts
     	if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email already in use please login or reset password"));
         }
 
-        // create new account
+        //SIGN IN: Create New Account
         User user = new User(signupRequest.getUsername(), encoder.encode(signupRequest.getPassword()));
         Set<String> strRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
+        // SIGN IN: ASSIGN ROLE
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER).orElseThrow(() -> new RuntimeException("Error: Role is not found"));
             roles.add(userRole);
@@ -150,7 +155,7 @@ public class AuthController {
         user.setRoles(roles);
         userRepository.save(user);
 
-        return new ResponseEntity(new MessageResponse("User registered successfully"), HttpStatus.CREATED);
-    }
+        return new ResponseEntity<Object>(new MessageResponse("User registered successfully"), HttpStatus.CREATED);
+        }
 
 }

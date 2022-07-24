@@ -12,7 +12,7 @@ import com.cryptocurrency.backend.entities.Tracker;
 @Repository
 public interface TrackerRepository extends JpaRepository<Tracker, Long> {
 	
-    List<Tracker> findAllByCurrencies(Long id);
+//    List<Tracker> findAllByCurrencies(Long id);
 
     Optional<Tracker> findByUser_id(Long id);
 

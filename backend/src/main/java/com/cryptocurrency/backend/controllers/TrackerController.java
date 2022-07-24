@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.Tracker;
 import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.payloads.response.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.SelfTracker;
 import com.cryptocurrency.backend.repositories.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
@@ -54,6 +56,26 @@ public class TrackerController {
 		return SelfTracker.build(currentDev);
 	}
 
+	 @GetMapping("/{id}")
+	    public ResponseEntity<?> getTrackerById(@PathVariable Long id) {
+	        // get user
+	        User currentUser = userService.getCurrentUser();
+
+	        if (currentUser == null) {
+	            return null;
+	        }
+	        Tracker currentTracker = repository.findByUser_id(currentUser.getId()).orElseThrow(
+	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
+	        );
+
+	        Tracker Tracker = repository.findById(id).orElseThrow(
+	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
+	        );
+	        // TODO: if blocked send 404
+
+	        return new ResponseEntity<?>(PublicTracker.build(Tracker), HttpStatus.SC_OK);
+
+	    }
 	
 	// CREATE Tracker
 	@PostMapping
@@ -73,6 +95,16 @@ public class TrackerController {
 		return new ResponseEntity<SelfTracker>(SelfTracker.build(dev), null, HttpStatus.SC_CREATED);
 	}
 
+	// Add a Currency to favorites
+	@PostMapping("/addCurrency")
+	public ResponseEnity<?> addCurrency(){
+		
+		
+		
+		
+		
+		return new ResponseEntity<?>(null, null, HttpStatus.SC_CREATED);
+	}
 	
 	
 	// DELETE TRACKER

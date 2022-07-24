@@ -82,8 +82,8 @@ public class AuthController {
     @SuppressWarnings("unused")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
     	
-    	// Check for ROLES before signing up
-    	System.out.println("CODE STARTING!!!!!!!!!!!!!!!!!!!!!!");
+    	
+    	// TODO roles auto fill not working.
     	int roleCheck=roleRepository.isRoleEmpty();
     	System.out.println(roleCheck);
     	if (roleCheck < ERole.values().length) {

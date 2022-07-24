@@ -1,0 +1,123 @@
+package com.cryptocurrency.backend.controllers;
+
+import java.util.List;
+
+import org.apache.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.cryptocurrency.backend.entities.Tracker;
+import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.payloads.response.SelfTracker;
+import com.cryptocurrency.backend.repositories.TrackerRepository;
+import com.cryptocurrency.backend.services.UserService;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/api/trackers")
+public class TrackerController {
+
+	@Autowired
+	private TrackerRepository repository;
+
+	@Autowired
+	UserService userService;
+
+	
+	// GET ALL
+	@GetMapping
+	public @ResponseBody List<Tracker> getTrackers() {
+		return repository.findAll();
+	}
+
+	
+	// GET SELF
+	@GetMapping("/self")
+	public @ResponseBody SelfTracker getSelf() {
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) 
+			return null;
+		
+		Tracker currentDev = repository.findByUser_id(currentUser.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+		return SelfTracker.build(currentDev);
+	}
+
+	
+	// CREATE Tracker
+	@PostMapping
+	public ResponseEntity<SelfTracker> createTracker(@RequestBody Tracker newTracker) {
+
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return new ResponseEntity<SelfTracker>(null, null, HttpStatus.SC_BAD_REQUEST);
+		}
+
+		// TODO add check for existing Tracker profile.
+		newTracker.setUser(currentUser);
+
+		Tracker dev = repository.save(newTracker);
+
+		return new ResponseEntity<SelfTracker>(SelfTracker.build(dev), null, HttpStatus.SC_CREATED);
+	}
+
+	
+	
+	// DELETE TRACKER
+	@DeleteMapping
+	public ResponseEntity<String> destroyTracker() {
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return null;
+		}
+		repository.deleteByUser_id(currentUser.getId());
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
+	}
+//	@PutMapping("/currency")
+//	public Tracker addLanguage(@RequestBody List<Language> updates) {
+//		User currentUser = userService.getCurrentUser();
+//
+//		if (currentUser == null) {
+//			return null;
+//		}
+//		Tracker Tracker = repository.findByUser_id(currentUser.getId())
+//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//
+//		Tracker.languages.addAll(updates);
+//		return repository.save(Tracker);
+//	}
+
+//	@PutMapping
+//	public @ResponseBody Tracker updateTracker(@RequestBody Tracker updates) {
+//		User currentUser = userService.getCurrentUser();
+//
+//		if (currentUser == null) {
+//			return null;
+//		}
+//		Tracker Tracker = repository.findByUser_id(currentUser.getId())
+//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//
+////	        updates.setId(Tracker.getId());
+////	        return repository.save(updates);
+//		if (updates.getName() != null)
+//			Tracker.setName(updates.getName());
+////	        if (updates.getEmail() != null) Tracker.setEmail(updates.getEmail());
+////	        if (updates.currencies != null) Tracker.languages = updates.currencies;
+//
+//		return repository.save(Tracker);
+//	}
+
+}

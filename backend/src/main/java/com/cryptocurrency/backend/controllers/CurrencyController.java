@@ -21,8 +21,8 @@ import com.cryptocurrency.backend.repositories.CryptocurrencyIntervalRepository;
 
 import kong.unirest.json.JSONArray;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class CurrencyController {
 	private int methodRan=0;

@@ -1,8 +1,8 @@
 package com.cryptocurrency.backend.controllers;
 
-import com.cryptocurrency.backend.entities.ERole;
-import com.cryptocurrency.backend.entities.Role;
-import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.entities.auth.ERole;
+import com.cryptocurrency.backend.entities.auth.Role;
+import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.payloads.request.LoginRequest;
 import com.cryptocurrency.backend.payloads.request.SignupRequest;
 import com.cryptocurrency.backend.payloads.response.JwtResponse;
@@ -79,37 +79,7 @@ public class AuthController {
     }
 
 	@PostMapping("/signup")
-    @SuppressWarnings("unused")
     public ResponseEntity<?> registerUser(@RequestBody SignupRequest signupRequest) {
-    	
-    	
-    	// TODO roles auto fill not working.
-    	int roleCheck=roleRepository.isRoleEmpty();
-    	System.out.println(roleCheck);
-    	if (roleCheck < ERole.values().length) {
-    	    int id = 0;
-    	    for (ERole role : ERole.values()) {
-    	        if (roleRepository.findByName(role).isEmpty()) {
-    	            try {
-    	                Connection conn = DriverManager.getConnection(myUrl, "reflect", "whoiam");
-    	                Class.forName(myDriver);
-    	                String query = "Insert into role (id, name) values (?,?)";
-    	                PreparedStatement statement = conn.prepareStatement(query);
-
-    	                statement.setString(1, Integer.toString(++id));
-    	                statement.setString(2, role.toString());
-
-    	                statement.executeUpdate();
-
-    	            } catch (Exception e) {
-    	                Logger logger = LoggerFactory.getLogger(AuthController.class);
-    	                System.out.println(e.getMessage());
-
-    	            }
-    	        }
-    	    }
-    	}
-    	
     	
     	//SIGN IN : Check for existing accounts
     	if (userRepository.existsByUsername(signupRequest.getUsername())) {

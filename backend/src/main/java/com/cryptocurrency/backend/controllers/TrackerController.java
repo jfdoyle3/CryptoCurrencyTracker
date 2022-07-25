@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.cryptocurrency.backend.entities.Tracker;
-import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.entities.auth.User;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.response.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.SelfTracker;
 import com.cryptocurrency.backend.repositories.TrackerRepository;
@@ -58,22 +59,24 @@ public class TrackerController {
 
 	 @GetMapping("/{id}")
 	    public ResponseEntity<?> getTrackerById(@PathVariable Long id) {
-	        // get user
+	        
 	        User currentUser = userService.getCurrentUser();
 
 	        if (currentUser == null) {
 	            return null;
 	        }
+	        
+	        
 	        Tracker currentTracker = repository.findByUser_id(currentUser.getId()).orElseThrow(
 	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
 	        );
 
-	        Tracker Tracker = repository.findById(id).orElseThrow(
-	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
-	        );
+//	        Tracker currentTracker = repository.findById(id).orElseThrow(
+//	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
+//	        );
 	        // TODO: if blocked send 404
 
-	        return new ResponseEntity<?>(PublicTracker.build(Tracker), HttpStatus.SC_OK);
+	        return new ResponseEntity<PublicTracker>(PublicTracker.build(currentTracker), null, HttpStatus.SC_OK);
 
 	    }
 	
@@ -96,16 +99,16 @@ public class TrackerController {
 	}
 
 	// Add a Currency to favorites
-	@PostMapping("/addCurrency")
-	public ResponseEnity<?> addCurrency(){
-		
-		
-		
-		
-		
-		return new ResponseEntity<?>(null, null, HttpStatus.SC_CREATED);
-	}
-	
+//	@PostMapping("/addCurrency")
+//	public ResponseEntity<?> addCurrency(){
+//		
+//		
+//		
+//		
+//		
+//		return new ResponseEntity<?>(null, null, HttpStatus.SC_CREATED);
+//	}
+//	
 	
 	// DELETE TRACKER
 	@DeleteMapping
@@ -119,37 +122,37 @@ public class TrackerController {
 		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
 	}
 //	@PutMapping("/currency")
-//	public Tracker addLanguage(@RequestBody List<Language> updates) {
+//	public Tracker addCurrency(@RequestBody List<CryptocurrencyInfo> updates) {
 //		User currentUser = userService.getCurrentUser();
 //
 //		if (currentUser == null) {
 //			return null;
 //		}
 //		Tracker Tracker = repository.findByUser_id(currentUser.getId())
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 //
-//		Tracker.languages.addAll(updates);
+//		Tracker.currencyFavorites.addAll(updates);
 //		return repository.save(Tracker);
 //	}
 
-//	@PutMapping
-//	public @ResponseBody Tracker updateTracker(@RequestBody Tracker updates) {
-//		User currentUser = userService.getCurrentUser();
-//
-//		if (currentUser == null) {
-//			return null;
-//		}
-//		Tracker Tracker = repository.findByUser_id(currentUser.getId())
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//
-////	        updates.setId(Tracker.getId());
-////	        return repository.save(updates);
-//		if (updates.getName() != null)
-//			Tracker.setName(updates.getName());
-////	        if (updates.getEmail() != null) Tracker.setEmail(updates.getEmail());
-////	        if (updates.currencies != null) Tracker.languages = updates.currencies;
-//
-//		return repository.save(Tracker);
-//	}
+	@PutMapping
+	public @ResponseBody Tracker updateTracker(@RequestBody Tracker updates) {
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return null;
+		}
+		Tracker Tracker = repository.findByUser_id(currentUser.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+
+//	        updates.setId(Tracker.getId());
+//	        return repository.save(updates);
+		if (updates.getName() != null)
+			Tracker.setName(updates.getName());
+//	        if (updates.getEmail() != null) Tracker.setEmail(updates.getEmail());
+	        if (updates.currencyFavorites != null) Tracker.setCurrencyFavorites(updates.getCurrencyFavorites());
+
+		return repository.save(Tracker);
+	}
 
 }

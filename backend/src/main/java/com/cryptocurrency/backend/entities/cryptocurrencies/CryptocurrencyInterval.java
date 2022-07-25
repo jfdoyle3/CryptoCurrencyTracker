@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.entities;
+package com.cryptocurrency.backend.entities.cryptocurrencies;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.entities;
+package com.cryptocurrency.backend.entities.tracker;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.cryptocurrency.backend.entities.auth.User;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -28,18 +30,21 @@ public class Tracker {
 	
     @ManyToMany
     @JoinTable(
-            name = "tracker_currenc_info",
+            name = "tracker_currency_favorites",
             joinColumns = @JoinColumn(name = "tracker_id"),
             inverseJoinColumns = @JoinColumn(name = "currency_info_id")
     )
     @JsonIgnoreProperties("trackers")
-    public Set<CryptocurrencyInfo> curencyInfo = new HashSet<>();
+    public Set<CryptocurrencyInfo> currencyFavorites = new HashSet<>();
 
 
 	@OneToOne
 	@JoinColumn(name = "users_id", referencedColumnName = "id")
 	@JsonIgnore
 	private User user;
+
+
+	
 
 	public Tracker() {
 	}
@@ -62,17 +67,16 @@ public class Tracker {
 		return name;
 	}
 
-	public Set<CryptocurrencyInfo> getCurencyInfo() {
-		return curencyInfo;
+	public Set<CryptocurrencyInfo> getCurrencyFavorites() {
+		return currencyFavorites;
 	}
 
-	public void setCurencyInfo(Set<CryptocurrencyInfo> curencyInfo) {
-		this.curencyInfo = curencyInfo;
+	public void setCurrencyFavorites(Set<CryptocurrencyInfo> currencyFavorites) {
+		this.currencyFavorites = currencyFavorites;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	
 	}
 
 	public User getUser() {

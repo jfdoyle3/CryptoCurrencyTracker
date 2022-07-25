@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.cryptocurrency.backend.entities.CryptocurrencyDailyPrice;
-import com.cryptocurrency.backend.entities.CryptocurrencyInfo;
-import com.cryptocurrency.backend.entities.CryptocurrencyInterval;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
 import com.cryptocurrency.backend.payload.api.GetCurrency;
 import com.cryptocurrency.backend.payload.response.Cryptocurrency;
 import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;

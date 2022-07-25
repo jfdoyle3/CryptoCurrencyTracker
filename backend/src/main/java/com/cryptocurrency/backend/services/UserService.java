@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.repositories.UserRepository;
 import com.cryptocurrency.backend.security.services.UserDetailsImpl;
 

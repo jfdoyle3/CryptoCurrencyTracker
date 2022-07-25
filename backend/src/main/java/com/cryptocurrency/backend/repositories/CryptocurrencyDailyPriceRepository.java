@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.cryptocurrency.backend.entities.CryptocurrencyDailyPrice;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
 
 public interface CryptocurrencyDailyPriceRepository extends JpaRepository<CryptocurrencyDailyPrice, Long>{
 	

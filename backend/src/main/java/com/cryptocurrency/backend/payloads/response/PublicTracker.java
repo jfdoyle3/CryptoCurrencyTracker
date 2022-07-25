@@ -2,8 +2,8 @@ package com.cryptocurrency.backend.payloads.response;
 
 
 
-import com.cryptocurrency.backend.entities.Tracker;
-import com.cryptocurrency.backend.entities.User;
+import com.cryptocurrency.backend.entities.auth.User;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 
 public class PublicTracker {
     private Long id;

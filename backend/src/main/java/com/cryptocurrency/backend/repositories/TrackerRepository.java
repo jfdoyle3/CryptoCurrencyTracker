@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cryptocurrency.backend.entities.Tracker;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 
 @Repository
 public interface TrackerRepository extends JpaRepository<Tracker, Long> {

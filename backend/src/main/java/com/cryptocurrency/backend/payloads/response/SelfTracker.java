@@ -1,7 +1,7 @@
 package com.cryptocurrency.backend.payloads.response;
 
 
-import com.cryptocurrency.backend.entities.Tracker;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 
 public class SelfTracker {
     private Long id;

@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.entities;
+package com.cryptocurrency.backend.entities.auth;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

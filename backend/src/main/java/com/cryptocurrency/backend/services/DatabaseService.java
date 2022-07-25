@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import org.springframework.stereotype.Service;
 
-import com.cryptocurrency.backend.entities.ERole;
+import com.cryptocurrency.backend.entities.auth.ERole;
 
 @Service
 public class DatabaseService {

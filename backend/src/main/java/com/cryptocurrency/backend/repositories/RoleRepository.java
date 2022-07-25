@@ -1,7 +1,8 @@
 package com.cryptocurrency.backend.repositories;
 
-import com.cryptocurrency.backend.entities.ERole;
-import com.cryptocurrency.backend.entities.Role;
+import com.cryptocurrency.backend.entities.auth.ERole;
+import com.cryptocurrency.backend.entities.auth.Role;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

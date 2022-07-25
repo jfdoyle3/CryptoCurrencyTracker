@@ -17,4 +17,6 @@ public interface CryptocurrencyInfoRepository extends JpaRepository<Cryptocurren
 	Long numberOfEntries();
 	
 	List<CryptocurrencyInfo> findAll();
+	
+	List<CryptocurrencyInfo> findByCurrency_Id();
 }

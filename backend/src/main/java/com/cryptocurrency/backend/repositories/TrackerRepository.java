@@ -16,6 +16,6 @@ public interface TrackerRepository extends JpaRepository<Tracker, Long> {
 
     Optional<Tracker> findByUser_id(Long id);
 
-    Void deleteByUser_id(Long id);
+    void deleteByUser_id(Long id);
 }
 

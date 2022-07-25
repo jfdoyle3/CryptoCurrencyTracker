@@ -1,12 +1,20 @@
 package com.cryptocurrency.backend.entities.cryptocurrencies;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "currency_info")
@@ -34,6 +42,15 @@ public class CryptocurrencyInfo {
 
 	@Column(name = "logo_url")
 	private String logoUrl;
+	
+	@ManyToMany
+	@JoinTable(
+				name="tracker_currency",
+				joinColumns=@JoinColumn(name="tracker_id"),
+				inverseJoinColumns=@JoinColumn(name="currency_id")
+				)
+	@JsonIgnore
+	private Set<CryptocurrencyInfo> currencies=new HashSet<>();
 
 	public CryptocurrencyInfo() {}
 

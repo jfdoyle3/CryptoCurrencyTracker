@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "8ed29d27-dc05-4a73-9620-2db5f4e32a51",
+		"name": "Cryptocurrency Tracker V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5661181"
+	},
+	"item": [
+		{
+			"name": "Sign Up/In",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"qwery@qertys.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"qwery@qertys.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currency",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Cryptocurrency Top Ten",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/currency/topten",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"currency",
+										"topten"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cryptocurrencies",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzkwMjM4fQ.UwtQlVmOc2xHbPJlUrb6wQgaQKDeFyIJQ_5tVC5L7hJaqu9vX4uSJbrjF8S63ItZ3jb3Ci6rveToIa7XQiHNfg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tracker",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tracker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cryptocurrency",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eWQuY29tIiwiaWF0IjoxNjU4NjgyNTAyfQ.FUvyYbNVKlp69ri1Kmm1kFNNHcmm7i2vRAOFQva6XCThwH2LXBepKr_IoTaalDjDfary-gGgsO1qrrPpvG755w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/currency/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"currency",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Daily Price",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/dailyPrice/BTC",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dailyPrice",
+										"BTC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Daily Price",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/dailyPrice/BTC",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dailyPrice",
+										"BTC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interval",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/interval/BTC/7d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"interval",
+										"BTC",
+										"7d"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trackers",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "All Trackers",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4Nzk0Nzc5fQ.bmJniHxRjMJ6cQNsgFgPALEqWNRlgCh3SQheQC0xIKDP-IafKQkRUUgGGLT64dflADYyV8uS3eLSLNBNq7hjNg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eWQuY29tIiwiaWF0IjoxNjU4NjcxNjkwfQ.36vZ5dRhAgeXbVPP6Oe_I-e8c7HR7dTk0CsGKBKZgNBLNSY7SVwZfhZZmkKRH6aecDpn0H_ZyjJKwug1LaEAeA",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/trackers",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "a Tracker",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4ODMwNTE2fQ.6wspZxWoCi5RQQGgh7IBjSibCTd5EXq1FqQzEDnGbVRnF0zBNw9RXFv4i5QpGPnLXBfR8AGX7pYJFnssaEMscQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eWQuY29tIiwiaWF0IjoxNjU4NjcxNjkwfQ.36vZ5dRhAgeXbVPP6Oe_I-e8c7HR7dTk0CsGKBKZgNBLNSY7SVwZfhZZmkKRH6aecDpn0H_ZyjJKwug1LaEAeA",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/trackers/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Self",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzkzMjY4fQ.jY4RW71jCPq6gzHEp6raOGYOoxOvDcmOvmmAirS1mVQdiihO3TkXl9LIkf1jmJ1Se60mGKsCQ1Z1VJCQg_uqvQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/trackers/self",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers",
+										"self"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "a Favorite Currency",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4ODc3MDg4fQ.XWZ8ccM7kSXPBXazrjEUSYloK6HYsti1ColyS0rhUDCDA9B9RB6FN5B-O1EdnPIzau5wHOuYsjBhf13AA4Zt4Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/trackers/addFavorite/btc",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers",
+										"addFavorite",
+										"btc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "a Tracker",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzgyMzU1fQ.2nlgt-AIQpmQJvS7yZldppBfQvjg_rsQaZVl-hn-cAcnDPQx5yNdbYCIhgHjgjDZb1tk_TvCnFyEgNY0ffzXFw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"name\": \"Ace\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/trackers",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "a Tracker",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzkzMjY4fQ.jY4RW71jCPq6gzHEp6raOGYOoxOvDcmOvmmAirS1mVQdiihO3TkXl9LIkf1jmJ1Se60mGKsCQ1Z1VJCQg_uqvQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/trackers/self",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers",
+										"self"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "a Favortie Currency",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4ODc1NTYxfQ.Ntaffat2vDDDb4-plf-2_DI1LQXy8Ygh-JYKLzYtBgGGlzyk6fPX-T4gxt99qEhm4o3lD7YRiC0YcnBYf-izTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/trackers/removeFavorite/btc",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers",
+										"removeFavorite",
+										"btc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "Update a Tracker",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/trackers",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"trackers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

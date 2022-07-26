@@ -53,9 +53,6 @@ public class TrackerController {
 		if (currentUser == null)
 			return null;
 
-		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
 		Tracker tracker = repository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 
@@ -93,7 +90,7 @@ public class TrackerController {
 		return new ResponseEntity<SelfTracker>(SelfTracker.build(tracker), null, HttpStatus.SC_CREATED);
 	}
 
-	@PostMapping("/currency/{currency}")
+	@PostMapping("/addFavorite/{currency}")
 	public ResponseEntity<?> favACurrency(@PathVariable String currency) {
 
 		String currencyToUpper = currency.toUpperCase();
@@ -113,9 +110,9 @@ public class TrackerController {
 		return ResponseEntity.ok(tracker);
 	}
 
-	@DeleteMapping("/removeFavorite/{c}")
-	public ResponseEntity<Tracker> removeFavorite(@PathVariable String c) {
-		String currencyToUpper = c.toUpperCase();
+	@DeleteMapping("/removeFavorite/{currency}")
+	public ResponseEntity<Tracker> removeFavorite(@PathVariable String currency) {
+		String currencyToUpper = currency.toUpperCase();
 
 		User currentUser = userService.getCurrentUser();
 
@@ -124,8 +121,22 @@ public class TrackerController {
 
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-		// Remove from Set
-		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
+
+		tracker.currencyFavorites.removeAll(infoRepository.findBySymbol(currencyToUpper));
+
+		repository.save(tracker);
+
+		return new ResponseEntity<Tracker>(null,null, HttpStatus.SC_GONE);
 	}
 
+	@DeleteMapping
+	public ResponseEntity<String> destroyTracker() {
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return null;
+		}
+		repository.deleteById(currentUser.getId());
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
+	}
 }

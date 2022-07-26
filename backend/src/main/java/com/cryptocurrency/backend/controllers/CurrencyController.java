@@ -5,16 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
-import com.cryptocurrency.backend.payload.api.GetCurrency;
-import com.cryptocurrency.backend.payload.response.Cryptocurrency;
-import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
-import com.cryptocurrency.backend.payload.response.CurrencyInterval;
+import com.cryptocurrency.backend.payloads.api.GetCurrency;
+import com.cryptocurrency.backend.payloads.response.Cryptocurrency;
+import com.cryptocurrency.backend.payloads.response.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payloads.response.CurrencyInterval;
 import com.cryptocurrency.backend.repositories.CryptocurrencyDailyPriceRepository;
 import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.CryptocurrencyIntervalRepository;

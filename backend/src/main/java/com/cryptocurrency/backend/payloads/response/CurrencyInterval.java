@@ -1,4 +1,5 @@
-package com.cryptocurrency.backend.payload.response;
+package com.cryptocurrency.backend.payloads.response;
+
 
 public class CurrencyInterval {
 	private String timeInterval;

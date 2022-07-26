@@ -71,9 +71,9 @@ public class TrackerController {
 		if (currentUser == null)
 			return null;
 
-		Tracker currentDev = repository.findByUser_id(currentUser.getId())
+		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-		return SelfTracker.build(currentDev);
+		return SelfTracker.build(currentTracker);
 	}
 
 	// Works: CREATE Tracker
@@ -88,9 +88,9 @@ public class TrackerController {
 
 		newTracker.setUser(currentUser);
 
-		Tracker dev = repository.save(newTracker);
+		Tracker tracker = repository.save(newTracker);
 
-		return new ResponseEntity<SelfTracker>(SelfTracker.build(dev), null, HttpStatus.SC_CREATED);
+		return new ResponseEntity<SelfTracker>(SelfTracker.build(tracker), null, HttpStatus.SC_CREATED);
 	}
 
 	@PostMapping("/currency/{currency}")
@@ -124,7 +124,7 @@ public class TrackerController {
 
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
+		// Remove from Set
 		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
 	}
 

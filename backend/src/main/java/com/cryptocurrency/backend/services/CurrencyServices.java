@@ -1,7 +1,7 @@
 package com.cryptocurrency.backend.services;
 
 
-import com.cryptocurrency.backend.payload.api.GetCurrency;
+import com.cryptocurrency.backend.payloads.api.GetCurrency;
 
 import kong.unirest.json.JSONArray;
 

@@ -1,11 +1,11 @@
-package com.cryptocurrency.backend.payload.api;
+package com.cryptocurrency.backend.payloads.api;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.backend.payload.response.Cryptocurrency;
-import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
-import com.cryptocurrency.backend.payload.response.CurrencyInterval;
+import com.cryptocurrency.backend.payloads.response.Cryptocurrency;
+import com.cryptocurrency.backend.payloads.response.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payloads.response.CurrencyInterval;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;

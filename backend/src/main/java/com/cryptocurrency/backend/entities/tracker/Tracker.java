@@ -49,10 +49,10 @@ public class Tracker {
 	public Tracker() {
 	}
 
-	public Tracker(Long id, String name, User user) {
+	public Tracker(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		this.user = user;
+		
 	}
 
 	public Long getId() {

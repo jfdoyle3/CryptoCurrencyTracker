@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
+import com.cryptocurrency.backend.payloads.response.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.SelfTracker;
 import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.TrackerRepository;
@@ -38,14 +39,30 @@ public class TrackerController {
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
 
-	
 	// GET ALL
 	@GetMapping
 	public @ResponseBody List<Tracker> getTrackers() {
 		return repository.findAll();
 	}
 
-	
+	@GetMapping("/{id}")
+	public ResponseEntity<PublicTracker> getTrackerById(@PathVariable Long id) {
+
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null)
+			return null;
+
+		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+
+		Tracker tracker = repository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+
+		return new ResponseEntity<PublicTracker>(PublicTracker.build(tracker), null, HttpStatus.SC_OK);
+
+	}
+
 	// GET SELF
 	@GetMapping("/self")
 	public @ResponseBody SelfTracker getSelf() {
@@ -107,7 +124,6 @@ public class TrackerController {
 
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
 
 		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
 	}

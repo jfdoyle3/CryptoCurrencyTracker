@@ -1,49 +1,37 @@
 package com.cryptocurrency.backend.payloads.response;
 
-
-
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 
 public class PublicTracker {
-    private Long id;
-    private String name;
-    private User user;
-    
-    
-	public PublicTracker(Long id, String name, User user) {
+	private Long id;
+	private String name;
+
+	public PublicTracker(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		this.user = user;
 	}
-	
+
 	public static PublicTracker build(Tracker tracker) {
-		return new PublicTracker(
-									tracker.getId(),
-									tracker.getName(),
-									tracker.getUser()
-									);
+		return new PublicTracker(tracker.getId(), tracker.getName()
+
+		);
 	}
-    
 
-//    public PublicDeveloper(Long id, String name, Integer cohort, Set<Language> languages, Avatar avatar) {
-//        this.id = id;
-//        this.name = name;
-//        this.cohort = cohort;
-//        this.languages = languages;
-//        this.avatar = avatar;
-//    }
-//
-    
-//    static public PublicDeveloper build(Developer developer) {
-//        return new PublicDeveloper(
-//                developer.getId(),
-//                developer.getName(),
-//                developer.getCohort(),
-//                developer.getLanguages(),
-//                developer.getAvatar()
-//        );
-//    }
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}

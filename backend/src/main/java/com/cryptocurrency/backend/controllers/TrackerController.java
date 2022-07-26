@@ -18,10 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
-import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
-import com.cryptocurrency.backend.payloads.response.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.SelfTracker;
+import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
 
@@ -36,6 +35,9 @@ public class TrackerController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	private CryptocurrencyInfoRepository infoRepository;
+
 	
 	// GET ALL
 	@GetMapping
@@ -49,38 +51,15 @@ public class TrackerController {
 	public @ResponseBody SelfTracker getSelf() {
 		User currentUser = userService.getCurrentUser();
 
-		if (currentUser == null) 
+		if (currentUser == null)
 			return null;
-		
+
 		Tracker currentDev = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 		return SelfTracker.build(currentDev);
 	}
 
-	 @GetMapping("/{id}")
-	    public ResponseEntity<?> getTrackerById(@PathVariable Long id) {
-	        
-	        User currentUser = userService.getCurrentUser();
-
-	        if (currentUser == null) {
-	            return null;
-	        }
-	        
-	        
-	        Tracker currentTracker = repository.findByUser_id(currentUser.getId()).orElseThrow(
-	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
-	        );
-
-//	        Tracker currentTracker = repository.findById(id).orElseThrow(
-//	                () -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null)
-//	        );
-	        // TODO: if blocked send 404
-
-	        return new ResponseEntity<PublicTracker>(PublicTracker.build(currentTracker), null, HttpStatus.SC_OK);
-
-	    }
-	
-	// CREATE Tracker
+	// Works: CREATE Tracker
 	@PostMapping
 	public ResponseEntity<SelfTracker> createTracker(@RequestBody Tracker newTracker) {
 
@@ -90,7 +69,6 @@ public class TrackerController {
 			return new ResponseEntity<SelfTracker>(null, null, HttpStatus.SC_BAD_REQUEST);
 		}
 
-		// TODO add check for existing Tracker profile.
 		newTracker.setUser(currentUser);
 
 		Tracker dev = repository.save(newTracker);
@@ -98,61 +76,40 @@ public class TrackerController {
 		return new ResponseEntity<SelfTracker>(SelfTracker.build(dev), null, HttpStatus.SC_CREATED);
 	}
 
-	// Add a Currency to favorites
-//	@PostMapping("/addCurrency")
-//	public ResponseEntity<?> addCurrency(){
-//		
-//		
-//		
-//		
-//		
-//		return new ResponseEntity<?>(null, null, HttpStatus.SC_CREATED);
-//	}
-//	
-	
-	// DELETE TRACKER
-	@DeleteMapping
-	public ResponseEntity<String> destroyTracker() {
+	@PostMapping("/currency/{currency}")
+	public ResponseEntity<?> favACurrency(@PathVariable String currency) {
+
+		String currencyToUpper = currency.toUpperCase();
+
 		User currentUser = userService.getCurrentUser();
 
-		if (currentUser == null) {
+		if (currentUser == null)
 			return null;
-		}
-		repository.deleteByUser_id(currentUser.getId());
-		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
-	}
-//	@PutMapping("/currency")
-//	public Tracker addCurrency(@RequestBody List<CryptocurrencyInfo> updates) {
-//		User currentUser = userService.getCurrentUser();
-//
-//		if (currentUser == null) {
-//			return null;
-//		}
-//		Tracker Tracker = repository.findByUser_id(currentUser.getId())
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-//
-//		Tracker.currencyFavorites.addAll(updates);
-//		return repository.save(Tracker);
-//	}
 
-	@PutMapping
-	public @ResponseBody Tracker updateTracker(@RequestBody Tracker updates) {
-		User currentUser = userService.getCurrentUser();
-
-		if (currentUser == null) {
-			return null;
-		}
-		Tracker Tracker = repository.findByUser_id(currentUser.getId())
+		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 
-//	        updates.setId(Tracker.getId());
-//	        return repository.save(updates);
-		if (updates.getName() != null)
-			Tracker.setName(updates.getName());
-//	        if (updates.getEmail() != null) Tracker.setEmail(updates.getEmail());
-	        if (updates.currencyFavorites != null) Tracker.setCurrencyFavorites(updates.getCurrencyFavorites());
+		tracker.currencyFavorites.addAll(infoRepository.findBySymbol(currencyToUpper));
 
-		return repository.save(Tracker);
+		repository.save(tracker);
+
+		return ResponseEntity.ok(tracker);
+	}
+
+	@DeleteMapping("/removeFavorite/{c}")
+	public ResponseEntity<Tracker> removeFavorite(@PathVariable String c) {
+		String currencyToUpper = c.toUpperCase();
+
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null)
+			return null;
+
+		Tracker tracker = repository.findByUser_id(currentUser.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+
+
+		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
 	}
 
 }

@@ -43,15 +43,6 @@ public class CryptocurrencyInfo {
 	@Column(name = "logo_url")
 	private String logoUrl;
 	
-	@ManyToMany
-	@JoinTable(
-				name="tracker_currency",
-				joinColumns=@JoinColumn(name="tracker_id"),
-				inverseJoinColumns=@JoinColumn(name="currency_id")
-				)
-	@JsonIgnore
-	private Set<CryptocurrencyInfo> currencies=new HashSet<>();
-
 	public CryptocurrencyInfo() {}
 
 	public CryptocurrencyInfo(

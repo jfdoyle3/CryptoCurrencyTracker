@@ -1,8 +1,5 @@
-<<<<<<<< HEAD:backend/src/main/java/com/cryptocurrency/backend/entity/CryptocurrencyInfo.java
-package com.cryptocurrency.backend.entity;
-========
 package com.cryptocurrency.backend.entities.cryptocurrencies;
->>>>>>>> authenication:backend/src/main/java/com/cryptocurrency/backend/entities/cryptocurrencies/CryptocurrencyInfo.java
+
 
 
 import java.util.HashSet;

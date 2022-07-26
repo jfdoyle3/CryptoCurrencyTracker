@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:backend/src/main/java/com/cryptocurrency/backend/entity/CryptocurrencyInterval.java
-package com.cryptocurrency.backend.entity;
-========
-package com.cryptocurrency.backend.entities.cryptocurrencies;
->>>>>>>> authenication:backend/src/main/java/com/cryptocurrency/backend/entities/cryptocurrencies/CryptocurrencyInterval.java
+package com.cryptocurrency.backend.entity.objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:backend/src/main/java/com/cryptocurrency/backend/entity/Bitstamp.java
 package com.cryptocurrency.backend.entity;
+========
+package com.cryptocurrency.backend.entities;
+>>>>>>>> authenication:backend/src/main/java/com/cryptocurrency/backend/entities/Bitstamp.java
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

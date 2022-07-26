@@ -1,8 +1,8 @@
-package com.cryptocurrency.backend.repository;
+package com.cryptocurrency.backend.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cryptocurrency.backend.entity.CryptocurrencyInterval;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
 
 public interface CryptocurrencyIntervalRepository extends JpaRepository<CryptocurrencyInterval, Long> {
 

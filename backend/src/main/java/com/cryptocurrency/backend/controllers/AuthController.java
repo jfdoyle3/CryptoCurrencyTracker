@@ -127,5 +127,13 @@ public class AuthController {
 
         return new ResponseEntity<Object>(new MessageResponse("User registered successfully"), HttpStatus.CREATED);
         }
+	
+	@DeleteMapping("/user/{id}")
+	public ResponseEntity<String> destroyTracker(@PathVariable Long id) {
+
+		userRepository.deleteById(id);
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.GONE);
+	} 
+	
 
 }

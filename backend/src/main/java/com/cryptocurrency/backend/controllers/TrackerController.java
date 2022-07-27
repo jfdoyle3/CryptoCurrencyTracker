@@ -39,7 +39,7 @@ public class TrackerController {
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
 
-	// GET ALL
+	// GET MAPPINGS
 	@GetMapping
 	public @ResponseBody List<Tracker> getTrackers() {
 		return repository.findAll();
@@ -60,7 +60,6 @@ public class TrackerController {
 
 	}
 
-	// GET SELF
 	@GetMapping("/self")
 	public @ResponseBody SelfTracker getSelf() {
 		User currentUser = userService.getCurrentUser();
@@ -73,7 +72,7 @@ public class TrackerController {
 		return SelfTracker.build(currentTracker);
 	}
 
-	// Works: CREATE Tracker
+	// POST MAPPINGS
 	@PostMapping
 	public ResponseEntity<SelfTracker> createTracker(@RequestBody Tracker newTracker) {
 
@@ -91,7 +90,7 @@ public class TrackerController {
 	}
 
 	@PostMapping("/addFavorite/{currency}")
-	public ResponseEntity<?> favACurrency(@PathVariable String currency) {
+	public ResponseEntity<?> addFavorite(@PathVariable String currency) {
 
 		String currencyToUpper = currency.toUpperCase();
 
@@ -110,6 +109,26 @@ public class TrackerController {
 		return ResponseEntity.ok(tracker);
 	}
 
+	// PUT MAPPINGS
+	@PutMapping
+	public @ResponseBody Tracker updateTracker(@RequestBody Tracker updates) {
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return null;
+		}
+		Tracker tracker = repository.findByUser_id(currentUser.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+
+//        updates.setId(developer.getId());
+//        return repository.save(updates);
+		if (updates.getName() != null)
+			tracker.setName(updates.getName());
+
+		return repository.save(tracker);
+	}
+
+	// DELETE MAPPINGS
 	@DeleteMapping("/removeFavorite/{currency}")
 	public ResponseEntity<Tracker> removeFavorite(@PathVariable String currency) {
 		String currencyToUpper = currency.toUpperCase();
@@ -126,7 +145,7 @@ public class TrackerController {
 
 		repository.save(tracker);
 
-		return new ResponseEntity<Tracker>(null,null, HttpStatus.SC_GONE);
+		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_GONE);
 	}
 
 	@DeleteMapping
@@ -137,6 +156,6 @@ public class TrackerController {
 			return null;
 		}
 		repository.deleteById(currentUser.getId());
-		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_GONE);
 	}
 }

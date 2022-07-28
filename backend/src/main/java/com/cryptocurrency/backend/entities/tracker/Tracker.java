@@ -30,12 +30,12 @@ public class Tracker {
 	
     @ManyToMany
     @JoinTable(
-            name = "tracker_currency_favorites",
-            joinColumns = @JoinColumn(name = "tracker_id"),
-            inverseJoinColumns = @JoinColumn(name = "currency_info_id")
+            name = "favorites",
+            joinColumns = @JoinColumn(name = "tracker_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "currencyinfo_id", referencedColumnName = "id")
     )
     @JsonIgnoreProperties("trackers")
-    public Set<CryptocurrencyInfo> currencyFavorites = new HashSet<>();
+    public Set<CryptocurrencyInfo> favorites = new HashSet<>();
 
 
 	@OneToOne
@@ -67,12 +67,12 @@ public class Tracker {
 		return name;
 	}
 
-	public Set<CryptocurrencyInfo> getCurrencyFavorites() {
-		return currencyFavorites;
+	public Set<CryptocurrencyInfo> getFavorites() {
+		return favorites;
 	}
 
-	public void setCurrencyFavorites(Set<CryptocurrencyInfo> currencyFavorites) {
-		this.currencyFavorites = currencyFavorites;
+	public void setCurrencyFavorites(Set<CryptocurrencyInfo> favorites) {
+		this.favorites = favorites;
 	}
 
 	public void setName(String name) {

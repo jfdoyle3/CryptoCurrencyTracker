@@ -25,4 +25,6 @@ public interface CryptocurrencyInfoRepository extends JpaRepository<Cryptocurren
 	Set<CryptocurrencyInfo> findBySymbol(String currency);
 	
 	void deleteBySymbol(String currency);
+	
+	
 }

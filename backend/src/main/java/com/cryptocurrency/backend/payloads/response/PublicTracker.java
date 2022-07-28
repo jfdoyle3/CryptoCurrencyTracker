@@ -1,19 +1,25 @@
 package com.cryptocurrency.backend.payloads.response;
 
-import com.cryptocurrency.backend.entities.auth.User;
+import java.util.Set;
+
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 
 public class PublicTracker {
 	private Long id;
 	private String name;
+	 private Set<CryptocurrencyInfo> favorites;
 
-	public PublicTracker(Long id, String name) {
+	public PublicTracker(Long id, String name,Set<CryptocurrencyInfo> favorites) {
 		this.id = id;
 		this.name = name;
+		this.favorites=favorites;
 	}
 
 	public static PublicTracker build(Tracker tracker) {
-		return new PublicTracker(tracker.getId(), tracker.getName()
+		return new PublicTracker(tracker.getId(),
+								 tracker.getName(),
+								 tracker.getFavorites()
 
 		);
 	}
@@ -34,4 +40,11 @@ public class PublicTracker {
 		this.name = name;
 	}
 
+	public Set<CryptocurrencyInfo> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(Set<CryptocurrencyInfo> favorites) {
+		this.favorites = favorites;
+	}
 }

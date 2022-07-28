@@ -1,9 +1,11 @@
 package com.cryptocurrency.backend.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,6 +61,21 @@ public class TrackerController {
 		return new ResponseEntity<PublicTracker>(PublicTracker.build(tracker), null, HttpStatus.SC_OK);
 
 	}
+	
+//	@GetMapping("/favorites/{id}")
+//    public ResponseEntity<?> getFavoriteByCurrency(@PathVariable Long id) {
+//		User currentUser = userService.getCurrentUser();
+//
+//		if (currentUser == null)
+//			return null;
+//
+//		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
+//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+////		
+////		currentTracker.favorites.
+////		
+////		return new ResponseEntity<?>(null, null, HttpStatus.SC_GONE);
+//    }
 
 	@GetMapping("/self")
 	public @ResponseBody SelfTracker getSelf() {
@@ -102,7 +119,7 @@ public class TrackerController {
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 
-		tracker.currencyFavorites.addAll(infoRepository.findBySymbol(currencyToUpper));
+		tracker.favorites.addAll(infoRepository.findBySymbol(currencyToUpper));
 
 		repository.save(tracker);
 
@@ -120,8 +137,7 @@ public class TrackerController {
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 
-//        updates.setId(developer.getId());
-//        return repository.save(updates);
+
 		if (updates.getName() != null)
 			tracker.setName(updates.getName());
 
@@ -141,7 +157,7 @@ public class TrackerController {
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 
-		tracker.currencyFavorites.removeAll(infoRepository.findBySymbol(currencyToUpper));
+		tracker.favorites.removeAll(infoRepository.findBySymbol(currencyToUpper));
 
 		repository.save(tracker);
 

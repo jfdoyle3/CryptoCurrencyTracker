@@ -21,10 +21,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
-import com.cryptocurrency.backend.payloads.response.PublicTracker;
-import com.cryptocurrency.backend.payloads.response.SelfTracker;
-import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.repositories.TrackerRepository;
+import com.cryptocurrency.backend.payloads.response.tracker.PublicTracker;
+import com.cryptocurrency.backend.payloads.response.tracker.SelfTracker;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
 
 @RestController

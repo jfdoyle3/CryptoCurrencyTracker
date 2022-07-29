@@ -1,7 +1,7 @@
 package com.cryptocurrency.backend.security.services;
 
 import com.cryptocurrency.backend.entities.auth.User;
-import com.cryptocurrency.backend.repositories.UserRepository;
+import com.cryptocurrency.backend.repositories.auth.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

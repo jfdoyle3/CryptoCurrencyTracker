@@ -3,9 +3,9 @@ package com.cryptocurrency.backend.payloads.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cryptocurrency.backend.payloads.response.Cryptocurrency;
-import com.cryptocurrency.backend.payloads.response.CurrencyDailyPrice;
-import com.cryptocurrency.backend.payloads.response.CurrencyInterval;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;

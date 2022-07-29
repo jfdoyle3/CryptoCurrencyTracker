@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.repositories;
+package com.cryptocurrency.backend.repositories.auth;
 
 import com.cryptocurrency.backend.entities.auth.ERole;
 import com.cryptocurrency.backend.entities.auth.Role;

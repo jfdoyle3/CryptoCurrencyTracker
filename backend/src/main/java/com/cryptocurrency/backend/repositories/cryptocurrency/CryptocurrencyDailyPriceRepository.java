@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.repositories;
+package com.cryptocurrency.backend.repositories.cryptocurrency;
 
 import java.util.List;
 

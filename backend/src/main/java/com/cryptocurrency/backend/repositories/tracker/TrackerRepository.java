@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.repositories;
+package com.cryptocurrency.backend.repositories.tracker;
 
 import java.util.List;
 import java.util.Optional;

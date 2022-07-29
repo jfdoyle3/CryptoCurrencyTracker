@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.repositories;
+package com.cryptocurrency.backend.repositories.auth;
 
 import java.util.Optional;
 

@@ -5,10 +5,10 @@ import com.cryptocurrency.backend.entities.auth.Role;
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.payloads.request.LoginRequest;
 import com.cryptocurrency.backend.payloads.request.SignupRequest;
-import com.cryptocurrency.backend.payloads.response.JwtResponse;
-import com.cryptocurrency.backend.payloads.response.MessageResponse;
-import com.cryptocurrency.backend.repositories.RoleRepository;
-import com.cryptocurrency.backend.repositories.UserRepository;
+import com.cryptocurrency.backend.payloads.response.auth.JwtResponse;
+import com.cryptocurrency.backend.payloads.response.auth.MessageResponse;
+import com.cryptocurrency.backend.repositories.auth.RoleRepository;
+import com.cryptocurrency.backend.repositories.auth.UserRepository;
 import com.cryptocurrency.backend.security.jwt.JwtUtils;
 import com.cryptocurrency.backend.security.services.UserDetailsImpl;
 

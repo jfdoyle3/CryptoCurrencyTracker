@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.payloads.response;
+package com.cryptocurrency.backend.payloads.response.cryptocurrency;
 
 
 public class CurrencyDailyPrice {

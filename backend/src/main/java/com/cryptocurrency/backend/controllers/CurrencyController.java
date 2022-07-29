@@ -16,12 +16,12 @@ import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyP
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
-import com.cryptocurrency.backend.payloads.response.Cryptocurrency;
-import com.cryptocurrency.backend.payloads.response.CurrencyDailyPrice;
-import com.cryptocurrency.backend.payloads.response.CurrencyInterval;
-import com.cryptocurrency.backend.repositories.CryptocurrencyDailyPriceRepository;
-import com.cryptocurrency.backend.repositories.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.repositories.CryptocurrencyIntervalRepository;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyDailyPriceRepository;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
 
 import kong.unirest.json.JSONArray;
 

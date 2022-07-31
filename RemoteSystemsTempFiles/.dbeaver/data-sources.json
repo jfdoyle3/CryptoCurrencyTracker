@@ -1,10 +1,10 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-182308ef9b6-45b6e7d4d10aab87": {
+		"mysql8-182547703e5-3b65f373bf57647": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "cryptocurrencytracker",
+			"name": "Databases",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {

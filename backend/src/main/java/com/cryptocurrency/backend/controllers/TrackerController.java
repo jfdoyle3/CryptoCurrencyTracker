@@ -161,7 +161,7 @@ public class TrackerController {
 
 		repository.save(tracker);
 
-		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_GONE);
+		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
 	}
 
 	@DeleteMapping

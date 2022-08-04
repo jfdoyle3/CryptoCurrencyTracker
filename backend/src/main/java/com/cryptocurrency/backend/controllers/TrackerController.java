@@ -1,11 +1,9 @@
 package com.cryptocurrency.backend.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +26,7 @@ import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:3000")
 @RequestMapping("/api/trackers")
 public class TrackerController {
 
@@ -123,7 +121,8 @@ public class TrackerController {
 
 		repository.save(tracker);
 
-		return ResponseEntity.ok(tracker);
+		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
+
 	}
 
 	// PUT MAPPINGS

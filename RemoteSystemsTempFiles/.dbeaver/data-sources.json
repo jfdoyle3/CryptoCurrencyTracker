@@ -4,7 +4,7 @@
 		"mysql8-182547703e5-3b65f373bf57647": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "Databases",
+			"name": "Datafarm",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
@@ -17,8 +17,7 @@
 				"provider-properties": {
 					"@dbeaver-serverTimezone@": "America/New_York"
 				},
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},

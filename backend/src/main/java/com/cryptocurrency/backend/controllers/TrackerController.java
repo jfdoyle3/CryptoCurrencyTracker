@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
+import com.cryptocurrency.backend.payloads.request.AddFavorite;
 import com.cryptocurrency.backend.payloads.response.tracker.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.tracker.SelfTracker;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
@@ -104,10 +105,10 @@ public class TrackerController {
 		return new ResponseEntity<SelfTracker>(SelfTracker.build(tracker), null, HttpStatus.SC_CREATED);
 	}
 
-	@PostMapping("/addFavorite/{currency}")
-	public ResponseEntity<?> addFavorite(@PathVariable String currency) {
+	@PostMapping("/addFavorite/")
+	public ResponseEntity<Tracker> addFavorite(@RequestBody AddFavorite currency) {
 
-		String currencyToUpper = currency.toUpperCase();
+		String currencyToUpper = currency.getCurrency().toUpperCase();
 
 		User currentUser = userService.getCurrentUser();
 

@@ -1,74 +1,11 @@
 {
 	"info": {
-		"_postman_id": "8ed29d27-dc05-4a73-9620-2db5f4e32a51",
+		"_postman_id": "29c94ab2-12ad-42de-8f2c-133891f01353",
 		"name": "Cryptocurrency Tracker V2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "5661181"
 	},
 	"item": [
-		{
-			"name": "Sign Up/In",
-			"item": [
-				{
-					"name": "Sign Up",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"qwery@qertys.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/auth/signup",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sign In",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"qwery@qertys.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/api/auth/signin",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"auth",
-								"signin"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
 		{
 			"name": "Currency",
 			"item": [
@@ -91,67 +28,6 @@
 										"api",
 										"currency",
 										"topten"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Cryptocurrencies",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzkwMjM4fQ.UwtQlVmOc2xHbPJlUrb6wQgaQKDeFyIJQ_5tVC5L7hJaqu9vX4uSJbrjF8S63ItZ3jb3Ci6rveToIa7XQiHNfg",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/tracker",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"tracker"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Cryptocurrency",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eWQuY29tIiwiaWF0IjoxNjU4NjgyNTAyfQ.FUvyYbNVKlp69ri1Kmm1kFNNHcmm7i2vRAOFQva6XCThwH2LXBepKr_IoTaalDjDfary-gGgsO1qrrPpvG755w",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/currency/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"currency",
-										""
 									]
 								}
 							},
@@ -220,6 +96,37 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Cryptocurrency",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW1AbWFzLmNvbSIsImlhdCI6MTY1OTI5NjQ5Mn0.dBvYegsapyvDUiVvxANi1qzBDxAdvB_ugHLVXlN42QAZPAbYs3o2PrMlyketpmty4wqoiL_rhoW4WIAneamAjg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/currency/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"currency",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -242,7 +149,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4Nzk0Nzc5fQ.bmJniHxRjMJ6cQNsgFgPALEqWNRlgCh3SQheQC0xIKDP-IafKQkRUUgGGLT64dflADYyV8uS3eLSLNBNq7hjNg",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXNAcGx5LmNvbSIsImlhdCI6MTY1OTY0NjY1Nn0.STUm-1KjiBcHRe7m22J3BIBA63rP8H08-gvgbbsqF5dC7tMaEHQIvCSQ0Gz49mnhgHzLfacYAO_oVskNHTZy3g",
 											"type": "string"
 										}
 									]
@@ -371,7 +278,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4ODc3MDg4fQ.XWZ8ccM7kSXPBXazrjEUSYloK6HYsti1ColyS0rhUDCDA9B9RB6FN5B-O1EdnPIzau5wHOuYsjBhf13AA4Zt4Q",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXNAcGx5LmNvbSIsImlhdCI6MTY1OTY0NjY1Nn0.STUm-1KjiBcHRe7m22J3BIBA63rP8H08-gvgbbsqF5dC7tMaEHQIvCSQ0Gz49mnhgHzLfacYAO_oVskNHTZy3g",
 											"type": "string"
 										}
 									]
@@ -380,7 +287,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{}",
+									"raw": "{\r\n    \"currency\": \"ETH\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -388,7 +295,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:8080/api/trackers/addFavorite/btc",
+									"raw": "localhost:8080/api/trackers/addFavorite/",
 									"host": [
 										"localhost"
 									],
@@ -397,7 +304,7 @@
 										"api",
 										"trackers",
 										"addFavorite",
-										"btc"
+										""
 									]
 								}
 							},
@@ -411,7 +318,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzgyMzU1fQ.2nlgt-AIQpmQJvS7yZldppBfQvjg_rsQaZVl-hn-cAcnDPQx5yNdbYCIhgHjgjDZb1tk_TvCnFyEgNY0ffzXFw",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW1AbWFzLmNvbSIsImlhdCI6MTY1OTI5NjQ5Mn0.dBvYegsapyvDUiVvxANi1qzBDxAdvB_ugHLVXlN42QAZPAbYs3o2PrMlyketpmty4wqoiL_rhoW4WIAneamAjg",
 											"type": "string"
 										}
 									]
@@ -420,7 +327,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "    {\r\n        \"name\": \"Ace\"\r\n    }",
+									"raw": "    {\r\n        \"name\": \"Tina\"\r\n    }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -454,7 +361,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4NzkzMjY4fQ.jY4RW71jCPq6gzHEp6raOGYOoxOvDcmOvmmAirS1mVQdiihO3TkXl9LIkf1jmJ1Se60mGKsCQ1Z1VJCQg_uqvQ",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXNAcGx5LmNvbSIsImlhdCI6MTY1OTI3NTM0OH0.IcnpXFOqbjsVb9l0uwmeD5c7KjRxkquZAKIbNAMia6M9--prYjHD3ZrBlnEKjf-q4KVrASmO2PCwWSBV6QHkkA",
 											"type": "string"
 										}
 									]
@@ -462,7 +369,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/trackers/self",
+									"raw": "localhost:8080/api/trackers/",
 									"host": [
 										"localhost"
 									],
@@ -470,7 +377,7 @@
 									"path": [
 										"api",
 										"trackers",
-										"self"
+										""
 									]
 								}
 							},
@@ -484,7 +391,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxd2VyeUBxZXJ0eXMuY29tIiwiaWF0IjoxNjU4ODc1NTYxfQ.Ntaffat2vDDDb4-plf-2_DI1LQXy8Ygh-JYKLzYtBgGGlzyk6fPX-T4gxt99qEhm4o3lD7YRiC0YcnBYf-izTA",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW1AbWFzLmNvbSIsImlhdCI6MTY1OTM1MjQ1NX0.zTmK95W1OqgqTmz-lNpqxXQ1OkAWBOBSFb74s8ZZZI6zN24eGjLpMnt3ucvlb6Re5kjIapnl3JVwYMXxvJEOLQ",
 											"type": "string"
 										}
 									]
@@ -532,6 +439,106 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up/In",
+					"item": [
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"sam@mas.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/auth/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"mas@ply.com\",\r\n    \"password\":\"1q2w3e4r5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/auth/signin",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "a User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYXNAcGx5LmNvbSIsImlhdCI6MTY1OTI3NTM0OH0.IcnpXFOqbjsVb9l0uwmeD5c7KjRxkquZAKIbNAMia6M9--prYjHD3ZrBlnEKjf-q4KVrASmO2PCwWSBV6QHkkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

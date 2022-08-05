@@ -27,6 +27,7 @@ public class Tracker {
 	private Long id;
 
 	private String name;
+	private String signature;
 	
     @ManyToMany
     @JoinTable(
@@ -43,15 +44,19 @@ public class Tracker {
 	@JsonIgnore
 	private User user;
 
-
+	@OneToOne
+	@JoinColumn(name="tracker_id", referencedColumnName="id")
+	@JsonIgnore
+	private Avatar avatar;
 	
 
 	public Tracker() {
 	}
 
-	public Tracker(Long id, String name) {
+	public Tracker(Long id, String name, String signature) {
 		this.id = id;
 		this.name = name;
+		this.signature=signature;
 		
 	}
 
@@ -65,6 +70,14 @@ public class Tracker {
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setSignature(String signature) {
+		this.signature=signature;
+	}
+	
+	public String getSignature() {
+		return signature;
 	}
 
 	public Set<CryptocurrencyInfo> getFavorites() {

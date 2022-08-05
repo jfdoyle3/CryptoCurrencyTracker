@@ -61,21 +61,6 @@ public class TrackerController {
 
 	}
 	
-//	@GetMapping("/favorites/{id}")
-//    public ResponseEntity<?> getFavoriteByCurrency(@PathVariable Long id) {
-//		User currentUser = userService.getCurrentUser();
-//
-//		if (currentUser == null)
-//			return null;
-//
-//		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
-//				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-////		
-////		currentTracker.favorites.
-////		
-////		return new ResponseEntity<?>(null, null, HttpStatus.SC_GONE);
-//    }
-
 	@GetMapping("/self")
 	public @ResponseBody SelfTracker getSelf() {
 		User currentUser = userService.getCurrentUser();
@@ -136,10 +121,12 @@ public class TrackerController {
 		}
 		Tracker tracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
-
+		// research to update only 1 field if the field has changed.
+		// add avatar
 		if (updates.getName() != null)
 			tracker.setName(updates.getName());
+		if (updates.getSignature() != null)
+			tracker.setSignature(updates.getSignature());
 
 		return repository.save(tracker);
 	}

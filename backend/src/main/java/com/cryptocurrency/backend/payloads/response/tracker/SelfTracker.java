@@ -9,22 +9,23 @@ import com.cryptocurrency.backend.entities.tracker.Tracker;
 public class SelfTracker {
     private Long id;
     private String name;
+    private String signature;
     private Set<CryptocurrencyInfo> favorites;
     
-    public SelfTracker(Long id, String name, Set<CryptocurrencyInfo> favorites) {
+    public SelfTracker(Long id, String name,  String signature, Set<CryptocurrencyInfo> favorites) {
         this.id = id;
         this.name = name;
-        this.favorites=favorites;
-        
-        
+        this.setSignature(signature);
+        this.favorites=favorites; 
     }
 
-    static public SelfTracker build(Tracker Tracker) {
+    static public SelfTracker build(Tracker tracker) {
      //   Set<Tracker> empty/currency = new HashSet<>();
         return new SelfTracker(
-                Tracker.getId(),
-                Tracker.getName(),
-                Tracker.getFavorites()
+                tracker.getId(),
+                tracker.getName(),
+                tracker.getSignature(),
+                tracker.getFavorites()
         );
     }
 
@@ -43,6 +44,14 @@ public class SelfTracker {
     public void setName(String name) {
         this.name = name;
     }
+    
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
 
 	public Set<CryptocurrencyInfo> getFavorites() {
 		return favorites;
@@ -51,5 +60,7 @@ public class SelfTracker {
 	public void setFavorites(Set<CryptocurrencyInfo> favorites) {
 		this.favorites = favorites;
 	}
+
+
     
 }

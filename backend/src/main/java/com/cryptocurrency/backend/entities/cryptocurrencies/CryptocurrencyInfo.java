@@ -26,12 +26,6 @@ public class CryptocurrencyInfo {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "currency_id")
-	private String currency_id;
-
-	@Column(name = "currency")
-	private String currency;
-
 	@Column(name = "symbol")
 	private String symbol;
 
@@ -47,16 +41,12 @@ public class CryptocurrencyInfo {
 	public CryptocurrencyInfo() {}
 
 	public CryptocurrencyInfo(
-							  String currency_id,
-							  String currency,
 							  String symbol,
 							  String name,
 							  String ranking,
 							  String logoUrl
 							  )
 	{
-		this.currency_id = currency_id;
-		this.currency = currency;
 		this.symbol = symbol;
 		this.name = name;
 		this.ranking = ranking;
@@ -71,13 +61,6 @@ public class CryptocurrencyInfo {
 		this.id = id;
 	}
 	
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
 
 	public String getSymbol() {
 		return symbol;
@@ -101,14 +84,6 @@ public class CryptocurrencyInfo {
 
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
-	}
-
-	public String getCurrency_id() {
-		return currency_id;
-	}
-
-	public void setCurrency_id(String currency_id) {
-		this.currency_id = currency_id;
 	}
 
 	public String getRanking() {

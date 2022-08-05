@@ -69,8 +69,6 @@ public class CurrencyController {
 		// save to database through entity
 		for(Cryptocurrency item : currency) {
 			CryptocurrencyInfo ci=new CryptocurrencyInfo(
-														 item.getCurrency_id(),
-														 item.getCurrency(),
 														 item.getSymbol(),
 														 item.getName(),
 														 item.getRanking(),

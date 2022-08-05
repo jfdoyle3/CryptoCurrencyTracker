@@ -2,10 +2,6 @@ package com.cryptocurrency.backend.payloads.response.cryptocurrency;
 
 public class Cryptocurrency {
 
-	private String currency_id;
-
-	private String currency;
-
 	private String symbol;
 
 	private String name;
@@ -26,8 +22,7 @@ public class Cryptocurrency {
 						  )
 	{
 
-		this.currency_id = currency_id;
-		this.currency = currency;
+	
 		this.symbol = symbol;
 		this.name = name;
 		this.logoUrl = logoUrl;
@@ -35,13 +30,7 @@ public class Cryptocurrency {
 	}
 
 
-	public String getCurrency_id() {
-		return currency_id;
-	}
 
-	public void setCurrency_id(String currency_id) {
-		this.currency_id = currency_id;
-	}
 
 	public String getRanking() {
 		return ranking;
@@ -51,14 +40,7 @@ public class Cryptocurrency {
 		this.ranking = ranking;
 	}
 
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
+	
 	public String getSymbol() {
 		return symbol;
 	}

@@ -45,10 +45,20 @@ public class Tracker {
 	private User user;
 
 	@OneToOne
-	@JoinColumn(name="tracker_id", referencedColumnName="id")
-	@JsonIgnore
 	private Avatar avatar;
 	
+
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
+	}
+
+	public void setFavorites(Set<CryptocurrencyInfo> favorites) {
+		this.favorites = favorites;
+	}
 
 	public Tracker() {
 	}

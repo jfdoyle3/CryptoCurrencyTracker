@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
+import com.cryptocurrency.backend.entities.tracker.Avatar;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.request.AddFavorite;
 import com.cryptocurrency.backend.payloads.response.tracker.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.tracker.SelfTracker;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repositories.tracker.AvatarRepository;
 import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
 
@@ -39,6 +41,9 @@ public class TrackerController {
 
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
+	
+	@Autowired
+	private AvatarRepository avatarRepository;
 
 	// GET MAPPINGS
 	@GetMapping
@@ -110,6 +115,28 @@ public class TrackerController {
 		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
 
 	}
+	
+	@PostMapping("/avatar")
+    public Tracker addPhoto(@RequestBody Tracker track) { 
+        User currentUser = userService.getCurrentUser();
+
+        if (currentUser == null) {
+            return null;
+        }
+
+        Tracker tracker = repository.findByUser_id(currentUser.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
+       
+        if (tracker.getAvatar() != null) {
+            Avatar avatar = tracker.getAvatar();
+            avatar.setUrl(track.getAvatar().getUrl());
+            avatarRepository.save(avatar);
+            return tracker;
+        }
+        Avatar avatar = avatarRepository.save(track.getAvatar());
+        tracker.setAvatar(avatar);
+        return repository.save(tracker);
+
+    }
 
 	// PUT MAPPINGS
 	@PutMapping

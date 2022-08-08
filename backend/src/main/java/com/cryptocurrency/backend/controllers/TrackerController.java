@@ -150,6 +150,10 @@ public class TrackerController {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 		// research to update only 1 field if the field has changed.
 		// add avatar
+		if(updates.getName()==null)
+			tracker.getName();
+		if(updates.getSignature()==null)
+			tracker.getSignature();
 		if (updates.getName() != null)
 			tracker.setName(updates.getName());
 		if (updates.getSignature() != null)

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
-import com.cryptocurrency.backend.entities.tracker.Rating;
+import com.cryptocurrency.backend.entities.rating.Rating;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
@@ -35,7 +35,7 @@ import kong.unirest.json.JSONArray;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
+@RequestMapping("/api/currency")
 public class CurrencyController {
 	private int methodRan=0;
 	@Autowired
@@ -62,7 +62,7 @@ public class CurrencyController {
     // GET MAPPINGS:
     // Currencies:  Empty- Get the first 100 currencies
     // 				Typing a List of currency will get those only.
-    @GetMapping("/currency/")
+    @GetMapping
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
 
     	methodRan++;
@@ -165,7 +165,7 @@ public class CurrencyController {
     
     
     // Get the Top Five currencies
-    @GetMapping("/currency/topfive")
+    @GetMapping("/topfive")
     public ResponseEntity<List<CryptocurrencyInfo>> getTopFive(){
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);

@@ -1,4 +1,4 @@
-package com.cryptocurrency.backend.entities.tracker;
+package com.cryptocurrency.backend.entities.rating;
 
 
 import javax.persistence.CascadeType;
@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 @Entity
@@ -19,7 +20,7 @@ public class Rating {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+		
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tracker_id", referencedColumnName="id")
 	@JsonIncludeProperties("id")
@@ -31,8 +32,7 @@ public class Rating {
 	private CryptocurrencyInfo currency;
 
 	
-	public Rating() {
-	}
+	public Rating() {}
 
 
 	public Rating(Tracker tracker, CryptocurrencyInfo currency) {
@@ -54,7 +54,7 @@ public class Rating {
 	public Tracker getTracker() {
 		return tracker;
 	}
-
+	
 
 	public void setTracker(Tracker tracker) {
 		this.tracker = tracker;

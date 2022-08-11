@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 
 import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entities.rating.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

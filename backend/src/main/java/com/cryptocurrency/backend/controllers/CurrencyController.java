@@ -1,13 +1,17 @@
 package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
+import com.cryptocurrency.backend.entities.tracker.Rating;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
@@ -22,6 +28,8 @@ import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInter
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyDailyPriceRepository;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
+import com.cryptocurrency.backend.repositories.rating.RatingRepository;
+import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 
 import kong.unirest.json.JSONArray;
 
@@ -38,11 +46,22 @@ public class CurrencyController {
 	
 	@Autowired
 	private CryptocurrencyIntervalRepository intervalRepository;
+	
+	@Autowired
+	private TrackerRepository trackerRepository;
+	
+	@Autowired
+	private RatingRepository ratingRepository;
 
 	
     @Value("${api.key}")
     private String apiKey;
-
+    
+    
+    
+    // GET MAPPINGS:
+    // Currencies:  Empty- Get the first 100 currencies
+    // 				Typing a List of currency will get those only.
     @GetMapping("/currency/")
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
 
@@ -79,6 +98,8 @@ public class CurrencyController {
         return ResponseEntity.ok(currency);
     }
     
+    
+    // Get Daily Price / Symbol from API
     @GetMapping("/dailyPrice/{p}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String p){
 //    	// Find if the record exists
@@ -112,7 +133,7 @@ public class CurrencyController {
     	return ResponseEntity.ok(prices);
     }
 
-    
+    // Currency Interval - Symbol - time (1d, 7d, 1y)
     @GetMapping("/interval/{c}/{i}")
     public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
     	
@@ -143,16 +164,33 @@ public class CurrencyController {
     }
     
     
+    // Get the Top Five currencies
     @GetMapping("/currency/topfive")
     public ResponseEntity<List<CryptocurrencyInfo>> getTopFive(){
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
     }
     
+    //Get Daily Price from Table
     @GetMapping("/getDailyPrice/{p}")
     public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
     	String upperCurrencies=p.toUpperCase();
     	List<CryptocurrencyDailyPrice> price=priceRepository.findBySymbol(upperCurrencies);
     	return ResponseEntity.ok(price);
     }	
+    
+    
+    // POST MAPPINGS
+    // Rate Currencies
+    @PostMapping("/rate/{id}")
+    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long id, @RequestBody Tracker tracker){
+    	Optional<CryptocurrencyInfo> currency=infoRepository.findById(id);
+    	
+    	if(currency.isEmpty())
+    		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    	
+    	Rating newRating=new Rating(tracker,currency.get());
+    	ratingRepository.save(newRating);
+    	return new ResponseEntity<>(currency.get(),HttpStatus.CREATED);
+    }
 }

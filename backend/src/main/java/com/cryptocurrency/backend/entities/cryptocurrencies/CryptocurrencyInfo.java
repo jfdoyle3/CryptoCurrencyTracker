@@ -2,20 +2,19 @@ package com.cryptocurrency.backend.entities.cryptocurrencies;
 
 
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.cryptocurrency.backend.entities.tracker.Rating;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 @Entity
 @Table(name = "currency_info")
@@ -37,6 +36,10 @@ public class CryptocurrencyInfo {
 
 	@Column(name = "logo_url")
 	private String logoUrl;
+	
+	@OneToMany(mappedBy="currency",fetch=FetchType.LAZY)
+	@JsonIncludeProperties("tracker")
+	private Set<Rating> ratings;
 	
 	public CryptocurrencyInfo() {}
 
@@ -92,5 +95,13 @@ public class CryptocurrencyInfo {
 
 	public void setRanking(String ranking) {
 		this.ranking = ranking;
+	}
+
+	public Set<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<Rating> ratings) {
+		this.ratings = ratings;
 	}
 }

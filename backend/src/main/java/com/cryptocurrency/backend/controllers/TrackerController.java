@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.tracker.Avatar;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.request.AddFavorite;
@@ -76,6 +77,13 @@ public class TrackerController {
 		Tracker currentTracker = repository.findByUser_id(currentUser.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
 		return SelfTracker.build(currentTracker);
+	}
+	
+	
+	
+	@GetMapping("/rate/{trackerId}")
+	public List<CryptocurrencyInfo> getRatedCurrency(@PathVariable Long trackerId) {
+		return infoRepository.findAllByRatings_tracker_id(trackerId);
 	}
 
 	// POST MAPPINGS

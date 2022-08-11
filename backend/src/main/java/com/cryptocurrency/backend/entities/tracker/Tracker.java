@@ -5,12 +5,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.cryptocurrency.backend.entities.auth.User;
@@ -47,18 +49,10 @@ public class Tracker {
 	@OneToOne
 	private Avatar avatar;
 	
-
-	public Avatar getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(Avatar avatar) {
-		this.avatar = avatar;
-	}
-
-	public void setFavorites(Set<CryptocurrencyInfo> favorites) {
-		this.favorites = favorites;
-	}
+	@OneToMany(mappedBy="tracker", fetch=FetchType.LAZY)
+	@JsonIgnore
+	private Set<Rating> ratings;
+	
 
 	public Tracker() {
 	}
@@ -81,25 +75,25 @@ public class Tracker {
 	public String getName() {
 		return name;
 	}
-	
-	public void setSignature(String signature) {
-		this.signature=signature;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
 	public String getSignature() {
 		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
 	}
 
 	public Set<CryptocurrencyInfo> getFavorites() {
 		return favorites;
 	}
 
-	public void setCurrencyFavorites(Set<CryptocurrencyInfo> favorites) {
+	public void setFavorites(Set<CryptocurrencyInfo> favorites) {
 		this.favorites = favorites;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public User getUser() {
@@ -110,4 +104,19 @@ public class Tracker {
 		this.user = user;
 	}
 
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
+	}
+
+	public Set<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<Rating> ratings) {
+		this.ratings = ratings;
+	}
 }

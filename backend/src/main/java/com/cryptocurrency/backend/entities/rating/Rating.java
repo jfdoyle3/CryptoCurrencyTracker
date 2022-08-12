@@ -20,6 +20,8 @@ public class Rating {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	private Integer rate;
 		
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tracker_id", referencedColumnName="id")
@@ -35,8 +37,9 @@ public class Rating {
 	public Rating() {}
 
 
-	public Rating(Tracker tracker, CryptocurrencyInfo currency) {
+	public Rating(Tracker tracker, CryptocurrencyInfo currency, Integer rate) {
 		this.tracker = tracker;
+		this.rate=rate;
 		this.currency = currency;
 	}
 
@@ -69,5 +72,14 @@ public class Rating {
 	public void setCurrency(CryptocurrencyInfo currency) {
 		this.currency = currency;
 	}
-		
+
+
+	public Integer getRate() {
+		return rate;
+	}
+
+
+	public void setRate(Integer rate) {
+		this.rate = rate;
+	}	
 }

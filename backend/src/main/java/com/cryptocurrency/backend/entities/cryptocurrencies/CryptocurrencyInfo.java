@@ -38,7 +38,7 @@ public class CryptocurrencyInfo {
 	private String logoUrl;
 	
 	@OneToMany(mappedBy="currency",fetch=FetchType.LAZY)
-	@JsonIncludeProperties("tracker")
+//	@JsonIncludeProperties("tracker")
 	private Set<Rating> ratings;
 	
 	public CryptocurrencyInfo() {}

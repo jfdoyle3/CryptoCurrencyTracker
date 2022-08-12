@@ -22,6 +22,7 @@ import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterv
 import com.cryptocurrency.backend.entities.rating.Rating;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
+import com.cryptocurrency.backend.payloads.request.SetRating;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
@@ -182,14 +183,15 @@ public class CurrencyController {
     
     // POST MAPPINGS
     // Rate Currencies
-    @PostMapping("/rate/{id}")
-    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long id, @RequestBody Tracker tracker){
-    	Optional<CryptocurrencyInfo> currency=infoRepository.findById(id);
+    @PostMapping("/rate/{cId}/{trackerId}")
+    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long cId, @PathVariable Long trackerId, @RequestBody SetRating setRating){
+    	Optional<CryptocurrencyInfo> currency=infoRepository.findById(cId);
+    	Optional<Tracker> tracker=trackerRepository.findById(trackerId);
     	
-    	if(currency.isEmpty())
+    	if(currency.isEmpty() || tracker.isEmpty())
     		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     	
-    	Rating newRating=new Rating(tracker,currency.get());
+    	Rating newRating=new Rating(tracker.get(),currency.get(),setRating.getRate());
     	ratingRepository.save(newRating);
     	return new ResponseEntity<>(currency.get(),HttpStatus.CREATED);
     }

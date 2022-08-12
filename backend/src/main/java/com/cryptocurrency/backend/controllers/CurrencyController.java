@@ -1,29 +1,42 @@
 package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.web.bind.annotation.*;
-
-import com.cryptocurrency.backend.entity.objects.CryptocurrencyDailyPrice;
-import com.cryptocurrency.backend.entity.objects.CryptocurrencyInfo;
-import com.cryptocurrency.backend.entity.objects.CryptocurrencyInterval;
-import com.cryptocurrency.backend.payload.api.GetCurrency;
-import com.cryptocurrency.backend.payload.response.Cryptocurrency;
-import com.cryptocurrency.backend.payload.response.CurrencyDailyPrice;
-import com.cryptocurrency.backend.payload.response.CurrencyInterval;
-import com.cryptocurrency.backend.repository.CryptocurrencyDailyPriceRepository;
-import com.cryptocurrency.backend.repository.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.repository.CryptocurrencyIntervalRepository;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
+import com.cryptocurrency.backend.entities.rating.Rating;
+import com.cryptocurrency.backend.entities.tracker.Tracker;
+import com.cryptocurrency.backend.payloads.api.GetCurrency;
+import com.cryptocurrency.backend.payloads.request.SetRating;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
+import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyDailyPriceRepository;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
+import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
+import com.cryptocurrency.backend.repositories.rating.RatingRepository;
+import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 
 import kong.unirest.json.JSONArray;
 
-@CrossOrigin
 @RestController
-@RequestMapping("/api")
+@CrossOrigin
+@RequestMapping("/api/currency")
 public class CurrencyController {
 	private int methodRan=0;
 	@Autowired
@@ -34,12 +47,23 @@ public class CurrencyController {
 	
 	@Autowired
 	private CryptocurrencyIntervalRepository intervalRepository;
+	
+	@Autowired
+	private TrackerRepository trackerRepository;
+	
+	@Autowired
+	private RatingRepository ratingRepository;
 
 	
     @Value("${api.key}")
     private String apiKey;
-
-    @GetMapping("/currency/")
+    
+    
+    
+    // GET MAPPINGS:
+    // Currencies:  Empty- Get the first 100 currencies
+    // 				Typing a List of currency will get those only.
+    @GetMapping
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
 
     	methodRan++;
@@ -65,8 +89,6 @@ public class CurrencyController {
 		// save to database through entity
 		for(Cryptocurrency item : currency) {
 			CryptocurrencyInfo ci=new CryptocurrencyInfo(
-														 item.getCurrency_id(),
-														 item.getCurrency(),
 														 item.getSymbol(),
 														 item.getName(),
 														 item.getRanking(),
@@ -77,6 +99,8 @@ public class CurrencyController {
         return ResponseEntity.ok(currency);
     }
     
+    
+    // Get Daily Price / Symbol from API
     @GetMapping("/dailyPrice/{p}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String p){
 //    	// Find if the record exists
@@ -110,7 +134,7 @@ public class CurrencyController {
     	return ResponseEntity.ok(prices);
     }
 
-    
+    // Currency Interval - Symbol - time (1d, 7d, 1y)
     @GetMapping("/interval/{c}/{i}")
     public ResponseEntity<List<CurrencyInterval>> cryptoInterval(@PathVariable String c, @PathVariable String i){
     	
@@ -141,16 +165,38 @@ public class CurrencyController {
     }
     
     
-    @GetMapping("/currency/topfive")
+    // Get the Top Five currencies
+    @GetMapping("/topfive")
     public ResponseEntity<List<CryptocurrencyInfo>> getTopFive(){
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
     }
     
+    //Get Daily Price from Table
     @GetMapping("/getDailyPrice/{p}")
     public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
     	String upperCurrencies=p.toUpperCase();
     	List<CryptocurrencyDailyPrice> price=priceRepository.findBySymbol(upperCurrencies);
     	return ResponseEntity.ok(price);
     }	
+    
+    
+    // POST MAPPINGS
+    // Rate Currencies
+    @PostMapping("/rate/{cId}/{trackerId}")
+    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long cId, @PathVariable Long trackerId, @RequestBody SetRating setRating){
+    	Optional<CryptocurrencyInfo> currency=infoRepository.findById(cId);
+    	Optional<Tracker> tracker=trackerRepository.findById(trackerId);
+    	
+    	if(currency.isEmpty() || tracker.isEmpty())
+    		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    	
+    	Rating newRating=new Rating(tracker.get(),currency.get(),setRating.getRate());
+    	ratingRepository.save(newRating);
+    	return new ResponseEntity<>(currency.get(),HttpStatus.CREATED);
+    }
+    
+    
+    // DELETE MAPPINGS
+    public 
 }

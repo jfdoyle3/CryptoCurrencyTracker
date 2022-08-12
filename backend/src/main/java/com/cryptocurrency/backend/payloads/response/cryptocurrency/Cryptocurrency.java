@@ -1,0 +1,67 @@
+package com.cryptocurrency.backend.payloads.response.cryptocurrency;
+
+public class Cryptocurrency {
+
+	private String symbol;
+
+	private String name;
+
+	private String ranking;
+
+	private String logoUrl;
+
+	public Cryptocurrency() {}
+
+	public Cryptocurrency(
+						  String currency_id,
+						  String currency,
+						  String symbol,
+						  String name,
+						  String ranking,
+						  String logoUrl
+						  )
+	{
+
+	
+		this.symbol = symbol;
+		this.name = name;
+		this.logoUrl = logoUrl;
+		this.ranking = ranking;
+	}
+
+
+
+
+	public String getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(String ranking) {
+		this.ranking = ranking;
+	}
+
+	
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLogoUrl() {
+		return logoUrl;
+	}
+
+	public void setLogoUrl(String logoUrl) {
+		this.logoUrl = logoUrl;
+	}
+}

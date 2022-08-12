@@ -195,4 +195,8 @@ public class CurrencyController {
     	ratingRepository.save(newRating);
     	return new ResponseEntity<>(currency.get(),HttpStatus.CREATED);
     }
+    
+    
+    // DELETE MAPPINGS
+    public 
 }

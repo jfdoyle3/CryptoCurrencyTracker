@@ -39,7 +39,7 @@ public class Rating {
 
 	public Rating(Tracker tracker, CryptocurrencyInfo currency, Integer rate) {
 		this.tracker = tracker;
-		this.rate=rate;
+		this.rate=0;
 		this.currency = currency;
 	}
 

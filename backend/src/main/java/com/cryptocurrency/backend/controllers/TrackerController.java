@@ -198,6 +198,6 @@ public class TrackerController {
 			return null;
 		}
 		repository.deleteById(currentUser.getId());
-		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_GONE);
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.SC_OK);
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cryptocurrency.backend.entities.auth.User;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
@@ -31,6 +33,7 @@ import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfo
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
 import com.cryptocurrency.backend.repositories.rating.RatingRepository;
 import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
+import com.cryptocurrency.backend.services.UserService;
 
 import kong.unirest.json.JSONArray;
 
@@ -53,7 +56,9 @@ public class CurrencyController {
 	
 	@Autowired
 	private RatingRepository ratingRepository;
-
+	
+	@Autowired
+	UserService userService;
 	
     @Value("${api.key}")
     private String apiKey;
@@ -198,5 +203,14 @@ public class CurrencyController {
     
     
     // DELETE MAPPINGS
-     
+    @DeleteMapping("/rate")
+    public ResponseEntity<String> removeRating(){
+    	User currentUser = userService.getCurrentUser();
+
+		if (currentUser == null) {
+			return null;
+		}
+		// repository.deleteById();
+		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
+    }
 }

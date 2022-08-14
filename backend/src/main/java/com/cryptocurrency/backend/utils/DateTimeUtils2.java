@@ -7,12 +7,12 @@ import java.util.Date;
 
 public class DateTimeUtils2 {
 
-	private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 	private static final double MILLISECOND_TO_HOUR = 1000 * 60 * 60;
 	private static final double MILLISECOND_TO_DAY=1000*60*60*24;
 	private static final double MILLISECOND_TO_MINUTE=1000*60;
 
-	public static Long dateToEpochTime(String dateTime) throws ParseException {
+	public static long dateToEpochTime(String dateTime) throws ParseException {
 
 		Date dateIn = DATETIME_FORMAT.parse(dateTime);
 		long unixTime = dateIn.getTime() / 1000L;

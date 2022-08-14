@@ -105,39 +105,7 @@ public class CurrencyController {
     }
     
     
-    // Get Daily Price / Symbol from API
-    @GetMapping("/dailyPrice/{p}")
-    public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String p){
-//    	// Find if the record exists
-//    	if(priceRepository.numberOfEntries()>=1)
-//    		return null;
-    	
-    	// Get Currency API and create a List
-    	String upperCurrencies=p.toUpperCase();
-    	String interval="1d";
-    	GetCurrency gc=new GetCurrency();
-    	JSONArray json = gc.Currencies(upperCurrencies, interval,apiKey);
-    	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
-    	
-    	
-    	// Iterate thru currencies that the user inputs.
-    	// save to database through entity
-    	for(CurrencyDailyPrice item : prices) {
-    		CryptocurrencyDailyPrice dp=new CryptocurrencyDailyPrice(
-    																 item.getSymbol(),
-    													 			 item.getPrice(),
-    													 			 item.getPriceDate(),
-    													 			 item.getPriceTimeStamp(),
-    													 			 item.getCirculatingSupply(),
-    													 			 item.getMaxSupply(),
-    													 			 item.getMarketCap(),
-    													 			 item.getHigh(),
-    													 			 item.getHighTimeStamp()
-    													 			 );
-			priceRepository.save(dp);
-		}
-    	return ResponseEntity.ok(prices);
-    }
+ 
 
     // Currency Interval - Symbol - time (1d, 7d, 1y)
     @GetMapping("/interval/{c}/{i}")
@@ -176,16 +144,7 @@ public class CurrencyController {
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
     }
-    
-    //Get Daily Price from Table
-    @GetMapping("/getDailyPrice/{p}")
-    public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
-    	String upperCurrencies=p.toUpperCase();
-    	List<CryptocurrencyDailyPrice> price=priceRepository.findBySymbol(upperCurrencies);
-    	return ResponseEntity.ok(price);
-    }	
-    
-    
+        
     // POST MAPPINGS
     // Rate Currencies
     @PostMapping("/rate/{cId}/{trackerId}")

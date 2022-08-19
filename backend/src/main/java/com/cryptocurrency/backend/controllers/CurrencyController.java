@@ -144,32 +144,4 @@ public class CurrencyController {
     	List<CryptocurrencyInfo> topFive=infoRepository.findTopFive();
     	return ResponseEntity.ok(topFive);
     }
-        
-    // POST MAPPINGS
-    // Rate Currencies
-    @PostMapping("/rate/{cId}/{trackerId}")
-    public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long cId, @PathVariable Long trackerId, @RequestBody SetRating setRating){
-    	Optional<CryptocurrencyInfo> currency=infoRepository.findById(cId);
-    	Optional<Tracker> tracker=trackerRepository.findById(trackerId);
-    	
-    	if(currency.isEmpty() || tracker.isEmpty())
-    		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-    	
-    	Rating newRating=new Rating(tracker.get(),currency.get(),setRating.getRate());
-    	ratingRepository.save(newRating);
-    	return new ResponseEntity<>(currency.get(),HttpStatus.CREATED);
-    }
-    
-    
-    // DELETE MAPPINGS
-    @DeleteMapping("/rate")
-    public ResponseEntity<String> removeRating(){
-    	User currentUser = userService.getCurrentUser();
-
-		if (currentUser == null) {
-			return null;
-		}
-		// repository.deleteById();
-		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
-    }
 }

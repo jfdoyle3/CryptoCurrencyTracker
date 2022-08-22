@@ -50,8 +50,8 @@ public class RatingController {
 
 	// POST MAPPINGS
 	// Rate Currencies
-	@PostMapping("/rate/{cId}/{trackerId}")
-	public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long cId, @PathVariable Long trackerId,
+	@PostMapping("/rate/{trackerId}/{cId}")
+	public ResponseEntity<CryptocurrencyInfo> rateById(@PathVariable Long trackerId,@PathVariable Long cId,
 			@RequestBody SetRating setRating) {
 		Optional<CryptocurrencyInfo> currency = infoRepository.findById(cId);
 		Optional<Tracker> tracker = trackerRepository.findById(trackerId);

@@ -15,6 +15,7 @@ public interface TrackerRepository extends JpaRepository<Tracker, Long> {
     List<Tracker> findAll();
     
     List<Tracker> findAllByRatings_currency_id(Long id);
+    List<Tracker> findAllByRatings_id(Long id);
 
     Optional<Tracker> findByUser_id(Long id);
 

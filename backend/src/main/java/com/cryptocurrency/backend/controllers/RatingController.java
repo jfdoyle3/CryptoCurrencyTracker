@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,14 +35,15 @@ import com.cryptocurrency.backend.services.UserService;
 @RequestMapping("/api/currency")
 public class RatingController {
 	private int methodRan = 0;
+	
+	@Autowired
+	private RatingRepository repository;
+	
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
 
 	@Autowired
 	private TrackerRepository trackerRepository;
-
-	@Autowired
-	private RatingRepository ratingRepository;
 
 	@Autowired
 	UserService userService;
@@ -58,19 +60,20 @@ public class RatingController {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
 		Rating newRating = new Rating(tracker.get(), currency.get(), setRating.getRate());
-		ratingRepository.save(newRating);
+		repository.save(newRating);
 		return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
 	}
 
 	// DELETE MAPPINGS
-	@DeleteMapping("/rate")
-	public ResponseEntity<String> removeRating() {
+	@PutMapping("/rate/{id}")
+	public ResponseEntity<String> removeRating(@PathVariable Long id) {
 		User currentUser = userService.getCurrentUser();
 
 		if (currentUser == null) {
 			return null;
 		}
-		// repository.deleteById();
+//		Rating delRating=new Rating()
+//		repository.save(id);
 		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
 	}
 }

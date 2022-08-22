@@ -81,10 +81,6 @@ public class TrackerController {
 	
 	
 	
-	@GetMapping("/rate/{trackerId}")
-	public List<CryptocurrencyInfo> getRatedCurrency(@PathVariable Long trackerId) {
-		return infoRepository.findAllByRatings_tracker_id(trackerId);
-	}
 
 	// POST MAPPINGS
 	@PostMapping
@@ -103,26 +99,6 @@ public class TrackerController {
 		return new ResponseEntity<SelfTracker>(SelfTracker.build(tracker), null, HttpStatus.SC_CREATED);
 	}
 
-	@PostMapping("/addFavorite/")
-	public ResponseEntity<Tracker> addFavorite(@RequestBody AddFavorite currency) {
-
-		String currencyToUpper = currency.getCurrency().toUpperCase();
-
-		User currentUser = userService.getCurrentUser();
-
-		if (currentUser == null)
-			return null;
-
-		Tracker tracker = repository.findByUser_id(currentUser.getId())
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
-		tracker.favorites.addAll(infoRepository.findBySymbol(currencyToUpper));
-
-		repository.save(tracker);
-
-		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
-
-	}
 	
 	@PostMapping("/avatar")
     public Tracker addPhoto(@RequestBody Tracker track) { 
@@ -171,25 +147,6 @@ public class TrackerController {
 	}
 
 	// DELETE MAPPINGS
-	@DeleteMapping("/removeFavorite/{currency}")
-	public ResponseEntity<Tracker> removeFavorite(@PathVariable String currency) {
-		String currencyToUpper = currency.toUpperCase();
-
-		User currentUser = userService.getCurrentUser();
-
-		if (currentUser == null)
-			return null;
-
-		Tracker tracker = repository.findByUser_id(currentUser.getId())
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.SC_NOT_FOUND, null, null));
-
-		tracker.favorites.removeAll(infoRepository.findBySymbol(currencyToUpper));
-
-		repository.save(tracker);
-
-		return new ResponseEntity<Tracker>(null, null, HttpStatus.SC_OK);
-	}
-
 	@DeleteMapping
 	public ResponseEntity<String> destroyTracker() {
 		User currentUser = userService.getCurrentUser();

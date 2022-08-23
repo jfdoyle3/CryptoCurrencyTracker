@@ -65,15 +65,19 @@ public class RatingController {
 	}
 
 	// DELETE MAPPINGS
-	@PutMapping("/rate/{id}")
-	public ResponseEntity<String> removeRating(@PathVariable Long id) {
-		User currentUser = userService.getCurrentUser();
-
-		if (currentUser == null) {
-			return null;
-		}
-//		Rating delRating=new Rating()
-//		repository.save(id);
-		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
-	}
+//	@PutMapping("/rate/{trackerId}/{currId}")
+//	public ResponseEntity<String> removeRating(@PathVariable Long id) {
+//		User currentUser = userService.getCurrentUser();
+//
+//		if (currentUser == null) {
+//			return null;
+//		}
+//		Tracker tracker = repository.findByUser_id(currentUser.getId())
+// 
+//		
+//		
+////		Rating delRating=new Rating()
+////		repository.save(id);
+//		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
+//	}
 }

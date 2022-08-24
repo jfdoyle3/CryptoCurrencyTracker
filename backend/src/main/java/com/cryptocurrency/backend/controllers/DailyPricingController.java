@@ -18,10 +18,6 @@ import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyP
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyDailyPriceRepository;
-import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
-import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
-import com.cryptocurrency.backend.repositories.rating.RatingRepository;
-import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
 import com.cryptocurrency.backend.utils.CheckDateStamp;
 
@@ -33,20 +29,10 @@ import kong.unirest.json.JSONArray;
 public class DailyPricingController {
 	
 	private int methodRan=0;
-	@Autowired
-	private CryptocurrencyInfoRepository infoRepository;
+	private int dailyRan=0;
 	
 	@Autowired
-	private CryptocurrencyDailyPriceRepository priceRepository;
-	
-	@Autowired
-	private CryptocurrencyIntervalRepository intervalRepository;
-	
-	@Autowired
-	private TrackerRepository trackerRepository;
-	
-	@Autowired
-	private RatingRepository ratingRepository;
+	private CryptocurrencyDailyPriceRepository repository;
 	
 	@Autowired
 	UserService userService;
@@ -58,25 +44,21 @@ public class DailyPricingController {
     // Get Daily Price / Symbol from API
     @GetMapping("/dailyPrice/{symbol}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String symbol) throws ParseException{
-//    	// Find if the record exists
-//    	if(priceRepository.numberOfEntries()>=1)
-//    		return null;
-    	
-    	// Get Currency API and create a List
     	String upperCurrencySymbol=symbol.toUpperCase();
     	String interval="1d";
+    	System.out.println(">>==> "+upperCurrencySymbol);
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencySymbol, interval,apiKey);
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
     	
-    	 CheckDateStamp.displayDateStamp(prices);
+    	// CheckDateStamp.displayDateStamp(prices);
     	
     	//Checking on dates
-    	 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");  
-    	   LocalDateTime now = LocalDateTime.now();  
-    	   
-    	System.out.println("====> TimeStamp: "+prices.get(0).getPriceTimeStamp());
-    	System.out.println("====> JAVAStamp: "+dtf.format(now).toString());
+//    	 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");  
+//    	   LocalDateTime now = LocalDateTime.now();  
+//    	   
+//    	System.out.println("====> TimeStamp: "+prices.get(0).getPriceTimeStamp());
+//    	System.out.println("====> JAVAStamp: "+dtf.format(now).toString());
     	// Iterate thru currencies that the user inputs.
     	// save to database through entity
     	for(CurrencyDailyPrice item : prices) {
@@ -91,8 +73,9 @@ public class DailyPricingController {
     													 			 item.getHigh(),
     													 			 item.getHighTimeStamp()
     													 			 );
-			priceRepository.save(dp);
+			repository.save(dp);
 		}
+    	dailyRan=1;
     	return ResponseEntity.ok(prices);
     }
     
@@ -100,7 +83,7 @@ public class DailyPricingController {
     @GetMapping("/getDailyPrice/{p}")
     public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
     	String upperCurrencies=p.toUpperCase();
-    	List<CryptocurrencyDailyPrice> price=priceRepository.findBySymbol(upperCurrencies);
+    	List<CryptocurrencyDailyPrice> price=repository.findBySymbol(upperCurrencies);
     	return ResponseEntity.ok(price);
     }
 

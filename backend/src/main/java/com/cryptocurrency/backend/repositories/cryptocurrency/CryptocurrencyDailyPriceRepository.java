@@ -10,6 +10,7 @@ import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyP
 public interface CryptocurrencyDailyPriceRepository extends JpaRepository<CryptocurrencyDailyPrice, Long>{
 	
 	
+	
 	List<CryptocurrencyDailyPrice> findBySymbol(String symbol);
 	
 	@Query("SELECT COUNT(*) FROM CryptocurrencyDailyPrice")

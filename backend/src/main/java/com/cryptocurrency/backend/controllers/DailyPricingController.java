@@ -50,15 +50,7 @@ public class DailyPricingController {
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencySymbol, interval,apiKey);
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
-    	
-    	// CheckDateStamp.displayDateStamp(prices);
-    	
-    	//Checking on dates
-//    	 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");  
-//    	   LocalDateTime now = LocalDateTime.now();  
-//    	   
-//    	System.out.println("====> TimeStamp: "+prices.get(0).getPriceTimeStamp());
-//    	System.out.println("====> JAVAStamp: "+dtf.format(now).toString());
+
     	// Iterate thru currencies that the user inputs.
     	// save to database through entity
     	for(CurrencyDailyPrice item : prices) {

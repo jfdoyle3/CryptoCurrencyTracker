@@ -37,6 +37,12 @@ public class GetCurrency {
 				.asString();
 
 		String json = jsonStringResponse.getBody();
+		System.out.println("Currency String/JSON "+json);
+		if(json.charAt(0)=='Y') {
+			System.out.println("I ALREADY RAN!!!!");
+			JSONArray emptyJson = new JSONArray();
+			return emptyJson;
+		}
 		JSONArray currencyJson = new JSONArray(json);
 		return currencyJson;
 	}

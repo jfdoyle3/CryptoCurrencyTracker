@@ -3,6 +3,7 @@ package com.cryptocurrency.backend.controllers;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,16 +42,38 @@ public class DailyPricingController {
     private String apiKey;
     
     // GET MAPPING
-    // Get Daily Price / Symbol from API
+    
+	// Get Daily Price / Symbol from API
     @GetMapping("/dailyPrice/{symbol}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String symbol) throws ParseException{
     	String upperCurrencySymbol=symbol.toUpperCase();
     	String interval="1d";
-    	System.out.println(">>==> "+upperCurrencySymbol);
+    	System.out.println("Daily Pricing Controller/Route >>==> "+upperCurrencySymbol);
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencySymbol, interval,apiKey);
+    	if(json.length()==0) {
+    		System.out.println("JSON== 0 - IF STATEMENT RUNNING");
+    		List<CryptocurrencyDailyPrice> daily=getDailyPrice(symbol).getBody();
+    		List<CurrencyDailyPrice> currDailyPrice=new ArrayList<>();
+    						
+    		for(CryptocurrencyDailyPrice item : daily) {
+        		CurrencyDailyPrice dp=new CurrencyDailyPrice(
+        																 item.getSymbol(),
+        													 			 item.getPrice(),
+        													 			 item.getPriceDate(),
+        													 			 item.getPriceTimeStamp(),
+        													 			 item.getCirculatingSupply(),
+        													 			 item.getMaxSupply(),
+        													 			 item.getMarketCap(),
+        													 			 item.getHigh(),
+        													 			 item.getHighTimeStamp()
+        													 			 );
+        currDailyPrice.add(dp);
+    	}
+    		return ResponseEntity.ok(currDailyPrice);
+    	}	
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
-
+    	
     	// Iterate thru currencies that the user inputs.
     	// save to database through entity
     	for(CurrencyDailyPrice item : prices) {

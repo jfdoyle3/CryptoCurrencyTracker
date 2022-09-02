@@ -8,6 +8,12 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
+
+// One to many on the dynamics fields
+// One to One on the static fields
+// 
+
+
 @Entity
 @Table(name = "currency_daily_price")
 public class CryptocurrencyDailyPrice {
@@ -20,6 +26,8 @@ public class CryptocurrencyDailyPrice {
 	@Column(name = "symbol")
 	private String symbol;
 
+	
+	// US Dollars
 	@Column(name = "price")
 	private String price;
 
@@ -28,13 +36,13 @@ public class CryptocurrencyDailyPrice {
 
 	@Column(name = "price_timestamp")
 	private String priceTimeStamp;
-
+	// Price * Circulating Supply = Market Cap
 	@Column(name = "circulating_supply")
 	private String circulatingSupply;
 
 	@Column(name = "max_supply")
 	private String maxSupply;
-
+	// Market Cap = Price * Circulating Supply
 	@Column(name = "market_cap")
 	private String marketCap;
 

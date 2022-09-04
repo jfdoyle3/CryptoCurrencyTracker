@@ -6,6 +6,8 @@ import java.util.List;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -46,6 +48,7 @@ public class GetCurrency {
 		JSONArray currencyJson = new JSONArray(json);
 		return currencyJson;
 	}
+	
 
 	public List<Cryptocurrency> Cryptocurrency(JSONArray json) {
 			
@@ -121,6 +124,8 @@ public class GetCurrency {
 
 			currencyDailyPriceList.add(currencyDailyPrice);
 		}
+		
+
 		return currencyDailyPriceList;
 	}
 

@@ -18,7 +18,7 @@ import com.cryptocurrency.backend.entities.cryptocurrencies.daily_price.Symbol;
 
 @Entity
 @Table(name = "currency_daily_price")
-public class CryptocurrencyDailyPrice {
+public class CryptocurrencyDailyPriceDb {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,9 +55,9 @@ public class CryptocurrencyDailyPrice {
 	@Column(name = "high_timestamp")
 	private String highTimeStamp;
 
-	public CryptocurrencyDailyPrice() {}
+	public CryptocurrencyDailyPriceDb() {}
 
-	public CryptocurrencyDailyPrice(
+	public CryptocurrencyDailyPriceDb(
 							  String symbol,
 							  String price,
 							  String priceDate,

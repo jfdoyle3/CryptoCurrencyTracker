@@ -1,37 +1,56 @@
 package com.cryptocurrency.backend.entities.cryptocurrencies.daily_price;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Symbol {
 	
-	@Column(name = "symbol")
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+
 	private String symbol;
+	
+	
+
+	public Symbol() {
+	}
+
+	public Symbol(String symbol) {
+			this.symbol = symbol;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
 
 	
-	// US Dollars
-	@Column(name = "price")
-	private String price;
-
-	@Column(name = "price_date")
-	private String priceDate;
-
-	@Column(name = "price_timestamp")
-	private String priceTimeStamp;
-	// Price * Circulating Supply = Market Cap
-	@Column(name = "circulating_supply")
-	private String circulatingSupply;
-
-	@Column(name = "max_supply")
-	private String maxSupply;
-	// Market Cap = Price * Circulating Supply
-	@Column(name = "market_cap")
-	private String marketCap;
-
-	@Column(name = "high")
-	private String high;
-
-	@Column(name = "high_timestamp")
-	private String highTimeStamp;
 
 
 }

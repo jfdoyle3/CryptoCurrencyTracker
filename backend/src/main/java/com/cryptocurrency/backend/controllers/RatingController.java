@@ -58,26 +58,22 @@ public class RatingController {
 
 		if (currency.isEmpty() || tracker.isEmpty())
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
+		
+		if (repository.existsByCurrency_id(cId)) {
+			Rating updateRating=repository.findByCurrencyId(cId);
+			updateRating.setRate(setRating.getRate());
+			repository.save(updateRating);
+			return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
+		}
+		
 		Rating newRating = new Rating(tracker.get(), currency.get(), setRating.getRate());
 		repository.save(newRating);
 		return new ResponseEntity<>(currency.get(), HttpStatus.CREATED);
 	}
+	
+//	DELETE MAPPINGS
+//	May need this
+//  If Rating is then the record should be deleted
+//	If Currency is no longer available 
 
-	// DELETE MAPPINGS
-//	@PutMapping("/rate/{trackerId}/{currId}")
-//	public ResponseEntity<String> removeRating(@PathVariable Long id) {
-//		User currentUser = userService.getCurrentUser();
-//
-//		if (currentUser == null) {
-//			return null;
-//		}
-//		Tracker tracker = repository.findByUser_id(currentUser.getId())
-// 
-//		
-//		
-////		Rating delRating=new Rating()
-////		repository.save(id);
-//		return new ResponseEntity<String>("Deleted", null, HttpStatus.SEE_OTHER);
-//	}
 }

@@ -48,6 +48,9 @@ public class RatingController {
 	@Autowired
 	UserService userService;
 
+	// GET MAPPINGS
+//	@GetMapping("/rate/{symbol}")
+//	public 
 	// POST MAPPINGS
 	// Rate Currencies
 	@PostMapping("/rate/{trackerId}/{cId}")

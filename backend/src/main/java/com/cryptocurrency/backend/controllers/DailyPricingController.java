@@ -29,8 +29,7 @@ import kong.unirest.json.JSONArray;
 @RequestMapping("/api/currency")
 public class DailyPricingController {
 	
-	private int methodRan=0;
-	private int dailyRan=0;
+
 	
 	@Autowired
 	private CryptocurrencyDailyPriceRepository repository;
@@ -47,10 +46,14 @@ public class DailyPricingController {
     @GetMapping("/dailyPrice/{symbol}")
     public ResponseEntity<List<CurrencyDailyPrice>> cryptoDailyPrice(@PathVariable String symbol) throws ParseException{
     	String upperCurrencySymbol=symbol.toUpperCase();
+    	
+    	//	Start of Code to get data from API
+    	//
     	String interval="1d";
-    	System.out.println("Daily Pricing Controller/Route >>==> "+upperCurrencySymbol);
     	GetCurrency gc=new GetCurrency();
     	JSONArray json = gc.Currencies(upperCurrencySymbol, interval,apiKey);
+    	
+    	// Temp fix for the double call to the API
     	if(json.length()==0) {
     		System.out.println("JSON== 0 - IF STATEMENT RUNNING");
     		List<CryptocurrencyDailyPrice> daily=getDailyPrice(symbol).getBody();
@@ -72,17 +75,17 @@ public class DailyPricingController {
     	}
     		return ResponseEntity.ok(currDailyPrice);
     	}	
+    	
+    	
     	List<CurrencyDailyPrice> prices=gc.CurrencyDailyPrice(json);
     	
-    	// Iterate thru currencies that the user inputs.
-    	// save to database through entity
     	for(CurrencyDailyPrice item : prices) {
     		CryptocurrencyDailyPrice dp=new CryptocurrencyDailyPrice(
     																 item.getSymbol(),
     													 			 item.getPrice(),
     													 			 item.getPriceDate(),
     													 			 item.getPriceTimeStamp(),
-    													 			 item.getCirculatingSupply(),
+    					 								 			 item.getCirculatingSupply(),
     													 			 item.getMaxSupply(),
     													 			 item.getMarketCap(),
     													 			 item.getHigh(),
@@ -90,15 +93,42 @@ public class DailyPricingController {
     													 			 );
 			repository.save(dp);
 		}
-    	dailyRan=1;
+    	
     	return ResponseEntity.ok(prices);
-    }
+    }	
     
     //Get Daily Price from Table
-    @GetMapping("/getDailyPrice/{p}")
-    public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String p){
-    	String upperCurrencies=p.toUpperCase();
+    @GetMapping("/getDailyPrice/{symbol}")
+    public ResponseEntity<List<CryptocurrencyDailyPrice>> getDailyPrice(@PathVariable String symbol){
+    	String upperCurrencies=symbol.toUpperCase();
     	List<CryptocurrencyDailyPrice> price=repository.findBySymbol(upperCurrencies);
+    	/* check if timestamp changed
+    	 	yes: API No: Database
+    			get json and get timestamp from api compare to database to determine if a api call is needed.
+    			need to regulate the calls to the API
+    			get latest price json obj:  price.get(price.size()-1);
+    			call: cryptoDailyPrice(@PathVariable String symbol) to get a new record
+    			
+    			System.out.println("price: <==>"+price.get(price.size()-1).getSymbol()+">===<"+price.get(price.size()-1).getPriceTimeStamp());
+    			for(CryptocurrencyDailyPrice item : price)
+    			System.out.println("<==>"+item.getSymbol()+">===<"+item.getPriceTimeStamp());
+    			
+    	*/
+    	
+    	
+    		
+    	 
+    	
+    	
+    	
+    	
+    	
+    	return ResponseEntity.ok(price);
+    }
+    
+    @GetMapping("/getSingleDailyPrice/{symbol}")
+    public ResponseEntity<CryptocurrencyDailyPrice> getSingleDailyPrice(@PathVariable String symbol){
+    	CryptocurrencyDailyPrice price=repository.findTopByOrderByIdDesc();
     	return ResponseEntity.ok(price);
     }
 

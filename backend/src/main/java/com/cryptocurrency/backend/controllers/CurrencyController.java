@@ -72,7 +72,7 @@ public class CurrencyController {
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
 
     	methodRan++;
-    	System.out.println("Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
+    	System.out.println("Curr CTRL: Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
     	
     	// Check if records are on the table.
     	// need to check against ranking to update table with new values

@@ -8,8 +8,10 @@ import com.cryptocurrency.backend.entities.rating.Rating;
 
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 	
-	List<Rating> findAllByCurrencyId(Long id);
+	Rating findByCurrencyId(Long id);
     List<Rating> findAllById(Long id);
+    
+    boolean existsByCurrency_id(Long currencyId);
     
     void deleteById(Long id);
 

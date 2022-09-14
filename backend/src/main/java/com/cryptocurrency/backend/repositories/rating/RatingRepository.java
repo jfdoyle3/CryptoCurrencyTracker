@@ -10,6 +10,7 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
 	
 	Rating findByCurrencyId(Long id);
     List<Rating> findAllById(Long id);
+    
     boolean existsByCurrency_id(Long currencyId);
     
     void deleteById(Long id);

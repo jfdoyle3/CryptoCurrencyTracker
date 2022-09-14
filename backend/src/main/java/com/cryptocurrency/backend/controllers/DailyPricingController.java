@@ -103,13 +103,20 @@ public class DailyPricingController {
     	String upperCurrencies=symbol.toUpperCase();
     	List<CryptocurrencyDailyPrice> price=repository.findBySymbol(upperCurrencies);
     	/* check if timestamp changed
-    	 	yes: Database No: API
+    	 	yes: API No: Database
     			get json and get timestamp from api compare to database to determine if a api call is needed.
     			need to regulate the calls to the API
     			get latest price json obj:  price.get(price.size()-1);
     			call: cryptoDailyPrice(@PathVariable String symbol) to get a new record
     			
+    			System.out.println("price: <==>"+price.get(price.size()-1).getSymbol()+">===<"+price.get(price.size()-1).getPriceTimeStamp());
+    			for(CryptocurrencyDailyPrice item : price)
+    			System.out.println("<==>"+item.getSymbol()+">===<"+item.getPriceTimeStamp());
+    			
     	*/
+    	
+    	
+    		
     	 
     	
     	
@@ -121,17 +128,6 @@ public class DailyPricingController {
     
     @GetMapping("/getSingleDailyPrice/{symbol}")
     public ResponseEntity<CryptocurrencyDailyPrice> getSingleDailyPrice(@PathVariable String symbol){
-    	// upperCurrencies=symbol.toUpperCase();
-    	/* check if timestamp changed
-    	 	yes: Database No: API
-    			get json and get timestamp from api compare to database to determine if a api call is needed.
-    			need to regulate the calls to the API
-    	
-    	*/
-    	
-    	
-    	
-    	
     	CryptocurrencyDailyPrice price=repository.findTopByOrderByIdDesc();
     	return ResponseEntity.ok(price);
     }

@@ -72,6 +72,7 @@ public class CurrencyController {
     public ResponseEntity<?> cryptoHeader(@RequestParam(defaultValue="") String currencies) {
 
     	methodRan++;
+    	// TODO Console: Curr CTRL: Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries()
     	System.out.println("Curr CTRL: Ran: "+methodRan+"| C:"+currencies+"|"+"# of Records: "+infoRepository.numberOfEntries());
     	
     	// Check if records are on the table.

@@ -63,8 +63,8 @@ public class DateTimeUtils2 {
 		cal.setTime(date);
 		int day=cal.get(Calendar.DAY_OF_WEEK);
 		
-		/* May want this to return a String instead of an int/byte
-		 * switch(day){
+		// May want this to return a String instead of an int/byte
+		  switch(day){
 			case 1-> System.out.println("Sunday");
 			case 2-> System.out.println("Monday");
 			case 3-> System.out.println("Tuesday");
@@ -74,9 +74,15 @@ public class DateTimeUtils2 {
 			case 7-> System.out.println("Saturday");
 			default->System.out.println("error - day doesn't exist");
 			}
-		 */
+		 
 		
 		return day;
+	}
+	
+	public static long convertToEDT(String utcDateTime) throws ParseException {
+		long epochDateTime=dateToEpochTime(utcDateTime);
+		long epochTimeToEDT=Math.abs(epochDateTime-14400);
+		return epochTimeToEDT;
 	}
 	
 }

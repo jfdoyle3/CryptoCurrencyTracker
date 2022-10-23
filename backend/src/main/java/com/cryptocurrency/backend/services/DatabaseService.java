@@ -3,7 +3,6 @@ package com.cryptocurrency.backend.services;
 
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,28 +81,28 @@ public class DatabaseService {
     }
 
     // Detects Table Exists
-    private void tableExists(String databaseName, String tableName) {
-
-        try {
-
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/cryptocurrencytracker",
-                    "username",
-                    "password");
-
-            DatabaseMetaData dbm = connection.getMetaData();
-
-            ResultSet rs = dbm.getTables(null, databaseName, tableName, null);
-
-            if (rs.next())
-                System.out.printf("Table %s exists in %s",tableName,databaseName);
-
-            if (connection != null)
-                connection.close();
-
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-
-    }
+//    private void tableExists(String databaseName, String tableName) {
+//
+//        try {
+//
+//            Connection connection = DriverManager.getConnection(
+//                    "jdbc:mysql://localhost/cryptocurrencytracker",
+//                    "username",
+//                    "password");
+//
+//            DatabaseMetaData dbm = connection.getMetaData();
+//
+//            ResultSet rs = dbm.getTables(null, databaseName, tableName, null);
+//
+//            if (rs.next())
+//                System.out.printf("Table %s exists in %s",tableName,databaseName);
+//
+//            if (connection != null)
+//                connection.close();
+//
+//        } catch(SQLException e){
+//            e.printStackTrace();
+//        }
+//
+//    }
 }

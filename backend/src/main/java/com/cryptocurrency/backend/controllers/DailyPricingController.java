@@ -50,7 +50,7 @@ public class DailyPricingController {
 		// Setup
 		String upperCurrencySymbol = symbol.toUpperCase();
 		CryptocurrencyDailyPrice lastPrice = repository.findTopByOrderByIdDesc();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+	//	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
 		// Logic API or Database
 		if (upperCurrencySymbol.equals(lastPrice.getSymbol())) {
@@ -190,7 +190,7 @@ public class DailyPricingController {
 	public ResponseEntity<CryptocurrencyDailyPrice> testingTime(@PathVariable String symbol) throws ParseException {
 
 		// UpCase Symbol
-		String upperCurrencySymbol = symbol.toUpperCase();
+		// String upperCurrencySymbol = symbol.toUpperCase();
 		CryptocurrencyDailyPrice lastPrice = repository.findTopByOrderByIdDesc();
 		
 		// Date Stuff

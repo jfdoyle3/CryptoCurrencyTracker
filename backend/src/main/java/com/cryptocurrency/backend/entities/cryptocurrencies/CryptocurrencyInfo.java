@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.cryptocurrency.backend.entities.rating.Rating;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 
 @Entity
 @Table(name = "currency_info")

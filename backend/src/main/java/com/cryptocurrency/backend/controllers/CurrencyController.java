@@ -1,38 +1,34 @@
 package com.cryptocurrency.backend.controllers;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cryptocurrency.backend.entities.auth.User;
-import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyDailyPrice;
+
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInterval;
-import com.cryptocurrency.backend.entities.rating.Rating;
-import com.cryptocurrency.backend.entities.tracker.Tracker;
+
 import com.cryptocurrency.backend.payloads.api.GetCurrency;
-import com.cryptocurrency.backend.payloads.request.SetRating;
+
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.Cryptocurrency;
-import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyDailyPrice;
+
 import com.cryptocurrency.backend.payloads.response.cryptocurrency.CurrencyInterval;
-import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyDailyPriceRepository;
+
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyIntervalRepository;
-import com.cryptocurrency.backend.repositories.rating.RatingRepository;
-import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
+
 import com.cryptocurrency.backend.services.UserService;
 
 import kong.unirest.json.JSONArray;
@@ -44,18 +40,13 @@ public class CurrencyController {
 	private int methodRan=0;
 	@Autowired
 	private CryptocurrencyInfoRepository infoRepository;
-	
-	@Autowired
-	private CryptocurrencyDailyPriceRepository priceRepository;
+
+
 	
 	@Autowired
 	private CryptocurrencyIntervalRepository intervalRepository;
 	
-	@Autowired
-	private TrackerRepository trackerRepository;
-	
-	@Autowired
-	private RatingRepository ratingRepository;
+
 	
 	@Autowired
 	UserService userService;

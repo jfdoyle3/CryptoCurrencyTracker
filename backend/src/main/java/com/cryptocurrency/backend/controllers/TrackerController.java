@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cryptocurrency.backend.entities.auth.User;
-import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
+
 import com.cryptocurrency.backend.entities.tracker.Avatar;
 import com.cryptocurrency.backend.entities.tracker.Tracker;
-import com.cryptocurrency.backend.payloads.request.AddFavorite;
+
 import com.cryptocurrency.backend.payloads.response.tracker.PublicTracker;
 import com.cryptocurrency.backend.payloads.response.tracker.SelfTracker;
-import com.cryptocurrency.backend.repositories.cryptocurrency.CryptocurrencyInfoRepository;
 import com.cryptocurrency.backend.repositories.tracker.AvatarRepository;
 import com.cryptocurrency.backend.repositories.tracker.TrackerRepository;
 import com.cryptocurrency.backend.services.UserService;
@@ -40,8 +39,6 @@ public class TrackerController {
 	@Autowired
 	UserService userService;
 
-	@Autowired
-	private CryptocurrencyInfoRepository infoRepository;
 	
 	@Autowired
 	private AvatarRepository avatarRepository;

@@ -1,16 +1,15 @@
 package com.cryptocurrency.backend.repositories.cryptocurrency;
 
 
-import java.util.Collection;
+
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
-import com.cryptocurrency.backend.entities.tracker.Tracker;
+
 
 public interface CryptocurrencyInfoRepository extends JpaRepository<CryptocurrencyInfo, Long> {
 	

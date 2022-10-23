@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cryptocurrency.backend.entities.auth.User;
+
 
 import com.cryptocurrency.backend.entities.cryptocurrencies.CryptocurrencyInfo;
 
@@ -34,7 +34,7 @@ import com.cryptocurrency.backend.services.UserService;
 @CrossOrigin
 @RequestMapping("/api/currency")
 public class RatingController {
-	private int methodRan = 0;
+//	private int methodRan = 0;
 	
 	@Autowired
 	private RatingRepository repository;

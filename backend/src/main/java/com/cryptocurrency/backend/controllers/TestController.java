@@ -15,6 +15,7 @@ public class TestController {
 
     @GetMapping("/public")
     public String allAccess() {
+    	System.out.println("get some data");
         return "public content";
     }
 
@@ -35,5 +36,13 @@ public class TestController {
     public String adminAccess() {
         return "admin content";
     }
+    
+    @GetMapping("/data")
+    public static void getAPIData() {
+    	System.out.println("get some data");
+      //  return "public content";
+    }
+    
+    
 }
 
